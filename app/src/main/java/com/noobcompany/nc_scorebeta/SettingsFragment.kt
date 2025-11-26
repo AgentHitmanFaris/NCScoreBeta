@@ -29,6 +29,15 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         tvLogout = view.findViewById(R.id.tvLogout)
         dividerLogout = view.findViewById(R.id.dividerLogout)
+        
+        // Set dynamic version text
+        try {
+            val pInfo = requireContext().packageManager.getPackageInfo(requireContext().packageName, 0)
+            view.findViewById<TextView>(R.id.tvVersion).text = "Version ${pInfo.versionName}"
+        } catch (e: Exception) {
+            view.findViewById<TextView>(R.id.tvVersion).text = "Version Unknown"
+        }
+
         setupActions(view)
     }
 

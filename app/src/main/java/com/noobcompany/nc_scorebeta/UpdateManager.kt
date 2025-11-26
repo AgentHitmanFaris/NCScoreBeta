@@ -61,7 +61,8 @@ object UpdateManager {
                     .getJSONObject(0)
                     .getString("browser_download_url")
 
-                val currentVersion = "v${BuildConfig.VERSION_NAME}"
+                val pInfo = context.packageManager.getPackageInfo(context.packageName, 0)
+                val currentVersion = "v${pInfo.versionName}"
                 
                 // Simple string comparison. For robust semver, a library is better, 
                 // but this works if we stick to consistent vX.X.X naming.

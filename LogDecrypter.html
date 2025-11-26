@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NC Score Log Decrypter</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 800px;
+        }
+        h1 { margin-top: 0; color: #333; }
+        .input-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; color: #555; }
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 12px;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover { background-color: #0056b3; }
+        #output {
+            margin-top: 20px;
+            white-space: pre-wrap;
+            background: #1e1e1e;
+            color: #a9b7c6;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: "Consolas", "Monaco", monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            display: none;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        .error { color: #ff5555; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Log Decrypter Tool</h1>
+    <p>Paste the <code>encryptedLogs</code> string from Firestore below.</p>
+    
+    <div class="input-group">
+        <label for="keyInput">Secret Key (Default: Ver01)</label>
+        <input type="text" id="keyInput" value="NCScoreBetaKey2024SecretKeyVer01" style="width: 100%; padding: 8px; box-sizing: border-box;">
+    </div>
+
+    <div class="input-group">
+        <label for="logInput">Encrypted Base64 String</label>
+        <textarea id="logInput" placeholder="Paste encrypted string here..."></textarea>
+    </div>
+
+    <button onclick="decryptLogs()">Decrypt Logs</button>
+
+    <div id="output"></div>
+</div>
+
+<script>
+    // We use the Web Crypto API
+    async function decryptLogs() {
+        const keyString = document.getElementById('keyInput').value;
+        const inputString = document.getElementById('logInput').value.trim();
+        const outputDiv = document.getElementById('output');
+
+        if (!inputString) {
+            alert("Please paste the encrypted string.");
+            return;
+        }
+
+        try {
+            outputDiv.style.display = 'block';
+            outputDiv.textContent = "Decrypting...";
+            outputDiv.classList.remove("error");
+
+            // 1. Base64 Decode
+            const binaryString = atob(inputString);
+            const bytes = new Uint8Array(binaryString.length);
+            for (let i = 0; i < binaryString.length; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+
+            // 2. Extract IV (First 16 bytes)
+            const iv = bytes.slice(0, 16);
+            const ciphertext = bytes.slice(16);
+
+            // 3. Import Key
+            const keyBytes = new TextEncoder().encode(keyString);
+            // AES-256 requires 32 bytes. If key is shorter/longer, we might need to adjust.
+            // In Android code: SecretKeySpec(key.getBytes(), "AES") uses the raw bytes.
+            // Web Crypto "raw" import requires specific lengths (128, 192, 256 bits).
+            // "NCScoreBetaKey2024SecretKeyVer01" is exactly 32 chars = 256 bits. Perfect.
+
+            const key = await window.crypto.subtle.importKey(
+                "raw",
+                keyBytes,
+                { name: "AES-CBC" },
+                false,
+                ["decrypt"]
+            );
+
+            // 4. Decrypt
+            const decryptedBuffer = await window.crypto.subtle.decrypt(
+                { name: "AES-CBC", iv: iv },
+                key,
+                ciphertext
+            );
+
+            // 5. Decompress (GZIP)
+            // Using DecompressionStream (Supported in Chrome 80+, Firefox 113+, Safari 16.4+)
+            const ds = new DecompressionStream("gzip");
+            const writer = ds.writable.getWriter();
+            writer.write(decryptedBuffer);
+            writer.close();
+            
+            const decompressedArrayBuffer = await new Response(ds.readable).arrayBuffer();
+            const decoder = new TextDecoder("utf-8");
+            const logText = decoder.decode(decompressedArrayBuffer);
+
+            outputDiv.textContent = logText;
+
+        } catch (e) {
+            console.error(e);
+            outputDiv.textContent = "Error: " + e.message + "\n\nCheck if the key is correct or if the browser supports DecompressionStream.";
+            outputDiv.classList.add("error");
+        }
+    }
+</script>
+
+</body>
+</html>

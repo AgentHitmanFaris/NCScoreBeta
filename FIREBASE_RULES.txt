@@ -1,35 +1,61 @@
-// COPY THESE RULES TO YOUR FIREBASE CONSOLE -> FIRESTORE DATABASE -> RULES TAB
-
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     
-    // 1. Public Read Access for Songs and Artists
-    // REQUIRED for Home, Browse, Library, and Search to work
-    match /songs/{document=**} {
-      allow read: if true;
+    // Helper function to check if the user is an admin
+    function isAdmin() {
+      return request.auth != null && (
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true) ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
     }
-    match /artists/{document=**} {
+
+    // Users collection
+    match /users/{userId} {
+      allow read, write: if (request.auth != null && request.auth.uid == userId) || isAdmin();
+    }
+
+    // Songs collection
+    match /songs/{songId} {
       allow read: if true;
+      allow write: if isAdmin();
+
+      // Arrangements subcollection
+      match /arrangements/{arrangementId} {
+        allow read: if true;
+        allow write: if isAdmin();
+
+        // Secure Content (Premium PDFs) - NESTED per your web snippet
+        // Path: /songs/{songId}/arrangements/{arrangementId}/secure/content
+        match /secure/content {
+          allow read: if request.auth != null;
+          allow write: if isAdmin();
+        }
+      }
     }
     
-    // 2. User Profile Access
-    // REQUIRED for Login, Registration, and Profile Verification
-    match /users/{userId} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
+    // Artists collection
+    match /artists/{artistId} {
+      allow read: if true;
+      allow write: if isAdmin();
     }
 
-    // 3. Bug Reports
-    // REQUIRED for the "Report Bug" feature in Settings
-    match /bug_reports/{document=**} {
+    // Lyrics collection
+    match /lyrics/{lyricId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    // Bug Reports collection
+    match /bug_reports/{reportId} {
       allow create: if true;
+      allow read, write: if isAdmin();
     }
-
-    // 4. SECURE Content (Premium PDFs)
-    // REQUIRED for Premium Song Access
-    // This rule allows ANY logged-in user to read the secure PDF links.
-    match /secure/{songId} {
-      allow read: if request.auth != null;
+    
+    // Legacy admins collection
+    match /admins/{userId} {
+      allow read: if (request.auth != null && request.auth.uid == userId) || isAdmin();
+      allow write: if isAdmin();
     }
   }
 }

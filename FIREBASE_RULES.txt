@@ -1,0 +1,35 @@
+// COPY THESE RULES TO YOUR FIREBASE CONSOLE -> FIRESTORE DATABASE -> RULES TAB
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // 1. Public Read Access for Songs and Artists
+    // REQUIRED for Home, Browse, Library, and Search to work
+    match /songs/{document=**} {
+      allow read: if true;
+    }
+    match /artists/{document=**} {
+      allow read: if true;
+    }
+    
+    // 2. User Profile Access
+    // REQUIRED for Login, Registration, and Profile Verification
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // 3. Bug Reports
+    // REQUIRED for the "Report Bug" feature in Settings
+    match /bug_reports/{document=**} {
+      allow create: if true;
+    }
+
+    // 4. SECURE Content (Premium PDFs)
+    // REQUIRED for Premium Song Access
+    // This rule allows ANY logged-in user to read the secure PDF links.
+    match /secure/{songId} {
+      allow read: if request.auth != null;
+    }
+  }
+}

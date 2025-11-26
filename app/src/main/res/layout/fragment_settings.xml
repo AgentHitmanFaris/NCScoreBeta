@@ -96,23 +96,36 @@
             android:layout_height="1dp"
             android:background="#333333"/>
 
-        <!-- Report Bug -->
-        <TextView
-            android:id="@+id/btnReportBug"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Report Bug"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:padding="16dp"
-            android:background="?attr/selectableItemBackground"
-            android:drawableEnd="@android:drawable/stat_notify_error"
-            android:drawableTint="#FFA500"/>
+    <TextView
+        android:id="@+id/btnReportBug"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:padding="16dp"
+        android:text="Report Bug"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
 
-         <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#333333"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#33FFFFFF" />
+
+    <!-- Check Update -->
+    <TextView
+        android:id="@+id/btnCheckUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:padding="16dp"
+        android:text="Check for Updates"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#33FFFFFF" />
 
         <!-- Log Out (Only visible if logged in, logic in Kotlin) -->
         <TextView

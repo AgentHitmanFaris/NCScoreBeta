@@ -81,6 +81,10 @@ class SettingsFragment : Fragment() {
         view.findViewById<TextView>(R.id.btnReportBug).setOnClickListener {
             reportBug()
         }
+
+        view.findViewById<TextView>(R.id.btnCheckUpdate).setOnClickListener {
+            UpdateManager.checkForUpdates(requireContext())
+        }
         
         // Initial listener setup is handled in updateLogoutButton
     }

@@ -12,10 +12,24 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 
+/**
+ * Fragment that displays a list of all artists available in the application.
+ *
+ * This fragment fetches artist data from Firestore and displays it in a RecyclerView.
+ * It also handles navigation to the [ArtistDetailFragment] when an artist is selected.
+ */
 class AllArtistsFragment : Fragment() {
 
     private val db = FirebaseFirestore.getInstance()
 
+    /**
+     * Inflates the layout for this fragment.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     * @return The View for the fragment's UI, or null.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,6 +37,13 @@ class AllArtistsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_all_artists, container, false)
     }
 
+    /**
+     * Called immediately after [onCreateView] has returned, but before any saved state has been restored in to the view.
+     * Sets up the back button and initiates fetching of artists.
+     *
+     * @param view The View returned by [onCreateView].
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         
@@ -34,6 +55,14 @@ class AllArtistsFragment : Fragment() {
         fetchArtists(view)
     }
 
+    /**
+     * Fetches the list of artists from Firestore and populates the RecyclerView.
+     *
+     * It shows a progress bar while loading and handles potential errors by displaying a Toast.
+     * On successful fetch, it sets up the [ArtistAdapter] with the retrieved data.
+     *
+     * @param view The root view of the fragment, used to find UI elements.
+     */
     private fun fetchArtists(view: View) {
         val progressBar = view.findViewById<ProgressBar>(R.id.progressBar)
         val rvArtists = view.findViewById<RecyclerView>(R.id.rvArtists)

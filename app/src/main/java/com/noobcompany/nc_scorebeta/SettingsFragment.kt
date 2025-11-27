@@ -13,11 +13,24 @@ import com.google.firebase.firestore.FirebaseFirestore
 import android.os.Build
 import com.google.firebase.auth.FirebaseAuth
 
+/**
+ * Fragment that displays application settings and user profile options.
+ *
+ * Allows users to log in/out, clear cache, report bugs, view app version, and check for updates.
+ */
 class SettingsFragment : Fragment() {
 
     private lateinit var tvLogout: TextView
     private lateinit var dividerLogout: View
 
+    /**
+     * Inflates the layout for this fragment.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     * @return The View for the fragment's UI, or null.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,6 +38,14 @@ class SettingsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_settings, container, false)
     }
 
+    /**
+     * Called immediately after [onCreateView] has returned.
+     *
+     * Initializes the UI, sets the version text, and sets up action listeners.
+     *
+     * @param view The View returned by [onCreateView].
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tvLogout = view.findViewById(R.id.tvLogout)
@@ -41,11 +62,22 @@ class SettingsFragment : Fragment() {
         setupActions(view)
     }
 
+    /**
+     * Called when the fragment is resumed.
+     *
+     * Updates the logout button state (Log In vs Log Out) based on the current user session.
+     */
     override fun onResume() {
         super.onResume()
         updateLogoutButton()
     }
 
+    /**
+     * Updates the text and behavior of the logout/login button.
+     *
+     * If a user is logged in, it shows "Log Out" and handles sign-out.
+     * If no user is logged in, it shows "Log In" and navigates to [LoginActivity].
+     */
     private fun updateLogoutButton() {
         val user = FirebaseAuth.getInstance().currentUser
         if (user != null) {
@@ -78,6 +110,11 @@ class SettingsFragment : Fragment() {
         }
     }
 
+    /**
+     * Sets up click listeners for various settings actions.
+     *
+     * @param view The root view of the fragment.
+     */
     private fun setupActions(view: View) {
         view.findViewById<TextView>(R.id.btnCache).setOnClickListener {
             clearCache()
@@ -98,6 +135,9 @@ class SettingsFragment : Fragment() {
         // Initial listener setup is handled in updateLogoutButton
     }
 
+    /**
+     * Collects system logs and device info, encrypts them, and sends a bug report to Firestore.
+     */
     private fun reportBug() {
         Toast.makeText(context, "Sending Report...", Toast.LENGTH_SHORT).show()
         val db = FirebaseFirestore.getInstance()
@@ -128,6 +168,9 @@ class SettingsFragment : Fragment() {
             }
     }
 
+    /**
+     * Clears the application's cache directory.
+     */
     private fun clearCache() {
         try {
             val cacheDir = context?.cacheDir
@@ -139,6 +182,12 @@ class SettingsFragment : Fragment() {
         }
     }
 
+    /**
+     * Recursively deletes a directory and its contents.
+     *
+     * @param dir The directory to delete.
+     * @return True if successful, false otherwise.
+     */
     private fun deleteDir(dir: File?): Boolean {
         if (dir != null && dir.isDirectory) {
             val children = dir.list()
@@ -157,6 +206,12 @@ class SettingsFragment : Fragment() {
         return false
     }
 
+    /**
+     * Calculates the size of a directory recursively.
+     *
+     * @param dir The directory to measure.
+     * @return The size in bytes.
+     */
     private fun getDirSize(dir: File?): Long {
         var size: Long = 0
         if (dir != null && dir.isDirectory) {
@@ -172,6 +227,12 @@ class SettingsFragment : Fragment() {
         return size
     }
 
+    /**
+     * Formats a byte size into a human-readable string (KB or MB).
+     *
+     * @param size The size in bytes.
+     * @return The formatted string.
+     */
     private fun formatSize(size: Long): String {
         val kb = size / 1024
         val mb = kb / 1024

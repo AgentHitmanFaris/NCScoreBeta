@@ -8,10 +8,24 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.google.firebase.firestore.FirebaseFirestore
 
+/**
+ * The Main Activity of the application.
+ *
+ * It serves as the entry point after the splash screen and hosts the main navigation fragments
+ * (Home, Browse, Library, etc.) via a BottomNavigationView.
+ * It also configures global Firebase settings like offline persistence.
+ */
 class MainActivity : AppCompatActivity() {
 
     private val db = FirebaseFirestore.getInstance()
 
+    /**
+     * Called when the activity is first created.
+     *
+     * Initializes offline persistence, sets up bottom navigation, and loads the default fragment.
+     *
+     * @param savedInstanceState If non-null, this activity is being re-constructed from a previous saved state.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,6 +39,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Enables offline persistence for Firestore.
+     *
+     * This allows the app to work (to some extent) without an internet connection by caching data locally.
+     */
     private fun setupOfflinePersistence() {
         try {
             val settings = FirebaseFirestoreSettings.Builder()
@@ -36,6 +55,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Sets up the bottom navigation view and its item selection listener.
+     */
     private fun setupNavigation() {
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
         bottomNav.setOnItemSelectedListener { item ->
@@ -52,13 +74,22 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Replaces the current fragment in the container with the specified fragment.
+     *
+     * @param fragment The fragment to display.
+     */
     private fun loadFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, fragment)
             .commit()
     }
 
-    // Helper method to switch to Browse from Home
+    /**
+     * Helper method to programmatically switch to the Browse tab.
+     *
+     * This is useful when triggering navigation from within other fragments (e.g., "See All" buttons).
+     */
     fun switchToBrowse() {
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
         bottomNav.selectedItemId = R.id.nav_browse

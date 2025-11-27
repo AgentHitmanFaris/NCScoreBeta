@@ -6,8 +6,22 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
+/**
+ * Singleton object that handles the logic for opening songs.
+ *
+ * It manages the flow of verifying premium access and fetching the appropriate PDF link.
+ */
 object SongHandler {
 
+    /**
+     * Handles a click event on a song.
+     *
+     * Checks if the song is premium. If so, it verifies user access.
+     * Otherwise, it fetches and opens the PDF directly.
+     *
+     * @param context The application context.
+     * @param song The song object that was clicked.
+     */
     fun onSongClicked(context: Context, song: Song) {
         if (song.isPremium) {
             checkPremiumAccess(context, song)
@@ -16,6 +30,14 @@ object SongHandler {
         }
     }
 
+    /**
+     * Checks if the current user has access to premium content.
+     *
+     * Requires the user to be logged in. It verifies the user's existence in Firestore.
+     *
+     * @param context The application context.
+     * @param song The premium song to access.
+     */
     private fun checkPremiumAccess(context: Context, song: Song) {
         val user = FirebaseAuth.getInstance().currentUser
 
@@ -45,6 +67,14 @@ object SongHandler {
         }
     }
 
+    /**
+     * Fetches the PDF link for a premium song.
+     *
+     * Premium songs have their content stored in a nested "secure" subcollection.
+     *
+     * @param context The application context.
+     * @param song The premium song.
+     */
     @Suppress("UNCHECKED_CAST")
     private fun fetchPremiumPdf(context: Context, song: Song) {
         Toast.makeText(context, "Verifying Premium Access...", Toast.LENGTH_SHORT).show()
@@ -71,6 +101,13 @@ object SongHandler {
             }
     }
 
+    /**
+     * Fetches the actual download link from the secure subcollection.
+     *
+     * @param context The application context.
+     * @param songId The ID of the song.
+     * @param arrangementId The ID of the arrangement.
+     */
     private fun fetchNestedSecureLink(context: Context, songId: String, arrangementId: String) {
         FirebaseFirestore.getInstance()
             .collection("songs").document(songId)
@@ -107,6 +144,12 @@ object SongHandler {
             }
     }
 
+    /**
+     * Fetches and opens the PDF for a standard (non-premium) song.
+     *
+     * @param context The application context.
+     * @param song The song to open.
+     */
     private fun fetchAndOpenPdf(context: Context, song: Song) {
         Toast.makeText(context, "Opening ${song.title}...", Toast.LENGTH_SHORT).show()
 
@@ -132,6 +175,12 @@ object SongHandler {
             }
     }
 
+    /**
+     * Launches the [PdfViewerActivity] with the given URL.
+     *
+     * @param context The application context.
+     * @param url The URL of the PDF file.
+     */
     private fun openPdfViewer(context: Context, url: String) {
         val intent = Intent(context, PdfViewerActivity::class.java)
         intent.putExtra("PDF_URL", url)

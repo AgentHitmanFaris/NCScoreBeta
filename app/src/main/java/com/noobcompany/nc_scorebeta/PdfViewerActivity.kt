@@ -15,8 +15,20 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.util.regex.Pattern
 
+/**
+ * Activity for viewing PDF files (sheet music).
+ *
+ * It handles downloading the PDF from a URL (including Google Drive links) and displaying it using a PDFView.
+ */
 class PdfViewerActivity : AppCompatActivity() {
 
+    /**
+     * Called when the activity is first created.
+     *
+     * Retrieves the PDF URL from the intent, processes it, and initiates the download and display.
+     *
+     * @param savedInstanceState If non-null, this activity is being re-constructed from a previous saved state.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pdf_viewer)
@@ -101,6 +113,13 @@ class PdfViewerActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Sets up tap navigation zones for changing pages.
+     *
+     * Tapping on the left side goes to the previous page, and the right side goes to the next page.
+     *
+     * @param pdfView The PDFView instance.
+     */
     private fun setupTapNavigation(pdfView: PDFView) {
         findViewById<View>(R.id.viewTapLeft).setOnClickListener {
             val current = pdfView.currentPage
@@ -117,7 +136,14 @@ class PdfViewerActivity : AppCompatActivity() {
         }
     }
 
-    // --- HELPER FUNCTION: FIX GOOGLE DRIVE LINKS ---
+    /**
+     * Converts a raw URL into a direct download link.
+     *
+     * Specifically handles Google Drive links by converting them to the export/download format.
+     *
+     * @param url The original URL.
+     * @return The direct download URL.
+     */
     private fun getDirectUrl(url: String): String {
         // If it's a Google Drive link, we need to extract the ID and make it a download link
         if (url.contains("drive.google.com") || url.contains("docs.google.com")) {

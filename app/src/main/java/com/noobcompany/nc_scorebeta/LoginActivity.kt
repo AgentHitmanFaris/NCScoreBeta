@@ -11,12 +11,25 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
+/**
+ * Activity for handling User Login and Registration.
+ *
+ * It allows users to sign in with email/password or create a new account.
+ * New accounts are also created in Firestore.
+ */
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
     private var isLoginMode = true
 
+    /**
+     * Called when the activity is first created.
+     *
+     * Initializes Firebase Auth and Firestore, sets up the UI, and handles button clicks.
+     *
+     * @param savedInstanceState If non-null, this activity is being re-constructed from a previous saved state.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -96,6 +109,13 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Creates a new user document in Firestore.
+     *
+     * @param uid The user's unique ID from Firebase Auth.
+     * @param email The user's email address.
+     * @param name The user's display name.
+     */
     private fun createFirestoreUser(uid: String?, email: String, name: String) {
         if (uid == null) return
 
@@ -118,6 +138,11 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
+    /**
+     * Checks if the user exists in Firestore after login.
+     *
+     * @param uid The user's unique ID.
+     */
     private fun checkFirestoreUser(uid: String?) {
         if (uid == null) return
         // Just verify access exists
@@ -132,6 +157,9 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
+    /**
+     * Finishes the login process and closes the activity.
+     */
     private fun finishLogin() {
         findViewById<ProgressBar>(R.id.progressBar).visibility = View.GONE
         Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show()

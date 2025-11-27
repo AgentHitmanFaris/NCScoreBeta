@@ -16,6 +16,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 
+/**
+ * Fragment that displays the user's library of favorite songs.
+ *
+ * It allows users to view and search through their bookmarked songs.
+ */
 class LibraryFragment : Fragment() {
 
     private lateinit var adapter: SongAdapter
@@ -24,6 +29,14 @@ class LibraryFragment : Fragment() {
     private lateinit var progressBar: ProgressBar
     private lateinit var tvEmpty: TextView
 
+    /**
+     * Inflates the layout for this fragment.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     * @return The View for the fragment's UI, or null.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,6 +44,14 @@ class LibraryFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_library, container, false)
     }
 
+    /**
+     * Called immediately after [onCreateView] has returned.
+     *
+     * Sets up the RecyclerView, search bar, and fetches the favorite songs.
+     *
+     * @param view The View returned by [onCreateView].
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         progressBar = view.findViewById(R.id.progressBar)
@@ -41,6 +62,11 @@ class LibraryFragment : Fragment() {
         fetchSongsAndFilter()
     }
 
+    /**
+     * Called when the fragment is resumed.
+     *
+     * Re-filters the list in case the search query persisted or if updates are needed.
+     */
     override fun onResume() {
         super.onResume()
         if (allSongsList.isNotEmpty()) {
@@ -52,6 +78,11 @@ class LibraryFragment : Fragment() {
         }
     }
 
+    /**
+     * Sets up the RecyclerView with a grid layout.
+     *
+     * @param view The root view of the fragment.
+     */
     private fun setupRecyclerView(view: View) {
         val rvLibrary = view.findViewById<RecyclerView>(R.id.rvLibrary)
         rvLibrary.layoutManager = GridLayoutManager(context, 2)
@@ -71,6 +102,11 @@ class LibraryFragment : Fragment() {
         rvLibrary.adapter = adapter
     }
 
+    /**
+     * Sets up the search bar to filter the favorite songs list locally.
+     *
+     * @param view The root view of the fragment.
+     */
     private fun setupSearch(view: View) {
         val etSearch = view.findViewById<EditText>(R.id.etSearch)
         etSearch.addTextChangedListener(object : TextWatcher {
@@ -82,6 +118,12 @@ class LibraryFragment : Fragment() {
         })
     }
 
+    /**
+     * Fetches the details of favorite songs from Firestore.
+     *
+     * It retrieves the list of favorite IDs from [FavoritesManager] and then queries Firestore.
+     * Handles batching for Firestore limits (max 10 items per 'in' query).
+     */
     private fun fetchSongsAndFilter() {
         val context = context ?: return
         val favorites = FavoritesManager.getFavorites(context).toList()
@@ -123,6 +165,13 @@ class LibraryFragment : Fragment() {
             }
     }
 
+    /**
+     * Filters the locally stored list of songs based on the search query.
+     *
+     * Matches against song title and artist name.
+     *
+     * @param query The search string.
+     */
     private fun filterFavoritesAndSearch(query: String) {
         val context = context ?: return
         // We don't need to re-check FavoritesManager here because we only fetched favorites.

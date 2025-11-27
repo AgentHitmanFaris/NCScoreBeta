@@ -15,6 +15,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 
+/**
+ * Fragment that allows users to browse and search for songs.
+ *
+ * Supports pagination (infinite scroll) and text search.
+ */
 class BrowseFragment : Fragment() {
 
     private lateinit var adapter: SongAdapter
@@ -27,6 +32,14 @@ class BrowseFragment : Fragment() {
     // Data source for the adapter
     private val displayedSongs: ArrayList<Song> = ArrayList()
 
+    /**
+     * Inflates the layout for this fragment.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     * @return The View for the fragment's UI, or null.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,6 +47,15 @@ class BrowseFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_browse, container, false)
     }
 
+    /**
+     * Called immediately after [onCreateView] has returned.
+     *
+     * Sets up the RecyclerView for displaying songs and the search functionality.
+     * Initiates the first load of songs.
+     *
+     * @param view The View returned by [onCreateView].
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         
@@ -44,6 +66,11 @@ class BrowseFragment : Fragment() {
         loadSongs(true)
     }
 
+    /**
+     * Sets up the RecyclerView with a grid layout and a scroll listener for pagination.
+     *
+     * @param view The root view of the fragment.
+     */
     private fun setupRecyclerView(view: View) {
         val rvAllScores = view.findViewById<RecyclerView>(R.id.rvAllScores)
         val layoutManager = GridLayoutManager(context, 2)
@@ -89,6 +116,11 @@ class BrowseFragment : Fragment() {
         })
     }
 
+    /**
+     * Sets up the search bar to filter results as the user types.
+     *
+     * @param view The root view of the fragment.
+     */
     private fun setupSearch(view: View) {
         val etSearch = view.findViewById<EditText>(R.id.etSearch)
         etSearch.addTextChangedListener(object : TextWatcher {
@@ -104,6 +136,13 @@ class BrowseFragment : Fragment() {
         })
     }
 
+    /**
+     * Loads songs from Firestore.
+     *
+     * Can load the initial batch or subsequent pages based on `isInitial`.
+     *
+     * @param isInitial True if this is the first load (clears existing data), false for pagination.
+     */
     private fun loadSongs(isInitial: Boolean) {
         val progressBar = view?.findViewById<ProgressBar>(R.id.progressBar)
         if (isInitial) progressBar?.visibility = View.VISIBLE
@@ -142,6 +181,13 @@ class BrowseFragment : Fragment() {
             }
     }
 
+    /**
+     * Performs a search query against Firestore for songs matching the title or artist.
+     *
+     * Combines results from a title prefix search and an exact artist name search.
+     *
+     * @param query The search string.
+     */
     private fun performSearch(query: String) {
         if (query.isEmpty()) {
             isLastItemReached = false

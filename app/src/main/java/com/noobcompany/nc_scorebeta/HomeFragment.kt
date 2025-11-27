@@ -18,6 +18,12 @@ import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 
+/**
+ * Fragment that displays the home screen of the application.
+ *
+ * This fragment features a hero section for the latest release, a list of new releases,
+ * and a list of trending songs. It listens to real-time updates from Firestore.
+ */
 class HomeFragment : Fragment() {
 
     private lateinit var trendingAdapter: SongAdapter
@@ -27,6 +33,14 @@ class HomeFragment : Fragment() {
     private val songsCollection = db.collection("songs")
     private var songListener: ListenerRegistration? = null
 
+    /**
+     * Inflates the layout for this fragment.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     * @return The View for the fragment's UI, or null.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,22 +48,45 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+    /**
+     * Called immediately after [onCreateView] has returned.
+     *
+     * Initializes views and sets up navigation listeners.
+     *
+     * @param view The View returned by [onCreateView].
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViews(view)
         setupNavigation(view)
     }
 
+    /**
+     * Called when the fragment is visible to the user.
+     *
+     * Starts listening for real-time updates from Firestore.
+     */
     override fun onStart() {
         super.onStart()
         startListening()
     }
 
+    /**
+     * Called when the fragment is no longer visible to the user.
+     *
+     * Stops listening for updates to conserve resources.
+     */
     override fun onStop() {
         super.onStop()
         stopListening()
     }
 
+    /**
+     * Sets up navigation actions, such as the search button.
+     *
+     * @param view The root view of the fragment.
+     */
     private fun setupNavigation(view: View) {
         val btnSearch = view.findViewById<ImageButton>(R.id.btnSearch)
         btnSearch.setOnClickListener {
@@ -61,6 +98,11 @@ class HomeFragment : Fragment() {
         }
     }
 
+    /**
+     * Initializes the RecyclerViews for trending and new release songs.
+     *
+     * @param view The root view of the fragment.
+     */
     private fun setupViews(view: View) {
         val rvTrending = view.findViewById<RecyclerView>(R.id.rvTrending)
         trendingAdapter = SongAdapter(useGrid = false, onSongClicked = { song ->
@@ -81,6 +123,11 @@ class HomeFragment : Fragment() {
         rvNewReleases.adapter = newReleasesAdapter
     }
     
+    /**
+     * Navigates to the [ArtistDetailFragment] for the given artist name.
+     *
+     * @param artistName The name of the artist to display.
+     */
     private fun navigateToArtist(artistName: String) {
         val fragment = ArtistDetailFragment()
         val args = Bundle()
@@ -92,6 +139,11 @@ class HomeFragment : Fragment() {
             .commit()
     }
 
+    /**
+     * Updates the hero section with the details of the latest song.
+     *
+     * @param song The song to feature in the hero section.
+     */
     private fun updateHeroSection(song: Song) {
         val view = view ?: return
         val tvHeroTitle = view.findViewById<TextView>(R.id.tvHeroTitle)
@@ -109,6 +161,12 @@ class HomeFragment : Fragment() {
         }
     }
 
+    /**
+     * Starts a real-time listener on the songs collection.
+     *
+     * Updates the UI whenever data changes in Firestore.
+     * It identifies new releases (sorted by date) and trending songs (randomized for now).
+     */
     private fun startListening() {
         if (songListener != null) return
 
@@ -137,6 +195,9 @@ class HomeFragment : Fragment() {
         }
     }
 
+    /**
+     * Removes the Firestore listener.
+     */
     private fun stopListening() {
         songListener?.remove()
         songListener = null

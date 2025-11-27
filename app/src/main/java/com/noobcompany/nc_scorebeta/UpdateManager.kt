@@ -17,6 +17,11 @@ import java.io.FileOutputStream
 import java.net.HttpURLConnection
 import java.net.URL
 
+/**
+ * Singleton object that manages application updates.
+ *
+ * It checks GitHub for the latest release, downloads the APK, and initiates the installation.
+ */
 object UpdateManager {
 
     private const val GITHUB_OWNER = "AgentHitmanFaris"
@@ -24,12 +29,30 @@ object UpdateManager {
     // API endpoint for the latest release
     private const val LATEST_RELEASE_URL = "https://api.github.com/repos/$GITHUB_OWNER/$GITHUB_REPO/releases/latest"
 
+    /**
+     * Checks for the latest updates from the GitHub repository.
+     *
+     * Displays a toast indicating the check is in progress and executes the [FetchReleaseTask].
+     *
+     * @param context The application context.
+     */
     fun checkForUpdates(context: Context) {
         Toast.makeText(context, "Checking for updates...", Toast.LENGTH_SHORT).show()
         FetchReleaseTask(context).execute()
     }
 
+    /**
+     * AsyncTask to fetch release information from GitHub API.
+     *
+     * @param context The application context.
+     */
     private class FetchReleaseTask(val context: Context) : AsyncTask<Void, Void, String?>() {
+        /**
+         * Performs the network request in the background.
+         *
+         * @param params Void parameters.
+         * @return The JSON response string or null if the request failed.
+         */
         override fun doInBackground(vararg params: Void?): String? {
             return try {
                 val url = URL(LATEST_RELEASE_URL)
@@ -48,6 +71,13 @@ object UpdateManager {
             }
         }
 
+        /**
+         * Processes the result on the main thread.
+         *
+         * Parses the JSON, compares versions, and prompts the user if an update is available.
+         *
+         * @param result The JSON response string.
+         */
         override fun onPostExecute(result: String?) {
             if (result == null) {
                 Toast.makeText(context, "Failed to check for updates.", Toast.LENGTH_SHORT).show()
@@ -78,6 +108,13 @@ object UpdateManager {
             }
         }
         
+        /**
+         * Compares the server tag version with the current version.
+         *
+         * @param serverTag The version tag from the server.
+         * @param currentTag The current app version tag.
+         * @return True if the server version is newer.
+         */
         private fun isNewerVersion(serverTag: String, currentTag: String): Boolean {
             // Remove 'v' prefix
             val server = serverTag.replace("v", "").trim()
@@ -87,6 +124,13 @@ object UpdateManager {
         }
     }
 
+    /**
+     * Shows a dialog prompting the user to update.
+     *
+     * @param context The application context.
+     * @param newVersion The version string of the new update.
+     * @param downloadUrl The URL to download the APK.
+     */
     private fun showUpdateDialog(context: Context, newVersion: String, downloadUrl: String) {
         AlertDialog.Builder(context)
             .setTitle("Update Available")
@@ -98,13 +142,29 @@ object UpdateManager {
             .show()
     }
 
+    /**
+     * Initiates the download and installation process.
+     *
+     * @param context The application context.
+     * @param url The download URL.
+     */
     private fun downloadAndInstall(context: Context, url: String) {
         DownloadTask(context).execute(url)
     }
 
+    /**
+     * AsyncTask to download the APK file.
+     *
+     * Shows a progress dialog during download.
+     *
+     * @param context The application context.
+     */
     private class DownloadTask(val context: Context) : AsyncTask<String, Int, File?>() {
         private var progressDialog: ProgressDialog? = null
 
+        /**
+         * Sets up and shows the progress dialog before downloading starts.
+         */
         override fun onPreExecute() {
             progressDialog = ProgressDialog(context)
             progressDialog?.setMessage("Downloading Update...")
@@ -115,6 +175,12 @@ object UpdateManager {
             progressDialog?.show()
         }
 
+        /**
+         * Downloads the file in the background.
+         *
+         * @param params The URL string.
+         * @return The downloaded File object, or null if failed.
+         */
         override fun doInBackground(vararg params: String?): File? {
             val downloadUrl = params[0] ?: return null
             return try {
@@ -152,10 +218,22 @@ object UpdateManager {
             }
         }
 
+        /**
+         * Updates the progress dialog.
+         *
+         * @param values The progress percentage.
+         */
         override fun onProgressUpdate(vararg values: Int?) {
             values[0]?.let { progressDialog?.progress = it }
         }
 
+        /**
+         * Handles the result of the download.
+         *
+         * Dismisses the dialog and starts the installation if successful.
+         *
+         * @param file The downloaded file.
+         */
         override fun onPostExecute(file: File?) {
             progressDialog?.dismiss()
             if (file != null) {
@@ -166,6 +244,12 @@ object UpdateManager {
         }
     }
 
+    /**
+     * Triggers the installation intent for the downloaded APK.
+     *
+     * @param context The application context.
+     * @param file The APK file.
+     */
     private fun installApk(context: Context, file: File) {
         try {
             val uri = FileProvider.getUriForFile(

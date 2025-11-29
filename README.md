@@ -2,6 +2,12 @@
 
 **NC Score Beta** is a Kotlin-based Android application designed for viewing sheet music. It allows users to browse a library of songs, view details about artists, and access sheet music PDFs. The app integrates with Firebase for backend services such as authentication, database (Firestore), and logging.
 
+## Recent Changes (v1.5.0)
+*   **Enhanced UI**: New Netflix-style animated splash screen.
+*   **Robust Media Player**: Fixed YouTube "Video Unavailable" (Error 4) issues by implementing smart video ID extraction and robust embed URL handling. Mapped Firestore `video` field for direct integration.
+*   **Advanced Bug Reporting**: Users can now add comments to bug reports. Log encryption and compression are now handled in the background for smoother performance.
+*   **Smart Updates**: Implemented Semantic Versioning (SemVer) logic to correctly identify and prompt for available updates.
+
 ## Features
 
 *   **Sheet Music Viewer**: View PDF scores directly within the app. Supports standard URLs and Google Drive links.
@@ -57,15 +63,26 @@
 
 ## Architecture
 
-The app follows a standard Android MVVM-like architecture (though simplified in some areas) using:
-*   **Activities & Fragments**: For UI navigation and display.
-*   **RecyclerView & Adapters**: For efficient list rendering (Songs, Artists).
-*   **Firebase Firestore**: As the primary data source.
-*   **Coroutines**: For background tasks like downloading PDFs.
+The app currently uses a standard Activity/Fragment pattern with direct Firestore integration. 
 
-## Future Roadmap
+**Note:** A refactor to MVVM is planned (see Roadmap).
 
-See `FUTURE_ROADMAP.md` for details on upcoming features, including interactive learning modes and MIDI support.
+## Future Roadmap & Todo List
+
+We are actively working on transforming NC Score from a viewer into an interactive learning platform.
+
+### Short-term Goals
+- [ ] **Architecture Refactor**: Migrate from direct Activity logic to **MVVM** (ViewModel + Repository pattern) for improved stability and testability.
+- [ ] **UI Modernization**: Begin gradual migration from XML Layouts to **Jetpack Compose**.
+- [ ] **Gamification**: Add user XP, streaks, and "Days Practiced" tracking.
+
+### Long-term Goals (Interactive Learning)
+- [ ] **Data Migration**: Transition underlying data model from static PDFs to semantic formats (**MusicXML / MIDI**).
+- [ ] **Phase 1 - MIDI Input**: Implement `android.media.midi` to detect notes played on connected digital pianos.
+- [ ] **Phase 2 - Pitch Detection**: Prototype microphone-based note recognition (using libraries like TarsosDSP or Oboe) for acoustic instruments.
+- [ ] **Phase 3 - Feedback Loop**: Build a scrolling score view that provides real-time feedback (Green/Red notes) based on user performance.
+
+See `FUTURE_ROADMAP.md` for a deep dive into the technical strategy for these features.
 
 ## License
 

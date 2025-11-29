@@ -97,40 +97,54 @@ class SongDetailFragment : Fragment() {
         }
 
         // Setup YouTube Embed
-        if (song.youtubeLink.isNotEmpty()) {
+        if (song.youtubeLink.isNotBlank()) {
             webViewYoutube.settings.javaScriptEnabled = true
-            webViewYoutube.settings.domStorageEnabled = true // Required for some players
+            webViewYoutube.settings.domStorageEnabled = true
             webViewYoutube.webChromeClient = WebChromeClient()
             webViewYoutube.webViewClient = WebViewClient()
             
-            val embedUrl = getEmbedUrl(song.youtubeLink)
-            // Autoplay enabled in URL parameters (Note: Mobile browsers often block autoplay with sound, but let's try)
-            val autoplayUrl = "$embedUrl?autoplay=1"
+            val videoId = extractVideoId(song.youtubeLink)
             
-            val html = """
-                <iframe width="100%" height="100%" src="$autoplayUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-            """.trimIndent()
-            
-            webViewYoutube.loadDataWithBaseURL("https://www.youtube.com", html, "text/html", "utf-8", null)
+            if (videoId.isNotEmpty()) {
+                val embedUrl = "https://www.youtube.com/embed/$videoId"
+                
+                val html = """
+                    <!DOCTYPE html>
+                    <html>
+                    <body style="margin:0;padding:0;">
+                        <iframe width="100%" height="100%" src="$embedUrl" frameborder="0" allowfullscreen></iframe>
+                    </body>
+                    </html>
+                """.trimIndent()
+                
+                webViewYoutube.loadDataWithBaseURL("https://www.youtube.com", html, "text/html", "utf-8", null)
+            } else {
+                 // Fallback if extraction failed but link exists
+                 webViewYoutube.visibility = View.GONE
+            }
         } else {
             webViewYoutube.visibility = View.GONE
         }
     }
 
-    private fun getEmbedUrl(url: String): String {
-        // Return as-is if it's already an embed link
-        if (url.contains("youtube.com/embed/")) return url
-
-        var videoId = ""
-        if (url.contains("v=")) {
-            videoId = url.split("v=")[1].split("&")[0]
-        } else if (url.contains("youtu.be/")) {
-            videoId = url.split("youtu.be/")[1].split("?")[0]
-        } else if (url.isNotEmpty() && !url.startsWith("http")) {
-             // Assume it's a raw ID if it doesn't start with http
-             videoId = url
-        }
+    private fun extractVideoId(url: String): String {
+        val cleanUrl = url.trim()
         
-        return if (videoId.isNotEmpty()) "https://www.youtube.com/embed/$videoId" else url
+        // Case 1: Raw Video ID (11 chars, alphanumeric + _ -)
+        if (cleanUrl.length == 11 && cleanUrl.matches(Regex("^[a-zA-Z0-9_-]{11}$"))) {
+            return cleanUrl
+        }
+
+        // Case 2: Extract from URL using Regex
+        // Matches: youtube.com/watch?v=ID, youtu.be/ID, youtube.com/embed/ID
+        val pattern = "(?<=watch\\?v=|/videos/|embed/|youtu.be/|/v/|/e/|watch\\?v%3D|watch\\?feature=player_embedded&v=|%2Fvideos%2F|embed%\u200C\u200B2F|youtu.be%2F|%2Fv%2F)[^#\\&\\?\\n]*"
+        val compiledPattern = java.util.regex.Pattern.compile(pattern)
+        val matcher = compiledPattern.matcher(cleanUrl)
+        
+        return if (matcher.find()) {
+            matcher.group()
+        } else {
+            "" // Return empty if no match found
+        }
     }
 }

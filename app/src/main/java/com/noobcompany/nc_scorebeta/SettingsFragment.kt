@@ -16,7 +16,8 @@ import com.google.firebase.auth.FirebaseAuth
 /**
  * Fragment that displays application settings and user profile options.
  *
- * Allows users to log in/out, clear cache, report bugs, view app version, and check for updates.
+ * It provides functionality for the user to log in or out, clear the app cache, view the "About" information,
+ * report bugs (including sending encrypted logs), and check for application updates.
  */
 class SettingsFragment : Fragment() {
 
@@ -41,7 +42,7 @@ class SettingsFragment : Fragment() {
     /**
      * Called immediately after [onCreateView] has returned.
      *
-     * Initializes the UI, sets the version text, and sets up action listeners.
+     * Initializes the UI components, displays the current app version, and sets up action listeners for the settings options.
      *
      * @param view The View returned by [onCreateView].
      * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
@@ -65,7 +66,7 @@ class SettingsFragment : Fragment() {
     /**
      * Called when the fragment is resumed.
      *
-     * Updates the logout button state (Log In vs Log Out) based on the current user session.
+     * Updates the state of the logout button (Log In vs Log Out) to reflect the current authentication status.
      */
     override fun onResume() {
         super.onResume()
@@ -73,10 +74,10 @@ class SettingsFragment : Fragment() {
     }
 
     /**
-     * Updates the text and behavior of the logout/login button.
+     * Updates the text and behavior of the logout/login button based on whether a user is currently signed in.
      *
-     * If a user is logged in, it shows "Log Out" and handles sign-out.
-     * If no user is logged in, it shows "Log In" and navigates to [LoginActivity].
+     * If signed in, it configures the button to log out.
+     * If signed out, it configures the button to navigate to the [LoginActivity].
      */
     private fun updateLogoutButton() {
         val user = FirebaseAuth.getInstance().currentUser
@@ -111,7 +112,7 @@ class SettingsFragment : Fragment() {
     }
 
     /**
-     * Sets up click listeners for various settings actions.
+     * Sets up click listeners for the various settings actions (Clear Cache, About, Report Bug, Check Update).
      *
      * @param view The root view of the fragment.
      */
@@ -149,7 +150,7 @@ class SettingsFragment : Fragment() {
     }
 
     /**
-     * Collects system logs and device info, encrypts them, and sends a bug report to Firestore.
+     * Collects system logs and device information, encrypts the logs, and sends a bug report to the "bug_reports" collection in Firestore.
      */
     private fun reportBug() {
         Toast.makeText(context, "Sending Report...", Toast.LENGTH_SHORT).show()
@@ -182,7 +183,7 @@ class SettingsFragment : Fragment() {
     }
 
     /**
-     * Clears the application's cache directory.
+     * Clears the application's internal cache directory and displays a toast with the amount of space cleared.
      */
     private fun clearCache() {
         try {
@@ -196,10 +197,10 @@ class SettingsFragment : Fragment() {
     }
 
     /**
-     * Recursively deletes a directory and its contents.
+     * Recursively deletes a directory and all of its contents.
      *
-     * @param dir The directory to delete.
-     * @return True if successful, false otherwise.
+     * @param dir The directory (or file) to delete.
+     * @return True if the deletion was successful, false otherwise.
      */
     private fun deleteDir(dir: File?): Boolean {
         if (dir != null && dir.isDirectory) {
@@ -220,10 +221,10 @@ class SettingsFragment : Fragment() {
     }
 
     /**
-     * Calculates the size of a directory recursively.
+     * Recursively calculates the total size of a directory and its contents.
      *
-     * @param dir The directory to measure.
-     * @return The size in bytes.
+     * @param dir The directory (or file) to measure.
+     * @return The total size in bytes.
      */
     private fun getDirSize(dir: File?): Long {
         var size: Long = 0
@@ -244,7 +245,7 @@ class SettingsFragment : Fragment() {
      * Formats a byte size into a human-readable string (KB or MB).
      *
      * @param size The size in bytes.
-     * @return The formatted string.
+     * @return A string representing the size in KB or MB.
      */
     private fun formatSize(size: Long): String {
         val kb = size / 1024

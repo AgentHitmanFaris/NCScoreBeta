@@ -3,7 +3,7 @@ package com.noobcompany.nc_scorebeta
 /**
  * Data class representing an Artist.
  *
- * This class maps to the "artists" collection in Firestore.
+ * This class maps to the "artists" collection in Firestore and holds information about a specific artist.
  *
  * @property id The unique identifier for the artist.
  * @property name The name of the artist.
@@ -19,11 +19,11 @@ data class Artist(
     val image: String = ""     // Fallback if field is named "image"
 ) {
     /**
-     * Returns a valid image URL for the artist.
+     * Retrieves a valid image URL for the artist.
      *
-     * Checks `imageUrl` first, and falls back to `image` if `imageUrl` is empty.
+     * It checks the primary `imageUrl` first. If it is empty, it falls back to the `image` property.
      *
-     * @return The URL of the artist's image.
+     * @return The determined URL of the artist's image as a [String].
      */
     fun getSafeImage(): String {
         return if (imageUrl.isNotEmpty()) imageUrl else image

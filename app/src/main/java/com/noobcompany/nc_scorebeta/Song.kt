@@ -7,15 +7,14 @@ import com.google.firebase.firestore.PropertyName
 /**
  * Data class representing a Song.
  *
- * This class maps to the "songs" collection in Firestore.
+ * This class maps to the "songs" collection in Firestore and contains all relevant metadata for a song entity.
  *
  * @property id The unique document ID of the song (automatically populated by Firestore).
  * @property title The title of the song.
- * @property artistNames A list of artist names associated with the song.
- *                       Mapped to the "artistNames" field in Firestore.
+ * @property artistNames A list of artist names associated with the song. Mapped to the "artistNames" field in Firestore.
  * @property albumCover The URL of the album cover image.
  * @property isPremium Indicates whether this song requires a premium subscription or login to view.
- * @property createdAt The timestamp when the song was added.
+ * @property createdAt The timestamp when the song was added to the database.
  */
 data class Song(
     @DocumentId
@@ -39,9 +38,9 @@ data class Song(
     var youtubeLink: String = ""
 ) {
     /**
-     * returns a formatted string of artist names.
+     * Generates a formatted string of artist names.
      *
-     * @return A comma-separated string of artist names, or "Unknown Artist" if the list is empty.
+     * @return A comma-separated [String] of artist names, or "Unknown Artist" if the list is empty.
      */
     fun getFormattedArtist(): String {
         return if (artistNames.isNotEmpty()) {

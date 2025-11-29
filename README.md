@@ -57,11 +57,19 @@
 
 ## Architecture
 
-The app follows a standard Android MVVM-like architecture (though simplified in some areas) using:
+The app follows a standard Android architecture using:
 *   **Activities & Fragments**: For UI navigation and display.
 *   **RecyclerView & Adapters**: For efficient list rendering (Songs, Artists).
 *   **Firebase Firestore**: As the primary data source.
 *   **Coroutines**: For background tasks like downloading PDFs.
+
+## Contributing
+
+1.  Fork the repository.
+2.  Create your feature branch (`git checkout -b feature/AmazingFeature`).
+3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4.  Push to the branch (`git push origin feature/AmazingFeature`).
+5.  Open a Pull Request.
 
 ## Future Roadmap
 

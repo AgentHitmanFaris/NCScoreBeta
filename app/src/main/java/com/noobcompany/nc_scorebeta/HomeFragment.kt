@@ -22,7 +22,7 @@ import com.google.firebase.firestore.ListenerRegistration
  * Fragment that displays the home screen of the application.
  *
  * This fragment features a hero section for the latest release, a list of new releases,
- * and a list of trending songs. It listens to real-time updates from Firestore.
+ * and a list of trending songs. It listens to real-time updates from Firestore to keep the content fresh.
  */
 class HomeFragment : Fragment() {
 
@@ -101,6 +101,8 @@ class HomeFragment : Fragment() {
     /**
      * Initializes the RecyclerViews for trending and new release songs.
      *
+     * It configures the adapters with click listeners for song selection and artist navigation.
+     *
      * @param view The root view of the fragment.
      */
     private fun setupViews(view: View) {
@@ -141,6 +143,8 @@ class HomeFragment : Fragment() {
 
     /**
      * Updates the hero section with the details of the latest song.
+     *
+     * Sets the title, artist, and album cover image. Also adds a click listener to the hero card.
      *
      * @param song The song to feature in the hero section.
      */

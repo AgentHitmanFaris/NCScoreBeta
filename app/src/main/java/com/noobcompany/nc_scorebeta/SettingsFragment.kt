@@ -174,6 +174,11 @@ class SettingsFragment : Fragment() {
             .show()
     }
 
+    /**
+     * Sends the bug report to Firestore.
+     *
+     * @param comment The user's comment describing the issue.
+     */
     private fun sendBugReport(comment: String) {
         Toast.makeText(context, "Generating Report...", Toast.LENGTH_SHORT).show()
         

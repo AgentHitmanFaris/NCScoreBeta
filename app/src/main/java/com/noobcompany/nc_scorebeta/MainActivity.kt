@@ -99,6 +99,11 @@ class MainActivity : AppCompatActivity() {
         bottomNav.selectedItemId = R.id.nav_browse
     }
     
+    /**
+     * Opens the song detail fragment for the given song.
+     *
+     * @param song The [Song] object to display details for.
+     */
     fun openSongDetail(song: Song) {
         val fragment = SongDetailFragment()
         val args = Bundle()

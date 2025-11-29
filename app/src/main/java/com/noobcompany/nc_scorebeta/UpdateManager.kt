@@ -94,12 +94,11 @@ object UpdateManager {
                 val pInfo = context.packageManager.getPackageInfo(context.packageName, 0)
                 val currentVersion = "v${pInfo.versionName}"
                 
-                // Simple string comparison. For robust semver, a library is better, 
-                // but this works if we stick to consistent vX.X.X naming.
+                // Compare versions using semantic versioning logic
                 if (isNewerVersion(tagName, currentVersion)) {
                     showUpdateDialog(context, tagName, downloadUrl)
                 } else {
-                    Toast.makeText(context, "You are on the latest version ($currentVersion).", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Current version installed ($currentVersion)", Toast.LENGTH_SHORT).show()
                 }
 
             } catch (e: Exception) {
@@ -109,18 +108,28 @@ object UpdateManager {
         }
         
         /**
-         * Compares the server tag version with the current version.
+         * Compares the server tag version with the current version using Semantic Versioning rules.
          *
-         * @param serverTag The version tag from the server.
-         * @param currentTag The current app version tag.
-         * @return True if the server version is newer.
+         * @param serverTag The version tag from the server (e.g., "v1.2.0").
+         * @param currentTag The current app version tag (e.g., "v1.1.0").
+         * @return True if the server version is strictly greater than the current version.
          */
         private fun isNewerVersion(serverTag: String, currentTag: String): Boolean {
-            // Remove 'v' prefix
-            val server = serverTag.replace("v", "").trim()
-            val current = currentTag.replace("v", "").trim()
+            val serverParts = serverTag.replace("v", "").trim().split(".")
+            val currentParts = currentTag.replace("v", "").trim().split(".")
+
+            val length = maxOf(serverParts.size, currentParts.size)
             
-            return server != current
+            for (i in 0 until length) {
+                val serverVer = if (i < serverParts.size) serverParts[i].toIntOrNull() ?: 0 else 0
+                val currentVer = if (i < currentParts.size) currentParts[i].toIntOrNull() ?: 0 else 0
+                
+                if (serverVer > currentVer) return true
+                if (serverVer < currentVer) return false
+            }
+            
+            // Versions are equal
+            return false
         }
     }
 

@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.animation.AnimationUtils
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 
 /**
@@ -23,10 +25,15 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        // Delay for 2 seconds then go to Main
+        // Start Netflix-style Animation
+        val logoContainer = findViewById<LinearLayout>(R.id.logoContainer)
+        val zoomIn = AnimationUtils.loadAnimation(this, R.anim.netflix_scale)
+        logoContainer.startAnimation(zoomIn)
+
+        // Delay for 2.5 seconds then go to Main
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, MainActivity::class.java))
             finish()
-        }, 2000)
+        }, 2500)
     }
 }

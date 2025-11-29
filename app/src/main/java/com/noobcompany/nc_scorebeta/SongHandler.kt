@@ -16,8 +16,7 @@ object SongHandler {
     /**
      * Handles a click event on a song.
      *
-     * Checks if the song is premium. If so, it verifies user access.
-     * Otherwise, it fetches and opens the PDF directly.
+     * Opens the song detail view.
      *
      * @param context The application context.
      * @param song The song object that was clicked.
@@ -32,7 +31,15 @@ object SongHandler {
         }
     }
     
-    // Renamed from onSongClicked to openScore for direct access from Detail Page
+    /**
+     * Opens the score for the given song.
+     *
+     * If the song is premium, it checks for access. Otherwise, it fetches and opens the PDF.
+     * This method is renamed from onSongClicked to openScore for direct access from Detail Page.
+     *
+     * @param context The application context.
+     * @param song The song to open.
+     */
     fun openScore(context: Context, song: Song) {
         if (song.isPremium) {
             checkPremiumAccess(context, song)
@@ -219,6 +226,13 @@ object SongHandler {
         context.startActivity(intent)
     }
 
+    /**
+     * Downloads the PDF to local storage and then opens it.
+     *
+     * @param context The application context.
+     * @param songId The ID of the song.
+     * @param url The URL to download.
+     */
     private fun downloadAndOpenPdf(context: Context, songId: String, url: String) {
         Toast.makeText(context, "Downloading for offline use...", Toast.LENGTH_SHORT).show()
         

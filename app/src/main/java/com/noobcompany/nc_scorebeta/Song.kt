@@ -14,7 +14,9 @@ import com.google.firebase.firestore.PropertyName
  * @property artistNames A list of artist names associated with the song. Mapped to the "artistNames" field in Firestore.
  * @property albumCover The URL of the album cover image.
  * @property isPremium Indicates whether this song requires a premium subscription or login to view.
- * @property createdAt The timestamp when the song was added to the database.
+ * @property createdAt The timestamp when the song was added to the database. Used for sorting.
+ * @property lyrics The lyrics of the song, if available.
+ * @property youtubeLink The URL or ID of the associated YouTube video. Mapped to the "video" field in Firestore.
  */
 data class Song(
     @DocumentId

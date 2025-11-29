@@ -2,12 +2,6 @@
 
 **NC Score Beta** is a Kotlin-based Android application designed for viewing sheet music. It allows users to browse a library of songs, view details about artists, and access sheet music PDFs. The app integrates with Firebase for backend services such as authentication, database (Firestore), and logging.
 
-## Recent Changes (v1.5.0)
-*   **Enhanced UI**: New Netflix-style animated splash screen.
-*   **Robust Media Player**: Fixed YouTube "Video Unavailable" (Error 4) issues by implementing smart video ID extraction and robust embed URL handling. Mapped Firestore `video` field for direct integration.
-*   **Advanced Bug Reporting**: Users can now add comments to bug reports. Log encryption and compression are now handled in the background for smoother performance.
-*   **Smart Updates**: Implemented Semantic Versioning (SemVer) logic to correctly identify and prompt for available updates.
-
 ## Features
 
 *   **Sheet Music Viewer**: View PDF scores directly within the app. Supports standard URLs and Google Drive links.
@@ -16,7 +10,7 @@
 *   **Artist Profiles**: View detailed biographies and song lists for individual artists.
 *   **User Authentication**: Secure login and registration using Firebase Authentication.
 *   **Premium Content**: Access control for premium scores based on user subscription status.
-*   **Offline Support**: Caches data for offline browsing (using Firebase Persistence).
+*   **Offline Support**: Caches data for offline browsing (using Firebase Persistence) and local storage for PDF files.
 *   **Updates**: Built-in mechanism to check for and download app updates from GitHub.
 *   **Bug Reporting**: Integrated system to send encrypted logs and device info for bug reports.
 
@@ -56,14 +50,25 @@
 ## Usage
 
 *   **Home**: The landing page showing new releases and trending scores.
-*   **Browse**: Search for songs by title or artist.
-*   **Library**: View your favorite songs.
+*   **Browse**: Search for songs by title or artist. Use the search bar to filter results.
+*   **Library**: View your favorite songs. You can filter your favorites using the search bar.
+*   **Artists**: Browse a complete list of artists.
 *   **Settings**: Manage your account, clear cache, check for updates, or report bugs.
-*   **Viewing a Score**: Tap on any song card to open the sheet music. If it's a premium score, you may need to log in.
+*   **Viewing a Score**: Tap on any song card to open the sheet music details. Click "Open Score" to view the PDF.
+*   **Offline Mode**: Enable "Offline Mode" in Settings to save viewed scores locally.
 
 ## Architecture
 
-The app currently uses a standard Activity/Fragment pattern with direct Firestore integration. 
+The app currently uses a standard Activity/Fragment pattern with direct Firestore integration.
+
+*   **Activities**: `MainActivity` (navigation host), `LoginActivity` (auth), `PdfViewerActivity` (score view), `SplashActivity`.
+*   **Fragments**: `HomeFragment`, `BrowseFragment`, `LibraryFragment`, `SettingsFragment`, `AllArtistsFragment`, `ArtistDetailFragment`, `SongDetailFragment`.
+*   **Data Classes**: `Song`, `Artist`, `Arrangement`.
+*   **Utilities**:
+    *   `AppLogger`: Handles logging and bug report generation (with encryption).
+    *   `UpdateManager`: Checks GitHub for app updates.
+    *   `SongHandler`: Manages logic for opening scores (premium checks, offline handling).
+    *   `FavoritesManager`: Manages local favorite song IDs.
 
 **Note:** A refactor to MVVM is planned (see Roadmap).
 

@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide
  * It handles interactions such as song clicks, artist name clicks, and toggling favorite status.
  *
  * @property useGrid If true, the adapter uses a grid layout; otherwise, it uses a card/list layout.
+ * @property useCarousel If true, the adapter uses a carousel layout; otherwise, it uses a card/list or grid layout.
  * @property onSongClicked Callback function invoked when a song item is clicked. Receives the [Song] object.
  * @property onArtistClicked Optional callback function invoked when the artist name is clicked. Receives the artist name as a [String].
  */
@@ -28,10 +29,23 @@ class SongAdapter(
 ) : ListAdapter<Song, SongAdapter.SongViewHolder>(SongDiffCallback()) {
 
     // Backward compatibility constructor - defaults artist click to null
+    /**
+     * Secondary constructor for backward compatibility.
+     *
+     * @param initialList The initial list of songs to display.
+     * @param useGrid Whether to use grid layout.
+     * @param onSongClicked Callback for when a song is clicked.
+     */
     constructor(initialList: List<Song>, useGrid: Boolean = false, onSongClicked: (Song) -> Unit) : this(useGrid = useGrid, useCarousel = false, onSongClicked = onSongClicked, onArtistClicked = null) {
         submitList(initialList)
     }
 
+    /**
+     * Secondary constructor for backward compatibility.
+     *
+     * @param initialList The initial list of songs to display.
+     * @param onSongClicked Callback for when a song is clicked.
+     */
     constructor(initialList: List<Song>, onSongClicked: (Song) -> Unit) : this(initialList, false, onSongClicked)
 
     /**
@@ -51,7 +65,7 @@ class SongAdapter(
     /**
      * Creates a new [SongViewHolder] by inflating the appropriate layout.
      *
-     * Selects between `item_song_grid` and `item_song_card` based on the [useGrid] property.
+     * Selects between `item_song_grid`, `item_song_carousel`, and `item_song_card` based on configuration.
      *
      * @param parent The parent [ViewGroup].
      * @param viewType The view type.

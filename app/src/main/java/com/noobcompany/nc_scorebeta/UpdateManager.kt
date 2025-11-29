@@ -1,13 +1,10 @@
 package com.noobcompany.nc_scorebeta
 
-import android.app.Activity
 import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.AsyncTask
-import android.os.Build
 import android.os.Environment
 import android.widget.Toast
 import androidx.core.content.FileProvider
@@ -44,6 +41,7 @@ object UpdateManager {
     /**
      * AsyncTask to fetch release information from GitHub API.
      *
+     * @property context The application context.
      * @param context The application context.
      */
     private class FetchReleaseTask(val context: Context) : AsyncTask<Void, Void, String?>() {
@@ -166,6 +164,7 @@ object UpdateManager {
      *
      * Shows a progress dialog during download.
      *
+     * @property context The application context.
      * @param context The application context.
      */
     private class DownloadTask(val context: Context) : AsyncTask<String, Int, File?>() {

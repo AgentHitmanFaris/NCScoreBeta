@@ -98,15 +98,19 @@ class SongDetailFragment : Fragment() {
 
         // Setup YouTube Embed
         if (song.youtubeLink.isNotBlank()) {
+            AppLogger.log("SongDetail", "Processing YouTube Link: '${song.youtubeLink}'")
+
             webViewYoutube.settings.javaScriptEnabled = true
             webViewYoutube.settings.domStorageEnabled = true
             webViewYoutube.webChromeClient = WebChromeClient()
             webViewYoutube.webViewClient = WebViewClient()
             
             val videoId = extractVideoId(song.youtubeLink)
+            AppLogger.log("SongDetail", "Extracted Video ID: '$videoId'")
             
             if (videoId.isNotEmpty()) {
                 val embedUrl = "https://www.youtube.com/embed/$videoId"
+                AppLogger.log("SongDetail", "Final Embed URL: $embedUrl")
                 
                 val html = """
                     <!DOCTYPE html>
@@ -119,6 +123,7 @@ class SongDetailFragment : Fragment() {
                 
                 webViewYoutube.loadDataWithBaseURL("https://www.youtube.com", html, "text/html", "utf-8", null)
             } else {
+                 AppLogger.error("SongDetail", "Failed to extract video ID from: ${song.youtubeLink}")
                  // Fallback if extraction failed but link exists
                  webViewYoutube.visibility = View.GONE
             }

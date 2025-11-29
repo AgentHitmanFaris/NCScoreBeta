@@ -143,21 +143,27 @@ class SongDetailFragment : Fragment() {
 
     private fun extractVideoId(url: String): String {
         val cleanUrl = url.trim()
+        AppLogger.log("SongDetail", "extractVideoId: Cleaned URL: '$cleanUrl'")
         
         // Case 1: Raw Video ID (11 chars, alphanumeric + _ -)
         if (cleanUrl.length == 11 && cleanUrl.matches(Regex("^[a-zA-Z0-9_-]{11}$"))) {
+            AppLogger.log("SongDetail", "extractVideoId: Identified as raw video ID.")
             return cleanUrl
         }
 
         // Case 2: Extract from URL using Regex
-        // Matches: youtube.com/watch?v=ID, youtu.be/ID, youtube.com/embed/ID
+        // Matches: youtube.com/watch?v=ID, youtu.be/ID, youtube.com/embed/ID, etc.
         val pattern = "(?<=watch\\?v=|/videos/|embed/|youtu.be/|/v/|/e/|watch\\?v%3D|watch\\?feature=player_embedded&v=|%2Fvideos%2F|embed%\u200C\u200B2F|youtu.be%2F|%2Fv%2F)[^#\\&\\?\\n]*"
+        AppLogger.log("SongDetail", "extractVideoId: Using regex pattern: '$pattern'")
         val compiledPattern = java.util.regex.Pattern.compile(pattern)
         val matcher = compiledPattern.matcher(cleanUrl)
         
         return if (matcher.find()) {
-            matcher.group()
+            val videoId = matcher.group()
+            AppLogger.log("SongDetail", "extractVideoId: Regex found match: '$videoId'")
+            videoId
         } else {
+            AppLogger.log("SongDetail", "extractVideoId: Regex found no match.")
             "" // Return empty if no match found
         }
     }

@@ -105,28 +105,37 @@ class SongDetailFragment : Fragment() {
             webViewYoutube.webChromeClient = WebChromeClient()
             webViewYoutube.webViewClient = WebViewClient()
             
-            val videoId = extractVideoId(song.youtubeLink)
-            AppLogger.log("SongDetail", "Extracted Video ID: '$videoId'")
+            val finalEmbedUrl: String
             
-            if (videoId.isNotEmpty()) {
-                val embedUrl = "https://www.youtube.com/embed/$videoId"
-                AppLogger.log("SongDetail", "Final Embed URL: $embedUrl")
-                
-                val html = """
-                    <!DOCTYPE html>
-                    <html>
-                    <body style="margin:0;padding:0;">
-                        <iframe width="100%" height="100%" src="$embedUrl" frameborder="0" allowfullscreen></iframe>
-                    </body>
-                    </html>
-                """.trimIndent()
-                
-                webViewYoutube.loadDataWithBaseURL("https://www.youtube.com", html, "text/html", "utf-8", null)
+            // Check if the link is already an embed URL (e.g., youtube.com/embed/ or youtube-nocookie.com/embed/)
+            if (song.youtubeLink.contains("/embed/")) {
+                AppLogger.log("SongDetail", "Link is already an embed URL. Using as-is.")
+                finalEmbedUrl = song.youtubeLink.trim()
             } else {
-                 AppLogger.error("SongDetail", "Failed to extract video ID from: ${song.youtubeLink}")
-                 // Fallback if extraction failed but link exists
-                 webViewYoutube.visibility = View.GONE
+                val videoId = extractVideoId(song.youtubeLink)
+                AppLogger.log("SongDetail", "Extracted Video ID: '$videoId'")
+                
+                if (videoId.isNotEmpty()) {
+                    finalEmbedUrl = "https://www.youtube.com/embed/$videoId"
+                } else {
+                    AppLogger.error("SongDetail", "Failed to extract video ID from: ${song.youtubeLink}")
+                    webViewYoutube.visibility = View.GONE
+                    return // Exit if we can't get an embed URL
+                }
             }
+            
+            AppLogger.log("SongDetail", "Final Embed URL for WebView: $finalEmbedUrl")
+
+            val html = """
+                <!DOCTYPE html>
+                <html>
+                <body style="margin:0;padding:0;">
+                    <iframe width="100%" height="100%" src="$finalEmbedUrl" frameborder="0" allowfullscreen></iframe>
+                </body>
+                </html>
+            """.trimIndent()
+            
+            webViewYoutube.loadDataWithBaseURL("https://www.youtube.com", html, "text/html", "utf-8", null)
         } else {
             webViewYoutube.visibility = View.GONE
         }

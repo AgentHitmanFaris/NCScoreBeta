@@ -15,7 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore
  * Activity for handling User Login and Registration.
  *
  * It allows users to sign in with email/password or create a new account.
- * New accounts are also created in Firestore.
+ * New accounts are also created in Firestore with default fields.
  */
 class LoginActivity : AppCompatActivity() {
 
@@ -24,11 +24,12 @@ class LoginActivity : AppCompatActivity() {
     private var isLoginMode = true
 
     /**
-     * Called when the activity is first created.
+     * Called when the activity is starting.
      *
-     * Initializes Firebase Auth and Firestore, sets up the UI, and handles button clicks.
+     * Initializes Firebase Auth and Firestore, sets up the UI components for login/registration toggling,
+     * and attaches click listeners for the login/register button.
      *
-     * @param savedInstanceState If non-null, this activity is being re-constructed from a previous saved state.
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle).
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -110,7 +111,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     /**
-     * Creates a new user document in Firestore.
+     * Creates a new user document in Firestore upon successful registration.
      *
      * @param uid The user's unique ID from Firebase Auth.
      * @param email The user's email address.
@@ -139,7 +140,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     /**
-     * Checks if the user exists in Firestore after login.
+     * Verifies that the user exists in Firestore after a successful login.
      *
      * @param uid The user's unique ID.
      */
@@ -158,7 +159,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     /**
-     * Finishes the login process and closes the activity.
+     * Finalizes the login process by hiding the progress bar, showing a success message, and closing the activity.
      */
     private fun finishLogin() {
         findViewById<ProgressBar>(R.id.progressBar).visibility = View.GONE

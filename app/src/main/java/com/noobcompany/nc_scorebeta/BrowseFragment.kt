@@ -18,7 +18,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 /**
  * Fragment that allows users to browse and search for songs.
  *
- * Supports pagination (infinite scroll) and text search.
+ * It features a search bar for filtering songs by title or artist, and a grid view of songs
+ * that supports infinite scrolling (pagination).
  */
 class BrowseFragment : Fragment() {
 
@@ -68,6 +69,9 @@ class BrowseFragment : Fragment() {
 
     /**
      * Sets up the RecyclerView with a grid layout and a scroll listener for pagination.
+     *
+     * It configures the adapter with click listeners for song selection and artist navigation.
+     * The scroll listener detects when the user reaches the bottom of the list to load more songs.
      *
      * @param view The root view of the fragment.
      */
@@ -119,6 +123,8 @@ class BrowseFragment : Fragment() {
     /**
      * Sets up the search bar to filter results as the user types.
      *
+     * It adds a text watcher to the search EditText to trigger search queries on text changes.
+     *
      * @param view The root view of the fragment.
      */
     private fun setupSearch(view: View) {
@@ -140,6 +146,7 @@ class BrowseFragment : Fragment() {
      * Loads songs from Firestore.
      *
      * Can load the initial batch or subsequent pages based on `isInitial`.
+     * It queries the "songs" collection, ordered by title.
      *
      * @param isInitial True if this is the first load (clears existing data), false for pagination.
      */
@@ -184,7 +191,7 @@ class BrowseFragment : Fragment() {
     /**
      * Performs a search query against Firestore for songs matching the title or artist.
      *
-     * Combines results from a title prefix search and an exact artist name search.
+     * Combines results from a title prefix search and an exact artist name search (array-contains).
      *
      * @param query The search string.
      */

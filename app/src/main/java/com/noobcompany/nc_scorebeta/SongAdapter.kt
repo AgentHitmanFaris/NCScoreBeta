@@ -13,11 +13,12 @@ import com.bumptech.glide.Glide
 /**
  * RecyclerView Adapter for displaying a list of [Song] objects.
  *
- * Supports both list and grid layouts. Handles song clicks, artist clicks, and favorite toggling.
+ * It supports both list and grid layouts via the [useGrid] parameter.
+ * It handles interactions such as song clicks, artist name clicks, and toggling favorite status.
  *
- * @property useGrid If true, uses a grid layout; otherwise, uses a card layout.
- * @property onSongClicked Callback when a song item is clicked.
- * @property onArtistClicked Optional callback when the artist name is clicked.
+ * @property useGrid If true, the adapter uses a grid layout; otherwise, it uses a card/list layout.
+ * @property onSongClicked Callback function invoked when a song item is clicked. Receives the [Song] object.
+ * @property onArtistClicked Optional callback function invoked when the artist name is clicked. Receives the artist name as a [String].
  */
 class SongAdapter(
     private val useGrid: Boolean = false,
@@ -33,7 +34,7 @@ class SongAdapter(
     constructor(initialList: List<Song>, onSongClicked: (Song) -> Unit) : this(initialList, false, onSongClicked)
 
     /**
-     * ViewHolder for caching view references for a song item.
+     * ViewHolder class for caching view references for a song item.
      *
      * @param itemView The view for a single song item.
      */
@@ -47,13 +48,13 @@ class SongAdapter(
     }
 
     /**
-     * Creates a new [SongViewHolder].
+     * Creates a new [SongViewHolder] by inflating the appropriate layout.
      *
-     * Selects the appropriate layout resource based on [useGrid].
+     * Selects between `item_song_grid` and `item_song_card` based on the [useGrid] property.
      *
-     * @param parent The parent ViewGroup.
+     * @param parent The parent [ViewGroup].
      * @param viewType The view type.
-     * @return A new SongViewHolder.
+     * @return A new [SongViewHolder].
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongViewHolder {
         val layoutId = if (useGrid) R.layout.item_song_grid else R.layout.item_song_card
@@ -62,13 +63,13 @@ class SongAdapter(
     }
 
     /**
-     * Binds the song data to the ViewHolder.
+     * Binds the song data to the ViewHolder at the specified position.
      *
-     * Sets title, artist, album cover, premium status, and favorite status.
-     * Sets up click listeners for the song, artist, and favorite button.
+     * Updates the UI with song details (title, artist, album cover), visibility of the premium indicator,
+     * and the current favorite status. It also sets up click listeners for the song item, artist name, and favorite button.
      *
-     * @param holder The SongViewHolder.
-     * @param position The position in the list.
+     * @param holder The [SongViewHolder] to update.
+     * @param position The position of the item in the list.
      */
     override fun onBindViewHolder(holder: SongViewHolder, position: Int) {
         val song = getItem(position)
@@ -111,13 +112,29 @@ class SongAdapter(
     }
 
     /**
-     * DiffUtil callback for calculating changes between two lists of songs.
+     * DiffUtil callback implementation for calculating optimal updates for the list of songs.
+     *
+     * Used by [ListAdapter] to efficiently update the RecyclerView.
      */
     class SongDiffCallback : DiffUtil.ItemCallback<Song>() {
+        /**
+         * Checks if two items represent the same object.
+         *
+         * @param oldItem The item in the old list.
+         * @param newItem The item in the new list.
+         * @return True if the items have the same ID.
+         */
         override fun areItemsTheSame(oldItem: Song, newItem: Song): Boolean {
             return oldItem.id == newItem.id
         }
 
+        /**
+         * Checks if two items have the same content.
+         *
+         * @param oldItem The item in the old list.
+         * @param newItem The item in the new list.
+         * @return True if the items are equal.
+         */
         override fun areContentsTheSame(oldItem: Song, newItem: Song): Boolean {
             return oldItem == newItem
         }

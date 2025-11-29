@@ -18,14 +18,16 @@ import java.util.regex.Pattern
 /**
  * Activity for viewing PDF files (sheet music).
  *
- * It handles downloading the PDF from a URL (including Google Drive links) and displaying it using a PDFView.
+ * This activity handles the retrieval of a PDF URL from the intent, converting it to a direct download link if necessary
+ * (e.g., for Google Drive links), downloading the PDF, and displaying it using the [PDFView] library.
  */
 class PdfViewerActivity : AppCompatActivity() {
 
     /**
      * Called when the activity is first created.
      *
-     * Retrieves the PDF URL from the intent, processes it, and initiates the download and display.
+     * It retrieves the "PDF_URL" extra from the intent. If present, it initiates the download and display process.
+     * It also sets up the UI components and handles potential errors during the process.
      *
      * @param savedInstanceState If non-null, this activity is being re-constructed from a previous saved state.
      */
@@ -114,11 +116,13 @@ class PdfViewerActivity : AppCompatActivity() {
     }
 
     /**
-     * Sets up tap navigation zones for changing pages.
+     * Sets up tap navigation zones for changing pages within the PDF view.
      *
-     * Tapping on the left side goes to the previous page, and the right side goes to the next page.
+     * Configures click listeners on invisible overlay views:
+     * - Tapping the left side navigates to the previous page.
+     * - Tapping the right side navigates to the next page.
      *
-     * @param pdfView The PDFView instance.
+     * @param pdfView The [PDFView] instance to control.
      */
     private fun setupTapNavigation(pdfView: PDFView) {
         findViewById<View>(R.id.viewTapLeft).setOnClickListener {
@@ -139,10 +143,11 @@ class PdfViewerActivity : AppCompatActivity() {
     /**
      * Converts a raw URL into a direct download link.
      *
-     * Specifically handles Google Drive links by converting them to the export/download format.
+     * This method is specifically designed to handle Google Drive sharing links. It extracts the file ID
+     * and constructs a URL that triggers a direct download (`export=download`).
      *
-     * @param url The original URL.
-     * @return The direct download URL.
+     * @param url The original URL string.
+     * @return The converted direct download URL, or the original URL if no conversion was applicable.
      */
     private fun getDirectUrl(url: String): String {
         // If it's a Google Drive link, we need to extract the ID and make it a download link

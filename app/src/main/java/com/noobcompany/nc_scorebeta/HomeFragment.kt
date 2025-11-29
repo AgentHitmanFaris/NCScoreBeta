@@ -185,7 +185,14 @@ class HomeFragment : Fragment() {
                 }
 
                 if (allSongs.isNotEmpty()) {
-                    val sortedByDate = allSongs.sortedByDescending { it.createdAt }
+                    // Sort by 'createdAt' descending. Nulls (old songs without date) go to the end.
+                    val sortedByDate = allSongs.sortedWith(compareByDescending<Song> { it.createdAt }.thenBy { it.title })
+                    
+                    // Debug log to verify dates
+                    if (sortedByDate.isNotEmpty()) {
+                         Log.d("HomeFragment", "Latest Song: ${sortedByDate[0].title}, Date: ${sortedByDate[0].createdAt?.toDate()}")
+                    }
+
                     updateHeroSection(sortedByDate[0])
                     newReleasesAdapter.submitList(sortedByDate.take(5))
                     val trendingSongs = allSongs.shuffled().take(5)

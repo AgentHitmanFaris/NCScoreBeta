@@ -32,6 +32,7 @@ data class Song(
     var isPremium: Boolean = false,
 
     // ADDED: This lets us sort by date!
+    @com.google.firebase.firestore.ServerTimestamp
     var createdAt: Timestamp? = null,
 
     var lyrics: String = "",

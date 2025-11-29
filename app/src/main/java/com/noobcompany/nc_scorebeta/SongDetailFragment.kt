@@ -98,12 +98,19 @@ class SongDetailFragment : Fragment() {
         // Setup YouTube Embed
         if (song.youtubeLink.isNotEmpty()) {
             webViewYoutube.settings.javaScriptEnabled = true
+            webViewYoutube.settings.domStorageEnabled = true // Required for some players
             webViewYoutube.webChromeClient = WebChromeClient()
             webViewYoutube.webViewClient = WebViewClient()
             
             val embedUrl = getEmbedUrl(song.youtubeLink)
-            val html = "<iframe width=\"100%\" height=\"100%\" src=\"$embedUrl\" frameborder=\"0\" allowfullscreen></iframe>"
-            webViewYoutube.loadData(html, "text/html", "utf-8")
+            // Autoplay enabled in URL parameters (Note: Mobile browsers often block autoplay with sound, but let's try)
+            val autoplayUrl = "$embedUrl?autoplay=1"
+            
+            val html = """
+                <iframe width="100%" height="100%" src="$autoplayUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            """.trimIndent()
+            
+            webViewYoutube.loadDataWithBaseURL("https://www.youtube.com", html, "text/html", "utf-8", null)
         } else {
             webViewYoutube.visibility = View.GONE
         }

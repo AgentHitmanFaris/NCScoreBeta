@@ -69,8 +69,9 @@ class SongDetailFragment : Fragment() {
                     }
                 }
             }
-            .addOnFailureListener {
-                Toast.makeText(context, "Error loading song", Toast.LENGTH_SHORT).show()
+            .addOnFailureListener { e ->
+                AppLogger.error("SongDetail", "Error loading song", e)
+                Toast.makeText(context, "Error loading song: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
@@ -117,15 +118,17 @@ class SongDetailFragment : Fragment() {
     }
 
     private fun getEmbedUrl(url: String): String {
-        // Simple logic to convert standard YouTube URL to embed URL
-        // https://www.youtube.com/watch?v=VIDEO_ID -> https://www.youtube.com/embed/VIDEO_ID
-        // https://youtu.be/VIDEO_ID -> https://www.youtube.com/embed/VIDEO_ID
-        
+        // Return as-is if it's already an embed link
+        if (url.contains("youtube.com/embed/")) return url
+
         var videoId = ""
         if (url.contains("v=")) {
             videoId = url.split("v=")[1].split("&")[0]
         } else if (url.contains("youtu.be/")) {
             videoId = url.split("youtu.be/")[1].split("?")[0]
+        } else if (url.isNotEmpty() && !url.startsWith("http")) {
+             // Assume it's a raw ID if it doesn't start with http
+             videoId = url
         }
         
         return if (videoId.isNotEmpty()) "https://www.youtube.com/embed/$videoId" else url

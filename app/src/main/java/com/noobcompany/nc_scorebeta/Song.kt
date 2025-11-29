@@ -36,6 +36,7 @@ data class Song(
     var createdAt: Timestamp? = null,
 
     var lyrics: String = "",
+    @get:PropertyName("video") @set:PropertyName("video")
     var youtubeLink: String = ""
 ) {
     /**

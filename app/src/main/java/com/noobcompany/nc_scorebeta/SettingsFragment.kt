@@ -13,6 +13,13 @@ import com.google.firebase.firestore.FirebaseFirestore
 import android.os.Build
 import com.google.firebase.auth.FirebaseAuth
 
+import android.app.AlertDialog
+import android.widget.EditText
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
 /**
  * Fragment that displays application settings and user profile options.
  *
@@ -152,33 +159,52 @@ class SettingsFragment : Fragment() {
      * Collects system logs and device info, encrypts them, and sends a bug report to Firestore.
      */
     private fun reportBug() {
-        Toast.makeText(context, "Sending Report...", Toast.LENGTH_SHORT).show()
-        val db = FirebaseFirestore.getInstance()
-        val user = FirebaseAuth.getInstance().currentUser
+        val input = EditText(context)
+        input.hint = "Describe the issue (optional)"
         
-        // Generate encrypted logs (runs in background thread ideally, but for now UI thread is ok for beta)
-        val encryptedLogs = AppLogger.getEncryptedSystemLogs()
+        AlertDialog.Builder(context)
+            .setTitle("Report Bug")
+            .setView(input)
+            .setPositiveButton("Send") { _, _ ->
+                val comment = input.text.toString()
+                sendBugReport(comment)
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
 
-        val report = hashMapOf(
-            "userId" to (user?.uid ?: "anonymous"),
-            "userEmail" to (user?.email ?: "anonymous"),
-            "timestamp" to com.google.firebase.Timestamp.now(),
-            "deviceModel" to Build.MODEL,
-            "deviceManufacturer" to Build.MANUFACTURER,
-            "androidVersion" to Build.VERSION.RELEASE,
-            "sdkVersion" to Build.VERSION.SDK_INT,
-            "encryptedLogs" to encryptedLogs // Sent as a single compressed string
-        )
+    private fun sendBugReport(comment: String) {
+        Toast.makeText(context, "Generating Report...", Toast.LENGTH_SHORT).show()
         
-        db.collection("bug_reports")
-            .add(report)
-            .addOnSuccessListener {
-                Toast.makeText(context, "Report Sent! Thank you.", Toast.LENGTH_LONG).show()
+        lifecycleScope.launch {
+            val user = FirebaseAuth.getInstance().currentUser
+            
+            // Generate encrypted logs in background
+            val encryptedLogs = withContext(Dispatchers.IO) {
+                AppLogger.getEncryptedSystemLogs(comment)
             }
-            .addOnFailureListener { e ->
-                Toast.makeText(context, "Failed to send report: ${e.message}", Toast.LENGTH_SHORT).show()
-                AppLogger.error("Settings", "Bug Report Failed", e)
-            }
+
+            val report = hashMapOf(
+                "userId" to (user?.uid ?: "anonymous"),
+                "userEmail" to (user?.email ?: "anonymous"),
+                "timestamp" to com.google.firebase.Timestamp.now(),
+                "deviceModel" to Build.MODEL,
+                "deviceManufacturer" to Build.MANUFACTURER,
+                "androidVersion" to Build.VERSION.RELEASE,
+                "sdkVersion" to Build.VERSION.SDK_INT,
+                "encryptedLogs" to encryptedLogs // Sent as a single compressed string
+            )
+            
+            FirebaseFirestore.getInstance().collection("bug_reports")
+                .add(report)
+                .addOnSuccessListener {
+                    Toast.makeText(context, "Report Sent! Thank you.", Toast.LENGTH_LONG).show()
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(context, "Failed to send report: ${e.message}", Toast.LENGTH_SHORT).show()
+                    AppLogger.error("Settings", "Bug Report Failed", e)
+                }
+        }
     }
 
     /**

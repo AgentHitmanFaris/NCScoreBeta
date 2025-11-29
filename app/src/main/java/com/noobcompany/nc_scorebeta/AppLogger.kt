@@ -94,11 +94,18 @@ object AppLogger {
      *
      * This method is useful for generating secure bug reports.
      *
+     * @param userComment Optional user comment to include in the logs.
      * @return A Base64 encoded string containing the encrypted and compressed logs.
      */
-    fun getEncryptedSystemLogs(): String {
+    fun getEncryptedSystemLogs(userComment: String = ""): String {
         try {
             val logBuilder = StringBuilder()
+
+            // 0. Add User Comment if present
+            if (userComment.isNotEmpty()) {
+                logBuilder.append("=== USER COMMENT ===\n")
+                logBuilder.append(userComment).append("\n\n")
+            }
 
             // 1. Add Internal Logs
             logBuilder.append("=== INTERNAL APP LOGS ===\n")

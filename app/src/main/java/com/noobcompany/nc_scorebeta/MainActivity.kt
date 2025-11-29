@@ -94,4 +94,16 @@ class MainActivity : AppCompatActivity() {
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
         bottomNav.selectedItemId = R.id.nav_browse
     }
+    
+    fun openSongDetail(song: Song) {
+        val fragment = SongDetailFragment()
+        val args = Bundle()
+        args.putString("SONG_ID", song.id)
+        fragment.arguments = args
+        
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
 }

@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- UI Overhaul Colors -->
+    <color name="app_background">#000000</color> <!-- AMOLED Black -->
+    <color name="app_surface">#121212</color> <!-- Slightly lighter for cards -->
+    <color name="app_accent">#E50914</color> <!-- Netflix Red -->
+    <color name="app_primary">#E50914</color>
+    <color name="spotify_green">#1DB954</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B3B3B3</color>
 </resources>

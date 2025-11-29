@@ -34,6 +34,37 @@ class PdfViewerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_pdf_viewer)
 
         val rawPdfUrl = intent.getStringExtra("PDF_URL")
+        val localFilePath = intent.getStringExtra("PDF_FILE") // NEW: Check for file path
+        
+        val pdfView = findViewById<PDFView>(R.id.pdfView)
+        val progressBar = findViewById<View>(R.id.progressBar)
+        
+        // 1. LOCAL FILE HANDLING (OFFLINE MODE)
+        if (!localFilePath.isNullOrEmpty()) {
+            val file = java.io.File(localFilePath)
+            if (file.exists()) {
+                Log.d("PdfViewer", "Loading from file: $localFilePath")
+                pdfView.fromFile(file)
+                    .swipeHorizontal(true)
+                    .enableSwipe(false)
+                    .pageSnap(true)
+                    .autoSpacing(true)
+                    .pageFling(true)
+                    .fitEachPage(true)
+                    .enableDoubletap(true)
+                    .onLoad { nbPages ->
+                        progressBar.visibility = View.GONE
+                        Toast.makeText(this, "Score Loaded (Offline)", Toast.LENGTH_SHORT).show()
+                        setupTapNavigation(pdfView)
+                    }
+                    .onError { t ->
+                        progressBar.visibility = View.GONE
+                        Toast.makeText(this, "Error loading file: ${t.message}", Toast.LENGTH_LONG).show()
+                    }
+                    .load()
+                return // Exit early, job done
+            }
+        }
 
         if (rawPdfUrl.isNullOrEmpty()) {
             Toast.makeText(this, "No PDF Link Found", Toast.LENGTH_SHORT).show()
@@ -46,10 +77,7 @@ class PdfViewerActivity : AppCompatActivity() {
         val directUrl = getDirectUrl(rawPdfUrl)
         Log.d("PdfViewer", "Original: $rawPdfUrl")
         Log.d("PdfViewer", "Direct: $directUrl")
-
-        val pdfView = findViewById<PDFView>(R.id.pdfView)
-        val progressBar = findViewById<View>(R.id.progressBar)
-
+        
         progressBar.visibility = View.VISIBLE
 
         lifecycleScope.launch(Dispatchers.IO) {

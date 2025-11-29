@@ -116,6 +116,19 @@ class SettingsFragment : Fragment() {
      * @param view The root view of the fragment.
      */
     private fun setupActions(view: View) {
+        // Offline Mode Switch
+        val switchOffline = view.findViewById<com.google.android.material.switchmaterial.SwitchMaterial>(R.id.switchOffline)
+        val prefs = requireContext().getSharedPreferences("nc_prefs", android.content.Context.MODE_PRIVATE)
+        
+        // Set initial state
+        switchOffline.isChecked = prefs.getBoolean("offline_mode", false)
+
+        switchOffline.setOnCheckedChangeListener { _, isChecked ->
+            prefs.edit().putBoolean("offline_mode", isChecked).apply()
+            val status = if (isChecked) "Enabled: Scores will be saved" else "Disabled: Scores will stream"
+            Toast.makeText(context, status, Toast.LENGTH_SHORT).show()
+        }
+
         view.findViewById<TextView>(R.id.btnCache).setOnClickListener {
             clearCache()
         }

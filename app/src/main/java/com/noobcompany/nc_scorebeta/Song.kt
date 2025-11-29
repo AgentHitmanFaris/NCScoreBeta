@@ -32,7 +32,10 @@ data class Song(
     var isPremium: Boolean = false,
 
     // ADDED: This lets us sort by date!
-    var createdAt: Timestamp? = null
+    var createdAt: Timestamp? = null,
+
+    var lyrics: String = "",
+    var youtubeLink: String = ""
 ) {
     /**
      * returns a formatted string of artist names.

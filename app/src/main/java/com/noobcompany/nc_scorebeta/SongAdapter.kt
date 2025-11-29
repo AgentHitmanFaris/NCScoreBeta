@@ -21,12 +21,13 @@ import com.bumptech.glide.Glide
  */
 class SongAdapter(
     private val useGrid: Boolean = false,
+    private val useCarousel: Boolean = false,
     private val onSongClicked: (Song) -> Unit,
     private val onArtistClicked: ((String) -> Unit)? = null
 ) : ListAdapter<Song, SongAdapter.SongViewHolder>(SongDiffCallback()) {
 
     // Backward compatibility constructor - defaults artist click to null
-    constructor(initialList: List<Song>, useGrid: Boolean = false, onSongClicked: (Song) -> Unit) : this(useGrid = useGrid, onSongClicked = onSongClicked, onArtistClicked = null) {
+    constructor(initialList: List<Song>, useGrid: Boolean = false, onSongClicked: (Song) -> Unit) : this(useGrid = useGrid, useCarousel = false, onSongClicked = onSongClicked, onArtistClicked = null) {
         submitList(initialList)
     }
 
@@ -56,7 +57,11 @@ class SongAdapter(
      * @return A new SongViewHolder.
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongViewHolder {
-        val layoutId = if (useGrid) R.layout.item_song_grid else R.layout.item_song_card
+        val layoutId = when {
+            useGrid -> R.layout.item_song_grid
+            useCarousel -> R.layout.item_song_carousel
+            else -> R.layout.item_song_card
+        }
         val view = LayoutInflater.from(parent.context).inflate(layoutId, parent, false)
         return SongViewHolder(view)
     }

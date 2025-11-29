@@ -105,7 +105,7 @@ class HomeFragment : Fragment() {
      */
     private fun setupViews(view: View) {
         val rvTrending = view.findViewById<RecyclerView>(R.id.rvTrending)
-        trendingAdapter = SongAdapter(useGrid = false, onSongClicked = { song ->
+        trendingAdapter = SongAdapter(useGrid = false, useCarousel = true, onSongClicked = { song ->
             context?.let { SongHandler.onSongClicked(it, song) }
         }, onArtistClicked = { artistName ->
             navigateToArtist(artistName)
@@ -114,7 +114,7 @@ class HomeFragment : Fragment() {
         rvTrending.adapter = trendingAdapter
 
         val rvNewReleases = view.findViewById<RecyclerView>(R.id.rvNewReleases)
-        newReleasesAdapter = SongAdapter(useGrid = false, onSongClicked = { song ->
+        newReleasesAdapter = SongAdapter(useGrid = false, useCarousel = true, onSongClicked = { song ->
             context?.let { SongHandler.onSongClicked(it, song) }
         }, onArtistClicked = { artistName ->
             navigateToArtist(artistName)

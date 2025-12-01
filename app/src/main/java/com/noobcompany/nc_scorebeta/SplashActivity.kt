@@ -9,19 +9,21 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 
 /**
- * The initial activity displayed when the app launches.
+ * The entry point Activity for the application (Splash Screen).
  *
- * It displays a splash screen for a defined duration (2 seconds) before automatically navigating to the [MainActivity].
- * This provides a brief branding moment and allows for any necessary initial background setup (though currently none is performed).
+ * This activity is the first screen shown to the user. It displays the application branding
+ * with a zoom-in animation (Netflix style) and automatically navigates to the main dashboard
+ * after a fixed delay.
  */
 class SplashActivity : AppCompatActivity() {
     /**
-     * Called when the activity is first created.
+     * Initializes the splash screen UI and timer.
      *
-     * It sets the content view to the splash layout and posts a delayed runnable to the main looper.
-     * The runnable starts [MainActivity] and finishes [SplashActivity] after 2000 milliseconds.
+     * 1. Sets the content view.
+     * 2. Loads and starts the "netflix_scale" animation on the logo container.
+     * 3. Posts a delayed Runnable to the main thread's message queue to switch activities after 2500ms.
      *
-     * @param savedInstanceState If non-null, this activity is being re-constructed from a previous saved state.
+     * @param savedInstanceState Saved state bundle.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

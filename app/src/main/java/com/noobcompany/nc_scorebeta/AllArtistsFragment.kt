@@ -13,22 +13,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 
 /**
- * Fragment that displays a list of all artists available in the application.
+ * Fragment that displays a comprehensive list of all artists in the database.
  *
- * This fragment fetches artist data from Firestore and displays it in a RecyclerView.
- * It also handles navigation to the [ArtistDetailFragment] when an artist is selected.
+ * This screen fetches the "artists" collection from Firestore and presents it in a vertical list.
+ * It serves as the primary directory for users to find specific composers or performers.
  */
 class AllArtistsFragment : Fragment() {
 
     private val db = FirebaseFirestore.getInstance()
 
     /**
-     * Inflates the layout for this fragment.
+     * Creates and returns the view hierarchy associated with the fragment.
      *
      * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
      * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
      * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
-     * @return The View for the fragment's UI, or null.
+     * @return The root View for the fragment's UI.
      */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,11 +38,14 @@ class AllArtistsFragment : Fragment() {
     }
 
     /**
-     * Called immediately after [onCreateView] has returned, but before any saved state has been restored in to the view.
-     * Sets up the back button and initiates fetching of artists.
+     * Called immediately after the view hierarchy has been created.
+     *
+     * Sets up the UI logic:
+     * 1. Configures the "Back" button to pop the current fragment from the stack.
+     * 2. Initiates the network request to fetch artist data.
      *
      * @param view The View returned by [onCreateView].
-     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     * @param savedInstanceState Saved state bundle.
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,12 +59,12 @@ class AllArtistsFragment : Fragment() {
     }
 
     /**
-     * Fetches the list of artists from Firestore and populates the RecyclerView.
+     * Asynchronously fetches the list of artists from Firestore.
      *
-     * It shows a progress bar while loading and handles potential errors by displaying a Toast.
-     * On successful fetch, it sets up the [ArtistAdapter] with the retrieved data.
+     * Shows a progress bar while loading. On success, populates the RecyclerView with an [ArtistAdapter].
+     * On failure, hides the progress bar and displays an error toast.
      *
-     * @param view The root view of the fragment, used to find UI elements.
+     * @param view The root view of the fragment.
      */
     private fun fetchArtists(view: View) {
         val progressBar = view.findViewById<ProgressBar>(R.id.progressBar)

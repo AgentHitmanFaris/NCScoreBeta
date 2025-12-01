@@ -1,94 +1,129 @@
 # NC Score Beta
 
-**NC Score Beta** is a Kotlin-based Android application designed for viewing sheet music. It allows users to browse a library of songs, view details about artists, and access sheet music PDFs. The app integrates with Firebase for backend services such as authentication, database (Firestore), and logging.
+**NC Score Beta** is a Kotlin-based Android application designed for musicians to view, manage, and interact with sheet music. It leverages Firebase for backend services (Authentication, Firestore, Storage) and provides a seamless experience for browsing artist catalogs, managing personal libraries, and viewing PDF scores.
+
+## Table of Contents
+1. [Features](#features)
+2. [Tech Stack](#tech-stack)
+3. [Project Structure](#project-structure)
+4. [Prerequisites](#prerequisites)
+5. [Setup & Installation](#setup--installation)
+6. [Usage Guide](#usage-guide)
+7. [Architecture](#architecture)
+8. [Roadmap](#roadmap)
+9. [License](#license)
 
 ## Features
 
-*   **Sheet Music Viewer**: View PDF scores directly within the app. Supports standard URLs and Google Drive links.
-*   **Library Management**: Browse a catalog of songs, filter by artist or title.
-*   **Favorites**: Mark songs as favorites for quick access in your personal library.
-*   **Artist Profiles**: View detailed biographies and song lists for individual artists.
-*   **User Authentication**: Secure login and registration using Firebase Authentication.
-*   **Premium Content**: Access control for premium scores based on user subscription status.
-*   **Offline Support**: Caches data for offline browsing (using Firebase Persistence) and local storage for PDF files.
-*   **Updates**: Built-in mechanism to check for and download app updates from GitHub.
-*   **Bug Reporting**: Integrated system to send encrypted logs and device info for bug reports.
+*   **Sheet Music Viewer**: High-performance PDF rendering for scores using `AndroidPdfViewer`. Supports standard URLs and automatic conversion of Google Drive links.
+*   **Cloud Library**: Browse a vast catalog of songs, filtered by artists or titles.
+*   **Personal Favorites**: Save songs to your local library for quick access.
+*   **Artist Profiles**: Detailed artist pages with biographies and discographies.
+*   **User Authentication**: Secure sign-up and login via Firebase Authentication.
+*   **Offline Mode**: Cache scores locally to view them without an internet connection.
+*   **Premium Access**: Support for premium content validation (subscription logic).
+*   **Integrated Media**: View lyrics and watch embedded YouTube videos directly within the song details.
+*   **Bug Reporting**: Built-in tool to generate and send encrypted system logs for debugging.
+*   **Auto-Updates**: Checks the GitHub repository for new releases and supports in-app updates.
 
-## Setup and Installation
+## Tech Stack
 
-### Prerequisites
+*   **Language**: Kotlin
+*   **Platform**: Android (Min SDK 24)
+*   **Backend**: Firebase (Authentication, Firestore Database)
+*   **Libraries**:
+    *   **Glide**: Image loading and caching.
+    *   **AndroidPdfViewer** (`com.github.barteksc:android-pdf-viewer`): PDF rendering.
+    *   **Coroutines**: Asynchronous programming.
+    *   **AndroidX/Jetpack**: Core Android components (AppCompat, RecyclerView, Fragment, ConstraintLayout).
 
-*   Android Studio (latest version recommended)
-*   Java Development Kit (JDK) 11 or higher
-*   A Firebase project with:
-    *   Authentication enabled (Email/Password)
-    *   Firestore Database enabled
+## Project Structure
 
-### Installation Steps
+The source code is located in `app/src/main/java/com/noobcompany/nc_scorebeta/`.
 
-1.  **Clone the Repository**:
+### Key Directories & Files
+
+*   **Activities** (`*Activity.kt`):
+    *   `MainActivity.kt`: The central hub hosting the bottom navigation and fragments.
+    *   `LoginActivity.kt`: Handles user authentication.
+    *   `PdfViewerActivity.kt`: specialized activity for rendering PDF scores.
+    *   `SplashActivity.kt`: Launch screen with branding animation.
+*   **Fragments** (`*Fragment.kt`):
+    *   `HomeFragment.kt`: Landing page with trending songs and new releases.
+    *   `BrowseFragment.kt`: Searchable grid of all available songs.
+    *   `LibraryFragment.kt`: User's favorite songs.
+    *   `SongDetailFragment.kt`: Song metadata, lyrics, and media.
+    *   `SettingsFragment.kt`: User preferences and app management.
+*   **Data Models**:
+    *   `Song.kt`: Represents a music score entity.
+    *   `Artist.kt`: Represents a composer or performer.
+    *   `Arrangement.kt`: Detailed metadata for specific score versions.
+*   **Utilities**:
+    *   `SongHandler.kt`: Centralized logic for opening scores (handling premiums, offline files, etc.).
+    *   `AppLogger.kt`: Custom logging utility with encryption for secure bug reporting.
+    *   `UpdateManager.kt`: Auto-updater logic fetching releases from GitHub.
+    *   `FavoritesManager.kt`: Local storage management for user favorites.
+
+## Prerequisites
+
+Before you begin, ensure you have the following:
+
+*   **Android Studio**: Hedgehog (2023.1.1) or newer recommended.
+*   **JDK**: Java Development Kit 11 or higher.
+*   **Firebase Account**: You will need to set up a Firebase project.
+
+## Setup & Installation
+
+1.  **Clone the Repository**
     ```bash
     git clone https://github.com/AgentHitmanFaris/NCScoreBeta.git
     cd NCScoreBeta
     ```
 
-2.  **Configure Firebase**:
-    *   Go to the Firebase Console and create a new project (or use an existing one).
-    *   Add an Android app to your Firebase project.
+2.  **Firebase Configuration**
+    *   Go to the [Firebase Console](https://console.firebase.google.com/).
+    *   Create a new project.
+    *   Add an Android App with the package name `com.noobcompany.nc_scorebeta`.
     *   Download the `google-services.json` file.
-    *   Place `google-services.json` in the `app/` directory of the project.
+    *   **Important**: Place the `google-services.json` file inside the `app/` directory of your project.
+    *   Enable **Authentication** (Email/Password provider).
+    *   Enable **Firestore Database**.
 
-3.  **Build the Project**:
+3.  **Build the Project**
     *   Open the project in Android Studio.
-    *   Let Gradle sync and download dependencies.
-    *   Build the project: `Build > Make Project`.
+    *   Sync Gradle files (`File > Sync Project with Gradle Files`).
+    *   Build the project (`Build > Make Project`).
 
-4.  **Run the App**:
-    *   Connect an Android device or start an emulator.
-    *   Run the app: `Run > Run 'app'`.
+4.  **Run the App**
+    *   Connect an Android device (via USB) or create an Android Virtual Device (AVD).
+    *   Click `Run > Run 'app'`.
 
-## Usage
+## Usage Guide
 
-*   **Home**: The landing page showing new releases and trending scores.
-*   **Browse**: Search for songs by title or artist. Use the search bar to filter results.
-*   **Library**: View your favorite songs. You can filter your favorites using the search bar.
-*   **Artists**: Browse a complete list of artists.
-*   **Settings**: Manage your account, clear cache, check for updates, or report bugs.
-*   **Viewing a Score**: Tap on any song card to open the sheet music details. Click "Open Score" to view the PDF.
-*   **Offline Mode**: Enable "Offline Mode" in Settings to save viewed scores locally.
+*   **Navigation**: Use the bottom navigation bar to switch between Home, Browse, Artists, Library, and Settings.
+*   **Viewing Scores**: Tap on any song card. In the details page, click "Open Score".
+*   **Offline Mode**: Go to **Settings** and toggle "Offline Mode". When enabled, viewed scores are saved locally for future access without internet.
+*   **Favorites**: Tap the "Star" icon on any song card to add it to your Library.
+*   **Reporting Bugs**: In **Settings**, click "Report Bug". You can add a comment, and the app will generate an encrypted log file to send to the developers.
 
 ## Architecture
 
-The app currently uses a standard Activity/Fragment pattern with direct Firestore integration.
+The application follows a standard **Single-Activity Architecture** (mostly) where `MainActivity` hosts multiple Fragments.
 
-*   **Activities**: `MainActivity` (navigation host), `LoginActivity` (auth), `PdfViewerActivity` (score view), `SplashActivity`.
-*   **Fragments**: `HomeFragment`, `BrowseFragment`, `LibraryFragment`, `SettingsFragment`, `AllArtistsFragment`, `ArtistDetailFragment`, `SongDetailFragment`.
-*   **Data Classes**: `Song`, `Artist`, `Arrangement`.
-*   **Utilities**:
-    *   `AppLogger`: Handles logging and bug report generation (with encryption).
-    *   `UpdateManager`: Checks GitHub for app updates.
-    *   `SongHandler`: Manages logic for opening scores (premium checks, offline handling).
-    *   `FavoritesManager`: Manages local favorite song IDs.
+*   **UI Layer**: Fragments handle UI logic and user interaction.
+*   **Data Layer**: Direct integration with Firebase Firestore within Fragments and Adapter callbacks. *Note: A migration to the Repository Pattern is planned.*
+*   **Navigation**: Manual Fragment transactions are currently used.
 
-**Note:** A refactor to MVVM is planned (see Roadmap).
+## Roadmap
 
-## Future Roadmap & Todo List
+We have an ambitious roadmap to transform NC Score from a passive viewer into an interactive learning tool.
 
-We are actively working on transforming NC Score from a viewer into an interactive learning platform.
+*   **Short-term**: MVVM Refactor, Jetpack Compose migration.
+*   **Long-term**: MIDI Input support, Pitch Detection, and Gamification.
 
-### Short-term Goals
-- [ ] **Architecture Refactor**: Migrate from direct Activity logic to **MVVM** (ViewModel + Repository pattern) for improved stability and testability.
-- [ ] **UI Modernization**: Begin gradual migration from XML Layouts to **Jetpack Compose**.
-- [ ] **Gamification**: Add user XP, streaks, and "Days Practiced" tracking.
-
-### Long-term Goals (Interactive Learning)
-- [ ] **Data Migration**: Transition underlying data model from static PDFs to semantic formats (**MusicXML / MIDI**).
-- [ ] **Phase 1 - MIDI Input**: Implement `android.media.midi` to detect notes played on connected digital pianos.
-- [ ] **Phase 2 - Pitch Detection**: Prototype microphone-based note recognition (using libraries like TarsosDSP or Oboe) for acoustic instruments.
-- [ ] **Phase 3 - Feedback Loop**: Build a scrolling score view that provides real-time feedback (Green/Red notes) based on user performance.
-
-See `FUTURE_ROADMAP.md` for a deep dive into the technical strategy for these features.
+See [FUTURE_ROADMAP.md](FUTURE_ROADMAP.md) for detailed technical plans.
 
 ## License
 
-[License Information Here]
+[License Information]
+<!-- Updated by Jules -->

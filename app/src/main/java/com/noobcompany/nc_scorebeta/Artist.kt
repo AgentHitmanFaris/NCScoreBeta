@@ -1,15 +1,16 @@
 package com.noobcompany.nc_scorebeta
 
 /**
- * Data class representing an Artist.
+ * Data class representing a musical Artist.
  *
- * This class maps to the "artists" collection in Firestore and holds information about a specific artist.
+ * This class corresponds to the documents found in the "artists" collection within Firestore.
+ * It contains profile information such as the artist's name, biography, and image URL.
  *
- * @property id The unique identifier for the artist.
- * @property name The name of the artist.
- * @property bio A biography or description of the artist.
- * @property imageUrl The primary URL for the artist's image.
- * @property image A fallback URL for the artist's image, used if `imageUrl` is empty or if the field is named "image".
+ * @property id The unique identifier for the artist document.
+ * @property name The display name of the artist.
+ * @property bio A textual biography providing details about the artist's career and background.
+ * @property imageUrl The primary URL for the artist's profile image.
+ * @property image A fallback URL for the artist's image, maintained for backward compatibility with older data records.
  */
 data class Artist(
     val id: String = "",
@@ -19,11 +20,12 @@ data class Artist(
     val image: String = ""     // Fallback if field is named "image"
 ) {
     /**
-     * Retrieves a valid image URL for the artist.
+     * Resolves the valid image URL for the artist.
      *
-     * It checks the primary `imageUrl` first. If it is empty, it falls back to the `image` property.
+     * This utility function checks the primary `imageUrl` field first. If it is null or empty,
+     * it attempts to use the fallback `image` field.
      *
-     * @return The determined URL of the artist's image as a [String].
+     * @return A [String] containing the resolved image URL.
      */
     fun getSafeImage(): String {
         return if (imageUrl.isNotEmpty()) imageUrl else image

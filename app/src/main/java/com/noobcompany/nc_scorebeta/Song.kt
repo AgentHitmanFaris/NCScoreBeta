@@ -5,18 +5,20 @@ import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.PropertyName
 
 /**
- * Data class representing a Song.
+ * Data class representing a Song entity.
  *
- * This class maps to the "songs" collection in Firestore and contains all relevant metadata for a song entity.
+ * This class serves as the data model for song documents stored in the "songs" collection of Firestore.
+ * It encapsulates all essential metadata about a musical piece, including its title, associated artists,
+ * media links (album cover, YouTube video), and access rights (premium status).
  *
- * @property id The unique document ID of the song (automatically populated by Firestore).
+ * @property id The unique identifier for the song document. This field is automatically populated by Firestore's @DocumentId.
  * @property title The title of the song.
- * @property artistNames A list of artist names associated with the song. Mapped to the "artistNames" field in Firestore.
- * @property albumCover The URL of the album cover image.
- * @property isPremium Indicates whether this song requires a premium subscription or login to view.
- * @property createdAt The timestamp when the song was added to the database. Used for sorting.
- * @property lyrics The lyrics of the song, if available.
- * @property youtubeLink The URL or ID of the associated YouTube video. Mapped to the "video" field in Firestore.
+ * @property artistNames A list containing the names of all artists performing or composing the song. This maps to the "artistNames" field in the database.
+ * @property albumCover The HTTP URL pointing to the album art image for the song.
+ * @property isPremium A boolean flag indicating if the song is restricted to premium users. Defaults to false.
+ * @property createdAt The server-generated timestamp recording when the song was added. Used for sorting new releases.
+ * @property lyrics The full text of the song's lyrics. May be empty if not available.
+ * @property youtubeLink The URL or unique ID of a YouTube video associated with the song (e.g., a performance or tutorial). Mapped to "video".
  */
 data class Song(
     @DocumentId
@@ -41,9 +43,11 @@ data class Song(
     var youtubeLink: String = ""
 ) {
     /**
-     * Generates a formatted string of artist names.
+     * Helper function to generate a human-readable string of artist names.
      *
-     * @return A comma-separated [String] of artist names, or "Unknown Artist" if the list is empty.
+     * It concatenates the list of artist names into a single string separated by commas.
+     *
+     * @return A single [String] containing all artist names, or "Unknown Artist" if the list is empty.
      */
     fun getFormattedArtist(): String {
         return if (artistNames.isNotEmpty()) {

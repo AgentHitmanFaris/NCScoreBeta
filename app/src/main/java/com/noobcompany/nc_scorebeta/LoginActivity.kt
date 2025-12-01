@@ -12,10 +12,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 /**
- * Activity for handling User Login and Registration.
+ * Activity responsible for User Authentication (Login and Registration).
  *
- * It allows users to sign in with email/password or create a new account.
- * New accounts are also created in Firestore with default fields.
+ * This activity presents a unified interface for users to sign in or create a new account
+ * using email and password credentials. It manages the interaction with Firebase Authentication
+ * for credential verification and Firebase Firestore for creating and validating user profiles.
  */
 class LoginActivity : AppCompatActivity() {
 
@@ -24,12 +25,16 @@ class LoginActivity : AppCompatActivity() {
     private var isLoginMode = true
 
     /**
-     * Called when the activity is starting.
+     * Initializes the activity lifecycle.
      *
-     * Initializes Firebase Auth and Firestore, sets up the UI components for login/registration toggling,
-     * and attaches click listeners for the login/register button.
+     * Performs the following initialization steps:
+     * 1. Inflates the layout resources.
+     * 2. Initializes Firebase Auth and Firestore instances.
+     * 3. Binds UI elements (EditTexts, Buttons).
+     * 4. Sets up the click listener for toggling between "Login" and "Register" modes.
+     * 5. Sets up the click listener for the submission button to trigger auth logic.
      *
-     * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle).
+     * @param savedInstanceState Bundle containing the activity's previously saved state, if any.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -111,11 +116,14 @@ class LoginActivity : AppCompatActivity() {
     }
 
     /**
-     * Creates a new user document in Firestore upon successful registration.
+     * Creates a standard user document in the 'users' Firestore collection.
      *
-     * @param uid The user's unique ID from Firebase Auth.
-     * @param email The user's email address.
-     * @param name The user's display name.
+     * This is called immediately after a successful registration via Firebase Auth.
+     * It stores the user's display name, email, and creation timestamp.
+     *
+     * @param uid The unique user ID (UID) from Firebase Authentication.
+     * @param email The email address used for registration.
+     * @param name The user's provided display name.
      */
     private fun createFirestoreUser(uid: String?, email: String, name: String) {
         if (uid == null) return
@@ -140,9 +148,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     /**
-     * Verifies that the user exists in Firestore after a successful login.
+     * Verifies the existence of the user's Firestore document.
      *
-     * @param uid The user's unique ID.
+     * Called after a successful login to ensure the user has a valid profile in the database.
+     * This acts as an integrity check.
+     *
+     * @param uid The user ID to query.
      */
     private fun checkFirestoreUser(uid: String?) {
         if (uid == null) return
@@ -159,7 +170,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
     /**
-     * Finalizes the login process by hiding the progress bar, showing a success message, and closing the activity.
+     * Finalizes the authentication process.
+     *
+     * Hides the loading indicator, displays a success toast, sets the Activity result to [RESULT_OK],
+     * and finishes the activity to return control to the caller (MainActivity).
      */
     private fun finishLogin() {
         findViewById<ProgressBar>(R.id.progressBar).visibility = View.GONE

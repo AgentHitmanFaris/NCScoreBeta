@@ -16,20 +16,26 @@ import java.net.URL
 import java.util.regex.Pattern
 
 /**
- * Activity for viewing PDF files (sheet music).
+ * Activity for rendering PDF documents (Sheet Music).
  *
- * This activity handles the retrieval of a PDF URL from the intent, converting it to a direct download link if necessary
- * (e.g., for Google Drive links), downloading the PDF, and displaying it using the [PDFView] library.
+ * This activity acts as the core viewer for the application. It is capable of loading PDF files
+ * from remote URLs (including handling Google Drive shared links) and from local file paths
+ * (for offline viewing). It integrates the `AndroidPdfViewer` library for rendering.
  */
 class PdfViewerActivity : AppCompatActivity() {
 
     /**
      * Called when the activity is first created.
      *
-     * It retrieves the "PDF_URL" extra from the intent. If present, it initiates the download and display process.
-     * It also sets up the UI components and handles potential errors during the process.
+     * Logic flow:
+     * 1. Check for a local file path in the intent extras ("PDF_FILE").
+     *    - If present, load the file directly.
+     * 2. If no local file, check for a remote URL in intent extras ("PDF_URL").
+     *    - If present, attempt to convert the URL (e.g., if it's a Drive link).
+     *    - Download/Stream the content in a background coroutine.
+     *    - Render the stream into the PDFView on the main thread.
      *
-     * @param savedInstanceState If non-null, this activity is being re-constructed from a previous saved state.
+     * @param savedInstanceState Bundle with saved state.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -144,13 +150,13 @@ class PdfViewerActivity : AppCompatActivity() {
     }
 
     /**
-     * Sets up tap navigation zones for changing pages within the PDF view.
+     * Sets up invisible tap zones on the screen edges for page navigation.
      *
-     * Configures click listeners on invisible overlay views:
-     * - Tapping the left side navigates to the previous page.
-     * - Tapping the right side navigates to the next page.
+     * This replaces standard swipe gestures to prevent accidental page turns while playing.
+     * - Tapping left moves to previous page.
+     * - Tapping right moves to next page.
      *
-     * @param pdfView The [PDFView] instance to control.
+     * @param pdfView The PDFView instance to control.
      */
     private fun setupTapNavigation(pdfView: PDFView) {
         findViewById<View>(R.id.viewTapLeft).setOnClickListener {
@@ -169,13 +175,13 @@ class PdfViewerActivity : AppCompatActivity() {
     }
 
     /**
-     * Converts a raw URL into a direct download link.
+     * Utility to convert a cloud storage sharing link into a direct download link.
      *
-     * This method is specifically designed to handle Google Drive sharing links. It extracts the file ID
-     * and constructs a URL that triggers a direct download (`export=download`).
+     * Specifically handles Google Drive "view" links by extracting the file ID
+     * and constructing a "uc?export=download" URL.
      *
-     * @param url The original URL string.
-     * @return The converted direct download URL, or the original URL if no conversion was applicable.
+     * @param url The input URL.
+     * @return The direct download URL, or original if no conversion logic applies.
      */
     private fun getDirectUrl(url: String): String {
         // If it's a Google Drive link, we need to extract the ID and make it a download link

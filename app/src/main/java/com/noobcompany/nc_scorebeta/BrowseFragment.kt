@@ -16,10 +16,12 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 
 /**
- * Fragment that allows users to browse and search for songs.
+ * Fragment that provides the main browsing interface for the song library.
  *
- * It features a search bar for filtering songs by title or artist, and a grid view of songs
- * that supports infinite scrolling (pagination).
+ * Features:
+ * - A grid-based layout of all songs.
+ * - Infinite scrolling (pagination) to handle large datasets efficiently.
+ * - Real-time search functionality to filter by Song Title or Artist Name.
  */
 class BrowseFragment : Fragment() {
 
@@ -34,12 +36,12 @@ class BrowseFragment : Fragment() {
     private val displayedSongs: ArrayList<Song> = ArrayList()
 
     /**
-     * Inflates the layout for this fragment.
+     * Inflates the layout XML for the Browse screen.
      *
-     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
-     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
-     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
-     * @return The View for the fragment's UI, or null.
+     * @param inflater The LayoutInflater object.
+     * @param container The parent view.
+     * @param savedInstanceState Saved state bundle.
+     * @return The inflated View.
      */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,13 +51,13 @@ class BrowseFragment : Fragment() {
     }
 
     /**
-     * Called immediately after [onCreateView] has returned.
+     * Called immediately after the view is created.
      *
-     * Sets up the RecyclerView for displaying songs and the search functionality.
-     * Initiates the first load of songs.
+     * Initializes the RecyclerView for grid display and attaches the TextWatcher for search input.
+     * Triggers the initial load of song data.
      *
      * @param view The View returned by [onCreateView].
-     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     * @param savedInstanceState Saved state bundle.
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -68,10 +70,10 @@ class BrowseFragment : Fragment() {
     }
 
     /**
-     * Sets up the RecyclerView with a grid layout and a scroll listener for pagination.
+     * Configures the RecyclerView with a [GridLayoutManager] (2 columns).
      *
-     * It configures the adapter with click listeners for song selection and artist navigation.
-     * The scroll listener detects when the user reaches the bottom of the list to load more songs.
+     * Adds an `OnScrollListener` to detect when the user scrolls to the bottom of the list,
+     * triggering the loading of the next page of results.
      *
      * @param view The root view of the fragment.
      */
@@ -121,9 +123,10 @@ class BrowseFragment : Fragment() {
     }
 
     /**
-     * Sets up the search bar to filter results as the user types.
+     * Sets up the search input field.
      *
-     * It adds a text watcher to the search EditText to trigger search queries on text changes.
+     * Attaches a [TextWatcher] to the EditText. On text change, it debounces (implicitly via logic)
+     * and triggers a new search query.
      *
      * @param view The root view of the fragment.
      */
@@ -143,12 +146,11 @@ class BrowseFragment : Fragment() {
     }
 
     /**
-     * Loads songs from Firestore.
+     * Loads songs from the "songs" collection in Firestore.
      *
-     * Can load the initial batch or subsequent pages based on `isInitial`.
-     * It queries the "songs" collection, ordered by title.
+     * Supports pagination using `startAfter` the last visible document.
      *
-     * @param isInitial True if this is the first load (clears existing data), false for pagination.
+     * @param isInitial If true, clears the current list and starts a fresh query.
      */
     private fun loadSongs(isInitial: Boolean) {
         val progressBar = view?.findViewById<ProgressBar>(R.id.progressBar)
@@ -189,11 +191,14 @@ class BrowseFragment : Fragment() {
     }
 
     /**
-     * Performs a search query against Firestore for songs matching the title or artist.
+     * Executes a composite search query.
      *
-     * Combines results from a title prefix search and an exact artist name search (array-contains).
+     * 1. Searches for songs where `title` starts with the query string (prefix search).
+     * 2. Searches for songs where `artistNames` contains the query string (exact array match).
      *
-     * @param query The search string.
+     * The results are merged, deduplicated by ID, and displayed.
+     *
+     * @param query The search term.
      */
     private fun performSearch(query: String) {
         if (query.isEmpty()) {

@@ -7,19 +7,21 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 /**
- * Singleton object that handles the logic for opening songs.
+ * Singleton object that serves as the central manager for handling song interactions.
  *
- * It manages the flow of verifying premium access and fetching the appropriate PDF link.
+ * This utility class encapsulates the logic for opening song details, verifying premium access permissions,
+ * and managing the retrieval of sheet music (PDFs) from either local storage (offline mode) or remote Firestore URLs.
  */
 object SongHandler {
 
     /**
-     * Handles a click event on a song.
+     * Handles the primary user interaction when a song item is clicked in the UI.
      *
-     * Opens the song detail view.
+     * It directs the application to open the detailed view of the selected song.
+     * If the context is [MainActivity], it delegates the navigation to it; otherwise, it shows a toast.
      *
-     * @param context The application context.
-     * @param song The song object that was clicked.
+     * @param context The [Context] in which the click occurred, typically the [MainActivity].
+     * @param song The [Song] data object representing the clicked item.
      */
     fun onSongClicked(context: Context, song: Song) {
         // NEW FLOW: Open Detail Fragment first
@@ -32,13 +34,15 @@ object SongHandler {
     }
     
     /**
-     * Opens the score for the given song.
+     * Initiates the process of opening the sheet music (PDF) for a specific song.
      *
-     * If the song is premium, it checks for access. Otherwise, it fetches and opens the PDF.
-     * This method is renamed from onSongClicked to openScore for direct access from Detail Page.
+     * This method contains the business logic for:
+     * 1. Checking if the song requires premium access.
+     * 2. If premium, verifying the user's subscription or login status.
+     * 3. If standard (or verified premium), fetching the PDF URL or local file path.
      *
-     * @param context The application context.
-     * @param song The song to open.
+     * @param context The application [Context].
+     * @param song The [Song] object to be opened.
      */
     fun openScore(context: Context, song: Song) {
         if (song.isPremium) {
@@ -49,12 +53,13 @@ object SongHandler {
     }
 
     /**
-     * Checks if the current user has access to premium content.
+     * Internal helper to verify if the current user is authorized to view premium content.
      *
-     * Requires the user to be logged in. It verifies the user's existence in Firestore.
+     * Checks if a user is logged in via Firebase Auth and if their profile exists in the 'users' collection.
+     * If unauthorized, it redirects the user to the [LoginActivity].
      *
-     * @param context The application context.
-     * @param song The premium song to access.
+     * @param context The application [Context].
+     * @param song The premium [Song] attempting to be accessed.
      */
     private fun checkPremiumAccess(context: Context, song: Song) {
         val user = FirebaseAuth.getInstance().currentUser
@@ -86,12 +91,13 @@ object SongHandler {
     }
 
     /**
-     * Fetches the PDF link for a premium song.
+     * Fetches the secure download link for a verified premium song.
      *
-     * Premium songs have their content stored in a nested "secure" subcollection.
+     * Premium songs have their content stored in a nested "secure" subcollection to prevent public access.
+     * This method first looks up the arrangement ID and then queries the secure subcollection.
      *
-     * @param context The application context.
-     * @param song The premium song.
+     * @param context The application [Context].
+     * @param song The premium [Song] object.
      */
     @Suppress("UNCHECKED_CAST")
     private fun fetchPremiumPdf(context: Context, song: Song) {
@@ -120,11 +126,11 @@ object SongHandler {
     }
 
     /**
-     * Fetches the actual download link from the secure subcollection.
+     * Retrieves the actual PDF URL from the nested 'secure' document in Firestore.
      *
-     * @param context The application context.
-     * @param songId The ID of the song.
-     * @param arrangementId The ID of the arrangement.
+     * @param context The application [Context].
+     * @param songId The unique ID of the song.
+     * @param arrangementId The unique ID of the arrangement.
      */
     private fun fetchNestedSecureLink(context: Context, songId: String, arrangementId: String) {
         FirebaseFirestore.getInstance()
@@ -163,10 +169,13 @@ object SongHandler {
     }
 
     /**
-     * Fetches and opens the PDF for a standard (non-premium) song.
+     * Fetches and opens the PDF for a standard (public) song.
      *
-     * @param context The application context.
-     * @param song The song to open.
+     * This method respects the "Offline Mode" preference. If enabled, it attempts to load the file
+     * from local storage. If not found or offline mode is disabled, it fetches the URL from the 'arrangements' subcollection.
+     *
+     * @param context The application [Context].
+     * @param song The [Song] object.
      */
     private fun fetchAndOpenPdf(context: Context, song: Song) {
         Toast.makeText(context, "Opening ${song.title}...", Toast.LENGTH_SHORT).show()
@@ -215,10 +224,10 @@ object SongHandler {
     }
 
     /**
-     * Launches the [PdfViewerActivity] with the given URL.
+     * Helper to launch the [PdfViewerActivity] with a remote URL.
      *
-     * @param context The application context.
-     * @param url The URL of the PDF file.
+     * @param context The application [Context].
+     * @param url The web URL of the PDF file.
      */
     private fun openPdfViewer(context: Context, url: String) {
         val intent = Intent(context, PdfViewerActivity::class.java)
@@ -227,11 +236,13 @@ object SongHandler {
     }
 
     /**
-     * Downloads the PDF to local storage and then opens it.
+     * Downloads the PDF file to local storage and then opens it in the viewer.
      *
-     * @param context The application context.
-     * @param songId The ID of the song.
-     * @param url The URL to download.
+     * This ensures the file is available for future offline access.
+     *
+     * @param context The application [Context].
+     * @param songId The ID of the song (used as the filename).
+     * @param url The URL of the PDF to download.
      */
     private fun downloadAndOpenPdf(context: Context, songId: String, url: String) {
         Toast.makeText(context, "Downloading for offline use...", Toast.LENGTH_SHORT).show()

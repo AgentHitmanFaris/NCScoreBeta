@@ -18,10 +18,14 @@ import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 
 /**
- * Fragment that displays detailed information about a specific song.
+ * Fragment that displays detailed metadata and media content for a selected Song.
  *
- * It shows the song's cover art, title, artist, lyrics, and an embedded YouTube video if available.
- * It also provides a button to open the sheet music (score).
+ * This screen serves as the "landing page" for a piece of music. It presents:
+ * - Album Cover Art.
+ * - Song Title and Artist.
+ * - Full Lyrics (if available).
+ * - Embedded YouTube video (Performance or Tutorial).
+ * - A primary call-to-action button to view the sheet music.
  */
 class SongDetailFragment : Fragment() {
 
@@ -29,11 +33,11 @@ class SongDetailFragment : Fragment() {
     private var currentSong: Song? = null
 
     /**
-     * Called to do initial creation of a fragment.
+     * Initializes the fragment.
      *
-     * Retrieves the song ID from the arguments.
+     * Retrieves the "SONG_ID" passed in the arguments bundle.
      *
-     * @param savedInstanceState If the fragment is being re-created from a previous saved state, this is the state.
+     * @param savedInstanceState Saved state bundle.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,12 +45,12 @@ class SongDetailFragment : Fragment() {
     }
 
     /**
-     * Inflates the layout for this fragment.
+     * Inflates the layout XML for the Song Detail screen.
      *
-     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
-     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
-     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
-     * @return The View for the fragment's UI, or null.
+     * @param inflater The LayoutInflater object.
+     * @param container The parent view.
+     * @param savedInstanceState Saved state bundle.
+     * @return The inflated View.
      */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,12 +60,13 @@ class SongDetailFragment : Fragment() {
     }
 
     /**
-     * Called immediately after [onCreateView] has returned.
+     * Called immediately after the view is created.
      *
-     * Sets up the toolbar navigation, loads song data if an ID is present, and configures the "Open Score" button.
+     * Sets up the toolbar back navigation, triggers the Firestore data load for the specific song ID,
+     * and binds the "Open Score" button action.
      *
      * @param view The View returned by [onCreateView].
-     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     * @param savedInstanceState Saved state bundle.
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -78,7 +83,7 @@ class SongDetailFragment : Fragment() {
         val btnOpenScore = view.findViewById<Button>(R.id.btnOpenScore)
         btnOpenScore.setOnClickListener {
             currentSong?.let { song ->
-                // Use SongHandler's logic to open the score
+                // Delegate opening logic to the central handler
                 context?.let { ctx -> SongHandler.openScore(ctx, song) }
             } ?: run {
                 Toast.makeText(context, "Song data not loaded yet", Toast.LENGTH_SHORT).show()
@@ -87,9 +92,9 @@ class SongDetailFragment : Fragment() {
     }
 
     /**
-     * Fetches the song data from Firestore using the provided ID.
+     * Fetches the specific song document from the "songs" collection in Firestore.
      *
-     * @param id The ID of the song to fetch.
+     * @param id The unique ID of the song to fetch.
      */
     private fun loadSongData(id: String) {
         FirebaseFirestore.getInstance().collection("songs").document(id)
@@ -110,11 +115,13 @@ class SongDetailFragment : Fragment() {
     }
 
     /**
-     * Updates the UI elements with the details of the fetched song.
+     * Updates the UI components with data from the fetched [Song] object.
      *
-     * Sets the title, artist, cover image, lyrics, and configures the YouTube WebView.
+     * - Sets text fields.
+     * - Loads images using Glide.
+     * - Configures the WebView for YouTube playback if a link is present.
      *
-     * @param song The [Song] object containing the data.
+     * @param song The [Song] data object.
      */
     @SuppressLint("SetJavaScriptEnabled")
     private fun updateUI(song: Song) {
@@ -183,12 +190,12 @@ class SongDetailFragment : Fragment() {
     }
 
     /**
-     * Extracts the YouTube video ID from a given URL.
+     * Extracts the 11-character YouTube Video ID from a given URL.
      *
-     * It handles various YouTube URL formats (watch?v=, youtu.be, embed/, etc.) as well as raw video IDs.
+     * Handles standard formats (watch?v=), short formats (youtu.be/), and embed formats.
      *
-     * @param url The YouTube URL or ID.
-     * @return The extracted video ID, or an empty string if not found.
+     * @param url The input YouTube URL.
+     * @return The extracted Video ID, or an empty string if not found.
      */
     private fun extractVideoId(url: String): String {
         val cleanUrl = url.trim()

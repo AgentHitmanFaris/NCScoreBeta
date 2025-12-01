@@ -17,10 +17,11 @@ import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 
 /**
- * Singleton object for handling application logging.
+ * Singleton utility responsible for comprehensive application logging and secure bug reporting.
  *
- * It provides methods to log messages and errors, store them in an internal buffer,
- * and export encrypted logs for bug reporting.
+ * `AppLogger` intercepts and stores log messages in a thread-safe in-memory buffer.
+ * It provides advanced functionality to aggregate these internal logs with the system's logcat,
+ * compress the result, and encrypt it using AES-256 for secure transmission in bug reports.
  */
 object AppLogger {
     private val logs = CopyOnWriteArrayList<String>()
@@ -31,12 +32,13 @@ object AppLogger {
     private const val CIPHER_ALGORITHM = "AES/CBC/PKCS5Padding"
 
     /**
-     * Logs a debug message.
+     * Records a standard debug message.
      *
-     * The message is printed to the standard Android Log and added to the internal log buffer.
+     * The message is written to the Android Logcat with the debug priority and
+     * appended to the internal rolling buffer for potential future export.
      *
-     * @param tag The tag identifying the source of the log message.
-     * @param message The message to be logged.
+     * @param tag A short string tag identifying the source component (e.g., class name).
+     * @param message The debug message text to record.
      */
     fun log(tag: String, message: String) {
         val timestamp = SimpleDateFormat("MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
@@ -53,13 +55,14 @@ object AppLogger {
     }
 
     /**
-     * Logs an error message and an optional exception.
+     * Records an error message and associated exception.
      *
-     * The error is printed to the standard Android Log and added to the internal log buffer.
+     * This method captures the stack trace of the provided throwable and logs it
+     * alongside the error message to both Logcat (error priority) and the internal buffer.
      *
-     * @param tag The tag identifying the source of the error.
-     * @param message The error message to be logged.
-     * @param throwable The exception or error associated with the log, if any.
+     * @param tag A short string tag identifying the source component.
+     * @param message The error description.
+     * @param throwable The exception or error that caused this log entry (optional).
      */
     fun error(tag: String, message: String, throwable: Throwable? = null) {
         val timestamp = SimpleDateFormat("MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
@@ -74,28 +77,33 @@ object AppLogger {
     }
 
     /**
-     * Retrieves a copy of the current internal logs.
+     * Returns a snapshot of the current in-memory logs.
      *
-     * @return A list of log strings.
+     * @return An immutable [List] containing the recent log strings.
      */
     fun getLogs(): List<String> {
         return logs.toList()
     }
     
     /**
-     * Clears the internal log buffer.
+     * Clears the internal in-memory log buffer.
      */
     fun clear() {
         logs.clear()
     }
 
     /**
-     * Captures system logcat and internal logs, compresses them using GZIP, and encrypts them using AES.
+     * Compiles, compresses, and encrypts a full system log dump.
      *
-     * This method is useful for generating secure bug reports.
+     * This operation performs the following steps:
+     * 1. Collects any user-provided comments.
+     * 2. Appends the internal application logs.
+     * 3. Executes the `logcat` command to retrieve recent system logs for this process.
+     * 4. Compresses the combined text using GZIP.
+     * 5. Encrypts the compressed binary using AES-256 (CBC mode).
      *
-     * @param userComment Optional user comment to include in the logs.
-     * @return A Base64 encoded string containing the encrypted and compressed logs.
+     * @param userComment Additional context provided by the user for the bug report.
+     * @return A Base64-encoded string containing the fully encrypted log package.
      */
     fun getEncryptedSystemLogs(userComment: String = ""): String {
         try {
@@ -134,10 +142,10 @@ object AppLogger {
     }
 
     /**
-     * Compresses the given string data using GZIP.
+     * Compresses a string into a GZIP byte array.
      *
-     * @param data The string data to compress.
-     * @return A byte array containing the compressed data.
+     * @param data The raw string data.
+     * @return The compressed data as a [ByteArray].
      */
     private fun compress(data: String): ByteArray {
         val bos = ByteArrayOutputStream()
@@ -148,10 +156,13 @@ object AppLogger {
     }
 
     /**
-     * Encrypts the given byte array using AES encryption.
+     * Encrypts a byte array using AES-256 CBC.
      *
-     * @param data The byte array to encrypt.
-     * @return A Base64 encoded string containing the IV and the encrypted data.
+     * Generates a random Initialization Vector (IV) for each encryption operation.
+     * The IV is prepended to the ciphertext to allow for decryption.
+     *
+     * @param data The data to encrypt.
+     * @return A Base64 string of [IV + Ciphertext].
      */
     private fun encrypt(data: ByteArray): String {
         val secretKey = SecretKeySpec(ENCRYPTION_KEY.toByteArray(StandardCharsets.UTF_8), "AES")

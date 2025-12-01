@@ -3,12 +3,15 @@ package com.noobcompany.nc_scorebeta
 import com.google.firebase.firestore.PropertyName
 
 /**
- * Data class representing a musical arrangement.
+ * Data class that represents the structure of a musical arrangement document.
  *
- * This class is used to map arrangement data from Firestore, containing the download link and the type of arrangement.
+ * This model is specifically designed to parse arrangement data fetched from the "arrangements"
+ * sub-collection in Firestore. It provides the necessary links to download the sheet music
+ * and categorizes the arrangement by type (e.g., specific instrument or ensemble).
  *
- * @property downloadLink The URL to download the arrangement (e.g., a PDF file). Mapped to the "downloadLink" field in Firestore.
- * @property type The type of the arrangement (e.g., "Piano Solo", "Ensemble").
+ * @property downloadLink The direct URL to the downloadable content (typically a PDF file).
+ *                        It is mapped to the "downloadLink" field in the Firestore document.
+ * @property type A string descriptor of the arrangement style (e.g., "Piano Solo", "Full Score", "Lead Sheet").
  */
 data class Arrangement(
     // The web app calls it 'downloadLink', so we must match that

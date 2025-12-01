@@ -11,15 +11,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 /**
- * RecyclerView Adapter for displaying a list of [Song] objects.
+ * A flexible RecyclerView Adapter for displaying lists of [Song] items.
  *
- * It supports both list and grid layouts via the [useGrid] parameter.
- * It handles interactions such as song clicks, artist name clicks, and toggling favorite status.
+ * This adapter is designed to handle multiple view types (List, Grid, Carousel) based on configuration flags.
+ * It integrates with [ListAdapter] to support efficient list updates via [DiffUtil].
  *
- * @property useGrid If true, the adapter uses a grid layout; otherwise, it uses a card/list layout.
- * @property useCarousel If true, the adapter uses a carousel layout; otherwise, it uses a card/list or grid layout.
- * @property onSongClicked Callback function invoked when a song item is clicked. Receives the [Song] object.
- * @property onArtistClicked Optional callback function invoked when the artist name is clicked. Receives the artist name as a [String].
+ * @property useGrid If set to `true`, the adapter inflates the grid layout (`item_song_grid`).
+ * @property useCarousel If set to `true`, the adapter inflates the carousel layout (`item_song_carousel`).
+ *                       Takes precedence over `useGrid` if both are true (logic in onCreateViewHolder).
+ * @property onSongClicked Callback triggered when the main song item is clicked.
+ * @property onArtistClicked Callback triggered when the artist name within the item is clicked.
  */
 class SongAdapter(
     private val useGrid: Boolean = false,
@@ -30,46 +31,52 @@ class SongAdapter(
 
     // Backward compatibility constructor - defaults artist click to null
     /**
-     * Secondary constructor for backward compatibility.
+     * Convenience constructor for basic list usage without carousel support or artist click handling.
      *
-     * @param initialList The initial list of songs to display.
+     * @param initialList The starting list of songs.
      * @param useGrid Whether to use grid layout.
-     * @param onSongClicked Callback for when a song is clicked.
+     * @param onSongClicked Item click listener.
      */
     constructor(initialList: List<Song>, useGrid: Boolean = false, onSongClicked: (Song) -> Unit) : this(useGrid = useGrid, useCarousel = false, onSongClicked = onSongClicked, onArtistClicked = null) {
         submitList(initialList)
     }
 
     /**
-     * Secondary constructor for backward compatibility.
+     * Convenience constructor for the simplest list usage.
      *
-     * @param initialList The initial list of songs to display.
-     * @param onSongClicked Callback for when a song is clicked.
+     * @param initialList The starting list of songs.
+     * @param onSongClicked Item click listener.
      */
     constructor(initialList: List<Song>, onSongClicked: (Song) -> Unit) : this(initialList, false, onSongClicked)
 
     /**
-     * ViewHolder class for caching view references for a song item.
+     * ViewHolder for Song items.
      *
-     * @param itemView The view for a single song item.
+     * Maintains references to the visual elements of a song card/row.
+     *
+     * @param itemView The root view.
      */
     inner class SongViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        /** Displays the album cover art. */
         val ivAlbumCover: ImageView = itemView.findViewById(R.id.ivAlbumCover)
+        /** Displays the song title. */
         val tvTitle: TextView = itemView.findViewById(R.id.tvTitle)
+        /** Displays the artist name(s). */
         val tvArtist: TextView = itemView.findViewById(R.id.tvArtist)
+        /** Icon indicating premium status. */
         val ivPremiumStar: ImageView = itemView.findViewById(R.id.ivPremiumStar)
+        /** Icon for toggling favorites. */
         val ivFavorite: ImageView = itemView.findViewById(R.id.ivFavorite)
+        /** Reference to the root view for click handling. */
         val root: View = itemView
     }
 
     /**
-     * Creates a new [SongViewHolder] by inflating the appropriate layout.
+     * Inflates the appropriate layout XML based on the adapter's configuration.
      *
-     * Selects between `item_song_grid`, `item_song_carousel`, and `item_song_card` based on configuration.
-     *
-     * @param parent The parent [ViewGroup].
-     * @param viewType The view type.
-     * @return A new [SongViewHolder].
+     * @param parent The parent ViewGroup.
+     * @param viewType The view type (unused as this adapter handles logic internally via flags).
+     * @return A new SongViewHolder.
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongViewHolder {
         val layoutId = when {
@@ -82,12 +89,12 @@ class SongAdapter(
     }
 
     /**
-     * Binds the song data to the ViewHolder at the specified position.
+     * Binds [Song] data to the views.
      *
-     * Updates the UI with song details (title, artist, album cover), visibility of the premium indicator,
-     * and the current favorite status. It also sets up click listeners for the song item, artist name, and favorite button.
+     * Sets text, loads images, manages visibility of premium badges, and configures
+     * the favorite icon state. Also attaches specific click listeners.
      *
-     * @param holder The [SongViewHolder] to update.
+     * @param holder The ViewHolder to update.
      * @param position The position of the item in the list.
      */
     override fun onBindViewHolder(holder: SongViewHolder, position: Int) {
@@ -131,28 +138,24 @@ class SongAdapter(
     }
 
     /**
-     * DiffUtil callback implementation for calculating optimal updates for the list of songs.
-     *
-     * Used by [ListAdapter] to efficiently update the RecyclerView.
+     * DiffUtil Callback for calculating list updates.
      */
     class SongDiffCallback : DiffUtil.ItemCallback<Song>() {
         /**
-         * Checks if two items represent the same object.
-         *
-         * @param oldItem The item in the old list.
-         * @param newItem The item in the new list.
-         * @return True if the items have the same ID.
+         * Checks if two items refer to the same logical entity (by ID).
+         * @param oldItem The old item.
+         * @param newItem The new item.
+         * @return `true` if IDs match.
          */
         override fun areItemsTheSame(oldItem: Song, newItem: Song): Boolean {
             return oldItem.id == newItem.id
         }
 
         /**
-         * Checks if two items have the same content.
-         *
-         * @param oldItem The item in the old list.
-         * @param newItem The item in the new list.
-         * @return True if the items are equal.
+         * Checks if the content of two items is identical (for UI update purposes).
+         * @param oldItem The old item.
+         * @param newItem The new item.
+         * @return `true` if content matches.
          */
         override fun areContentsTheSame(oldItem: Song, newItem: Song): Boolean {
             return oldItem == newItem

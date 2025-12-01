@@ -21,10 +21,14 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 /**
- * Fragment that displays application settings and user profile options.
+ * Fragment for configuring application settings and managing the user profile.
  *
- * It provides functionality for the user to log in or out, clear the app cache, view the "About" information,
- * report bugs (including sending encrypted logs), and check for application updates.
+ * This screen provides options for:
+ * - Authentication (Log In / Log Out).
+ * - Toggling "Offline Mode" preferences.
+ * - System maintenance (Clearing Cache).
+ * - Application Updates (GitHub Release check).
+ * - Bug Reporting (Encrypted logs submission).
  */
 class SettingsFragment : Fragment() {
 
@@ -32,12 +36,12 @@ class SettingsFragment : Fragment() {
     private lateinit var dividerLogout: View
 
     /**
-     * Inflates the layout for this fragment.
+     * Inflates the layout XML for the Settings screen.
      *
-     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
-     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
-     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
-     * @return The View for the fragment's UI, or null.
+     * @param inflater The LayoutInflater object.
+     * @param container The parent view.
+     * @param savedInstanceState Saved state bundle.
+     * @return The inflated View.
      */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,12 +51,12 @@ class SettingsFragment : Fragment() {
     }
 
     /**
-     * Called immediately after [onCreateView] has returned.
+     * Called immediately after the view is created.
      *
-     * Initializes the UI components, displays the current app version, and sets up action listeners for the settings options.
+     * Initializes the settings UI, populates version information, and sets up click listeners.
      *
      * @param view The View returned by [onCreateView].
-     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     * @param savedInstanceState Saved state bundle.
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -71,9 +75,9 @@ class SettingsFragment : Fragment() {
     }
 
     /**
-     * Called when the fragment is resumed.
+     * Lifecycle method: Called when the fragment resumes.
      *
-     * Updates the state of the logout button (Log In vs Log Out) to reflect the current authentication status.
+     * Refreshes the Login/Logout button state to reflect any changes in authentication status.
      */
     override fun onResume() {
         super.onResume()
@@ -81,10 +85,10 @@ class SettingsFragment : Fragment() {
     }
 
     /**
-     * Updates the text and behavior of the logout/login button based on whether a user is currently signed in.
+     * Updates the text and behavior of the Auth button.
      *
-     * If signed in, it configures the button to log out.
-     * If signed out, it configures the button to navigate to the [LoginActivity].
+     * - If signed in: Displays "Log Out (email)" and sets listener to sign out.
+     * - If signed out: Displays "Log In / Register" and sets listener to open LoginActivity.
      */
     private fun updateLogoutButton() {
         val user = FirebaseAuth.getInstance().currentUser
@@ -119,7 +123,7 @@ class SettingsFragment : Fragment() {
     }
 
     /**
-     * Sets up click listeners for the various settings actions (Clear Cache, About, Report Bug, Check Update).
+     * Initializes click listeners for all settings items.
      *
      * @param view The root view of the fragment.
      */
@@ -157,7 +161,9 @@ class SettingsFragment : Fragment() {
     }
 
     /**
-     * Collects system logs and device information, encrypts the logs, and sends a bug report to the "bug_reports" collection in Firestore.
+     * Initiates the bug reporting flow.
+     *
+     * Shows a dialog for optional user comments before triggering the log generation.
      */
     private fun reportBug() {
         val input = EditText(context)
@@ -175,9 +181,14 @@ class SettingsFragment : Fragment() {
     }
 
     /**
-     * Sends the bug report to Firestore.
+     * Generates and transmits a secure bug report.
      *
-     * @param comment The user's comment describing the issue.
+     * 1. Collects system logs via [AppLogger].
+     * 2. Encrypts the logs.
+     * 3. Collects device metadata (Model, OS version).
+     * 4. Uploads the package to the "bug_reports" collection in Firestore.
+     *
+     * @param comment User's description of the issue.
      */
     private fun sendBugReport(comment: String) {
         Toast.makeText(context, "Generating Report...", Toast.LENGTH_SHORT).show()
@@ -214,7 +225,9 @@ class SettingsFragment : Fragment() {
     }
 
     /**
-     * Clears the application's internal cache directory and displays a toast with the amount of space cleared.
+     * Clears the application cache directory.
+     *
+     * Useful for troubleshooting or freeing up storage space.
      */
     private fun clearCache() {
         try {
@@ -228,10 +241,10 @@ class SettingsFragment : Fragment() {
     }
 
     /**
-     * Recursively deletes a directory and all of its contents.
+     * Recursive directory deletion helper.
      *
-     * @param dir The directory (or file) to delete.
-     * @return True if the deletion was successful, false otherwise.
+     * @param dir The directory to remove.
+     * @return `true` if successful.
      */
     private fun deleteDir(dir: File?): Boolean {
         if (dir != null && dir.isDirectory) {
@@ -252,10 +265,10 @@ class SettingsFragment : Fragment() {
     }
 
     /**
-     * Recursively calculates the total size of a directory and its contents.
+     * Recursive size calculation helper.
      *
-     * @param dir The directory (or file) to measure.
-     * @return The total size in bytes.
+     * @param dir The directory to measure.
+     * @return Total size in bytes.
      */
     private fun getDirSize(dir: File?): Long {
         var size: Long = 0
@@ -273,10 +286,10 @@ class SettingsFragment : Fragment() {
     }
 
     /**
-     * Formats a byte size into a human-readable string (KB or MB).
+     * Formats bytes into human-readable string.
      *
-     * @param size The size in bytes.
-     * @return A string representing the size in KB or MB.
+     * @param size Bytes.
+     * @return String like "5 MB" or "100 KB".
      */
     private fun formatSize(size: Long): String {
         val kb = size / 1024

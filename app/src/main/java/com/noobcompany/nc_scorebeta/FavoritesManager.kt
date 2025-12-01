@@ -4,30 +4,32 @@ import android.content.Context
 import android.content.SharedPreferences
 
 /**
- * Singleton object to manage user's favorite songs.
+ * Singleton manager for handling user favorites.
  *
- * Stores a set of favorite song IDs in SharedPreferences.
+ * This object abstracts the `SharedPreferences` interaction required to persist the user's
+ * list of favorite songs locally on the device. It supports adding, removing, and querying
+ * the favorite status of songs by their unique ID.
  */
 object FavoritesManager {
     private const val PREF_NAME = "favorites_prefs"
     private const val KEY_FAVORITES = "favorite_song_ids"
 
     /**
-     * Helper method to get the SharedPreferences instance.
+     * Internal helper to access the application's shared preferences for favorites.
      *
-     * @param context The application context.
-     * @return The SharedPreferences instance.
+     * @param context The Android Context required to open SharedPreferences.
+     * @return The `SharedPreferences` instance.
      */
     private fun getPrefs(context: Context): SharedPreferences {
         return context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
     }
 
     /**
-     * Checks if a song is marked as a favorite.
+     * Determines if a song is currently in the user's favorites list.
      *
-     * @param context The application context.
-     * @param songId The ID of the song to check.
-     * @return True if the song is a favorite, false otherwise.
+     * @param context The application Context.
+     * @param songId The unique ID of the song to check.
+     * @return `true` if the song ID exists in the stored set; `false` otherwise.
      */
     fun isFavorite(context: Context, songId: String): Boolean {
         val favorites = getFavorites(context)
@@ -35,13 +37,14 @@ object FavoritesManager {
     }
 
     /**
-     * Toggles the favorite status of a song.
+     * Toggles the favorite state of a song.
      *
-     * If the song is currently a favorite, it is removed. If it is not, it is added.
+     * If the song is already favorited, it is removed. If not, it is added.
+     * The changes are immediately committed to storage.
      *
-     * @param context The application context.
-     * @param songId The ID of the song to toggle.
-     * @return True if the song is now a favorite, false if it was removed.
+     * @param context The application Context.
+     * @param songId The unique ID of the song.
+     * @return `true` if the song resulted in being a favorite (added); `false` if it was removed.
      */
     fun toggleFavorite(context: Context, songId: String): Boolean {
         val prefs = getPrefs(context)
@@ -61,10 +64,10 @@ object FavoritesManager {
     }
 
     /**
-     * Retrieves the set of all favorite song IDs.
+     * Retrieves the complete set of favorite song IDs.
      *
-     * @param context The application context.
-     * @return A set of strings representing the IDs of favorite songs.
+     * @param context The application Context.
+     * @return An immutable [Set] of song IDs. Returns an empty set if no favorites are stored.
      */
     fun getFavorites(context: Context): Set<String> {
         return getPrefs(context).getStringSet(KEY_FAVORITES, emptySet()) ?: emptySet()

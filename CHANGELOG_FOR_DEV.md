@@ -1,5 +1,13 @@
 # Changelog for Developers
 
+## [1.5.6] - 2025-12-11
+
+### Fixed
+- **YouTube ID Extraction**: Added explicit safety stripping of query parameters (like `?si=...`) in `extractVideoId`. This ensures that if a user provides an existing embed link with parameters, they are cleanly removed before generating the new standardized `<iframe>` tag.
+
+### Changed
+- **App Version**: Incremented `versionCode` to 13 and `versionName` to "1.5.6" in `app/build.gradle.kts`.
+
 ## [1.5.5] - 2025-12-11
 
 ### Fixed

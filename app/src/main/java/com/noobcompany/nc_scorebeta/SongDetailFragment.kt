@@ -227,8 +227,10 @@ class SongDetailFragment : Fragment() {
         val matcher = compiledPattern.matcher(cleanUrl)
         
         return if (matcher.find()) {
-            val videoId = matcher.group()
-            AppLogger.log("SongDetail", "extractVideoId: Regex found match: '$videoId'")
+            val rawId = matcher.group()
+            // Ensure we strip any trailing query params if the regex missed them (e.g. ?si=...)
+            val videoId = rawId.substringBefore('?')
+            AppLogger.log("SongDetail", "extractVideoId: Regex found match: '$videoId' (from '$rawId')")
             videoId
         } else {
             AppLogger.log("SongDetail", "extractVideoId: Regex found no match.")

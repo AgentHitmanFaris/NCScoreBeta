@@ -1,5 +1,13 @@
 # Changelog for Developers
 
+## [1.5.5] - 2025-12-11
+
+### Fixed
+- **YouTube Embedding Logic**: Updated `SongDetailFragment.kt` to use a comprehensive `<iframe>` tag format with specific attributes (`referrerpolicy`, `allow` features, and `si` parameter) to improve compatibility and fix playback issues. The Video ID is now always extracted to reconstruct this tag dynamically.
+
+### Changed
+- **App Version**: Incremented `versionCode` to 12 and `versionName` to "1.5.5" in `app/build.gradle.kts`.
+
 ## [1.5.4] - 2025-12-11
 
 ### Fixed

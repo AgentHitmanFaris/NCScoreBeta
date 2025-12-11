@@ -173,37 +173,29 @@ class SongDetailFragment : Fragment() {
                 }
             }
             
-            val finalEmbedUrl: String
-            
-            // Check if the link is already an embed URL (e.g., youtube.com/embed/ or youtube-nocookie.com/embed/)
-            if (song.youtubeLink.contains("/embed/")) {
-                AppLogger.log("SongDetail", "Link is already an embed URL. Using as-is.")
-                finalEmbedUrl = song.youtubeLink.trim()
-            } else {
-                val videoId = extractVideoId(song.youtubeLink)
-                AppLogger.log("SongDetail", "Extracted Video ID: '$videoId'")
-                
-                if (videoId.isNotEmpty()) {
-                    finalEmbedUrl = "https://www.youtube.com/embed/$videoId"
-                } else {
-                    AppLogger.error("SongDetail", "Failed to extract video ID from: ${song.youtubeLink}")
-                    webViewYoutube.visibility = View.GONE
-                    return // Exit if we can't get an embed URL
-                }
-            }
-            
-            AppLogger.log("SongDetail", "Final Embed URL for WebView: $finalEmbedUrl")
+            val videoId = extractVideoId(song.youtubeLink)
+            AppLogger.log("SongDetail", "Extracted Video ID: '$videoId'")
 
-            val html = """
-                <!DOCTYPE html>
-                <html>
-                <body style="margin:0;padding:0;">
-                    <iframe width="100%" height="100%" src="$finalEmbedUrl" frameborder="0" allowfullscreen></iframe>
-                </body>
-                </html>
-            """.trimIndent()
-            
-            webViewYoutube.loadDataWithBaseURL("https://www.youtube.com", html, "text/html", "utf-8", null)
+            if (videoId.isNotEmpty()) {
+                // Generate a random 'si' parameter (Session Info)
+                val si = java.util.UUID.randomUUID().toString().replace("-", "").take(16)
+                val embedUrl = "https://www.youtube.com/embed/$videoId?si=$si"
+                AppLogger.log("SongDetail", "Generated Embed URL: $embedUrl")
+
+                val html = """
+                    <!DOCTYPE html>
+                    <html>
+                    <body style="margin:0;padding:0;">
+                        <iframe width="100%" height="100%" src="$embedUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </body>
+                    </html>
+                """.trimIndent()
+
+                webViewYoutube.loadDataWithBaseURL("https://www.youtube.com", html, "text/html", "utf-8", null)
+            } else {
+                AppLogger.error("SongDetail", "Failed to extract video ID from: ${song.youtubeLink}")
+                webViewYoutube.visibility = View.GONE
+            }
         } else {
             webViewYoutube.visibility = View.GONE
         }

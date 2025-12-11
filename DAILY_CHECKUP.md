@@ -17,8 +17,7 @@ This file is used to track daily progress and contributions.
 - Updated `activity_splash.xml` to display `ic_launcher` as the logo.
 - Updated app version to 1.5.2 and documented changes in `CHANGELOG_FOR_DEV.md`.
 - **Correction**: Reverted YouTube Base URL to `https` to fix Error 152-4.
-- Fixed a regex bug in `SongDetailFragment` where invisible characters caused failures for URL-encoded embed links.
-- Enhanced `WebViewClient` to catch and log errors, and to properly handle "Watch on YouTube" navigation by opening external apps.
+- **Enhancement**: Implemented robust YouTube `<iframe>` construction with `si` parameter and strict `referrerpolicy` to ensure playback reliability.
 
 ---
 

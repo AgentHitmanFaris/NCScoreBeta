@@ -1,13 +1,9 @@
 package com.noobcompany.nc_scorebeta
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebChromeClient
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -16,6 +12,9 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 
 /**
  * Fragment that displays detailed metadata and media content for a selected Song.
@@ -119,11 +118,10 @@ class SongDetailFragment : Fragment() {
      *
      * - Sets text fields.
      * - Loads images using Glide.
-     * - Configures the WebView for YouTube playback if a link is present.
+     * - Configures the YouTubePlayerView for YouTube playback if a link is present.
      *
      * @param song The [Song] data object.
      */
-    @SuppressLint("SetJavaScriptEnabled")
     private fun updateUI(song: Song) {
         val view = view ?: return
         
@@ -131,7 +129,10 @@ class SongDetailFragment : Fragment() {
         val tvDetailTitle = view.findViewById<TextView>(R.id.tvDetailTitle)
         val tvDetailArtist = view.findViewById<TextView>(R.id.tvDetailArtist)
         val tvLyrics = view.findViewById<TextView>(R.id.tvLyrics)
-        val webViewYoutube = view.findViewById<WebView>(R.id.webViewYoutube)
+        val youtubePlayerView = view.findViewById<YouTubePlayerView>(R.id.youtube_player_view)
+        
+        // Add lifecycle observer for YouTubePlayerView
+        lifecycle.addObserver(youtubePlayerView)
 
         tvDetailTitle.text = song.title
         tvDetailArtist.text = song.getFormattedArtist()
@@ -146,58 +147,24 @@ class SongDetailFragment : Fragment() {
 
         // Setup YouTube Embed
         if (song.youtubeLink.isNotBlank()) {
-            AppLogger.log("SongDetail", "Processing YouTube Link: '${song.youtubeLink}'")
+            AppLogger.log("SongDetail", "Processing YouTube Link: '${song.youtubeLink}' with YouTubePlayerView")
 
-            webViewYoutube.settings.javaScriptEnabled = true // JavaScript enabled per user request
-            webViewYoutube.settings.domStorageEnabled = true
-            webViewYoutube.webChromeClient = WebChromeClient()
-            webViewYoutube.webViewClient = object : WebViewClient() {
-                override fun onReceivedError(view: WebView?, request: android.webkit.WebResourceRequest?, error: android.webkit.WebResourceError?) {
-                    super.onReceivedError(view, request, error)
-                    AppLogger.error("SongDetail", "WebView Error: ${error?.description} (Code: ${error?.errorCode})")
-                }
-
-                override fun shouldOverrideUrlLoading(view: WebView?, request: android.webkit.WebResourceRequest?): Boolean {
-                    val url = request?.url?.toString() ?: return false
-                    // If the user clicks "Watch on YouTube", open in external app/browser
-                    if (url.contains("youtube.com/watch") || url.contains("youtu.be")) {
-                        try {
-                            val intent = android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(url))
-                            view?.context?.startActivity(intent)
-                            return true
-                        } catch (e: Exception) {
-                            AppLogger.error("SongDetail", "Failed to open external YouTube link", e)
-                        }
-                    }
-                    return false
-                }
-            }
-            
             val videoId = extractVideoId(song.youtubeLink)
             AppLogger.log("SongDetail", "Extracted Video ID: '$videoId'")
 
             if (videoId.isNotEmpty()) {
-                // Generate a random 'si' parameter (Session Info)
-                val si = java.util.UUID.randomUUID().toString().replace("-", "").take(16)
-                val embedUrl = "https://www.youtube.com/embed/$videoId?si=$si"
-                AppLogger.log("SongDetail", "Generated Embed URL: $embedUrl")
-
-                val html = """
-                    <!DOCTYPE html>
-                    <html>
-                    <body style="margin:0;padding:0;">
-                        <iframe width="100%" height="100%" src="$embedUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </body>
-                    </html>
-                """.trimIndent()
-
-                webViewYoutube.loadDataWithBaseURL("https://www.youtube.com", html, "text/html", "utf-8", null)
+                youtubePlayerView.visibility = View.VISIBLE
+                youtubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+                    override fun onReady(youTubePlayer: YouTubePlayer) {
+                        youTubePlayer.cueVideo(videoId, 0f) // cueVideo will load the video but not autoplay
+                    }
+                })
             } else {
                 AppLogger.error("SongDetail", "Failed to extract video ID from: ${song.youtubeLink}")
-                webViewYoutube.visibility = View.GONE
+                youtubePlayerView.visibility = View.GONE
             }
         } else {
-            webViewYoutube.visibility = View.GONE
+            youtubePlayerView.visibility = View.GONE
         }
     }
 

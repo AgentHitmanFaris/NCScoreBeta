@@ -1,5 +1,13 @@
 # Changelog for Developers
 
+## [1.5.8] - 2025-12-11
+
+### Fixed
+- **YouTube Error 152-4**: Replaced WebView-based YouTube embedding with `com.pierfrancescosoffritti.androidyoutubeplayer:core`. This uses a dedicated library for YouTube playback, which is more robust and should resolve persistent embedding errors.
+
+### Changed
+- **App Version**: Incremented `versionCode` to 15 and `versionName` to "1.5.8" in `app/build.gradle.kts`.
+
 ## [1.5.7] - 2025-12-11
 
 ### Documentation

@@ -20,6 +20,7 @@ This file is used to track daily progress and contributions.
 - **Enhancement**: Implemented robust YouTube `<iframe>` construction with `si` parameter and strict `referrerpolicy` to ensure playback reliability.
 - **Refinement**: Added safety check to `extractVideoId` to handle and strip existing query parameters from input URLs.
 - **Clarification**: Added explicit comment in `SongDetailFragment.kt` confirming WebView JavaScript is enabled.
+- **Major Fix**: Replaced WebView YouTube embedding with `androidyoutubeplayer` library to resolve persistent errors like 152-4.
 
 ---
 

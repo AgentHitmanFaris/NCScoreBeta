@@ -12,8 +12,8 @@ android {
         applicationId = "com.noobcompany.nc_scorebeta"
         minSdk = 24
         targetSdk = 34
-        versionCode = 14
-        versionName = "1.5.7"
+        versionCode = 15
+        versionName = "1.5.8"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -59,4 +59,7 @@ dependencies {
 
     // --- PDF READER (Switched to 'mhiew' fork which works on JitPack) ---
     implementation("com.github.mhiew:android-pdf-viewer:3.2.0-beta.3")
+
+    // --- Youtube Player ---
+    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
 }

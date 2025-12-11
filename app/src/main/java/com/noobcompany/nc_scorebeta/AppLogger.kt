@@ -6,7 +6,9 @@ import java.io.BufferedReader
 import java.io.ByteArrayOutputStream
 import java.io.InputStreamReader
 import java.nio.charset.StandardCharsets
+import java.security.KeyFactory
 import java.security.SecureRandom
+import java.security.spec.X509EncodedKeySpec
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -21,15 +23,16 @@ import javax.crypto.spec.SecretKeySpec
  *
  * `AppLogger` intercepts and stores log messages in a thread-safe in-memory buffer.
  * It provides advanced functionality to aggregate these internal logs with the system's logcat,
- * compress the result, and encrypt it using AES-256 for secure transmission in bug reports.
+ * compress the result, and encrypt it using a hybrid RSA+AES approach for secure transmission.
  */
 object AppLogger {
     private val logs = CopyOnWriteArrayList<String>()
     private const val MAX_LOGS = 200
     
-    // 32 bytes for AES-256
-    private const val ENCRYPTION_KEY = "NCScoreBetaKey2024SecretKeyVer01" 
-    private const val CIPHER_ALGORITHM = "AES/CBC/PKCS5Padding"
+    // RSA Public Key (2048-bit)
+    private const val PUBLIC_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvJL2pB0Uu28GrpXjReEV8HTMMRgJ127DZKiePVz5aiu8YNf51UaHEKm8TsMyvK0nEs7f6ba777Sax73dWrecLQ6A/rZWTG375+4fSoo7NO21Nn0CyzaFAO2q58FFoeN01pvOY3eePky63FH9NaRwhP0pF6Y6W5lznVXudgfTWIl3O63+iqIAYntyHgukLKtJCtShf1Nyzx0yBvzC5Zk8n6FYhskWafmu1xfj7E4PfBcynQ3G7dcAad+xdmWizthF92znb4IVoJr/WVgIO+u8N9li8mnxELRwJQPhjq1UR2nlrUEe3/7SIsxkGhqjtyU4FlgsyJfuscNUBzU0+dDJFwIDAQAB"
+    private const val AES_ALGORITHM = "AES/CBC/PKCS5Padding"
+    private const val RSA_ALGORITHM = "RSA/ECB/OAEPWithSHA-256AndMGF1Padding"
 
     /**
      * Records a standard debug message.
@@ -100,7 +103,7 @@ object AppLogger {
      * 2. Appends the internal application logs.
      * 3. Executes the `logcat` command to retrieve recent system logs for this process.
      * 4. Compresses the combined text using GZIP.
-     * 5. Encrypts the compressed binary using AES-256 (CBC mode).
+     * 5. Encrypts the compressed binary using Hybrid Encryption (RSA + AES).
      *
      * @param userComment Additional context provided by the user for the bug report.
      * @return A Base64-encoded string containing the fully encrypted log package.
@@ -156,30 +159,43 @@ object AppLogger {
     }
 
     /**
-     * Encrypts a byte array using AES-256 CBC.
+     * Encrypts a byte array using Hybrid Encryption (RSA + AES).
      *
-     * Generates a random Initialization Vector (IV) for each encryption operation.
-     * The IV is prepended to the ciphertext to allow for decryption.
+     * 1. Generates a random AES key (32 bytes).
+     * 2. Encrypts the data using AES-256-CBC.
+     * 3. Encrypts the AES key using the RSA Public Key.
+     * 4. Combines [Encrypted AES Key (256)] + [IV (16)] + [AES Encrypted Data].
      *
      * @param data The data to encrypt.
-     * @return A Base64 string of [IV + Ciphertext].
+     * @return A Base64 string of the combined blob.
      */
     private fun encrypt(data: ByteArray): String {
-        val secretKey = SecretKeySpec(ENCRYPTION_KEY.toByteArray(StandardCharsets.UTF_8), "AES")
-        val cipher = Cipher.getInstance(CIPHER_ALGORITHM)
-        
-        // Generate random IV (16 bytes)
+        // 1. Generate random AES Key (32 bytes)
+        val aesKeyBytes = ByteArray(32)
+        SecureRandom().nextBytes(aesKeyBytes)
+        val secretKey = SecretKeySpec(aesKeyBytes, "AES")
+
+        // 2. Encrypt Data with AES
+        val cipherAes = Cipher.getInstance(AES_ALGORITHM)
         val iv = ByteArray(16)
         SecureRandom().nextBytes(iv)
-        val ivSpec = IvParameterSpec(iv)
+        cipherAes.init(Cipher.ENCRYPT_MODE, secretKey, IvParameterSpec(iv))
+        val encryptedData = cipherAes.doFinal(data)
 
-        cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivSpec)
-        val encryptedBytes = cipher.doFinal(data)
+        // 3. Encrypt AES Key with RSA Public Key
+        val pubKeySpec = X509EncodedKeySpec(Base64.decode(PUBLIC_KEY, Base64.DEFAULT))
+        val keyFactory = KeyFactory.getInstance("RSA")
+        val publicKey = keyFactory.generatePublic(pubKeySpec)
 
-        // Combine IV + Encrypted Data
-        val combined = ByteArray(iv.size + encryptedBytes.size)
-        System.arraycopy(iv, 0, combined, 0, iv.size)
-        System.arraycopy(encryptedBytes, 0, combined, iv.size, encryptedBytes.size)
+        val cipherRsa = Cipher.getInstance(RSA_ALGORITHM)
+        cipherRsa.init(Cipher.ENCRYPT_MODE, publicKey)
+        val encryptedKey = cipherRsa.doFinal(aesKeyBytes) // 256 bytes for 2048-bit key
+
+        // 4. Combine: [EncryptedKey (256)] + [IV (16)] + [EncryptedData]
+        val combined = ByteArray(encryptedKey.size + iv.size + encryptedData.size)
+        System.arraycopy(encryptedKey, 0, combined, 0, encryptedKey.size)
+        System.arraycopy(iv, 0, combined, encryptedKey.size, iv.size)
+        System.arraycopy(encryptedData, 0, combined, encryptedKey.size + iv.size, encryptedData.size)
 
         return Base64.encodeToString(combined, Base64.NO_WRAP)
     }

@@ -1,5 +1,13 @@
 # Changelog for Developers
 
+## [1.5.2] - 2025-12-11
+
+### Fixed
+- **YouTube Player Base URL**: Updated `SongDetailFragment.kt` to use `http://www.youtube.com` (instead of `https`) as the base URL in `loadDataWithBaseURL`. This ensures strictly following the "fake http URL" fix recommendation for the YouTube player.
+
+### Changed
+- **App Version**: Incremented `versionCode` to 9 and `versionName` to "1.5.2" in `app/build.gradle.kts`.
+
 ## [1.5.1] - 2025-12-11
 
 ### Fixed

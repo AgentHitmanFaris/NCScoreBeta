@@ -9,12 +9,16 @@ This file is used to track daily progress and contributions.
 - [x] Update Splash Screen Logo
 - [x] Bump App Version & Update Changelog
 - [x] Fix YouTube Error 152-4
+- [x] Fix YouTube URL regex invisible character bug
+- [x] Improve YouTube WebView error handling
 
 ### Notes
 - Replaced `loadData` mechanism with `loadDataWithBaseURL` using `http://www.youtube.com` as the base to resolve WebView crash/loading issues.
 - Updated `activity_splash.xml` to display `ic_launcher` as the logo.
 - Updated app version to 1.5.2 and documented changes in `CHANGELOG_FOR_DEV.md`.
 - **Correction**: Reverted YouTube Base URL to `https` to fix Error 152-4.
+- Fixed a regex bug in `SongDetailFragment` where invisible characters caused failures for URL-encoded embed links.
+- Enhanced `WebViewClient` to catch and log errors, and to properly handle "Watch on YouTube" navigation by opening external apps.
 
 ---
 

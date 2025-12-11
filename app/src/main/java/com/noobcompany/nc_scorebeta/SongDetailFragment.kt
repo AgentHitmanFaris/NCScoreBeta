@@ -151,7 +151,27 @@ class SongDetailFragment : Fragment() {
             webViewYoutube.settings.javaScriptEnabled = true
             webViewYoutube.settings.domStorageEnabled = true
             webViewYoutube.webChromeClient = WebChromeClient()
-            webViewYoutube.webViewClient = WebViewClient()
+            webViewYoutube.webViewClient = object : WebViewClient() {
+                override fun onReceivedError(view: WebView?, request: android.webkit.WebResourceRequest?, error: android.webkit.WebResourceError?) {
+                    super.onReceivedError(view, request, error)
+                    AppLogger.error("SongDetail", "WebView Error: ${error?.description} (Code: ${error?.errorCode})")
+                }
+
+                override fun shouldOverrideUrlLoading(view: WebView?, request: android.webkit.WebResourceRequest?): Boolean {
+                    val url = request?.url?.toString() ?: return false
+                    // If the user clicks "Watch on YouTube", open in external app/browser
+                    if (url.contains("youtube.com/watch") || url.contains("youtu.be")) {
+                        try {
+                            val intent = android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(url))
+                            view?.context?.startActivity(intent)
+                            return true
+                        } catch (e: Exception) {
+                            AppLogger.error("SongDetail", "Failed to open external YouTube link", e)
+                        }
+                    }
+                    return false
+                }
+            }
             
             val finalEmbedUrl: String
             
@@ -209,7 +229,7 @@ class SongDetailFragment : Fragment() {
 
         // Case 2: Extract from URL using Regex
         // Matches: youtube.com/watch?v=ID, youtu.be/ID, youtube.com/embed/ID, etc.
-        val pattern = "(?<=watch\\?v=|/videos/|embed/|youtu.be/|/v/|/e/|watch\\?v%3D|watch\\?feature=player_embedded&v=|%2Fvideos%2F|embed%\u200C\u200B2F|youtu.be%2F|%2Fv%2F)[^#\\&\\?\\n]*"
+        val pattern = "(?<=watch\\?v=|/videos/|embed/|youtu.be/|/v/|/e/|watch\\?v%3D|watch\\?feature=player_embedded&v=|%2Fvideos%2F|embed%2F|youtu.be%2F|%2Fv%2F)[^#\\&\\?\\n]*"
         AppLogger.log("SongDetail", "extractVideoId: Using regex pattern: '$pattern'")
         val compiledPattern = java.util.regex.Pattern.compile(pattern)
         val matcher = compiledPattern.matcher(cleanUrl)

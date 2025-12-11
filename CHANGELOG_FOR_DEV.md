@@ -1,5 +1,13 @@
 # Changelog for Developers
 
+## [1.5.3] - 2025-12-11
+
+### Documentation
+- **Daily Checklist**: Updated `DAILY_CHECKUP.md` with today's tasks (YouTube fix, Splash Logo, Version bumps).
+
+### Changed
+- **App Version**: Incremented `versionCode` to 10 and `versionName` to "1.5.3" in `app/build.gradle.kts`.
+
 ## [1.5.2] - 2025-12-11
 
 ### Fixed

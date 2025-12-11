@@ -183,7 +183,7 @@ class SongDetailFragment : Fragment() {
                 </html>
             """.trimIndent()
             
-            webViewYoutube.loadDataWithBaseURL("http://www.youtube.com", html, "text/html", "utf-8", null)
+            webViewYoutube.loadDataWithBaseURL("https://www.youtube.com", html, "text/html", "utf-8", null)
         } else {
             webViewYoutube.visibility = View.GONE
         }

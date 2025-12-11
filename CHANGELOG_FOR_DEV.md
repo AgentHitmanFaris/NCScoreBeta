@@ -1,5 +1,13 @@
 # Changelog for Developers
 
+## [1.5.4] - 2025-12-11
+
+### Fixed
+- **YouTube Error 152-4**: Reverted the Base URL in `SongDetailFragment.kt` from `http://www.youtube.com` back to `https://www.youtube.com`. The previous change caused a protocol mismatch (HTTPS iframe in HTTP context), leading to Error 152-4 (Referer/Origin blocked).
+
+### Changed
+- **App Version**: Incremented `versionCode` to 11 and `versionName` to "1.5.4" in `app/build.gradle.kts`.
+
 ## [1.5.3] - 2025-12-11
 
 ### Documentation

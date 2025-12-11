@@ -1,5 +1,13 @@
 # Changelog for Developers
 
+## [1.5.7] - 2025-12-11
+
+### Documentation
+- **WebView JavaScript**: Added an explicit comment in `SongDetailFragment.kt` to highlight that `webViewYoutube.settings.javaScriptEnabled` is set to `true`, addressing the user's inquiry about JavaScript enablement.
+
+### Changed
+- **App Version**: Incremented `versionCode` to 14 and `versionName` to "1.5.7" in `app/build.gradle.kts`.
+
 ## [1.5.6] - 2025-12-11
 
 ### Fixed

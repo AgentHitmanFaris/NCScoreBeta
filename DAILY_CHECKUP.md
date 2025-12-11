@@ -19,6 +19,7 @@ This file is used to track daily progress and contributions.
 - **Correction**: Reverted YouTube Base URL to `https` to fix Error 152-4.
 - **Enhancement**: Implemented robust YouTube `<iframe>` construction with `si` parameter and strict `referrerpolicy` to ensure playback reliability.
 - **Refinement**: Added safety check to `extractVideoId` to handle and strip existing query parameters from input URLs.
+- **Clarification**: Added explicit comment in `SongDetailFragment.kt` confirming WebView JavaScript is enabled.
 
 ---
 

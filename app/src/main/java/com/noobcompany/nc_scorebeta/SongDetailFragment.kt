@@ -148,7 +148,7 @@ class SongDetailFragment : Fragment() {
         if (song.youtubeLink.isNotBlank()) {
             AppLogger.log("SongDetail", "Processing YouTube Link: '${song.youtubeLink}'")
 
-            webViewYoutube.settings.javaScriptEnabled = true
+            webViewYoutube.settings.javaScriptEnabled = true // JavaScript enabled per user request
             webViewYoutube.settings.domStorageEnabled = true
             webViewYoutube.webChromeClient = WebChromeClient()
             webViewYoutube.webViewClient = object : WebViewClient() {

@@ -25,6 +25,16 @@ class LoginActivity : AppCompatActivity() {
     private var isLoginMode = true
 
     /**
+     * Checks if the password meets security requirements.
+     * Rule: Minimum 8 characters, at least one letter, and at least one digit.
+     */
+    private fun isPasswordStrong(password: String): Boolean {
+        return password.length >= 8 &&
+                password.any { it.isLetter() } &&
+                password.any { it.isDigit() }
+    }
+
+    /**
      * Initializes the activity lifecycle.
      *
      * Performs the following initialization steps:
@@ -87,6 +97,10 @@ class LoginActivity : AppCompatActivity() {
                 }
                 if (password != confirmPassword) {
                     Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+                if (!isPasswordStrong(password)) {
+                    Toast.makeText(this, "Password must be at least 8 characters with letters and numbers", Toast.LENGTH_LONG).show()
                     return@setOnClickListener
                 }
             }

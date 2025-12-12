@@ -46,7 +46,9 @@ object UpdateManager {
      *
      * @property context The context used for displaying dialogs and toasts upon completion.
      */
-    private class FetchReleaseTask(val context: Context) : AsyncTask<Void, Void, String?>() {
+    private class FetchReleaseTask(context: Context) : AsyncTask<Void, Void, String?>() {
+        private val contextRef = java.lang.ref.WeakReference(context)
+
         /**
          * executes the network request to GitHub in a background thread.
          *
@@ -80,6 +82,9 @@ object UpdateManager {
          * @param result The JSON string retrieved from GitHub.
          */
         override fun onPostExecute(result: String?) {
+            val context = contextRef.get()
+            if (context == null) return
+
             if (result == null) {
                 Toast.makeText(context, "Failed to check for updates.", Toast.LENGTH_SHORT).show()
                 return
@@ -169,20 +174,33 @@ object UpdateManager {
      *
      * @property context The Context.
      */
-    private class DownloadTask(val context: Context) : AsyncTask<String, Int, File?>() {
+    private class DownloadTask(context: Context) : AsyncTask<String, Int, File?>() {
+        private val contextRef = java.lang.ref.WeakReference(context)
         private var progressDialog: ProgressDialog? = null
 
         /**
          * Sets up the progress dialog before download starts.
          */
         override fun onPreExecute() {
-            progressDialog = ProgressDialog(context)
-            progressDialog?.setMessage("Downloading Update...")
-            progressDialog?.isIndeterminate = false
-            progressDialog?.max = 100
-            progressDialog?.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL)
-            progressDialog?.setCancelable(false)
-            progressDialog?.show()
+            val context = contextRef.get() ?: return
+
+            // Check if context is valid Activity before showing dialog
+            if (context is android.app.Activity && (context.isFinishing || context.isDestroyed)) {
+                return
+            }
+
+            try {
+                progressDialog = ProgressDialog(context)
+                progressDialog?.setMessage("Downloading Update...")
+                progressDialog?.isIndeterminate = false
+                progressDialog?.max = 100
+                progressDialog?.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL)
+                progressDialog?.setCancelable(false)
+                progressDialog?.show()
+            } catch (e: Exception) {
+                // Handle WindowLeaked or other UI errors
+                e.printStackTrace()
+            }
         }
 
         /**
@@ -193,6 +211,12 @@ object UpdateManager {
          */
         override fun doInBackground(vararg params: String?): File? {
             val downloadUrl = params[0] ?: return null
+
+            // We need context to access storage.
+            // Note: doInBackground runs on background thread. contextRef might be cleared if Activity destroyed.
+            // But we can check it.
+            val context = contextRef.get() ?: return null
+
             return try {
                 val url = URL(downloadUrl)
                 val connection = url.openConnection() as HttpURLConnection
@@ -243,7 +267,17 @@ object UpdateManager {
          * @param file The downloaded APK file.
          */
         override fun onPostExecute(file: File?) {
-            progressDialog?.dismiss()
+            // Dismiss dialog safely
+            if (progressDialog != null && progressDialog!!.isShowing) {
+                try {
+                    progressDialog?.dismiss()
+                } catch (e: IllegalArgumentException) {
+                    // Handle case where activity is already gone
+                }
+            }
+
+            val context = contextRef.get() ?: return
+
             if (file != null) {
                 installApk(context, file)
             } else {

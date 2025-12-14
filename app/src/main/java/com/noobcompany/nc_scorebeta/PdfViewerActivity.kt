@@ -86,6 +86,12 @@ class PdfViewerActivity : AppCompatActivity() {
         Log.d("PdfViewer", "Original: $rawPdfUrl")
         Log.d("PdfViewer", "Direct: $directUrl")
         
+        if (!SecurityUtils.isSecureUrl(directUrl)) {
+            Toast.makeText(this, "Security Error: Only HTTPS URLs are allowed.", Toast.LENGTH_LONG).show()
+            finish()
+            return
+        }
+
         progressBar.visibility = View.VISIBLE
 
         lifecycleScope.launch(Dispatchers.IO) {
@@ -199,4 +205,5 @@ class PdfViewerActivity : AppCompatActivity() {
         // If it's not a Google Drive link (or we couldn't find ID), return original
         return url
     }
+
 }

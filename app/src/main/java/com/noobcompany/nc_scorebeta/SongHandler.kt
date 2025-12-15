@@ -245,6 +245,11 @@ object SongHandler {
      * @param url The URL of the PDF to download.
      */
     private fun downloadAndOpenPdf(context: Context, songId: String, url: String) {
+        if (!SecurityUtils.isSecureUrl(url)) {
+            Toast.makeText(context, "Security Error: Insecure URL rejected.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         Toast.makeText(context, "Downloading for offline use...", Toast.LENGTH_SHORT).show()
         
         // Simple download using DownloadManager or Thread (Thread is easier for immediate open)
@@ -258,7 +263,10 @@ object SongHandler {
                 // However, getExternalFilesDir depends on Context.
                 // We grab it early if possible or safely unwrap.
                 val ctxForPath = contextRef.get() ?: return@thread
-                val destFile = java.io.File(ctxForPath.getExternalFilesDir("scores"), "$songId.pdf")
+
+                // Sanitize filename to prevent path traversal
+                val safeSongId = SecurityUtils.sanitizeFilename(songId)
+                val destFile = java.io.File(ctxForPath.getExternalFilesDir("scores"), "$safeSongId.pdf")
 
                 val parent = destFile.parentFile
                 if (parent != null && !parent.exists()) parent.mkdirs()

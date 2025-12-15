@@ -17,4 +17,15 @@ object SecurityUtils {
             false
         }
     }
+
+    /**
+     * Sanitizes a filename to ensure it only contains safe characters.
+     * Prevents path traversal and file system issues.
+     *
+     * @param name The original filename.
+     * @return A sanitized string safe for use as a filename.
+     */
+    fun sanitizeFilename(name: String): String {
+        return name.replace(Regex("[^a-zA-Z0-9._-]"), "_")
+    }
 }

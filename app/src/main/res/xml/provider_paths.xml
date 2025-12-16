@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths>
-    <external-path name="external_files" path="." />
-    <external-cache-path name="external_cache_files" path="." />
-    <files-path name="internal_files" path="." />
-    <cache-path name="internal_cache_files" path="." />
+    <!--
+      Restricting FileProvider access to only specific directories.
+      We used to expose "." (root) of all storage types which is insecure.
+
+      Analysis of file usage:
+      1. UpdateManager uses `context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)`.
+         This maps to `Android/data/<package>/files/Download/`.
+         The matching element is <external-files-path> with path="Download/".
+
+      2. SongHandler uses `context.getExternalFilesDir("scores")`.
+         This maps to `Android/data/<package>/files/scores/`.
+         The matching element is <external-files-path> with path="scores/".
+
+      No other `FileProvider` usage was found in the codebase.
+    -->
+
+    <!-- Used by UpdateManager for APK installation -->
+    <external-files-path name="downloads" path="Download/" />
+
+    <!-- Used by SongHandler for scores (if shared via intent in future) -->
+    <external-files-path name="scores" path="scores/" />
 </paths>

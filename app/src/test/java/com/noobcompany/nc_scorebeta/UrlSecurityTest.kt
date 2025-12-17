@@ -15,7 +15,23 @@ class UrlSecurityTest {
     @Test
     fun `isSecureUrl rejects http`() {
         assertFalse(SecurityUtils.isSecureUrl("http://example.com/file.pdf"))
-        assertFalse(SecurityUtils.isSecureUrl("http://192.168.1.1/config"))
+    }
+
+    @Test
+    fun `isSecureUrl rejects private ips`() {
+        assertFalse(SecurityUtils.isSecureUrl("https://192.168.1.1/config"))
+        assertFalse(SecurityUtils.isSecureUrl("https://10.0.0.5/data"))
+        assertFalse(SecurityUtils.isSecureUrl("https://172.16.0.1/admin"))
+        assertFalse(SecurityUtils.isSecureUrl("https://127.0.0.1/local"))
+        assertFalse(SecurityUtils.isSecureUrl("https://localhost/api"))
+        assertFalse(SecurityUtils.isSecureUrl("https://169.254.1.1/meta"))
+    }
+
+    @Test
+    fun `isSecureUrl rejects ambiguous ips`() {
+        assertFalse(SecurityUtils.isSecureUrl("https://0127.0.0.1")) // Octal
+        assertFalse(SecurityUtils.isSecureUrl("https://[::1]")) // IPv6 Loopback
+        assertFalse(SecurityUtils.isSecureUrl("https://[fe80::1]")) // IPv6 Link Local
     }
 
     @Test

@@ -2,6 +2,20 @@
 
 This file is used to track daily progress and contributions.
 
+## Date: 2025-12-12
+
+### To-Do
+- [x] Fix SSRF Vulnerability in `SecurityUtils`
+- [x] Create test case for private IP blocking
+
+### Notes
+- Identified that `SecurityUtils.isSecureUrl` allowed connections to private IP addresses (e.g., `192.168.x.x`) and localhost.
+- Enhanced `SecurityUtils.kt` to block private IP ranges (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, 127.0.0.0/8, 169.254.0.0/16).
+- Verified the fix with a standalone Java reproduction script since Gradle tests are unavailable.
+- Updated `UrlSecurityTest.kt` to include test cases for private IPs for future verification.
+
+---
+
 ## Date: 2025-12-11
 
 ### To-Do

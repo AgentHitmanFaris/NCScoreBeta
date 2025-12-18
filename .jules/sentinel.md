@@ -16,3 +16,10 @@
 - Blocked Private IP ranges (`192.168.x.x`, `10.x.x.x`, `172.16-31.x.x`)
 - Blocked Link-Local (`169.254.x.x`)
 - Note: This is a regex-based block to avoid `NetworkOnMainThreadException` from DNS lookups. It prevents direct IP access but not DNS rebinding or domains pointing to private IPs (which would require async DNS resolution). Ideally, DNS resolution should happen on a background thread before connection.
+
+## 2025-02-27 - DNS Rebinding & Hardcoded Keys
+**Vulnerability:**
+1. `SecurityUtils` relied on string-based blocking, which is vulnerable to DNS Rebinding.
+2. `AppLogger` contains a hardcoded RSA Public Key.
+**Learning:** String-based IP blocking is easily bypassed by domains resolving to private IPs. Validating the resolved IP is essential for SSRF protection.
+**Prevention:** Implemented `isSafeUrlWithDnsCheck` which performs DNS resolution (blocking operation) to validate IPs against private ranges. Refactored `PdfViewerActivity` and `SongHandler` to run this check on background threads/coroutines.

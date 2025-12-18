@@ -259,6 +259,17 @@ object SongHandler {
 
         kotlin.concurrent.thread {
             try {
+                // ADDED SECURITY CHECK: DNS Resolution to prevent Rebinding
+                if (!SecurityUtils.isSafeUrlWithDnsCheck(url)) {
+                    val ctx = contextRef.get()
+                    if (ctx != null) {
+                        (ctx as? android.app.Activity)?.runOnUiThread {
+                            Toast.makeText(ctx, "Security Error: DNS check failed.", Toast.LENGTH_LONG).show()
+                        }
+                    }
+                    return@thread
+                }
+
                 // Ensure context is still valid for file path access, or use application context if possible
                 // However, getExternalFilesDir depends on Context.
                 // We grab it early if possible or safely unwrap.

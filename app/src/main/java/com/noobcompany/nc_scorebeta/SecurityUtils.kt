@@ -1,8 +1,42 @@
 package com.noobcompany.nc_scorebeta
 
+import java.net.InetAddress
 import java.net.URL
 
 object SecurityUtils {
+    /**
+     * Performs a comprehensive security check on the URL, including DNS resolution
+     * to prevent DNS Rebinding attacks.
+     * This method performs network operations and MUST be called on a background thread.
+     *
+     * @param urlString The URL to validate.
+     * @return True if the URL is secure and resolves to a public IP, False otherwise.
+     */
+    fun isSafeUrlWithDnsCheck(urlString: String): Boolean {
+        // 1. Basic String Check (Fast)
+        if (!isSecureUrl(urlString)) return false
+
+        return try {
+            val url = URL(urlString)
+            // 2. DNS Resolution (Slow, Blocking)
+            val inetAddresses = InetAddress.getAllByName(url.host)
+
+            // 3. Validate Resolved IPs
+            for (addr in inetAddresses) {
+                if (addr.isLoopbackAddress ||
+                    addr.isSiteLocalAddress ||
+                    addr.isLinkLocalAddress ||
+                    addr.isAnyLocalAddress) {
+                    return false
+                }
+            }
+            true
+        } catch (e: Exception) {
+            // DNS failure or other issue -> Fail secure
+            false
+        }
+    }
+
     /**
      * Validates that the URL uses a secure scheme (HTTPS) and does not point to
      * private, loopback, or link-local addresses (SSRF protection).

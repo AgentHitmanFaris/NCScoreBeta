@@ -50,6 +50,16 @@ class PdfViewerActivity : AppCompatActivity() {
         // 1. LOCAL FILE HANDLING (OFFLINE MODE)
         if (!localFilePath.isNullOrEmpty()) {
             val file = java.io.File(localFilePath)
+
+            // SECURITY CHECK: Prevent Path Traversal
+            // Ensure the file is within the application's external files directory
+            val safeRoot = getExternalFilesDir(null) // or specific "scores" dir
+            if (!SecurityUtils.isSafeFilePath(file, safeRoot)) {
+                Toast.makeText(this, "Security Error: Illegal file path.", Toast.LENGTH_LONG).show()
+                finish()
+                return
+            }
+
             if (file.exists()) {
                 Log.d("PdfViewer", "Loading from file: $localFilePath")
                 pdfView.fromFile(file)

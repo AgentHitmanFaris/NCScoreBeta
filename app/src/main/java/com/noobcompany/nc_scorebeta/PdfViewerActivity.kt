@@ -96,6 +96,16 @@ class PdfViewerActivity : AppCompatActivity() {
 
         lifecycleScope.launch(Dispatchers.IO) {
             try {
+                // ADDED SECURITY CHECK: DNS Resolution to prevent Rebinding
+                if (!SecurityUtils.isSafeUrlWithDnsCheck(directUrl)) {
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(this@PdfViewerActivity, "Security Error: DNS check failed.", Toast.LENGTH_LONG).show()
+                        progressBar.visibility = View.GONE
+                        finish()
+                    }
+                    return@launch
+                }
+
                 // 2. Download from the NEW Direct URL
                 val url = URL(directUrl)
                 val urlConnection = url.openConnection() as HttpURLConnection

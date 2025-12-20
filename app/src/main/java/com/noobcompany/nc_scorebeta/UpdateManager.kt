@@ -13,6 +13,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.net.HttpURLConnection
 import java.net.URL
+import kotlin.math.max
 
 /**
  * Singleton manager for handling in-app updates via GitHub Releases.
@@ -42,6 +43,32 @@ object UpdateManager {
     }
 
     /**
+     * Semantic version comparison logic.
+     * Moved to public visibility for testing.
+     *
+     * @param serverTag The version tag from the server.
+     * @param currentTag The locally installed version tag.
+     * @return `true` if the server version is newer (higher).
+     */
+    fun isNewerVersion(serverTag: String, currentTag: String): Boolean {
+        val serverParts = serverTag.replace("v", "").trim().split(".")
+        val currentParts = currentTag.replace("v", "").trim().split(".")
+
+        val length = max(serverParts.size, currentParts.size)
+
+        for (i in 0 until length) {
+            val serverVer = if (i < serverParts.size) serverParts[i].toIntOrNull() ?: 0 else 0
+            val currentVer = if (i < currentParts.size) currentParts[i].toIntOrNull() ?: 0 else 0
+
+            if (serverVer > currentVer) return true
+            if (serverVer < currentVer) return false
+        }
+
+        // Versions are equal
+        return false
+    }
+
+    /**
      * Background task to query the GitHub API for the latest release information.
      *
      * @property context The context used for displaying dialogs and toasts upon completion.
@@ -57,9 +84,19 @@ object UpdateManager {
          */
         override fun doInBackground(vararg params: Void?): String? {
             return try {
+                // SECURITY: Validate URL and enforce DNS check even for hardcoded URLs
+                if (!SecurityUtils.isSafeUrlWithDnsCheck(LATEST_RELEASE_URL)) {
+                    return null
+                }
+
                 val url = URL(LATEST_RELEASE_URL)
                 val connection = url.openConnection() as HttpURLConnection
                 connection.requestMethod = "GET"
+
+                // SECURITY: Set timeouts to prevent hanging (DoS risk)
+                connection.connectTimeout = 15000
+                connection.readTimeout = 15000
+
                 connection.connect()
 
                 if (connection.responseCode == 200) {
@@ -86,7 +123,7 @@ object UpdateManager {
             if (context == null) return
 
             if (result == null) {
-                Toast.makeText(context, "Failed to check for updates.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Failed to check for updates (Security or Network Error).", Toast.LENGTH_SHORT).show()
                 return
             }
 
@@ -97,11 +134,17 @@ object UpdateManager {
                     .getJSONObject(0)
                     .getString("browser_download_url")
 
+                // SECURITY: Basic string check on download URL before proceeding
+                if (!SecurityUtils.isSecureUrl(downloadUrl)) {
+                    Toast.makeText(context, "Update blocked: Insecure URL.", Toast.LENGTH_LONG).show()
+                    return
+                }
+
                 val pInfo = context.packageManager.getPackageInfo(context.packageName, 0)
                 val currentVersion = "v${pInfo.versionName}"
                 
                 // Compare versions using semantic versioning logic
-                if (isNewerVersion(tagName, currentVersion)) {
+                if (UpdateManager.isNewerVersion(tagName, currentVersion)) {
                     showUpdateDialog(context, tagName, downloadUrl)
                 } else {
                     Toast.makeText(context, "Current version installed ($currentVersion)", Toast.LENGTH_SHORT).show()
@@ -111,31 +154,6 @@ object UpdateManager {
                 e.printStackTrace()
                 Toast.makeText(context, "Error parsing update info.", Toast.LENGTH_SHORT).show()
             }
-        }
-        
-        /**
-         * Semantic version comparison logic.
-         *
-         * @param serverTag The version tag from the server.
-         * @param currentTag The locally installed version tag.
-         * @return `true` if the server version is newer (higher).
-         */
-        private fun isNewerVersion(serverTag: String, currentTag: String): Boolean {
-            val serverParts = serverTag.replace("v", "").trim().split(".")
-            val currentParts = currentTag.replace("v", "").trim().split(".")
-
-            val length = maxOf(serverParts.size, currentParts.size)
-            
-            for (i in 0 until length) {
-                val serverVer = if (i < serverParts.size) serverParts[i].toIntOrNull() ?: 0 else 0
-                val currentVer = if (i < currentParts.size) currentParts[i].toIntOrNull() ?: 0 else 0
-                
-                if (serverVer > currentVer) return true
-                if (serverVer < currentVer) return false
-            }
-            
-            // Versions are equal
-            return false
         }
     }
 
@@ -218,8 +236,20 @@ object UpdateManager {
             val context = contextRef.get() ?: return null
 
             return try {
+                // SECURITY: Deep validation of download URL (DNS check + Protocol)
+                // This prevents SSRF or redirecting to internal/malicious IPs
+                if (!SecurityUtils.isSafeUrlWithDnsCheck(downloadUrl)) {
+                    android.util.Log.e("UpdateManager", "Security check failed for: $downloadUrl")
+                    return null
+                }
+
                 val url = URL(downloadUrl)
                 val connection = url.openConnection() as HttpURLConnection
+
+                // SECURITY: Timeouts
+                connection.connectTimeout = 15000
+                connection.readTimeout = 30000
+
                 connection.connect()
 
                 val fileLength = connection.contentLength
@@ -281,7 +311,7 @@ object UpdateManager {
             if (file != null) {
                 installApk(context, file)
             } else {
-                Toast.makeText(context, "Download Failed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Download Failed (Check connection or security)", Toast.LENGTH_SHORT).show()
             }
         }
     }

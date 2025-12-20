@@ -154,4 +154,28 @@ object SecurityUtils {
     fun sanitizeFilename(name: String): String {
         return name.replace(Regex("[^a-zA-Z0-9._-]"), "_")
     }
+
+    /**
+     * Checks if a file path is safe and contained within a specified root directory.
+     * Prevents Path Traversal attacks by resolving canonical paths.
+     *
+     * @param file The file to check.
+     * @param rootDir The trusted root directory (e.g. context.getExternalFilesDir(null)).
+     * @return True if the file is inside the root directory, False otherwise.
+     */
+    fun isSafeFilePath(file: java.io.File, rootDir: java.io.File?): Boolean {
+        if (rootDir == null) return false
+        return try {
+            val canonicalPath = file.canonicalPath
+            val canonicalRoot = rootDir.canonicalPath
+
+            // Ensure proper directory checking to avoid partial matches (e.g. /dir/foo vs /dir/foobar)
+            if (canonicalPath == canonicalRoot) return true
+            if (canonicalPath.startsWith(canonicalRoot + java.io.File.separator)) return true
+
+            false
+        } catch (e: Exception) {
+            false
+        }
+    }
 }

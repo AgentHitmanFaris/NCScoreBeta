@@ -84,20 +84,9 @@ object UpdateManager {
          */
         override fun doInBackground(vararg params: Void?): String? {
             return try {
-                // SECURITY: Validate URL and enforce DNS check even for hardcoded URLs
-                if (!SecurityUtils.isSafeUrlWithDnsCheck(LATEST_RELEASE_URL)) {
-                    return null
-                }
-
-                val url = URL(LATEST_RELEASE_URL)
-                val connection = url.openConnection() as HttpURLConnection
+                // Use openSafeConnection to handle redirects securely (SSRF protection)
+                val connection = SecurityUtils.openSafeConnection(LATEST_RELEASE_URL)
                 connection.requestMethod = "GET"
-
-                // SECURITY: Set timeouts to prevent hanging (DoS risk)
-                connection.connectTimeout = 15000
-                connection.readTimeout = 15000
-
-                connection.connect()
 
                 if (connection.responseCode == 200) {
                     connection.inputStream.bufferedReader().use { it.readText() }
@@ -236,21 +225,8 @@ object UpdateManager {
             val context = contextRef.get() ?: return null
 
             return try {
-                // SECURITY: Deep validation of download URL (DNS check + Protocol)
-                // This prevents SSRF or redirecting to internal/malicious IPs
-                if (!SecurityUtils.isSafeUrlWithDnsCheck(downloadUrl)) {
-                    android.util.Log.e("UpdateManager", "Security check failed for: $downloadUrl")
-                    return null
-                }
-
-                val url = URL(downloadUrl)
-                val connection = url.openConnection() as HttpURLConnection
-
-                // SECURITY: Timeouts
-                connection.connectTimeout = 15000
-                connection.readTimeout = 30000
-
-                connection.connect()
+                // Use openSafeConnection to handle redirects securely (SSRF protection)
+                val connection = SecurityUtils.openSafeConnection(downloadUrl)
 
                 val fileLength = connection.contentLength
 

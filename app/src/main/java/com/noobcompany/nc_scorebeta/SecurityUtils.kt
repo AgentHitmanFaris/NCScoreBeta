@@ -1,9 +1,67 @@
 package com.noobcompany.nc_scorebeta
 
+import java.net.HttpURLConnection
 import java.net.InetAddress
 import java.net.URL
+import java.io.IOException
 
 object SecurityUtils {
+
+    /**
+     * Opens a HttpURLConnection while manually handling redirects to ensure
+     * each hop is validated against SSRF rules.
+     *
+     * @param urlString The initial URL.
+     * @return A connected HttpURLConnection.
+     * @throws SecurityException if a redirect target is unsafe.
+     * @throws IOException if network error occurs.
+     */
+    fun openSafeConnection(urlString: String): HttpURLConnection {
+        var currentUrlStr = urlString
+        var redirects = 0
+        val maxRedirects = 10
+
+        while (redirects < maxRedirects) {
+            // 1. Validate URL (DNS + Scheme)
+            if (!isSafeUrlWithDnsCheck(currentUrlStr)) {
+                throw SecurityException("Unsafe URL blocked (SSRF Protection): $currentUrlStr")
+            }
+
+            val url = URL(currentUrlStr)
+            val connection = url.openConnection() as HttpURLConnection
+
+            // Disable auto-redirects to inspect headers
+            connection.instanceFollowRedirects = false
+            connection.connectTimeout = 15000
+            connection.readTimeout = 15000
+
+            // Mock headers to look like a browser (optional but good for compatibility)
+            connection.setRequestProperty("User-Agent", "NCScoreBeta/1.0")
+
+            connection.connect()
+            val responseCode = connection.responseCode
+
+            if (responseCode in 300..399) {
+                val location = connection.getHeaderField("Location")
+                if (location != null) {
+                    // Handle relative redirects
+                    val nextUrl = URL(url, location).toString()
+                    currentUrlStr = nextUrl
+                    redirects++
+                    // We must close the previous connection input stream if we aren't using it?
+                    // HttpURLConnection usually handles this on disconnect or new connection.
+                    // But explicitly:
+                    connection.disconnect()
+                    continue
+                }
+            }
+
+            return connection
+        }
+
+        throw SecurityException("Too many redirects")
+    }
+
     /**
      * Performs a comprehensive security check on the URL, including DNS resolution
      * to prevent DNS Rebinding attacks.

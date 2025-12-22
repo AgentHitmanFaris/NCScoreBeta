@@ -35,6 +35,13 @@ class LoginActivity : AppCompatActivity() {
     }
 
     /**
+     * Validates the email format using standard Android patterns.
+     */
+    private fun isValidEmail(email: String): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+
+    /**
      * Initializes the activity lifecycle.
      *
      * Performs the following initialization steps:
@@ -90,6 +97,11 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            if (!isValidEmail(email)) {
+                Toast.makeText(this, "Please enter a valid email address", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             if (!isLoginMode) {
                 if (name.isEmpty()) {
                     Toast.makeText(this, "Please enter your name", Toast.LENGTH_SHORT).show()
@@ -114,7 +126,9 @@ class LoginActivity : AppCompatActivity() {
                     }
                     .addOnFailureListener {
                         progressBar.visibility = View.GONE
-                        Toast.makeText(this, "Login Failed: ${it.message}", Toast.LENGTH_SHORT).show()
+                        // SECURITY: Use generic error message to prevent user enumeration
+                        Toast.makeText(this, "Login Failed: Invalid email or password", Toast.LENGTH_SHORT).show()
+                        AppLogger.error("LoginActivity", "Login error: ${it.message}", it)
                     }
             } else {
                 auth.createUserWithEmailAndPassword(email, password)
@@ -123,7 +137,9 @@ class LoginActivity : AppCompatActivity() {
                     }
                     .addOnFailureListener {
                         progressBar.visibility = View.GONE
-                        Toast.makeText(this, "Registration Failed: ${it.message}", Toast.LENGTH_SHORT).show()
+                        // SECURITY: Use generic error message to prevent user enumeration
+                        Toast.makeText(this, "Registration Failed. Please check your details.", Toast.LENGTH_SHORT).show()
+                        AppLogger.error("LoginActivity", "Registration error: ${it.message}", it)
                     }
             }
         }

@@ -26,12 +26,18 @@ class LoginActivity : AppCompatActivity() {
 
     /**
      * Checks if the password meets security requirements.
-     * Rule: Minimum 8 characters, at least one letter, and at least one digit.
+     * Rule: Minimum 12 characters, at least one letter, one digit, and one special character.
+     * Also enforces a maximum length to prevent DoS.
      */
     private fun isPasswordStrong(password: String): Boolean {
-        return password.length >= 8 &&
-                password.any { it.isLetter() } &&
-                password.any { it.isDigit() }
+        if (password.length < 12) return false
+        if (password.length > 128) return false // Prevent long string DoS
+
+        val hasLetter = password.any { it.isLetter() }
+        val hasDigit = password.any { it.isDigit() }
+        val hasSpecial = password.any { !it.isLetterOrDigit() }
+
+        return hasLetter && hasDigit && hasSpecial
     }
 
     /**
@@ -112,7 +118,7 @@ class LoginActivity : AppCompatActivity() {
                     return@setOnClickListener
                 }
                 if (!isPasswordStrong(password)) {
-                    Toast.makeText(this, "Password must be at least 8 characters with letters and numbers", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Password must be 12+ chars with letters, numbers, and symbols", Toast.LENGTH_LONG).show()
                     return@setOnClickListener
                 }
             }

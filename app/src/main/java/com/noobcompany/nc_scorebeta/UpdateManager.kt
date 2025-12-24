@@ -13,6 +13,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.net.HttpURLConnection
 import java.net.URL
+import kotlin.math.max
 
 /**
  * Singleton manager for handling in-app updates via GitHub Releases.
@@ -42,11 +43,39 @@ object UpdateManager {
     }
 
     /**
+     * Semantic version comparison logic.
+     * Moved to public visibility for testing.
+     *
+     * @param serverTag The version tag from the server.
+     * @param currentTag The locally installed version tag.
+     * @return `true` if the server version is newer (higher).
+     */
+    fun isNewerVersion(serverTag: String, currentTag: String): Boolean {
+        val serverParts = serverTag.replace("v", "").trim().split(".")
+        val currentParts = currentTag.replace("v", "").trim().split(".")
+
+        val length = max(serverParts.size, currentParts.size)
+
+        for (i in 0 until length) {
+            val serverVer = if (i < serverParts.size) serverParts[i].toIntOrNull() ?: 0 else 0
+            val currentVer = if (i < currentParts.size) currentParts[i].toIntOrNull() ?: 0 else 0
+
+            if (serverVer > currentVer) return true
+            if (serverVer < currentVer) return false
+        }
+
+        // Versions are equal
+        return false
+    }
+
+    /**
      * Background task to query the GitHub API for the latest release information.
      *
      * @property context The context used for displaying dialogs and toasts upon completion.
      */
-    private class FetchReleaseTask(val context: Context) : AsyncTask<Void, Void, String?>() {
+    private class FetchReleaseTask(context: Context) : AsyncTask<Void, Void, String?>() {
+        private val contextRef = java.lang.ref.WeakReference(context)
+
         /**
          * executes the network request to GitHub in a background thread.
          *
@@ -55,10 +84,9 @@ object UpdateManager {
          */
         override fun doInBackground(vararg params: Void?): String? {
             return try {
-                val url = URL(LATEST_RELEASE_URL)
-                val connection = url.openConnection() as HttpURLConnection
+                // Use openSafeConnection to handle redirects securely (SSRF protection)
+                val connection = SecurityUtils.openSafeConnection(LATEST_RELEASE_URL)
                 connection.requestMethod = "GET"
-                connection.connect()
 
                 if (connection.responseCode == 200) {
                     connection.inputStream.bufferedReader().use { it.readText() }
@@ -80,8 +108,11 @@ object UpdateManager {
          * @param result The JSON string retrieved from GitHub.
          */
         override fun onPostExecute(result: String?) {
+            val context = contextRef.get()
+            if (context == null) return
+
             if (result == null) {
-                Toast.makeText(context, "Failed to check for updates.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Failed to check for updates (Security or Network Error).", Toast.LENGTH_SHORT).show()
                 return
             }
 
@@ -92,11 +123,17 @@ object UpdateManager {
                     .getJSONObject(0)
                     .getString("browser_download_url")
 
+                // SECURITY: Basic string check on download URL before proceeding
+                if (!SecurityUtils.isSecureUrl(downloadUrl)) {
+                    Toast.makeText(context, "Update blocked: Insecure URL.", Toast.LENGTH_LONG).show()
+                    return
+                }
+
                 val pInfo = context.packageManager.getPackageInfo(context.packageName, 0)
                 val currentVersion = "v${pInfo.versionName}"
                 
                 // Compare versions using semantic versioning logic
-                if (isNewerVersion(tagName, currentVersion)) {
+                if (UpdateManager.isNewerVersion(tagName, currentVersion)) {
                     showUpdateDialog(context, tagName, downloadUrl)
                 } else {
                     Toast.makeText(context, "Current version installed ($currentVersion)", Toast.LENGTH_SHORT).show()
@@ -106,31 +143,6 @@ object UpdateManager {
                 e.printStackTrace()
                 Toast.makeText(context, "Error parsing update info.", Toast.LENGTH_SHORT).show()
             }
-        }
-        
-        /**
-         * Semantic version comparison logic.
-         *
-         * @param serverTag The version tag from the server.
-         * @param currentTag The locally installed version tag.
-         * @return `true` if the server version is newer (higher).
-         */
-        private fun isNewerVersion(serverTag: String, currentTag: String): Boolean {
-            val serverParts = serverTag.replace("v", "").trim().split(".")
-            val currentParts = currentTag.replace("v", "").trim().split(".")
-
-            val length = maxOf(serverParts.size, currentParts.size)
-            
-            for (i in 0 until length) {
-                val serverVer = if (i < serverParts.size) serverParts[i].toIntOrNull() ?: 0 else 0
-                val currentVer = if (i < currentParts.size) currentParts[i].toIntOrNull() ?: 0 else 0
-                
-                if (serverVer > currentVer) return true
-                if (serverVer < currentVer) return false
-            }
-            
-            // Versions are equal
-            return false
         }
     }
 
@@ -169,20 +181,33 @@ object UpdateManager {
      *
      * @property context The Context.
      */
-    private class DownloadTask(val context: Context) : AsyncTask<String, Int, File?>() {
+    private class DownloadTask(context: Context) : AsyncTask<String, Int, File?>() {
+        private val contextRef = java.lang.ref.WeakReference(context)
         private var progressDialog: ProgressDialog? = null
 
         /**
          * Sets up the progress dialog before download starts.
          */
         override fun onPreExecute() {
-            progressDialog = ProgressDialog(context)
-            progressDialog?.setMessage("Downloading Update...")
-            progressDialog?.isIndeterminate = false
-            progressDialog?.max = 100
-            progressDialog?.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL)
-            progressDialog?.setCancelable(false)
-            progressDialog?.show()
+            val context = contextRef.get() ?: return
+
+            // Check if context is valid Activity before showing dialog
+            if (context is android.app.Activity && (context.isFinishing || context.isDestroyed)) {
+                return
+            }
+
+            try {
+                progressDialog = ProgressDialog(context)
+                progressDialog?.setMessage("Downloading Update...")
+                progressDialog?.isIndeterminate = false
+                progressDialog?.max = 100
+                progressDialog?.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL)
+                progressDialog?.setCancelable(false)
+                progressDialog?.show()
+            } catch (e: Exception) {
+                // Handle WindowLeaked or other UI errors
+                e.printStackTrace()
+            }
         }
 
         /**
@@ -193,10 +218,15 @@ object UpdateManager {
          */
         override fun doInBackground(vararg params: String?): File? {
             val downloadUrl = params[0] ?: return null
+
+            // We need context to access storage.
+            // Note: doInBackground runs on background thread. contextRef might be cleared if Activity destroyed.
+            // But we can check it.
+            val context = contextRef.get() ?: return null
+
             return try {
-                val url = URL(downloadUrl)
-                val connection = url.openConnection() as HttpURLConnection
-                connection.connect()
+                // Use openSafeConnection to handle redirects securely (SSRF protection)
+                val connection = SecurityUtils.openSafeConnection(downloadUrl)
 
                 val fileLength = connection.contentLength
 
@@ -243,11 +273,21 @@ object UpdateManager {
          * @param file The downloaded APK file.
          */
         override fun onPostExecute(file: File?) {
-            progressDialog?.dismiss()
+            // Dismiss dialog safely
+            if (progressDialog != null && progressDialog!!.isShowing) {
+                try {
+                    progressDialog?.dismiss()
+                } catch (e: IllegalArgumentException) {
+                    // Handle case where activity is already gone
+                }
+            }
+
+            val context = contextRef.get() ?: return
+
             if (file != null) {
                 installApk(context, file)
             } else {
-                Toast.makeText(context, "Download Failed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Download Failed (Check connection or security)", Toast.LENGTH_SHORT).show()
             }
         }
     }

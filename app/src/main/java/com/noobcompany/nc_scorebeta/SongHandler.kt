@@ -245,22 +245,33 @@ object SongHandler {
      * @param url The URL of the PDF to download.
      */
     private fun downloadAndOpenPdf(context: Context, songId: String, url: String) {
+        if (!SecurityUtils.isSecureUrl(url)) {
+            Toast.makeText(context, "Security Error: Insecure URL rejected.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         Toast.makeText(context, "Downloading for offline use...", Toast.LENGTH_SHORT).show()
         
         // Simple download using DownloadManager or Thread (Thread is easier for immediate open)
         // Ideally use DownloadManager, but for 'Open Now' we want a callback.
         // We'll use a simple thread to download to a temp file then move it.
-        
+        val contextRef = java.lang.ref.WeakReference(context)
+
         kotlin.concurrent.thread {
             try {
-                val destFile = java.io.File(context.getExternalFilesDir("scores"), "$songId.pdf")
+                // Ensure context is still valid for file path access, or use application context if possible
+                val ctxForPath = contextRef.get() ?: return@thread
+
+                // Sanitize filename to prevent path traversal
+                val safeSongId = SecurityUtils.sanitizeFilename(songId)
+                val destFile = java.io.File(ctxForPath.getExternalFilesDir("scores"), "$safeSongId.pdf")
+
                 val parent = destFile.parentFile
                 if (parent != null && !parent.exists()) parent.mkdirs()
 
-                val u = java.net.URL(url)
-                val conn = u.openConnection()
-                conn.connect()
-                val input = java.io.BufferedInputStream(u.openStream())
+                // Use openSafeConnection for SSRF protection during download
+                val conn = SecurityUtils.openSafeConnection(url)
+                val input = java.io.BufferedInputStream(conn.inputStream)
                 val output = java.io.FileOutputStream(destFile)
 
                 val data = ByteArray(1024)
@@ -274,17 +285,23 @@ object SongHandler {
                 input.close()
 
                 // Open on Main Thread
-                (context as? android.app.Activity)?.runOnUiThread {
-                     val intent = Intent(context, PdfViewerActivity::class.java)
-                     intent.putExtra("PDF_FILE", destFile.absolutePath)
-                     context.startActivity(intent)
+                val ctx = contextRef.get()
+                if (ctx != null) {
+                    (ctx as? android.app.Activity)?.runOnUiThread {
+                         val intent = Intent(ctx, PdfViewerActivity::class.java)
+                         intent.putExtra("PDF_FILE", destFile.absolutePath)
+                         ctx.startActivity(intent)
+                    }
                 }
 
             } catch (e: Exception) {
                 android.util.Log.e("SongHandler", "Download Error", e)
-                (context as? android.app.Activity)?.runOnUiThread {
-                    Toast.makeText(context, "Download failed, streaming instead...", Toast.LENGTH_SHORT).show()
-                    openPdfViewer(context, url)
+                val ctx = contextRef.get()
+                if (ctx != null) {
+                    (ctx as? android.app.Activity)?.runOnUiThread {
+                        Toast.makeText(ctx, "Download failed, streaming instead...", Toast.LENGTH_SHORT).show()
+                        openPdfViewer(ctx, url)
+                    }
                 }
             }
         }

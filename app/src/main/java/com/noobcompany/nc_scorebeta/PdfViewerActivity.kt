@@ -50,6 +50,16 @@ class PdfViewerActivity : AppCompatActivity() {
         // 1. LOCAL FILE HANDLING (OFFLINE MODE)
         if (!localFilePath.isNullOrEmpty()) {
             val file = java.io.File(localFilePath)
+
+            // SECURITY CHECK: Prevent Path Traversal
+            // Ensure the file is within the application's external files directory
+            val safeRoot = getExternalFilesDir(null) // or specific "scores" dir
+            if (!SecurityUtils.isSafeFilePath(file, safeRoot)) {
+                Toast.makeText(this, "Security Error: Illegal file path.", Toast.LENGTH_LONG).show()
+                finish()
+                return
+            }
+
             if (file.exists()) {
                 Log.d("PdfViewer", "Loading from file: $localFilePath")
                 pdfView.fromFile(file)
@@ -86,16 +96,19 @@ class PdfViewerActivity : AppCompatActivity() {
         Log.d("PdfViewer", "Original: $rawPdfUrl")
         Log.d("PdfViewer", "Direct: $directUrl")
         
+        if (!SecurityUtils.isSecureUrl(directUrl)) {
+            Toast.makeText(this, "Security Error: Only HTTPS URLs are allowed.", Toast.LENGTH_LONG).show()
+            finish()
+            return
+        }
+
         progressBar.visibility = View.VISIBLE
 
         lifecycleScope.launch(Dispatchers.IO) {
             try {
-                // 2. Download from the NEW Direct URL
-                val url = URL(directUrl)
-                val urlConnection = url.openConnection() as HttpURLConnection
-
-                // IMPORTANT: Handle Google Drive Redirects (302/303)
-                urlConnection.instanceFollowRedirects = true
+                // Use openSafeConnection to handle redirects securely (SSRF protection)
+                // This replaces manual URL opening and blindly following redirects
+                val urlConnection = SecurityUtils.openSafeConnection(directUrl)
 
                 if (urlConnection.responseCode == 200) {
                     val inputStream = BufferedInputStream(urlConnection.inputStream)
@@ -199,4 +212,5 @@ class PdfViewerActivity : AppCompatActivity() {
         // If it's not a Google Drive link (or we couldn't find ID), return original
         return url
     }
+
 }

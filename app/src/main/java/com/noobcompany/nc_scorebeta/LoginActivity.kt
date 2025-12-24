@@ -25,6 +25,29 @@ class LoginActivity : AppCompatActivity() {
     private var isLoginMode = true
 
     /**
+     * Checks if the password meets security requirements.
+     * Rule: Minimum 12 characters, at least one letter, one digit, and one special character.
+     * Also enforces a maximum length to prevent DoS.
+     */
+    private fun isPasswordStrong(password: String): Boolean {
+        if (password.length < 12) return false
+        if (password.length > 128) return false // Prevent long string DoS
+
+        val hasLetter = password.any { it.isLetter() }
+        val hasDigit = password.any { it.isDigit() }
+        val hasSpecial = password.any { !it.isLetterOrDigit() }
+
+        return hasLetter && hasDigit && hasSpecial
+    }
+
+    /**
+     * Validates the email format using standard Android patterns.
+     */
+    private fun isValidEmail(email: String): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+
+    /**
      * Initializes the activity lifecycle.
      *
      * Performs the following initialization steps:
@@ -80,6 +103,11 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            if (!isValidEmail(email)) {
+                Toast.makeText(this, "Please enter a valid email address", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             if (!isLoginMode) {
                 if (name.isEmpty()) {
                     Toast.makeText(this, "Please enter your name", Toast.LENGTH_SHORT).show()
@@ -87,6 +115,10 @@ class LoginActivity : AppCompatActivity() {
                 }
                 if (password != confirmPassword) {
                     Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+                if (!isPasswordStrong(password)) {
+                    Toast.makeText(this, "Password must be 12+ chars with letters, numbers, and symbols", Toast.LENGTH_LONG).show()
                     return@setOnClickListener
                 }
             }
@@ -100,7 +132,9 @@ class LoginActivity : AppCompatActivity() {
                     }
                     .addOnFailureListener {
                         progressBar.visibility = View.GONE
-                        Toast.makeText(this, "Login Failed: ${it.message}", Toast.LENGTH_SHORT).show()
+                        // SECURITY: Use generic error message to prevent user enumeration
+                        Toast.makeText(this, "Login Failed: Invalid email or password", Toast.LENGTH_SHORT).show()
+                        AppLogger.error("LoginActivity", "Login error: ${it.message}", it)
                     }
             } else {
                 auth.createUserWithEmailAndPassword(email, password)
@@ -109,7 +143,9 @@ class LoginActivity : AppCompatActivity() {
                     }
                     .addOnFailureListener {
                         progressBar.visibility = View.GONE
-                        Toast.makeText(this, "Registration Failed: ${it.message}", Toast.LENGTH_SHORT).show()
+                        // SECURITY: Use generic error message to prevent user enumeration
+                        Toast.makeText(this, "Registration Failed. Please check your details.", Toast.LENGTH_SHORT).show()
+                        AppLogger.error("LoginActivity", "Registration error: ${it.message}", it)
                     }
             }
         }

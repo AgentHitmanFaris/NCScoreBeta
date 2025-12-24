@@ -13,12 +13,3 @@
 .externalNativeBuild
 .cxx
 local.properties
-
-# Keystore files
-NCScoreKey
-*.jks
-*.keystore
-*.key
-
-# Google Services
-google-services.json

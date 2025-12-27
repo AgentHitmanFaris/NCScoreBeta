@@ -185,7 +185,8 @@ object SongHandler {
 
         if (isOfflineEnabled) {
             // Try to open from local storage first
-            val localFile = java.io.File(context.getExternalFilesDir("scores"), "${song.id}.pdf")
+            val safeSongId = SecurityUtils.sanitizeFilename(song.id)
+            val localFile = java.io.File(context.getExternalFilesDir("scores"), "$safeSongId.pdf")
             if (localFile.exists()) {
                 // Open Local
                 android.util.Log.d("SongHandler", "Opening local file: ${localFile.absolutePath}")

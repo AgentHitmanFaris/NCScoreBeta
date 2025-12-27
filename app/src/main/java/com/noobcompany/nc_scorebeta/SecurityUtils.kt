@@ -149,6 +149,12 @@ object SecurityUtils {
              if (host.startsWith("fe80", ignoreCase = true) || host.startsWith("[fe80", ignoreCase = true)) return true
         }
 
+        // Block Integer IPs (Decimal format like 2130706433)
+        // This prevents bypasses where non-dotted IP formats are treated as valid hostnames
+        if (host.all { it.isDigit() }) {
+            return true
+        }
+
         // Simple Regex to check if it looks like an IPv4 address (Decimal or Octal potentially)
         // Format: d.d.d.d
         // Note: Java's URL parser generally handles dotted quad.

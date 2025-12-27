@@ -10,6 +10,13 @@ service cloud.firestore {
       );
     }
 
+    // Helper function to check if the user is a premium user
+    function isPremium() {
+      return request.auth != null &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isPremiumUser == true;
+    }
+
     // Users collection
     match /users/{userId} {
       allow read, write: if (request.auth != null && request.auth.uid == userId) || isAdmin();
@@ -28,7 +35,7 @@ service cloud.firestore {
         // Secure Content (Premium PDFs) - NESTED per your web snippet
         // Path: /songs/{songId}/arrangements/{arrangementId}/secure/content
         match /secure/content {
-          allow read: if request.auth != null;
+          allow read: if isPremium() || isAdmin();
           allow write: if isAdmin();
         }
       }

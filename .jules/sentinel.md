@@ -1,6 +1,4 @@
-# Sentinel's Journal
-
-## 2025-12-11 - Integer IP Obfuscation Bypass in URL Validation
-**Vulnerability:** The `isPrivateHost` validation relied on a regex that only matched standard dotted-quad IPv4 addresses (e.g., `127.0.0.1`). This allowed attackers to bypass the check using integer-formatted IPs (e.g., `2130706433` for `127.0.0.1`), which `java.net.URL` and `InetAddress` accept and resolve.
-**Learning:** Regex-based IP validation is brittle. Standard libraries often accept formats (Octal, Hex, Integer) that custom regexes miss.
-**Prevention:** When validating hostnames, explicitly reject numeric-only strings if your regex expects dots, or use a canonical parsing library that handles all IP formats before checking ranges. In this case, blocking all-digit hostnames was a simple, effective defense since valid public hostnames (TLDs) are not numeric.
+## 2025-12-11 - Privilege Escalation in Firestore Rules
+**Vulnerability:** The Firestore security rules for the `users` collection allowed authenticated users to write any field to their own document (`allow write: if request.auth.uid == userId`). This allowed a malicious user to craft a request setting `isPremiumUser: true` or `isAdmin: true`, granting themselves unauthorized access to premium content or admin capabilities.
+**Learning:** Broad `write` permissions are dangerous. Always validate *what* is being written, not just *who* is writing it.
+**Prevention:** Use granular `create` and `update` rules. validate that sensitive fields (like roles or subscription status) are either absent from the request or match the existing values (immutable) unless the user has specific administrative privileges.

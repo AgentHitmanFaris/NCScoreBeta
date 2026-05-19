@@ -46,7 +46,7 @@ class SongDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         
         val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
-        toolbar.setNavigationOnClickListener {
+        toolbar?.setNavigationOnClickListener {
             parentFragmentManager.popBackStack()
         }
 
@@ -55,7 +55,7 @@ class SongDetailFragment : Fragment() {
         }
 
         val btnOpenScore = view.findViewById<Button>(R.id.btnOpenScore)
-        btnOpenScore.setOnClickListener {
+        btnOpenScore?.setOnClickListener {
             currentSong?.let { song ->
                 context?.let { ctx -> SongHandler.openScore(ctx, song) }
             } ?: run {
@@ -96,13 +96,13 @@ class SongDetailFragment : Fragment() {
                     val tvDifficulty = view.findViewById<TextView>(R.id.tvDifficulty)
                     
                     if (arrangement != null && arrangement.difficulty.isNotBlank()) {
-                        tvDifficulty.text = arrangement.difficulty
+                        tvDifficulty?.text = arrangement.difficulty
                     }
                 }
 
             } catch (e: Exception) {
                 AppLogger.error("SongDetail", "Error loading details", e)
-                Toast.makeText(context, "Error loading song: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Error loading song details", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -121,25 +121,30 @@ class SongDetailFragment : Fragment() {
         val tvLyrics = view.findViewById<TextView>(R.id.tvLyrics)
         val youtubePlayerView = view.findViewById<YouTubePlayerView>(R.id.youtube_player_view)
         
-        lifecycle.addObserver(youtubePlayerView)
+        // SAFE OBSERVER: Check if view exists before adding observer
+        youtubePlayerView?.let { 
+            lifecycle.addObserver(it) 
+        }
 
-        tvDetailTitle.text = song.title
-        tvDetailArtist.text = song.getFormattedArtist()
+        tvDetailTitle?.text = song.title
+        tvDetailArtist?.text = song.getFormattedArtist()
         
         // Metadata binding
-        tvBpm.text = if (song.bpm > 0) song.bpm.toString() else "--"
-        tvKey.text = if (song.originalKey.isNotBlank()) song.originalKey else "--"
+        tvBpm?.text = if (song.bpm > 0) song.bpm.toString() else "--"
+        tvKey?.text = if (song.originalKey.isNotBlank()) song.originalKey else "--"
         
-        Glide.with(this).load(song.albumCover).into(ivDetailImage)
+        ivDetailImage?.let {
+            Glide.with(this).load(song.albumCover).into(it)
+        }
 
         if (song.lyrics.isNotEmpty()) {
-            tvLyrics.text = song.lyrics.replace("\\n", "\n")
+            tvLyrics?.text = song.lyrics.replace("\\n", "\n")
         } else {
-            tvLyrics.text = "No lyrics available."
+            tvLyrics?.text = "No lyrics available."
         }
 
         // YouTube setup
-        if (song.youtubeLink.isNotBlank()) {
+        if (song.youtubeLink.isNotBlank() && youtubePlayerView != null) {
             val videoId = extractVideoId(song.youtubeLink)
             if (videoId.isNotEmpty()) {
                 youtubePlayerView.visibility = View.VISIBLE
@@ -152,7 +157,7 @@ class SongDetailFragment : Fragment() {
                 youtubePlayerView.visibility = View.GONE
             }
         } else {
-            youtubePlayerView.visibility = View.GONE
+            youtubePlayerView?.visibility = View.GONE
         }
     }
 

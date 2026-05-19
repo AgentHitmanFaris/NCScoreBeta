@@ -39,8 +39,7 @@ data class Song(
     var isPremium: Boolean = false,
 
     @get:PropertyName("dateAdded") @set:PropertyName("dateAdded")
-    @com.google.firebase.firestore.ServerTimestamp
-    var createdAt: Timestamp? = null,
+    var createdAt: String = "",
 
     var lyrics: String = "",
     @get:PropertyName("video") @set:PropertyName("video")

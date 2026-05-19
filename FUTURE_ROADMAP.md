@@ -68,21 +68,19 @@ For users with acoustic pianos or without MIDI cables.
 
 ---
 
-## Firestore Schema Updates Needed
+## Firestore Schema Updates (v1.6.0 Implementation)
 
 ### `songs` Collection
-New fields required:
-```json
-{
-  "midiUrl": "https://.../song.midi",
-  "musicXmlUrl": "https://.../song.xml",
-  "backingTrackUrl": "https://.../backing.mp3",
-  "difficulty": "Easy" // or 1-5
-}
-```
+The following fields have been successfully mapped to the `Song` model:
+- [x] `midiUrl`: URL to the MIDI version for playback logic.
+- [x] `musicXmlUrl`: URL to MusicXML for dynamic rendering.
+- [x] `backingTrackUrl`: URL to audio accompaniment.
+- [x] `difficulty`: Now correctly fetched from the **Arrangement** sub-collection.
+- [x] `bpm`: Beat per minute data.
+- [x] `originalKey`: Musical key of the song.
 
-### `user_progress` Collection (New)
-Track user scores:
+### `user_progress` Collection (Planned)
+Next major technical task: Track user performance and accuracy.
 ```json
 {
   "userId": "uid123",
@@ -92,3 +90,4 @@ Track user scores:
   "lastPlayed": "timestamp"
 }
 ```
+

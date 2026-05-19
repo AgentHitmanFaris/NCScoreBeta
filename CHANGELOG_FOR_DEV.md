@@ -1,5 +1,20 @@
 # Changelog for Developers
 
+## [1.6.0] - 2026-05-20
+
+### Added
+- **Database Schema Sync**: Fully mapped models to `firestore-clean.json`. Added support for `artistIds`, `bpm`, `originalKey`, `isFeatured`, and `isComingSoon` in the `Song` model.
+- **Arrangement Metadata**: Added `difficulty`, `arrangedBy`, and `downloadCount` to the `Arrangement` model (now fetched from nested sub-collections).
+- **Haptic Feedback**: Integrated tactile responses for song clicks, favorite toggles, and authentication errors using `HapticUtils`.
+- **Pull-to-Refresh**: Added `SwipeRefreshLayout` to the Home screen for manual data synchronization.
+- **Shimmer Loading**: Implemented visual loading placeholders (`shimmer_item_song.xml`) to improve perceived performance.
+- **List Animations**: Added "Fall-down" layout animations for a more fluid and professional entry of list items.
+
+### Changed
+- **Performance Optimization**: Migrated Firestore data fetching from real-time listeners and nested callbacks to **Parallel Kotlin Coroutines** (`async/await`) in `HomeFragment` and `SongDetailFragment`.
+- **UI Enhancements**: Redesigned the Song Detail screen with a new horizontal metadata section for BPM, Key, and Difficulty.
+- **App Version**: Incremented `versionCode` to 17 and `versionName` to "1.6.0" in `app/build.gradle.kts`.
+
 ## [1.5.8] - 2025-12-11
 
 ### Fixed

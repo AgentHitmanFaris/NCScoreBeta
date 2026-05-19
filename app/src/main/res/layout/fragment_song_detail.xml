@@ -73,6 +73,95 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+            <!-- Metadata Section (BPM & Key) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BPM"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp"
+                        android:textAllCaps="true" />
+                    <TextView
+                        android:id="@+id/tvBpm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="--"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="24dp"
+                    android:background="#33FFFFFF"
+                    android:layout_marginHorizontal="16dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="KEY"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp"
+                        android:textAllCaps="true" />
+                    <TextView
+                        android:id="@+id/tvKey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="--"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="24dp"
+                    android:background="#33FFFFFF"
+                    android:layout_marginHorizontal="16dp" />
+
+                <LinearLayout
+                    android:id="@+id/difficultyContainer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DIFFICULTY"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp"
+                        android:textAllCaps="true" />
+                    <TextView
+                        android:id="@+id/tvDifficulty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="--"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
             <!-- Piano Score Button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnOpenScore"

@@ -74,14 +74,15 @@ object SongHandler {
             db.collection("users").document(user.uid).get()
                 .addOnSuccessListener { document ->
                     if (document.exists()) {
-                        // Optional: Check for specific "isPremiumUser" field if needed
-                        // val isPremium = document.getBoolean("isPremiumUser") ?: false
-                        // if (isPremium) ... else ...
-
-                        // For now, just being logged in and having a profile is enough
-                        fetchPremiumPdf(context, song)
+                        val isPremiumUser = document.getBoolean("isPremiumUser") ?: false
+                        
+                        if (isPremiumUser) {
+                            fetchPremiumPdf(context, song)
+                        } else {
+                            Toast.makeText(context, "Premium Access Required: This content is for subscribers only.", Toast.LENGTH_LONG).show()
+                        }
                     } else {
-                        Toast.makeText(context, "User profile not found.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "User profile not found. Please contact support.", Toast.LENGTH_SHORT).show()
                     }
                 }
                 .addOnFailureListener {

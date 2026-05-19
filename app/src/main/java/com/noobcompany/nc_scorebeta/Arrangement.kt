@@ -14,9 +14,14 @@ import com.google.firebase.firestore.PropertyName
  * @property type A string descriptor of the arrangement style (e.g., "Piano Solo", "Full Score", "Lead Sheet").
  */
 data class Arrangement(
-    // The web app calls it 'downloadLink', so we must match that
     @get:PropertyName("downloadLink") @set:PropertyName("downloadLink")
     var downloadLink: String = "",
 
-    var type: String = ""
+    var type: String = "",
+    
+    var difficulty: String = "",
+    
+    var arrangedBy: String = "",
+    
+    var downloadCount: Int = 0
 )

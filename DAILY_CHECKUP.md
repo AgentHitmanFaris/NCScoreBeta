@@ -2,6 +2,24 @@
 
 This file is used to track daily progress and contributions.
 
+## Date: 2026-05-20
+
+### To-Do
+- [x] Synchronize Song/Arrangement models with Firestore JSON mapping
+- [x] Implement parallel data fetching with Kotlin Coroutines
+- [x] Add Haptic Feedback across the app (Clicks, Errors, Favorites)
+- [x] Implement Pull-to-Refresh on Home Screen
+- [x] Add List Animations (Fall-down) and Shimmer placeholders
+- [x] Redesign Song Detail UI with metadata (BPM, Key, Difficulty)
+- [x] Fix Build/ Handshake issues in Gradle properties
+
+### Notes
+- Migrated `HomeFragment` and `SongDetailFragment` to Coroutines (`lifecycleScope` + `async/await`), significantly reducing screen load times.
+- Resolved TLS handshake issues by forcing TLSv1.2 in `gradle.properties`.
+- Synchronized models to match `firestore-clean.json`: difficulty is now handled at the arrangement sub-collection level.
+- Added a custom `HapticUtils` to provide tactile feedback for a more "premium" feel.
+- Cleaned up build configuration: synced root `build.gradle.kts` with `libs.versions.toml` versions.
+
 ## Date: 2025-12-11
 
 ### To-Do

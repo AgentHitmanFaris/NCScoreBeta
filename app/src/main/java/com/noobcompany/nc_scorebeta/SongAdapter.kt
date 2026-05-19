@@ -122,6 +122,7 @@ class SongAdapter(
         updateFavoriteIcon()
 
         holder.ivFavorite.setOnClickListener {
+            HapticUtils.success(it)
             FavoritesManager.toggleFavorite(context, song.id)
             updateFavoriteIcon()
         }
@@ -133,6 +134,7 @@ class SongAdapter(
             .into(holder.ivAlbumCover)
 
         holder.root.setOnClickListener {
+            HapticUtils.viewTap(it)
             onSongClicked(song)
         }
     }

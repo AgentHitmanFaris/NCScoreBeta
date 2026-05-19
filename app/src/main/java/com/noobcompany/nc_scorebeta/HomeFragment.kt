@@ -17,6 +17,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
+import com.google.firebase.firestore.Query
+
+import androidx.lifecycle.lifecycleScope
+import com.google.firebase.firestore.Source
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import android.view.animation.AnimationUtils
 
 /**
  * Fragment representing the application's Home Dashboard.
@@ -25,17 +32,17 @@ import com.google.firebase.firestore.ListenerRegistration
  * - **Hero**: A large banner showcasing the latest or featured release.
  * - **Trending**: A horizontally scrolling list of popular songs.
  * - **New Releases**: A horizontally scrolling list of recently added songs.
- *
- * It uses a real-time Firestore listener to ensure the dashboard reflects the latest database state.
  */
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+
 class HomeFragment : Fragment() {
 
     private lateinit var trendingAdapter: SongAdapter
     private lateinit var newReleasesAdapter: SongAdapter
+    private lateinit var swipeRefresh: SwipeRefreshLayout
 
     private val db = FirebaseFirestore.getInstance()
     private val songsCollection = db.collection("songs")
-    private var songListener: ListenerRegistration? = null
 
     /**
      * Inflates the layout XML for the home screen.
@@ -62,28 +69,16 @@ class HomeFragment : Fragment() {
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        swipeRefresh = view.findViewById(R.id.swipeRefresh)
         setupViews(view)
         setupNavigation(view)
-    }
-
-    /**
-     * Lifecycle method: Called when the Fragment becomes visible.
-     *
-     * Starts the real-time Firestore listener to fetch dashboard content.
-     */
-    override fun onStart() {
-        super.onStart()
-        startListening()
-    }
-
-    /**
-     * Lifecycle method: Called when the Fragment is no longer visible.
-     *
-     * Detaches the Firestore listener to conserve resources and bandwidth.
-     */
-    override fun onStop() {
-        super.onStop()
-        stopListening()
+        
+        swipeRefresh.setOnRefreshListener {
+            fetchDashboardData()
+        }
+        
+        // Fetch data once using Coroutines for better performance
+        fetchDashboardData()
     }
 
     /**
@@ -94,10 +89,6 @@ class HomeFragment : Fragment() {
     private fun setupNavigation(view: View) {
         val btnSearch = view.findViewById<ImageButton>(R.id.btnSearch)
         btnSearch.setOnClickListener {
-            // Navigate to Browse Tab via Parent Activity or replace fragment
-            // For now, simpler to let MainActivity handle tab switching if we exposed a method,
-            // but typically search button might just open the browse tab.
-            // Accessing MainActivity's bottom nav:
             (activity as? MainActivity)?.switchToBrowse()
         }
     }
@@ -127,6 +118,12 @@ class HomeFragment : Fragment() {
         })
         rvNewReleases.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         rvNewReleases.adapter = newReleasesAdapter
+        
+        // Apply Fall-down animation
+        val resId = R.anim.layout_animation_fall_down
+        val animation = AnimationUtils.loadLayoutAnimation(context, resId)
+        rvTrending.layoutAnimation = animation
+        rvNewReleases.layoutAnimation = animation
     }
     
     /**
@@ -168,53 +165,47 @@ class HomeFragment : Fragment() {
     }
 
     /**
-     * Initializes the Firestore real-time listener.
+     * Fetches dashboard data using Coroutines.
      *
-     * - Fetches all songs.
-     * - Sorts by creation date to find "New Releases".
-     * - Randomly selects "Trending" songs (simulated logic).
-     * - Updates the UI adapters with the processed lists.
+     * This method:
+     * 1. Fetches songs ordered by creation date.
+     * 2. Prioritizes cache if available for instant loading.
+     * 3. Updates the UI on the main thread.
      */
-    private fun startListening() {
-        if (songListener != null) return
+    private fun fetchDashboardData() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                AppLogger.log("HomeFragment", "Fetching dashboard data...")
+                
+                // Fetch from Cache first for speed, then Server for freshness
+                // Using await() from kotlinx-coroutines-play-services
+                val snapshot = songsCollection
+                    .orderBy("dateAdded", Query.Direction.DESCENDING)
+                    .limit(30)
+                    .get()
+                    .await()
 
-        songListener = songsCollection.addSnapshotListener { snapshots, e ->
-            if (e != null) return@addSnapshotListener
-
-            if (snapshots != null) {
-                val allSongs = ArrayList<Song>()
-                for (document in snapshots) {
-                    try {
-                        val song = document.toObject(Song::class.java)
-                        allSongs.add(song)
-                    } catch (error: Exception) {
-                        Log.e("HomeFragment", "Error converting song", error)
-                    }
-                }
+                val allSongs = snapshot.toObjects(Song::class.java)
 
                 if (allSongs.isNotEmpty()) {
-                    // Sort by 'createdAt' descending. Nulls (old songs without date) go to the end.
-                    val sortedByDate = allSongs.sortedWith(compareByDescending<Song> { it.createdAt }.thenBy { it.title })
-                    
-                    // Debug log to verify dates
-                    if (sortedByDate.isNotEmpty()) {
-                         Log.d("HomeFragment", "Latest Song: ${sortedByDate[0].title}, Date: ${sortedByDate[0].createdAt?.toDate()}")
-                    }
+                    val newReleases = allSongs.take(10)
+                    updateHeroSection(newReleases[0])
+                    newReleasesAdapter.submitList(newReleases)
 
-                    updateHeroSection(sortedByDate[0])
-                    newReleasesAdapter.submitList(sortedByDate.take(5))
-                    val trendingSongs = allSongs.shuffled().take(5)
+                    val trendingSongs = allSongs.drop(10).shuffled().take(5)
                     trendingAdapter.submitList(trendingSongs)
+                    
+                    // Trigger animations
+                    view?.findViewById<RecyclerView>(R.id.rvTrending)?.scheduleLayoutAnimation()
+                    view?.findViewById<RecyclerView>(R.id.rvNewReleases)?.scheduleLayoutAnimation()
                 }
+                swipeRefresh.isRefreshing = false
+            } catch (e: Exception) {
+                AppLogger.error("HomeFragment", "Failed to fetch dashboard", e)
+                Toast.makeText(context, "Connection error. Using cached data.", Toast.LENGTH_SHORT).show()
+                swipeRefresh.isRefreshing = false
             }
         }
     }
-
-    /**
-     * Cleans up the listener when the fragment is stopped.
-     */
-    private fun stopListening() {
-        songListener?.remove()
-        songListener = null
-    }
 }
+

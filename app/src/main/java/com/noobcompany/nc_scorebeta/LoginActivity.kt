@@ -99,38 +99,46 @@ class LoginActivity : AppCompatActivity() {
             val confirmPassword = etConfirmPassword.text.toString().trim()
 
             if (email.isEmpty() || password.isEmpty()) {
+                HapticUtils.error(this)
                 Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             if (!isValidEmail(email)) {
+                HapticUtils.error(this)
                 Toast.makeText(this, "Please enter a valid email address", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             if (!isLoginMode) {
                 if (name.isEmpty()) {
+                    HapticUtils.error(this)
                     Toast.makeText(this, "Please enter your name", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
                 if (password != confirmPassword) {
+                    HapticUtils.error(this)
                     Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
                 if (!isPasswordStrong(password)) {
+                    HapticUtils.error(this)
                     Toast.makeText(this, "Password must be 12+ chars with letters, numbers, and symbols", Toast.LENGTH_LONG).show()
                     return@setOnClickListener
                 }
             }
 
             progressBar.visibility = View.VISIBLE
+            HapticUtils.viewTap(btnLogin)
 
             if (isLoginMode) {
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnSuccessListener {
+                        HapticUtils.tap(this)
                         checkFirestoreUser(it.user?.uid)
                     }
                     .addOnFailureListener {
+                        HapticUtils.error(this)
                         progressBar.visibility = View.GONE
                         // SECURITY: Use generic error message to prevent user enumeration
                         Toast.makeText(this, "Login Failed: Invalid email or password", Toast.LENGTH_SHORT).show()
@@ -139,9 +147,11 @@ class LoginActivity : AppCompatActivity() {
             } else {
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnSuccessListener { result ->
+                        HapticUtils.tap(this)
                         createFirestoreUser(result.user?.uid, email, name)
                     }
                     .addOnFailureListener {
+                        HapticUtils.error(this)
                         progressBar.visibility = View.GONE
                         // SECURITY: Use generic error message to prevent user enumeration
                         Toast.makeText(this, "Registration Failed. Please check your details.", Toast.LENGTH_SHORT).show()

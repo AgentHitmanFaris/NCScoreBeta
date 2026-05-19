@@ -19,6 +19,10 @@ import com.google.firebase.firestore.PropertyName
  * @property createdAt The server-generated timestamp recording when the song was added. Used for sorting new releases.
  * @property lyrics The full text of the song's lyrics. May be empty if not available.
  * @property youtubeLink The URL or unique ID of a YouTube video associated with the song (e.g., a performance or tutorial). Mapped to "video".
+ * @property midiUrl URL to the MIDI version of the song for interactive playback.
+ * @property musicXmlUrl URL to the MusicXML version of the song for dynamic rendering.
+ * @property backingTrackUrl URL to an audio accompaniment track.
+ * @property difficulty A descriptor of the song's playing difficulty (e.g., "Easy", "Medium", "Hard").
  */
 data class Song(
     @DocumentId
@@ -34,13 +38,27 @@ data class Song(
     @field:JvmField
     var isPremium: Boolean = false,
 
-    // ADDED: This lets us sort by date!
+    @get:PropertyName("dateAdded") @set:PropertyName("dateAdded")
     @com.google.firebase.firestore.ServerTimestamp
     var createdAt: Timestamp? = null,
 
     var lyrics: String = "",
     @get:PropertyName("video") @set:PropertyName("video")
-    var youtubeLink: String = ""
+    var youtubeLink: String = "",
+
+    var midiUrl: String = "",
+    var musicXmlUrl: String = "",
+    var backingTrackUrl: String = "",
+    
+    var artistIds: List<String> = emptyList(),
+    var originalKey: String = "",
+    var bpm: Int = 0,
+    
+    @field:JvmField
+    var isFeatured: Boolean = false,
+    
+    @field:JvmField
+    var isComingSoon: Boolean = false
 ) {
     /**
      * Helper function to generate a human-readable string of artist names.

@@ -81,11 +81,18 @@ object SecurityUtils {
 
             // 3. Validate Resolved IPs
             for (addr in inetAddresses) {
-                if (addr.isLoopbackAddress ||
-                    addr.isSiteLocalAddress ||
-                    addr.isLinkLocalAddress ||
-                    addr.isAnyLocalAddress) {
+                // IMPORTANT: We now allow isSiteLocalAddress and isLinkLocalAddress
+                // to support VPNs and local corporate/home networks that may resolve
+                // public domain names to internal IP addresses.
+                
+                if (addr.isLoopbackAddress || addr.isAnyLocalAddress) {
+                    AppLogger.error("SecurityUtils", "Blocked resolution to loopback/local: ${addr.hostAddress}")
                     return false
+                }
+                
+                // Log site-local for debugging but allow it
+                if (addr.isSiteLocalAddress || addr.isLinkLocalAddress) {
+                    AppLogger.log("SecurityUtils", "Allowing VPN/Site-Local address: ${addr.hostAddress}")
                 }
             }
             true
@@ -186,22 +193,24 @@ object SecurityUtils {
 
             val (b0, b1, b2, b3) = intParts
 
+            // IMPORTANT: We now ALLOW site-local and link-local to support VPNs
+            // These were previously blocked here and in isSafeUrlWithDnsCheck.
+
+            /* 
             // 10.0.0.0/8
             if (b0 == 10) return true
-
             // 172.16.0.0/12 (172.16 - 172.31)
             if (b0 == 172 && b1 in 16..31) return true
-
             // 192.168.0.0/16
             if (b0 == 192 && b1 == 168) return true
-
-            // 127.0.0.0/8 (Loopback)
-            if (b0 == 127) return true
-
             // 169.254.0.0/16 (Link Local)
             if (b0 == 169 && b1 == 254) return true
+            */
 
-            // 0.0.0.0/8 (Current network)
+            // 127.0.0.0/8 (Loopback) - STILL BLOCKED
+            if (b0 == 127) return true
+
+            // 0.0.0.0/8 (Current network) - STILL BLOCKED
             if (b0 == 0) return true
         }
 

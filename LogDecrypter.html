@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NC Score Log Decrypter</title>
+    <title>NC Score Log Decrypter (V2)</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -20,14 +20,13 @@
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             width: 100%;
-            max-width: 800px;
+            max-width: 900px;
         }
-        h1 { margin-top: 0; color: #333; }
+        h1 { margin-top: 0; color: #333; font-size: 24px; }
         .input-group { margin-bottom: 20px; }
         label { display: block; margin-bottom: 8px; font-weight: bold; color: #555; }
         textarea {
             width: 100%;
-            height: 120px;
             padding: 12px;
             border: 1px solid #ddd;
             border-radius: 8px;
@@ -36,8 +35,10 @@
             resize: vertical;
             box-sizing: border-box;
         }
+        #privateKeyInput { height: 150px; }
+        #logInput { height: 100px; }
         button {
-            background-color: #007bff;
+            background-color: #28a745;
             color: white;
             border: none;
             padding: 12px 24px;
@@ -45,112 +46,139 @@
             font-size: 16px;
             cursor: pointer;
             transition: background 0.2s;
+            width: 100%;
         }
-        button:hover { background-color: #0056b3; }
+        button:hover { background-color: #218838; }
         #output {
             margin-top: 20px;
             white-space: pre-wrap;
             background: #1e1e1e;
-            color: #a9b7c6;
+            color: #d4d4d4;
             padding: 20px;
             border-radius: 8px;
             font-family: "Consolas", "Monaco", monospace;
             font-size: 13px;
             overflow-x: auto;
             display: none;
-            max-height: 500px;
+            max-height: 600px;
             overflow-y: auto;
+            border: 1px solid #333;
         }
-        .error { color: #ff5555; }
+        .error { color: #ff5555; background: #2d1d1d !important; border-color: #6d2d2d !important; }
+        .info { font-size: 12px; color: #666; margin-bottom: 20px; line-height: 1.5; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Log Decrypter Tool</h1>
-    <p>Paste the <code>encryptedLogs</code> string from Firestore below.</p>
+    <h1>NC Score Hybrid Log Decrypter</h1>
+    <div class="info">
+        This tool decrypts logs using the <strong>RSA + AES Hybrid</strong> scheme. <br>
+        1. Decrypts the 256-bit AES key using your RSA Private Key (OAEP SHA-256). <br>
+        2. Decrypts the payload using AES-CBC. <br>
+        3. Decompresses the result using GZIP.
+    </div>
     
     <div class="input-group">
-        <label for="keyInput">Secret Key (Default: Ver01)</label>
-        <input type="text" id="keyInput" value="NCScoreBetaKey2024SecretKeyVer01" style="width: 100%; padding: 8px; box-sizing: border-box;">
+        <label for="privateKeyInput">RSA Private Key (PKCS#8 PEM format)</label>
+        <textarea id="privateKeyInput" placeholder="-----BEGIN PRIVATE KEY-----&#10;...&#10;-----END PRIVATE KEY-----"></textarea>
     </div>
 
     <div class="input-group">
-        <label for="logInput">Encrypted Base64 String</label>
-        <textarea id="logInput" placeholder="Paste encrypted string here..."></textarea>
+        <label for="logInput">Encrypted Base64 String (from Firestore)</label>
+        <textarea id="logInput" placeholder="Paste the encryptedLogs string here..."></textarea>
     </div>
 
-    <button onclick="decryptLogs()">Decrypt Logs</button>
+    <button onclick="decryptLogs()">Decrypt & Decompress</button>
 
     <div id="output"></div>
 </div>
 
 <script>
-    // We use the Web Crypto API
     async function decryptLogs() {
-        const keyString = document.getElementById('keyInput').value;
-        const inputString = document.getElementById('logInput').value.trim();
+        const privateKeyPem = document.getElementById('privateKeyInput').value.trim();
+        const encryptedB64 = document.getElementById('logInput').value.trim();
         const outputDiv = document.getElementById('output');
 
-        if (!inputString) {
-            alert("Please paste the encrypted string.");
+        if (!privateKeyPem || !encryptedB64) {
+            alert("Please provide both the Private Key and the Encrypted Log string.");
             return;
         }
 
         try {
             outputDiv.style.display = 'block';
-            outputDiv.textContent = "Decrypting...";
+            outputDiv.textContent = "Processing...";
             outputDiv.classList.remove("error");
 
-            // 1. Base64 Decode
-            const binaryString = atob(inputString);
-            const bytes = new Uint8Array(binaryString.length);
-            for (let i = 0; i < binaryString.length; i++) {
-                bytes[i] = binaryString.charCodeAt(i);
+            // 1. Decode main Base64
+            const combinedData = Uint8Array.from(atob(encryptedB64), c => c.charCodeAt(0));
+
+            // Format check (256 key + 16 IV + payload)
+            if (combinedData.length < 272) {
+                throw new Error("Encrypted string is too short to be a valid hybrid package.");
             }
 
-            // 2. Extract IV (First 16 bytes)
-            const iv = bytes.slice(0, 16);
-            const ciphertext = bytes.slice(16);
+            const encryptedAesKey = combinedData.slice(0, 256);
+            const iv = combinedData.slice(256, 272);
+            const encryptedPayload = combinedData.slice(272);
 
-            // 3. Import Key
-            const keyBytes = new TextEncoder().encode(keyString);
-            // AES-256 requires 32 bytes. If key is shorter/longer, we might need to adjust.
-            // In Android code: SecretKeySpec(key.getBytes(), "AES") uses the raw bytes.
-            // Web Crypto "raw" import requires specific lengths (128, 192, 256 bits).
-            // "NCScoreBetaKey2024SecretKeyVer01" is exactly 32 chars = 256 bits. Perfect.
+            // 2. Import Private Key
+            const pemHeader = "-----BEGIN PRIVATE KEY-----";
+            const pemFooter = "-----END PRIVATE KEY-----";
+            const pemContents = privateKeyPem.substring(pemHeader.length, privateKeyPem.length - pemFooter.length).replace(/\s+/g, '');
+            const binaryKey = Uint8Array.from(atob(pemContents), c => c.charCodeAt(0));
 
-            const key = await window.crypto.subtle.importKey(
+            const rsaKey = await window.crypto.subtle.importKey(
+                "pkcs8",
+                binaryKey,
+                {
+                    name: "RSA-OAEP",
+                    hash: "SHA-256"
+                },
+                false,
+                ["decrypt"]
+            );
+
+            // 3. Decrypt AES Key
+            outputDiv.textContent = "Decrypting AES Key...";
+            const aesKeyBuffer = await window.crypto.subtle.decrypt(
+                { name: "RSA-OAEP" },
+                rsaKey,
+                encryptedAesKey
+            );
+
+            // 4. Decrypt Payload
+            outputDiv.textContent = "Decrypting Payload...";
+            const aesKey = await window.crypto.subtle.importKey(
                 "raw",
-                keyBytes,
+                aesKeyBuffer,
                 { name: "AES-CBC" },
                 false,
                 ["decrypt"]
             );
 
-            // 4. Decrypt
             const decryptedBuffer = await window.crypto.subtle.decrypt(
                 { name: "AES-CBC", iv: iv },
-                key,
-                ciphertext
+                aesKey,
+                encryptedPayload
             );
 
-            // 5. Decompress (GZIP)
-            // Using DecompressionStream (Supported in Chrome 80+, Firefox 113+, Safari 16.4+)
+            // 5. Decompress GZIP
+            outputDiv.textContent = "Decompressing...";
             const ds = new DecompressionStream("gzip");
             const writer = ds.writable.getWriter();
             writer.write(decryptedBuffer);
             writer.close();
             
             const decompressedArrayBuffer = await new Response(ds.readable).arrayBuffer();
-            const decoder = new TextDecoder("utf-8");
-            const logText = decoder.decode(decompressedArrayBuffer);
+            const logText = new TextDecoder().decode(decompressedArrayBuffer);
 
             outputDiv.textContent = logText;
 
         } catch (e) {
             console.error(e);
-            outputDiv.textContent = "Error: " + e.message + "\n\nCheck if the key is correct or if the browser supports DecompressionStream.";
+            outputDiv.textContent = "DECRYPTION ERROR: " + e.message +
+                "\n\nCommon causes:\n- Incorrect Private Key\n- Private Key is not in PKCS#8 format\n- Log string is corrupted or incomplete\n- Browser does not support DecompressionStream (use Chrome/Edge/Firefox)";
             outputDiv.classList.add("error");
         }
     }

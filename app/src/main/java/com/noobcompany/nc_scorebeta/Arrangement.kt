@@ -1,5 +1,6 @@
 package com.noobcompany.nc_scorebeta
 
+import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.PropertyName
 
 /**
@@ -9,11 +10,16 @@ import com.google.firebase.firestore.PropertyName
  * sub-collection in Firestore. It provides the necessary links to download the sheet music
  * and categorizes the arrangement by type (e.g., specific instrument or ensemble).
  *
+ * @property id The unique identifier for the arrangement document.
  * @property downloadLink The direct URL to the downloadable content (typically a PDF file).
  *                        It is mapped to the "downloadLink" field in the Firestore document.
  * @property type A string descriptor of the arrangement style (e.g., "Piano Solo", "Full Score", "Lead Sheet").
+ * @property key The musical key of this specific arrangement (useful for transpositions).
  */
 data class Arrangement(
+    @DocumentId
+    var id: String = "",
+
     @get:PropertyName("downloadLink") @set:PropertyName("downloadLink")
     var downloadLink: String = "",
 
@@ -22,6 +28,8 @@ data class Arrangement(
     var difficulty: String = "",
     
     var arrangedBy: String = "",
+
+    var key: String = "",
     
     var downloadCount: Int = 0
 )

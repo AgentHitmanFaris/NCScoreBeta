@@ -9,7 +9,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import java.io.File
 
+import androidx.core.content.edit
+import androidx.core.graphics.toColorInt
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FieldValue
 import android.os.Build
 import com.google.firebase.auth.FirebaseAuth
 
@@ -104,7 +107,7 @@ class SettingsFragment : Fragment() {
                 updateLogoutButton()
             }
             tvLogout.setCompoundDrawablesWithIntrinsicBounds(0, 0, android.R.drawable.ic_lock_power_off, 0)
-            tvLogout.setTextColor(android.graphics.Color.parseColor("#FF5555"))
+            tvLogout.setTextColor("#FF5555".toColorInt())
         } else {
             // Show "Log In" instead of hiding
             tvLogout.visibility = View.VISIBLE
@@ -136,7 +139,7 @@ class SettingsFragment : Fragment() {
         switchOffline.isChecked = prefs.getBoolean("offline_mode", false)
 
         switchOffline.setOnCheckedChangeListener { _, isChecked ->
-            prefs.edit().putBoolean("offline_mode", isChecked).apply()
+            prefs.edit { putBoolean("offline_mode", isChecked) }
             val status = if (isChecked) "Enabled: Scores will be saved" else "Disabled: Scores will stream"
             Toast.makeText(context, status, Toast.LENGTH_SHORT).show()
         }
@@ -146,7 +149,7 @@ class SettingsFragment : Fragment() {
         }
 
         view.findViewById<TextView>(R.id.btnAbout).setOnClickListener {
-            Toast.makeText(context, "Developed by NoobCompany", Toast.LENGTH_LONG).show()
+            showAboutDialog()
         }
         
         view.findViewById<TextView>(R.id.btnReportBug).setOnClickListener {
@@ -158,6 +161,34 @@ class SettingsFragment : Fragment() {
         }
         
         // Initial listener setup is handled in updateLogoutButton
+    }
+
+    /**
+     * Displays an "About" dialog containing developer information and the recent app changelog.
+     */
+    private fun showAboutDialog() {
+        val changelog = """
+            v1.6.2 (Current)
+            - Support for Multiple Arrangements (Key Selection)
+            - Login-only Premium Access policy
+            - Added Key Transposition metadata
+            
+            v1.6.1
+            - Automated Update Checks
+            - UI Overhaul with Premium Detail Design
+            - Case-Insensitive Global Search
+            
+            v1.6.0
+            - Database Schema Sync (BPM, Key, Difficulty)
+            - Parallel Data Fetching (Faster loading)
+            - Haptic Feedback & List Animations
+        """.trimIndent()
+
+        AlertDialog.Builder(context)
+            .setTitle("About NC Score Beta")
+            .setMessage("Developed by NoobCompany\n\n--- What's New ---\n$changelog")
+            .setPositiveButton("Close", null)
+            .show()
     }
 
     /**
@@ -204,7 +235,7 @@ class SettingsFragment : Fragment() {
             val report = hashMapOf(
                 "userId" to (user?.uid ?: "anonymous"),
                 "userEmail" to (user?.email ?: "anonymous"),
-                "timestamp" to com.google.firebase.Timestamp.now(),
+                "timestamp" to FieldValue.serverTimestamp(),
                 "deviceModel" to Build.MODEL,
                 "deviceManufacturer" to Build.MANUFACTURER,
                 "androidVersion" to Build.VERSION.RELEASE,

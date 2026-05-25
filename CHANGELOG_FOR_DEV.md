@@ -1,5 +1,34 @@
 # Changelog for Developers
 
+## [1.6.2] - 2026-05-22
+
+### Added
+- **Multiple Arrangements Support**: App now handles songs with multiple keys or transcription versions. If a song has more than one arrangement, a selection dialog is shown.
+- **Key Transposition Metadata**: Added `key` field to `Arrangement` model to display musical keys in the selection dialog.
+
+### Changed
+- **Premium Access Policy**: Updated access rules so that all authenticated users can access premium scores (Login Only requirement).
+- **App Version**: Incremented `versionCode` to 19 and `versionName` to "1.6.2" in `app/build.gradle.kts`.
+
+### Fixed
+- **Compilation Error**: Fixed a string template error in `FilenameSanitizationTest.kt` where `$Song` was interpreted as a class reference.
+
+## [1.6.1] - 2026-05-21
+
+### Added
+- **Automated Update Check**: App now performs a silent background check for updates on startup via `UpdateManager`.
+- **UI Overhaul**: Implemented a "Premium" immersive design for `SongDetailFragment` with a collapsing toolbar, stylized metadata pills, and improved typography.
+- **Case-Insensitive Global Search**: Enhanced `BrowseFragment` to query the entire Firestore database case-insensitively (handling both exact and lowercase matches).
+
+### Fixed
+- **InflateException**: Fixed critical typos in `fragment_browse.xml` (`android.layout_height` and `app.layout_...` dot vs colon syntax).
+- **SecurityException**: Resolved `Unknown calling package name` by adding `com.google.android.gms` to `<queries>` in the manifest.
+- **Kotlin Compatibility**: Updated Kotlin to `2.1.10` and Firebase BOM to `34.13.0` to resolve binary metadata incompatibility.
+- **Back Gesture**: Enabled `android:enableOnBackInvokedCallback` for Android 13+ support.
+
+### Changed
+- **App Version**: Incremented `versionCode` to 18 and `versionName` to "1.6.1" in `app/build.gradle.kts`.
+
 ## [1.6.0] - 2026-05-20
 
 ### Added

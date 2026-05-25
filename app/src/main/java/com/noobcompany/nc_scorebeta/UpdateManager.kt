@@ -29,6 +29,8 @@ object UpdateManager {
     // API endpoint for the latest release
     private const val LATEST_RELEASE_URL = "https://api.github.com/repos/$GITHUB_OWNER/$GITHUB_REPO/releases/latest"
 
+    private var isCheckInProgress = false
+
     /**
      * Triggers a check for application updates.
      *
@@ -36,10 +38,15 @@ object UpdateManager {
      * to fetch release metadata from GitHub.
      *
      * @param context The application Context, used for UI feedback.
+     * @param silent If true, no Toast or "Latest version" message will be shown unless an update is found.
      */
-    fun checkForUpdates(context: Context) {
-        Toast.makeText(context, "Checking for updates...", Toast.LENGTH_SHORT).show()
-        FetchReleaseTask(context).execute()
+    fun checkForUpdates(context: Context, silent: Boolean = false) {
+        if (isCheckInProgress) return
+        
+        if (!silent) {
+            Toast.makeText(context, "Checking for updates...", Toast.LENGTH_SHORT).show()
+        }
+        FetchReleaseTask(context, silent).execute()
     }
 
     /**
@@ -72,9 +79,14 @@ object UpdateManager {
      * Background task to query the GitHub API for the latest release information.
      *
      * @property context The context used for displaying dialogs and toasts upon completion.
+     * @property silent If true, suppresses UI feedback for "no updates".
      */
-    private class FetchReleaseTask(context: Context) : AsyncTask<Void, Void, String?>() {
+    private class FetchReleaseTask(context: Context, private val silent: Boolean) : AsyncTask<Void, Void, String?>() {
         private val contextRef = java.lang.ref.WeakReference(context)
+
+        override fun onPreExecute() {
+            isCheckInProgress = true
+        }
 
         /**
          * executes the network request to GitHub in a background thread.
@@ -108,40 +120,52 @@ object UpdateManager {
          * @param result The JSON string retrieved from GitHub.
          */
         override fun onPostExecute(result: String?) {
+            isCheckInProgress = false
             val context = contextRef.get()
             if (context == null) return
 
             if (result == null) {
-                Toast.makeText(context, "Failed to check for updates (Security or Network Error).", Toast.LENGTH_SHORT).show()
+                if (!silent) {
+                    Toast.makeText(context, "Failed to check for updates (Security or Network Error).", Toast.LENGTH_SHORT).show()
+                }
                 return
             }
 
             try {
                 val json = JSONObject(result)
-                val tagName = json.getString("tag_name") // e.g., "v1.2.0" or "1.2.0"
+                val tagName = json.getString("tag_name")
+                val releaseNotes = json.optString("body", "No release notes provided.")
                 val downloadUrl = json.getJSONArray("assets")
                     .getJSONObject(0)
                     .getString("browser_download_url")
 
                 // SECURITY: Basic string check on download URL before proceeding
                 if (!SecurityUtils.isSecureUrl(downloadUrl)) {
-                    Toast.makeText(context, "Update blocked: Insecure URL.", Toast.LENGTH_LONG).show()
+                    if (!silent) {
+                        Toast.makeText(context, "Update blocked: Insecure URL.", Toast.LENGTH_LONG).show()
+                    }
                     return
                 }
 
                 val pInfo = context.packageManager.getPackageInfo(context.packageName, 0)
                 val currentVersion = "v${pInfo.versionName}"
                 
+                // LOGGING FOR DEBUGGING
+                android.util.Log.d("UpdateManager", "Server Version: $tagName")
+                android.util.Log.d("UpdateManager", "Local Version: $currentVersion")
+
                 // Compare versions using semantic versioning logic
                 if (UpdateManager.isNewerVersion(tagName, currentVersion)) {
-                    showUpdateDialog(context, tagName, downloadUrl)
-                } else {
-                    Toast.makeText(context, "Current version installed ($currentVersion)", Toast.LENGTH_SHORT).show()
+                    showUpdateDialog(context, tagName, releaseNotes, downloadUrl)
+                } else if (!silent) {
+                    Toast.makeText(context, "You are on the latest version ($currentVersion)", Toast.LENGTH_SHORT).show()
                 }
 
             } catch (e: Exception) {
                 e.printStackTrace()
-                Toast.makeText(context, "Error parsing update info.", Toast.LENGTH_SHORT).show()
+                if (!silent) {
+                    Toast.makeText(context, "Error parsing update info.", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
@@ -151,12 +175,19 @@ object UpdateManager {
      *
      * @param context The Context.
      * @param newVersion The new version string.
+     * @param releaseNotes The what's new information from GitHub.
      * @param downloadUrl The URL for the APK download.
      */
-    private fun showUpdateDialog(context: Context, newVersion: String, downloadUrl: String) {
+    private fun showUpdateDialog(context: Context, newVersion: String, releaseNotes: String, downloadUrl: String) {
+        val message = if (releaseNotes.isNotBlank()) {
+            "A new version ($newVersion) is available.\n\nWhat's New:\n$releaseNotes\n\nWould you like to download and install it?"
+        } else {
+            "A new version ($newVersion) is available. Would you like to download and install it?"
+        }
+
         AlertDialog.Builder(context)
             .setTitle("Update Available")
-            .setMessage("A new version ($newVersion) is available. Would you like to download and install it?")
+            .setMessage(message)
             .setPositiveButton("Update") { _, _ ->
                 downloadAndInstall(context, downloadUrl)
             }

@@ -12,7 +12,7 @@
     <EditText
         android:id="@+id/etSearch"
         android:layout_width="match_parent"
-        android.layout_height="50dp"
+        android:layout_height="50dp"
         android:background="@drawable/bg_search_bar"
         android:hint="Search songs or artists..."
         android:textColorHint="#888888"
@@ -59,7 +59,7 @@
         android:textStyle="bold"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app.layout_constraintTop_toBottomOf="@+id/rvArtists" />
+        app:layout_constraintTop_toBottomOf="@+id/rvArtists" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSongs"

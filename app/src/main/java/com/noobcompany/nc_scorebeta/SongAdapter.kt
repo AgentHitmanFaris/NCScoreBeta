@@ -103,7 +103,7 @@ class SongAdapter(
 
         holder.tvTitle.text = song.title
         holder.tvArtist.text = song.getFormattedArtist()
-        holder.ivPremiumStar.visibility = if (song.isPremium) View.VISIBLE else View.GONE
+        holder.ivPremiumStar.visibility = if (song.isPremium == true) View.VISIBLE else View.GONE
 
         // Handle Artist Click
         holder.tvArtist.setOnClickListener {

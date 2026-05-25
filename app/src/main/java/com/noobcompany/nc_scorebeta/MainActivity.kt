@@ -42,6 +42,9 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             loadFragment(HomeFragment())
         }
+
+        // AUTO-CHECK FOR UPDATES (Silent)
+        UpdateManager.checkForUpdates(this, silent = true)
     }
 
     /**

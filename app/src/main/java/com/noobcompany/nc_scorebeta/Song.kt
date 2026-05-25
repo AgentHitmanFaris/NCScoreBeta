@@ -22,7 +22,6 @@ import com.google.firebase.firestore.PropertyName
  * @property midiUrl URL to the MIDI version of the song for interactive playback.
  * @property musicXmlUrl URL to the MusicXML version of the song for dynamic rendering.
  * @property backingTrackUrl URL to an audio accompaniment track.
- * @property difficulty A descriptor of the song's playing difficulty (e.g., "Easy", "Medium", "Hard").
  */
 data class Song(
     @DocumentId
@@ -36,10 +35,10 @@ data class Song(
     var albumCover: String = "",
 
     @field:JvmField
-    var isPremium: Boolean = false,
+    var isPremium: Boolean? = false,
 
     @get:PropertyName("dateAdded") @set:PropertyName("dateAdded")
-    var createdAt: String = "",
+    var createdAt: Timestamp? = null,
 
     var lyrics: String = "",
     @get:PropertyName("video") @set:PropertyName("video")
@@ -51,13 +50,13 @@ data class Song(
     
     var artistIds: List<String> = emptyList(),
     var originalKey: String = "",
-    var bpm: Int = 0,
+    var bpm: Int? = 0,
     
     @field:JvmField
-    var isFeatured: Boolean = false,
+    var isFeatured: Boolean? = false,
     
     @field:JvmField
-    var isComingSoon: Boolean = false
+    var isComingSoon: Boolean? = false
 ) {
     /**
      * Helper function to generate a human-readable string of artist names.

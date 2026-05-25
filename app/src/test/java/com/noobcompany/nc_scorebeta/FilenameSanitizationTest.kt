@@ -27,6 +27,6 @@ class FilenameSanitizationTest {
 
     @Test
     fun `sanitizeFilename replaces special characters`() {
-        assertEquals("Cool_Song_", SecurityUtils.sanitizeFilename("Cool$Song!"))
+        assertEquals("Cool_Song_", SecurityUtils.sanitizeFilename("Cool\$Song!"))
     }
 }

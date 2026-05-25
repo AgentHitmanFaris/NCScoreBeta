@@ -36,32 +36,72 @@ object SongHandler {
     /**
      * Initiates the process of opening the sheet music (PDF) for a specific song.
      *
-     * This method contains the business logic for:
-     * 1. Checking if the song requires premium access.
-     * 2. If premium, verifying the user's subscription or login status.
-     * 3. If standard (or verified premium), fetching the PDF URL or local file path.
+     * This method fetches all available arrangements and allows selection if multiple exist.
      *
      * @param context The application [Context].
      * @param song The [Song] object to be opened.
      */
     fun openScore(context: Context, song: Song) {
-        if (song.isPremium) {
-            checkPremiumAccess(context, song)
+        Toast.makeText(context, "Fetching arrangements...", Toast.LENGTH_SHORT).show()
+
+        FirebaseFirestore.getInstance()
+            .collection("songs").document(song.id).collection("arrangements")
+            .get()
+            .addOnSuccessListener { documents ->
+                val arrangements = documents.toObjects(Arrangement::class.java)
+                if (arrangements.isEmpty()) {
+                    Toast.makeText(context, "No arrangements found for this song.", Toast.LENGTH_SHORT).show()
+                    return@addOnSuccessListener
+                }
+
+                if (arrangements.size == 1) {
+                    handleArrangementSelection(context, song, arrangements[0])
+                } else {
+                    showArrangementSelectionDialog(context, song, arrangements)
+                }
+            }
+            .addOnFailureListener {
+                Toast.makeText(context, "Error fetching score data.", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    /**
+     * Displays a dialog for the user to select from multiple song arrangements (e.g., different keys).
+     */
+    private fun showArrangementSelectionDialog(context: Context, song: Song, arrangements: List<Arrangement>) {
+        val options = arrangements.map { arr ->
+            val type = arr.type.replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
+            val keyStr = if (arr.key.isNotBlank()) " [Key: ${arr.key}]" else ""
+            val diff = if (arr.difficulty.isNotBlank()) " (${arr.difficulty})" else ""
+            "$type$keyStr$diff"
+        }.toTypedArray()
+
+        androidx.appcompat.app.AlertDialog.Builder(context)
+            .setTitle("Select Arrangement")
+            .setItems(options) { _, which ->
+                handleArrangementSelection(context, song, arrangements[which])
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    /**
+     * Directs the flow based on whether the selected arrangement is premium or standard.
+     */
+    private fun handleArrangementSelection(context: Context, song: Song, arrangement: Arrangement) {
+        if (song.isPremium == true) {
+            checkPremiumAccess(context, song, arrangement)
         } else {
-            fetchAndOpenPdf(context, song)
+            openStandardArrangement(context, song, arrangement)
         }
     }
 
     /**
      * Internal helper to verify if the current user is authorized to view premium content.
      *
-     * Checks if a user is logged in via Firebase Auth and if their profile exists in the 'users' collection.
-     * If unauthorized, it redirects the user to the [LoginActivity].
-     *
-     * @param context The application [Context].
-     * @param song The premium [Song] attempting to be accessed.
+     * Requirement: Login Only.
      */
-    private fun checkPremiumAccess(context: Context, song: Song) {
+    private fun checkPremiumAccess(context: Context, song: Song, arrangement: Arrangement) {
         val user = FirebaseAuth.getInstance().currentUser
 
         if (user == null) {
@@ -69,69 +109,22 @@ object SongHandler {
             val intent = Intent(context, LoginActivity::class.java)
             context.startActivity(intent)
         } else {
-            // Verify User in Firestore
-            val db = FirebaseFirestore.getInstance()
-            db.collection("users").document(user.uid).get()
-                .addOnSuccessListener { document ->
-                    if (document.exists()) {
-                        val isPremiumUser = document.getBoolean("isPremiumUser") ?: false
-                        
-                        if (isPremiumUser) {
-                            fetchPremiumPdf(context, song)
-                        } else {
-                            Toast.makeText(context, "Premium Access Required: This content is for subscribers only.", Toast.LENGTH_LONG).show()
-                        }
-                    } else {
-                        Toast.makeText(context, "User profile not found. Please contact support.", Toast.LENGTH_SHORT).show()
-                    }
-                }
-                .addOnFailureListener {
-                    Toast.makeText(context, "Error verifying account.", Toast.LENGTH_SHORT).show()
-                }
+            // Requirement is for login only - if user is authenticated, allow access.
+            fetchPremiumPdf(context, song, arrangement)
         }
     }
 
     /**
-     * Fetches the secure download link for a verified premium song.
-     *
-     * Premium songs have their content stored in a nested "secure" subcollection to prevent public access.
-     * This method first looks up the arrangement ID and then queries the secure subcollection.
-     *
-     * @param context The application [Context].
-     * @param song The premium [Song] object.
+     * Fetches the secure download link for a verified premium arrangement.
      */
-    @Suppress("UNCHECKED_CAST")
-    private fun fetchPremiumPdf(context: Context, song: Song) {
+    private fun fetchPremiumPdf(context: Context, song: Song, arrangement: Arrangement) {
         Toast.makeText(context, "Verifying Premium Access...", Toast.LENGTH_SHORT).show()
-
-        // Step 1: Get the arrangement ID first
-        FirebaseFirestore.getInstance()
-            .collection("songs").document(song.id).collection("arrangements")
-            .get()
-            .addOnSuccessListener { documents ->
-                if (!documents.isEmpty) {
-                    // For now, we take the first arrangement found
-                    val arrangementDoc = documents.documents[0]
-                    val arrangementId = arrangementDoc.id
-                    
-                    // Step 2: Fetch the secure link from the nested subcollection
-                    // Path: songs/{songId}/arrangements/{arrId}/secure/content
-                    fetchNestedSecureLink(context, song.id, arrangementId)
-                } else {
-                    Toast.makeText(context, "No arrangements found for this song.", Toast.LENGTH_SHORT).show()
-                }
-            }
-            .addOnFailureListener {
-                Toast.makeText(context, "Error finding arrangements.", Toast.LENGTH_SHORT).show()
-            }
+        // Path: songs/{songId}/arrangements/{arrId}/secure/content
+        fetchNestedSecureLink(context, song.id, arrangement.id)
     }
 
     /**
      * Retrieves the actual PDF URL from the nested 'secure' document in Firestore.
-     *
-     * @param context The application [Context].
-     * @param songId The unique ID of the song.
-     * @param arrangementId The unique ID of the arrangement.
      */
     private fun fetchNestedSecureLink(context: Context, songId: String, arrangementId: String) {
         FirebaseFirestore.getInstance()
@@ -141,18 +134,10 @@ object SongHandler {
             .get()
             .addOnSuccessListener { document ->
                 if (document.exists()) {
-                    // Debugging
-                    android.util.Log.d("SongHandler", "Secure Doc Data: ${document.data}")
-
                     var pdfUrl = document.getString("downloadLink")
-
                     // Fallback checks
-                    if (pdfUrl.isNullOrEmpty()) {
-                         pdfUrl = document.getString("link")
-                    }
-                    if (pdfUrl.isNullOrEmpty()) {
-                        pdfUrl = document.getString("url")
-                    }
+                    if (pdfUrl.isNullOrEmpty()) pdfUrl = document.getString("link")
+                    if (pdfUrl.isNullOrEmpty()) pdfUrl = document.getString("url")
 
                     if (!pdfUrl.isNullOrEmpty()) {
                         openPdfViewer(context, pdfUrl!!)
@@ -170,66 +155,48 @@ object SongHandler {
     }
 
     /**
-     * Fetches and opens the PDF for a standard (public) song.
-     *
-     * This method respects the "Offline Mode" preference. If enabled, it attempts to load the file
-     * from local storage. If not found or offline mode is disabled, it fetches the URL from the 'arrangements' subcollection.
-     *
-     * @param context The application [Context].
-     * @param song The [Song] object.
+     * Handles opening a standard (public) arrangement, with offline support.
      */
-    private fun fetchAndOpenPdf(context: Context, song: Song) {
+    private fun openStandardArrangement(context: Context, song: Song, arrangement: Arrangement) {
         Toast.makeText(context, "Opening ${song.title}...", Toast.LENGTH_SHORT).show()
 
         val prefs = context.getSharedPreferences("nc_prefs", Context.MODE_PRIVATE)
         val isOfflineEnabled = prefs.getBoolean("offline_mode", false)
 
         if (isOfflineEnabled) {
-            // Try to open from local storage first
             val safeSongId = SecurityUtils.sanitizeFilename(song.id)
-            val localFile = java.io.File(context.getExternalFilesDir("scores"), "$safeSongId.pdf")
-            if (localFile.exists()) {
-                // Open Local
-                android.util.Log.d("SongHandler", "Opening local file: ${localFile.absolutePath}")
+            val safeArrId = SecurityUtils.sanitizeFilename(arrangement.id)
+            
+            // Primary check: Arrangement-specific file
+            val localFile = java.io.File(context.getExternalFilesDir("scores"), "${safeSongId}_${safeArrId}.pdf")
+            // Legacy check: General song file (backwards compatibility)
+            val legacyFile = java.io.File(context.getExternalFilesDir("scores"), "$safeSongId.pdf")
+            
+            val fileToOpen = if (localFile.exists()) localFile else if (legacyFile.exists()) legacyFile else null
+
+            if (fileToOpen != null) {
+                android.util.Log.d("SongHandler", "Opening local file: ${fileToOpen.absolutePath}")
                 val intent = Intent(context, PdfViewerActivity::class.java)
-                intent.putExtra("PDF_FILE", localFile.absolutePath) // Pass file path instead of URL
+                intent.putExtra("PDF_FILE", fileToOpen.absolutePath)
                 context.startActivity(intent)
                 return
             }
         }
 
-        // If not offline or file doesn't exist, fetch URL
-        FirebaseFirestore.getInstance()
-            .collection("songs").document(song.id).collection("arrangements")
-            .get()
-            .addOnSuccessListener { documents ->
-                if (!documents.isEmpty) {
-                    val arrangement = documents.documents[0].toObject(Arrangement::class.java)
-                    val pdfUrl = arrangement?.downloadLink ?: ""
-
-                    if (pdfUrl.isNotEmpty()) {
-                        if (isOfflineEnabled) {
-                            downloadAndOpenPdf(context, song.id, pdfUrl)
-                        } else {
-                            openPdfViewer(context, pdfUrl)
-                        }
-                    } else {
-                        Toast.makeText(context, "No PDF link found", Toast.LENGTH_LONG).show()
-                    }
-                } else {
-                    Toast.makeText(context, "No arrangements found", Toast.LENGTH_SHORT).show()
-                }
+        val pdfUrl = arrangement.downloadLink
+        if (pdfUrl.isNotEmpty()) {
+            if (isOfflineEnabled) {
+                downloadAndOpenPdf(context, song.id, arrangement.id, pdfUrl)
+            } else {
+                openPdfViewer(context, pdfUrl)
             }
-            .addOnFailureListener {
-                Toast.makeText(context, "Error fetching PDF", Toast.LENGTH_SHORT).show()
-            }
+        } else {
+            Toast.makeText(context, "No PDF link found for this arrangement.", Toast.LENGTH_LONG).show()
+        }
     }
 
     /**
      * Helper to launch the [PdfViewerActivity] with a remote URL.
-     *
-     * @param context The application [Context].
-     * @param url The web URL of the PDF file.
      */
     private fun openPdfViewer(context: Context, url: String) {
         val intent = Intent(context, PdfViewerActivity::class.java)
@@ -239,39 +206,27 @@ object SongHandler {
 
     /**
      * Downloads the PDF file to local storage and then opens it in the viewer.
-     *
-     * This ensures the file is available for future offline access.
-     *
-     * @param context The application [Context].
-     * @param songId The ID of the song (used as the filename).
-     * @param url The URL of the PDF to download.
      */
-    private fun downloadAndOpenPdf(context: Context, songId: String, url: String) {
+    private fun downloadAndOpenPdf(context: Context, songId: String, arrangementId: String, url: String) {
         if (!SecurityUtils.isSecureUrl(url)) {
             Toast.makeText(context, "Security Error: Insecure URL rejected.", Toast.LENGTH_SHORT).show()
             return
         }
 
         Toast.makeText(context, "Downloading for offline use...", Toast.LENGTH_SHORT).show()
-        
-        // Simple download using DownloadManager or Thread (Thread is easier for immediate open)
-        // Ideally use DownloadManager, but for 'Open Now' we want a callback.
-        // We'll use a simple thread to download to a temp file then move it.
         val contextRef = java.lang.ref.WeakReference(context)
 
         kotlin.concurrent.thread {
             try {
-                // Ensure context is still valid for file path access, or use application context if possible
                 val ctxForPath = contextRef.get() ?: return@thread
-
-                // Sanitize filename to prevent path traversal
                 val safeSongId = SecurityUtils.sanitizeFilename(songId)
-                val destFile = java.io.File(ctxForPath.getExternalFilesDir("scores"), "$safeSongId.pdf")
+                val safeArrId = SecurityUtils.sanitizeFilename(arrangementId)
+                
+                val destFile = java.io.File(ctxForPath.getExternalFilesDir("scores"), "${safeSongId}_${safeArrId}.pdf")
 
                 val parent = destFile.parentFile
                 if (parent != null && !parent.exists()) parent.mkdirs()
 
-                // Use openSafeConnection for SSRF protection during download
                 val conn = SecurityUtils.openSafeConnection(url)
                 val input = java.io.BufferedInputStream(conn.inputStream)
                 val output = java.io.FileOutputStream(destFile)
@@ -286,7 +241,6 @@ object SongHandler {
                 output.close()
                 input.close()
 
-                // Open on Main Thread
                 val ctx = contextRef.get()
                 if (ctx != null) {
                     (ctx as? android.app.Activity)?.runOnUiThread {
@@ -295,7 +249,6 @@ object SongHandler {
                          ctx.startActivity(intent)
                     }
                 }
-
             } catch (e: Exception) {
                 android.util.Log.e("SongHandler", "Download Error", e)
                 val ctx = contextRef.get()

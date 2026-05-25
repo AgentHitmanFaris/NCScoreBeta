@@ -60,7 +60,7 @@ class PdfViewerActivity : AppCompatActivity() {
                 return
             }
 
-            if (file.exists()) {
+            if (file.exists() && file.isFile) {
                 Log.d("PdfViewer", "Loading from file: $localFilePath")
                 pdfView.fromFile(file)
                     .swipeHorizontal(true)
@@ -122,6 +122,9 @@ class PdfViewerActivity : AppCompatActivity() {
                     // It loads the PDF in background.
                     
                     withContext(Dispatchers.Main) {
+                        // Check if activity is still valid before loading
+                        if (isFinishing || isDestroyed) return@withContext
+
                         pdfView.fromStream(inputStream)
                             .swipeHorizontal(true) // Horizontal Layout ensures centering
                             .enableSwipe(false)    // Disable Swipe Gesture (Tap only)

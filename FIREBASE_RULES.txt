@@ -3,6 +3,7 @@ service cloud.firestore {
   match /databases/{database}/documents {
     
     // Helper function to check if the user is an admin
+    // Checks both 'users' collection (isAdmin field) and legacy 'admins' collection
     function isAdmin() {
       return request.auth != null && (
         (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true) ||
@@ -10,28 +11,21 @@ service cloud.firestore {
       );
     }
 
-    // Helper function to check if the user is a premium user
-    function isPremium() {
-      return request.auth != null &&
-        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
-        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isPremiumUser == true;
-    }
+
 
     // Users collection
     match /users/{userId} {
+      // Users can read their own data, Admins can read all
       allow read: if (request.auth != null && request.auth.uid == userId) || isAdmin();
 
-      // Create: Prevent setting restricted fields to true
-      allow create: if (request.auth != null && request.auth.uid == userId
-        && (!('isAdmin' in request.resource.data) || request.resource.data.isAdmin == false)
-        && (!('isPremiumUser' in request.resource.data) || request.resource.data.isPremiumUser == false)
-      ) || isAdmin();
-
-      // Update: Prevent changing restricted fields
-      allow update: if (request.auth != null && request.auth.uid == userId
-        && (!('isAdmin' in request.resource.data) || request.resource.data.isAdmin == resource.data.isAdmin)
-        && (!('isPremiumUser' in request.resource.data) || request.resource.data.isPremiumUser == resource.data.isPremiumUser)
-      ) || isAdmin();
+      // Writes: Admins can write anything.
+      // Users can write their own data BUT cannot set isAdmin to true.
+      allow write: if isAdmin() || (
+        request.auth != null && request.auth.uid == userId && (
+          request.resource == null || // Allow delete
+          request.resource.data.get('isAdmin', false) == false
+        )
+      );
     }
 
     // Songs collection
@@ -39,20 +33,19 @@ service cloud.firestore {
       allow read: if true;
       allow write: if isAdmin();
 
-      // Arrangements subcollection
+      // Allow reading arrangements subcollection
       match /arrangements/{arrangementId} {
         allow read: if true;
         allow write: if isAdmin();
 
-        // Secure Content (Premium PDFs) - NESTED per your web snippet
-        // Path: /songs/{songId}/arrangements/{arrangementId}/secure/content
+        // Secure content (Premium links)
         match /secure/content {
-          allow read: if isPremium() || isAdmin();
+          allow read: if request.auth != null;
           allow write: if isAdmin();
         }
       }
     }
-    
+
     // Artists collection
     match /artists/{artistId} {
       allow read: if true;
@@ -67,14 +60,40 @@ service cloud.firestore {
     
     // Bug Reports collection
     match /bug_reports/{reportId} {
-      allow create: if true;
-      allow read, write: if isAdmin();
+      allow create: if true; // Allow anyone to report a bug
+      allow read: if isAdmin();
+      allow update, delete: if isAdmin();
     }
     
     // Legacy admins collection
     match /admins/{userId} {
+      // Users can read their own admin status
+      // Admins can read/write all admin docs (for management)
       allow read: if (request.auth != null && request.auth.uid == userId) || isAdmin();
       allow write: if isAdmin();
+    }
+
+    // Spotify Checklist
+    match /checklist/{itemId} {
+       // Allow Create: User must be logged in and set 'userId' to their own UID
+       allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+       // Allow Read/Update/Delete: User must be logged in and the doc must belong to them OR isAdmin()
+       allow read, update, delete: if isAdmin() || (request.auth != null && resource.data.userId == request.auth.uid);
+    }
+
+    // Song Requests
+    match /requests/{requestId} {
+       allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+       // Public can read accepted requests only; users can read their own; admins read all
+       allow read: if resource.data.status == 'accepted'
+                   || (request.auth != null && resource.data.userId == request.auth.uid)
+                   || isAdmin();
+       allow write: if isAdmin();
+    }
+
+    // Artifacts — restricted to admins only
+    match /artifacts/{allPaths=**} {
+      allow read, write: if isAdmin();
     }
   }
 }

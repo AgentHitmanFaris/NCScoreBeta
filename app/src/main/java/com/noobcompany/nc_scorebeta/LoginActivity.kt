@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FieldValue
 
 /**
  * Activity responsible for User Authentication (Login and Registration).
@@ -177,7 +178,7 @@ class LoginActivity : AppCompatActivity() {
         val userMap = hashMapOf(
             "name" to name,
             "email" to email,
-            "createdAt" to com.google.firebase.Timestamp.now(),
+            "createdAt" to FieldValue.serverTimestamp(),
             "isPremiumUser" to false // Default to false
         )
 

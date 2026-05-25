@@ -1,0 +1,2738 @@
+{
+  "songs": {
+    "0laoZcmbG9FzuPVt0bAk": {
+      "title": "The Dead Dance",
+      "artistNames": [
+        "Lady Gaga"
+      ],
+      "artistIds": [
+        "ndWFS9hQcYihZ1JoBQ1N"
+      ],
+      "albumCover": "https://i.scdn.co/image/ab67616d0000b273d8a389abdf9cb2d03b85ff54",
+      "originalKey": "",
+      "bpm": 120,
+      "dateAdded": "2025-10-08T03:27:09.603000+00:00",
+      "video": "https://www.youtube.com/embed/vRp3Z0JfZR8?si=u1-R3ivVoiljWKtG",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": true,
+      "isComingSoon": false,
+      "_arrangements": {
+        "5nucvYIoDVqwZXVylazT": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0
+        }
+      }
+    },
+    "1CrcfSoTix1e0BDdqkmY": {
+      "title": "Mulai",
+      "artistNames": [
+        "IDGITAF"
+      ],
+      "artistIds": [
+        "pqSQevX8xtaYeZlbNgJQ"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/mulai.jpg",
+      "originalKey": "",
+      "bpm": 100,
+      "dateAdded": "2025-01-25T00:00:00+00:00",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "5z3KWAkceQtpItiMHszH": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1hw65Z7J1eEXDvG3AM-8SJ8Rp369HyKX7/preview"
+        }
+      }
+    },
+    "1RuWhSzRFHDQzqi9OJTo": {
+      "title": "Bunga Abadi",
+      "artistNames": [
+        "Rio Clappy"
+      ],
+      "artistIds": [
+        "zQ13lBAty0w5KZ7RGUWO"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/bunga.png",
+      "originalKey": "",
+      "bpm": 130,
+      "dateAdded": "2025-01-25T00:00:00+00:00",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "BR4EL9o8SfcXGSS40GQu": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1138unKrruCFDBEPrgQxIM7WagDlkhhAL/preview"
+        }
+      }
+    },
+    "2UX0sDbmpHH6zUzrRZga": {
+      "title": "Kopi",
+      "artistNames": [
+        "Nazu"
+      ],
+      "artistIds": [
+        "TJkPk5q7m0RqH9lIhDYa"
+      ],
+      "albumCover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCPCHxQ3J4GsEnNa7oywUlKCVeq8Gsu0Py3A&s",
+      "originalKey": "",
+      "bpm": 0,
+      "dateAdded": "2025-11-12T06:46:29.000Z",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "SYEy4LcYAFHR5o5Hnt4K": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1BnQ_thsqfK52NLkZUXh77AWqYywUHj5X/preview"
+        }
+      }
+    },
+    "3JHRN1r4hC9MyMhiZEzt": {
+      "title": "Anxiety",
+      "artistNames": [
+        "Doechii"
+      ],
+      "artistIds": [
+        "30wSxfe89dRj8bhtDEQb"
+      ],
+      "albumCover": "https://i.scdn.co/image/ab67616d0000b273ea29212b801087f18319c187",
+      "originalKey": "",
+      "bpm": 130,
+      "dateAdded": "2025-04-08T00:00:00+00:00",
+      "video": "https://www.youtube-nocookie.com/embed/ZHOsDJqzPAo?controls=0",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "5zAka8pvRyRHTx6dKn6s": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/12oi0ACrsFT64PhHObQWAU8eAeiLpWFZp/preview"
+        }
+      }
+    },
+    "4FFDWApDaR6Z2QMeFoso": {
+      "title": "Adu Bola Mata",
+      "artistNames": [
+        "Tiara Andini"
+      ],
+      "artistIds": [
+        "cVGJeJd6AEQLO9E3n1q9"
+      ],
+      "albumCover": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/f1/46/43/f146432c-5f55-9b5d-71ce-d363c8b9ca46/25UM1IM20816.rgb.jpg/600x600bb.jpg",
+      "originalKey": "F Major",
+      "bpm": 128,
+      "dateAdded": "2026-01-06T16:00:00.000Z",
+      "video": "https://www.youtube-nocookie.com/embed/NF89Wt8PYxY?controls=0",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "wtcu7jnkoU57hsYqaXkU": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/15tW3zfCSNuU_Y0XN4ByGBIV50L51ElVi/view?usp=drive_link"
+        }
+      }
+    },
+    "5HzTG0m7hXrdJ67N2TNA": {
+      "title": "Garam & Madu",
+      "artistNames": [
+        "Tenxi",
+        "Naykilla",
+        "Jemsii"
+      ],
+      "artistIds": [
+        "qr7BpmY91900NhyawzPg",
+        "f9fucx4KcDxq1qZfYs1O",
+        "2fU47czjlyRkhjt6WRDO"
+      ],
+      "albumCover": "https://i1.sndcdn.com/artworks-9582Jos7281DJwYh-YlfHNA-t500x500.jpg",
+      "originalKey": "",
+      "bpm": 0,
+      "dateAdded": "2025-11-12T06:46:06.000Z",
+      "video": "",
+      "lyrics": "[Intro]\nG Bm A Em\n \n(Naykilla)\nG      Bm\nTanpa ku sadar\nA       Em\nku mulai bertanya\nG    Bm     A     Em\njika terulang akankah sama\n \n(Tenxi)\nG         Bm\nmerah bibir kamu\n               A\nkau pun lirik aku\n           Em\nseperti bawah lampu\nG\nku bisikkan kamu\n     Bm\napa yang kau mau\n   A\ndia atau aku\nEm\nGaram atau Madu\n \n(Tenxi)\nG\nhold my hands\nBm\ndon't-don't tell your friends\nA\ncerita kemaren\nEm\nku ingat permanen\nG\nmanis mu kaya permen\nBm\ni hope this never end\nA\noh can you be my gwen\nEm\nand i'll be the spiderman\n \n(Tenxi)\nG\nsakit dadaku\nBm\nku mulai merindu\nA\nku bayangkan jika kamu\nEm\ntidur di sampingku\nG\ndi malam yang semu\nBm\npejamkan mataku\nA\nku bayangkan tubuhmu\nEm\njika dipelukkan ku\n \n(Tenxi)\nG\nsakit dadaku\nBm\nku mulai merindu\nA\nku bayangkan jika kamu\nEm\ntidur di sampingku\nG\ndi malam yang semu\nBm\npejamkan mataku\nA\nku bayangkan tubuhmu\nEm\njika dipelukkan ku\n \n(Naykilla)\nG           Bm\nmalam chaos sini\n          A\nku terasa sepi\n         Em\ntak mau sendiri\n \n(Naykilla)\n    G\ni need you here with me\n     Bm\naku pilih madu\nA\nmanis kaya kamu\nEm\nji ro lu\n \n(Naykilla)\nG                        Bm\nwanna tell my friends 'bout you\nA\ntapi tunggu dulu\n Em\nku masih meragu\nG\nkamu menggebu\n         Bm\nwanna be with you\nA\nbut menjalani dulu ooh\n\"WANNA BEm WITH YOU\"\n \nG\nsakit dadaku\nBm\nku mulai merindu\nA\nku bayangkan jika kamu\nEm\ntidur di sampingku\nG\ndi malam yang semu\nBm\npejamkan mataku\nA\nku bayangkan tubuhmu\nEm\njika dipelukkan ku\n \n(Tenxi & Naykilla)\nG\nsakit dadaku\nBm\nku mulai merindu\nA\nku bayangkan jika kamu\nEm\ntidur di sampingku\nG\ndi malam yang semu\nBm\ndan kupejamkan mataku\nA\nku bayangkan tubuhmu\nEm\njika dipelukkan ku......\n \n[Outro]\nG Bm A Em\nG Bm A Em\n \nG         Bm\nyang ku mau cuma kamu\nA         Em\nyang kau mau cuma aku\nG         Bm\nyang ku mau cuma kamu\nA         Em\nyang kau mau cuma aku",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "DcWGWMO8UeUvDqa3dcy5": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1KddYXrV1F1R2YDBHjT1a1uQps03huXHT/preview"
+        }
+      }
+    },
+    "77fDiFf2WqoWJKRdmfLc": {
+      "title": "Die With A Smile",
+      "artistNames": [
+        "Lady Gaga",
+        "Bruno Mars"
+      ],
+      "artistIds": [
+        "ndWFS9hQcYihZ1JoBQ1N",
+        "uyGLIdPJXGDYIQyTAiFX"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/die with a smile.png",
+      "originalKey": "",
+      "bpm": 0,
+      "dateAdded": "2025-11-12T06:45:55.000Z",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "OYEQSKJAWARR9P2vtfoQ": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1e3ezttAXghsqWLQkwbvjtdrxoPj8PgLS/preview"
+        }
+      }
+    },
+    "7XGcl45nqcbrmykj9VmZ": {
+      "title": "Look At This",
+      "artistNames": [
+        "Dolla"
+      ],
+      "artistIds": [
+        "2raq9OlueZ2llESSFxVo"
+      ],
+      "albumCover": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/a1/36/66/a136667a-ebb9-21b6-0112-f0e716224a44/23UMGIM10710.rgb.jpg/600x600bb.jpg",
+      "originalKey": "F# Minor",
+      "bpm": 162,
+      "dateAdded": "2026-01-01T16:00:00.000Z",
+      "video": "https://www.youtube-nocookie.com/embed/JwuSd8_IsP4",
+      "lyrics": "",
+      "isFeatured": true,
+      "isPremium": true,
+      "isComingSoon": false,
+      "_arrangements": {
+        "qVxax3oSSpbHH2CyMRjE": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0
+        }
+      }
+    },
+    "8VmD3Ny3OCBVhzNnV08K": {
+      "title": "DRIP",
+      "artistNames": [
+        "Babymonster"
+      ],
+      "artistIds": [
+        "BvPfBfcVvFGWaqC77qz6"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/drip.jpg",
+      "originalKey": "",
+      "bpm": 0,
+      "dateAdded": "2025-11-12T06:45:59.000Z",
+      "video": "",
+      "lyrics": "[Intro]\nC#m E D\n \n[Verse 1]\n \n       C#m\nWhen I dress, I don't think so much\n               C#m\nI could be the G.O.A.T, I don't need too much\n           C#m\nI'ma set a goal, I'ma eat that lunch\n         E                        D\nBaby, so cold, get that ice cream truck\n    C#m\nUh, jjiritjjirit kkirikkiri norabolkka\nC#m\nKitty, kitty, yeah, we gonna run this town\nC#m\nHittin' me up 'cause I got what they like\n      E                     D\nBaby, got no chance, better hit that dance\n \nC#m                    C#m\nMmm, na-na-na, I'll be there, gominhaji ma\nC#m                   E              D\nUh, na-na-na, I'll be there, mangseoriji ma\n        C#m\nBut you don't know 'bout me\n            C#m\nYeah, yeah, you gon' know 'bout me, boy\nC#m                  E         D\nAreumdaun byeoldeuri binnaneun bamiya\n \n[Pre-Chorus]\n \nC#m           B\nMmm, what you say? (What you say?)\n     F#\nKkeuteomneun gachi, you know it's all me\n          C#m           B\nGot that, ooh, what you say? (What you say?)\n        F#\nAre you ready? Set, turn on the lights\n \n[Chorus]\n \n          C#m\nBaby, got passion, ambition, nan boran deusi\n              C#m\nLook at that, onmomeuro neukkineun nae momjit\n          C#m\nBaby, got drip (Drip), drip (Drip), drip (Drip), drip\n          C#m\nBaby, got drip (Drip), drip (Drip), drip (Drip), drip\n \n[Verse 2]\n \nBrrah, ASA, ayy\n \n             C#m\nLet 'em out, monster, monster, monster came to conquer\nC#m\nBaby, holla, what's up? (What's up?)\n       C#m\nWe the best, the rest confess, we blessed\n       E              D\nPaneul baekpalsipdo bakkwo (bakkwo)\nC#m\nY to the G, no copy, no knock off\nC#m\nBet on my life, this pitch I'm gon' walk-off\nC#m\nMONSTIEZ, kkwak jaba, hold tight\n     E                D\nKkeutkkaji balba, you know we gon' ride\n \nC#m                    C#m\nMmm, na-na-na, I'll be there, gominhaji ma\nC#m                   E              D\nUh, na-na-na, I'll be there, mangseoriji ma\n        C#m\nBut you don't know 'bout me\n            C#m\nYeah, yeah, you gon' know 'bout me, boy\nC#m                  E         D\nAreumdaun byeoldeuri binnaneun bamiya\n \n[Pre-Chorus]\n \nC#m           B\nMmm, what you say? (What you say?)\n     F#\nKkeuteomneun gachi, you know it's all me\n          C#m           B\nGot that, ooh, what you say? (What you say?)\n        F#\nAre you ready? Set, turn on the lights\n \n[Chorus]\n \n          C#m\nBaby, got passion, ambition, nan boran deusi\n              C#m\nLook at that, onmomeuro neukkineun nae momjit\n          C#m\nBaby, got drip (Drip), drip (Drip), drip (Drip), drip\n          C#m\nBaby, got drip (Drip), drip (Drip), drip (Drip), drip\n \n[Bridge]\n \n   F#m                   C#m\nUh,    gakkeum sseureojindaedo\n     A                  B         G#\nI'ma shine as bright as diamonds, say my name\nF#m      C#m\n    Dasi ireona\n             A\nNow watch me do it all again\n \n[Chorus 2]\n \n          C#m\nBaby, got drip, drip, drip (Drip, drip, drip)\nBaby, got, baby, got, baby, got\nC#m\nDrip, drip, drip\nE           D\nYou know we got, got that drip\n          C#m\nBaby, got drip, drip, drip (Drip, drip, drip)\nBaby, got, baby, got, baby, got\nC#m\nDrip, drip, drip\nE        D\nGot that drip, yeah\n",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "nKnrdzsGaVfTfkBgbnbk": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1ERdn-Vx2_uc_zsjzk4tkjy4PaEQWS9t4/preview"
+        }
+      }
+    },
+    "95FseW3pFSmaRn6WVlEw": {
+      "title": "Tainted Love",
+      "artistNames": [
+        "Soft Cell"
+      ],
+      "artistIds": [
+        "3gxxOf8LpWFxQTlKnsid"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/tainted love.jpg",
+      "originalKey": "",
+      "bpm": 154,
+      "dateAdded": "2025-01-25T00:00:00+00:00",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "4XkUbMbGrNx1gOrP6PGX": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1WuA2oc2KEOJ-3Swhs50G1ouo27_l_Sv3/preview"
+        }
+      }
+    },
+    "A8QM6zxHXE8m0sLOCACx": {
+      "title": "Masing Masing",
+      "artistNames": [
+        "Ernie Zakri",
+        "Ade Govinda"
+      ],
+      "artistIds": [
+        "v9nCK3va7WerUahMOUE9",
+        "s8dqX8pLCtiRuGn0vVW3"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/masing - masing.jpg",
+      "originalKey": "",
+      "bpm": 0,
+      "dateAdded": "2025-11-12T06:46:39.000Z",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "b6pwiYnTVqVaUKlpsLIP": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1tJ-RwjoNXsdkor_ioojjiaPz6CTpwsCa/preview"
+        }
+      }
+    },
+    "Abr0DEcvtidmrI3RlvcA": {
+      "title": "Rencong",
+      "artistNames": [
+        "Siti Nurhaliza"
+      ],
+      "artistIds": [
+        "BPjsoTn0FPGe6Boh4aeG"
+      ],
+      "albumCover": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhV_E0LpAysyo9rDbLk0uBg7YGrO_KLXM7maGj2BWRdzCBNj90ifgxqUHX546DEm4MpdpEhHN7SqExyYAlP2nVEwbCLivJbQvemVAFPBHQLots0w9L_FxSS6Y0KpZZjSEjv7i4FMU_WjCeOvjXj5EsXOCWbQWkIeOGLhcUOIMzAwKFVY044LN3JY1GawTo/s2048/lirik%20lagu%20dato%20sri%20siti%20nurhaliza%20gema%20bumantara.jpg",
+      "originalKey": "",
+      "bpm": 0,
+      "dateAdded": "2025-11-14T02:42:08.000Z",
+      "video": "https://www.youtube.com/embed/wqIn954bL3U?si=ITO71GqTGkM_nzdN",
+      "lyrics": "Bm F#m G \nA Bm \nF#m G Em A \n\n       Bm \nAnak Pertiwi Begitulah \n        D          Bm \nDidalan Menusuk Ke Jiwa \nBm \nAnak Pertiwi Kalau Mencuit \nA                     Bm \nPantunnya Amboi Makan Dalam \n\nG                    A \nMawar Melur Dan Kenanga\n     G        F#m   Bm \nMengapa Kau Lihat Sama \nG            A \nApakah Tandanya \n      G            Bm \nMasih Belum Bijaksana \n\nBm \nNak Syair Tak Pandai \nNak Zapin Tak Gemalai\nNak Berkias Tak Menjadi  \nNak Silat Tak Handal \nNak Pecat Tak Bermaya \nNak Bertempur Tak Berani \n\nBm G A Bm \n\n        Bm            G \nAnak Pertiwi Jangan Keliru\nA                      Bm \nKadok Dan Sirih Dua Berbeza\n        Bm            G\nAnak Pertiwi Jangan Begitu\n  A                Bm \nAdat Lama Semua Terlupa \n\nG               A \nSudah Makan Pantun\n       G             Bm \nSudah Pun Minum Gurindam\nG               A \nMasih Tak Berjumpa \n    G      Bm \nDimana Marifatnya \n\nBm \nNak Syair Tak Pandai \nNak Zapin Tak Gemalai\nNak Berkias Tak Menjadi  \nNak Silat Tak Handal \nNak Pecat Tak Bermaya \nNak Bertempur Tak Berani \n\n           G               Em \nBajulah Kurung Coraknya Rencong \n               F#\nHidung Tak Mancung \nF# \nPipi Tersorong Sorong \nF#                         Bm F# \nKalau Tak Fasih Cepat Hafalkan \n\n       Bm           G\nAnak Pertiwi Begitulah \nA                  Bm \nDidalan Menusuk Ke Jiwa \n        Bm            G \nAnak Pertiwi Kalau Mencuit \nA                     Bm \nPantunnya Amboi Makan Dalam \n\nG                   A \nSakitnya Bukan Sedikit\n     Em               Bm \nTertikam Menikam Menerkam\nG             A \nJangan Cuba Lari \n       Em                Bm \nBerpantang Undur Sebelum Kalah \n\n           G                A\nBajulah Kurung Coraknya Rencong \nA \nHidung Tak Mancung \n          Bm          A \nPipi Tersorong Sorong \n            Bm \nKalau Tak Fasih Cepat Hafalkan \n\nBm \nNak Syair Tak Pandai \nNak Zapin Tak Gemalai\nNak Berkias Tak Menjadi  \nNak Silat Tak Handal \nNak Pecat Tak Bermaya \nNak Bertempur Tak Berani \n\nBm \nNak Syair Tak Pandai \nNak Zapin Tak Gemalai\nNak Berkias Tak Menjadi  \nNak Silat Tak Handal \nNak Pecat Tak Bermaya \nNak Bertempur Tak Berani \n\nBm \nNak Syair Tak Pandai \nNak Zapin Tak Gemalai\nNak Berkias Tak Menjadi  \nNak Silat Tak Handal \nNak Pecat Tak Bermaya \nNak Bertempur Tak Berani ",
+      "isFeatured": false,
+      "isPremium": true,
+      "isComingSoon": false,
+      "_arrangements": {
+        "zRlXdp3ybnDAFbJZpqDq": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0
+        }
+      }
+    },
+    "BdirZXzNkEdSatkiGNzo": {
+      "title": "Hijab Rindu",
+      "artistNames": [
+        "Black Hanifah"
+      ],
+      "artistIds": [
+        "NbqzAnj7WeUgArVa3WPN"
+      ],
+      "albumCover": "https://i.scdn.co/image/ab67616d0000b273aac33924d3461bd11fb8d7f6",
+      "originalKey": "",
+      "bpm": 125,
+      "dateAdded": "2025-10-05T11:52:15.020000+00:00",
+      "video": "https://www.youtube.com/embed/hwUMimAnYbQ",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "hxNp9OHh3HEWWTfRUDTh": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1Ma0Qn1_0GHh4XaO-U8AoWVPZjvXdW3UN/preview"
+        }
+      }
+    },
+    "BelufrzcBMXqxPL8x9Eu": {
+      "title": "Nyam Nyam Ketupat",
+      "artistNames": [
+        "Zizan Razak",
+        "Wani Kayrie",
+        "Dinda Dania",
+        "Miss Alvy"
+      ],
+      "artistIds": [
+        "JVvVUlHXco5sJwH8PxFZ",
+        "irhhtMc03lqOI71V2Ciw",
+        "CoHiE72kJ4nxLGdQkFA9",
+        "gf4rIUEgdQNcTnC8j0KC"
+      ],
+      "albumCover": "https://i.scdn.co/image/ab67616d0000b273bfb32bac553273c2d23d5d2b",
+      "originalKey": "",
+      "bpm": 0,
+      "dateAdded": "2025-11-12T06:46:52.000Z",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "enxrMKqxtGsMkCcPQbl8": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1FgHZc9QNhnt1vl2jZW09pWejUH5WG4u-/preview"
+        }
+      }
+    },
+    "CdjYjdOWKU5k3XYshtPm": {
+      "title": "Pilihan Mu",
+      "artistNames": [
+        "Bunga",
+        "Luqman Podolski"
+      ],
+      "artistIds": [
+        "Ptp3tu3o7uRFd4GuVFPZ",
+        "ET0ttgU7xH3ayPFfghcM"
+      ],
+      "albumCover": "https://i.ytimg.com/vi/HndQejXG7Q4/maxresdefault.jpg",
+      "originalKey": "C Major",
+      "bpm": 188,
+      "dateAdded": "2026-01-05T16:00:00.000Z",
+      "video": "https://www.youtube-nocookie.com/embed/2KQ8k11DvrQ?controls=0",
+      "lyrics": "",
+      "isFeatured": true,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "KoVL86M1s7DPByyhBamk": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1xzqIyu2yrQiRIMeOatLHYpTIHNEOeppp/view?usp=sharing"
+        }
+      }
+    },
+    "DDbFVZGgomjq6qzjItSn": {
+      "title": "Serumpun",
+      "artistNames": [
+        "Mimifly"
+      ],
+      "artistIds": [
+        "umPtmNVkF6PaynZpEPLg"
+      ],
+      "albumCover": "https://i.scdn.co/image/ab67616d00001e023724d2e52bbd8fe2cb577dc6",
+      "originalKey": "",
+      "bpm": 200,
+      "dateAdded": "2025-04-06T00:00:00+00:00",
+      "video": "https://www.youtube-nocookie.com/embed/8a2FWksDWe4?controls=0",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "VQGtGfAUtwQ9JNhuMT9g": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1nTFIJ_u_kGn9_B4g91r38o1r5wn2XAUS/preview"
+        }
+      }
+    },
+    "EXygmo8Ms2sM1Jegdghu": {
+      "title": "Cry Baby",
+      "artistNames": [
+        "Clean Bandit",
+        "Anne-Marie",
+        "David Guetta"
+      ],
+      "artistIds": [
+        "9ioDwEdUbIGTw5Aics8f",
+        "HXLnbT5e6gvDZv1wCuLy",
+        "c7AAEQ2UXxv5tAFB6950"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/cry baby.jpeg",
+      "originalKey": "",
+      "bpm": 0,
+      "dateAdded": "2025-11-12T06:45:53.000Z",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "z0XGcwSgngPa4s0cXJnb": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1Oh8JhQLoB2qN-9sIor0pZfalOFGBPhID/preview"
+        }
+      }
+    },
+    "Fut0Dm3RSg0H0oTIF2x5": {
+      "title": "Cak Cak Cekuk",
+      "artistNames": [
+        "Wani Kayrie"
+      ],
+      "artistIds": [
+        "irhhtMc03lqOI71V2Ciw"
+      ],
+      "albumCover": "https://i.scdn.co/image/ab67616d0000b273c1eb8ff9f3954018df53e8c8",
+      "originalKey": "",
+      "bpm": 136,
+      "dateAdded": "2025-09-23T15:53:48.686000+00:00",
+      "video": "https://www.youtube.com/embed/m7oOLLG8OCQ",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "MviFeEEvCmJHlQZzwqXa": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1eFPin5qnOI_BpkCVt4X03jnFlxTWwTDq/preview"
+        }
+      }
+    },
+    "G0ufMHMipvINd2hegmyJ": {
+      "title": "Berakhir Di Aku",
+      "artistNames": [
+        "IDGITAF"
+      ],
+      "artistIds": [
+        "pqSQevX8xtaYeZlbNgJQ"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/berakhir.jpg",
+      "originalKey": "",
+      "bpm": 140,
+      "dateAdded": "2025-01-25T00:00:00+00:00",
+      "video": "https://www.youtube-nocookie.com/embed/qWb8uEjrrPw?controls=0",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "0Zl0amK4wjZU4yGti6lq": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1B-nSHqPf7oq5b76Ak1f2DtjdM0vqOy59/preview"
+        }
+      }
+    },
+    "GnW4nnjgQtgeDOdxOqgu": {
+      "title": "Hari Raya",
+      "artistNames": [
+        "iamNEETA",
+        "Najwa Latif",
+        "Deanna",
+        "Hussin",
+        "Mimie Haris"
+      ],
+      "artistIds": [
+        "ipZaLMStiiXDQxEfN9Fr",
+        "F2G5gzCyTcG6aOoAm4eS",
+        "e28k79Eyfp3QKsqymMww",
+        "TMxlB8cQAzYw56ZjMiXq",
+        "Q8MBMZ8z2JZ8Y7eiZv3t"
+      ],
+      "albumCover": "https://i.scdn.co/image/ab67616d0000b2737d61c7c4a6883e548363eaf6",
+      "originalKey": "",
+      "bpm": 0,
+      "dateAdded": "2025-11-12T06:46:11.000Z",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "cfNnfmdIPW8fWQChfaZJ": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1kuw9qRTlXNhU6OscsvmY3DrSezJstp7P/preview"
+        }
+      }
+    },
+    "GuBdtLp53FqzHswtf2PE": {
+      "title": "Bukan Lagi Kita",
+      "artistNames": [
+        "Nadeera"
+      ],
+      "artistIds": [
+        "A34nxKCUWpbhIRBMy4DV"
+      ],
+      "albumCover": "https://i.scdn.co/image/ab67616d0000b2736036c77a80c80102adfcc01f",
+      "originalKey": "",
+      "bpm": 146,
+      "dateAdded": "2025-04-11T00:00:00+00:00",
+      "video": "https://www.youtube-nocookie.com/embed/RHaizQ2T2uY?controls=0",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "XjeRjFHJEBiivxisOGBJ": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1Ls9PSsIxklS6X04BZCBg95nMEEh_pCKh/preview"
+        }
+      }
+    },
+    "HqAvArBnS0mEzXvgkqVo": {
+      "title": "Cinta Muka Buku",
+      "artistNames": [
+        "Najwa Latif"
+      ],
+      "artistIds": [
+        "F2G5gzCyTcG6aOoAm4eS"
+      ],
+      "albumCover": "https://i1.sndcdn.com/artworks-000011784132-w6pimz-t500x500.jpg",
+      "originalKey": "",
+      "bpm": 115,
+      "dateAdded": "2025-05-31T00:00:00+00:00",
+      "video": "https://www.youtube.com/embed/fFkkmAUrgbg",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "7UjaS4q9YokeHNN357Cz": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1ocKY6C535OpO_QWel5dtu0gPzi6jQxx5/preview"
+        }
+      }
+    },
+    "JUQ7BMz02Q8sZLpn1Udm": {
+      "title": "Sampai Menutup Mata",
+      "artistNames": [
+        "Mahalini"
+      ],
+      "artistIds": [
+        "aNFkcyJ9GdMXaCRvYS1r"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/Sampai Menutup Mata.jpg",
+      "originalKey": "",
+      "bpm": 87,
+      "dateAdded": "2025-01-25T00:00:00+00:00",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "FW0D9qHamPKHmHbwpu52": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1-P2Yd-mjF4xE1_6BX20sIYkF0MB3VSr8/preview"
+        }
+      }
+    },
+    "KIZ6GGqTDuMSs5xt7HS6": {
+      "title": "Billionaire",
+      "artistNames": [
+        "Babymonster"
+      ],
+      "artistIds": [
+        "BvPfBfcVvFGWaqC77qz6"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/billionaire.jpg",
+      "originalKey": "",
+      "bpm": 102,
+      "dateAdded": "2025-02-20T00:00:00+00:00",
+      "video": "https://www.youtube-nocookie.com/embed/GrgG91lbmNg?controls=0",
+      "lyrics": "[Intro]\n \nBaby, I'ma monster\n \n \n[Verse 1]\n \nFm\nI've never felt like this before\nFm\nThey stop when I walk through the door\n          Cm\nSomething click, it's a state of mind\n \nType of rich, can't be quantified\n \nAnd it ain't\nCm\nmy fault if you not trying to match my mood\n \nSorry, but that's on you (You, you, you)\n \n \n[Pre-Chorus]\n \nBbm                      Fm\n   Baby, I don't mean to brag\n                         C7\nYou know I'm not talking cash\n                        C#\nGot a thing that's only mine\nBbm                         Fm\n   And I watch your eyes go green\n                      C7\nI can feel your jealousy\n \nUp here in the sky, sky\n \n \n[Chorus]\n \nFm\nOh, Look at me, I woke up\n                     Ab\nFeeling like a billionaire\n                                  C7\nWorld is mine, yeah, life is so unfair\n                                     C7\nMoney don't compare, I got something rare\n \nFeeling like a billionaire\n \n \n[Verse 2]\n \n      Fm\nI got rules here to break\n \nSay it with my chest and in your face\n         Fm\nHear the boom in the bass\n \nPump it up, back it up, turn in up, R-U-K-A\nFm\nACE-sa be the name, so cut the deck, deal it out\n \nAbove the money, power, and respect\n          Fm\nありがとう, who that? Who that? Who that?\n \nGot the flame, bet it on me, double up your life\n \n \n[Pre-Chorus]\n \nBbm                      Fm\n   Baby, I don't mean to brag\n                         C7\nYou know I'm not talking cash\n                        C#\nGot a thing that's only mine\nBbm                         Fm\n   And I watch your eyes go green\n                      C7\nI can feel your jealousy\n \nUp here in the sky, sky\n \n \n[Chorus]\n \nFm\nOh, Look at me, I woke up\n                     Ab\nFeeling like a billionaire\n                                  C7\nWorld is mine, yeah, life is so unfair\n                                     C7\nMoney don't compare, I got something rare\n \nFeeling like a billionaire\n \n \n[Bridge]\n \nFm\n  Billionaire, b-b-b-b-billionaire\nFm\n  BABYMONSTER got me feeling like a billionaire\nFm\n  Billionaire, b-b-b-b-billionaire\nFm\n  BABYMONSTER got me feeling like a billionaire (Oh, oh, oh)\n \n \n[Chorus]\n \nFm\nOh, Look at me, I woke up\n                     Ab\nFeeling like a billionaire\n                                  C7\nWorld is mine, yeah, life is so unfair\n                                     C7\nMoney don't compare, I got something rare\n \nFeeling like a billionaire\n \n \n-gloischill\n",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "JFrZ03YX2IZXQEeUAcFW": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/15c7YwX9VWGx2gQ6bDbWGxk7PYXZ-Nm0Y/preview"
+        }
+      }
+    },
+    "KvXLHYdKVM51HwlkSSsP": {
+      "title": "Abracadabra",
+      "artistNames": [
+        "Lady Gaga"
+      ],
+      "artistIds": [
+        "ndWFS9hQcYihZ1JoBQ1N"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/abracadbra.jpg",
+      "originalKey": "",
+      "bpm": 127,
+      "dateAdded": "2025-03-07T00:00:00+00:00",
+      "video": "https://www.youtube-nocookie.com/embed/4Q2Ht5mDKRw?controls=0",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "FwoHJQWUrScCdIZoTslo": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1Nc2U-h4_Z3MffA1OdoACCL9ZpYQtNNxB/preview"
+        }
+      }
+    },
+    "LI6qmrvnU7KM5YMkydgt": {
+      "title": "Please Please Please",
+      "artistNames": [
+        "Sabrina Carpenter"
+      ],
+      "artistIds": [
+        "XpNEXZhYgkg0lV7dexOf"
+      ],
+      "albumCover": "https://melomaniacsmag.com/wp-content/uploads/2024/06/6d21ce79a60799d8688271148585d418.1000x1000x1.png",
+      "originalKey": "",
+      "bpm": 0,
+      "dateAdded": "2025-11-12T06:46:56.000Z",
+      "video": "",
+      "lyrics": "[Intro]\nG F#m Em\nC Bm Am G D\n \n \n[Verse 1]\nG                            E7\nI know I have good judgment, I know I have good taste\n     Am\nIt's funny and it's ironic that only I feel that way\n  C                                     Bm\nI promise 'em that you're different and everyone makes mistakes\n    D\nBut just don't\nG                                E7\nI heard that you're an actor, so act like a stand-up guy\n    Am\nWhatever devil's inside you, don't let him out tonight\n  C                                     Bm\nI tell them it's just your culture, and everyone rolls their eyes\n      D\nYeah, I know\n \nAll I'm asking, baby\n \n \n[Chorus]\nG               Bm/F#\nPlease, please, please\n                Em\nDon't prove I'm right\n    C       Bm      Am\nAnd please, please, plеase\n      G           D\nDon't bring me to tears\n \nWhеn I just did my makeup so nice\nG                           Bm/F#\nHeartbreak is one thing, my ego's another\n  Em\nI beg you don't embarrass me, motherfucker\nC  Bm  Am\nAh-ooh\nG               D\nPlease, please, please\n \n \n[Verse 2]\nBb                       G7\nI have a fun idea, babe, maybe just stay inside\n  Cm\nI know you're craving some fresh air but the ceiling fan is so nice\n    Eb                          Dm\nAnd we could live so happily if no one knows that you're with me\n         F\nI'm just kidding, really, really, really\n \n \n[Chorus]\nG               Bm/F#\nPlease, please, please\n                Em\nDon't prove I'm right\n    C       Bm      Am\nAnd please, please, plеase\n      G           D\nDon't bring me to tears\n \nWhеn I just did my makeup so nice\nG                           Bm/F#\nHeartbreak is one thing, my ego's another\n  Em\nI beg you don't embarrass me, motherfucker\nC  Bm  Am\nAh-ooh\nG               D\nPlease, please, please\n \n \n[Outro]\nC             D\n If you wanna go and be stupid\n     G                 B7\nDon't do it in front of me\nC                   D\n If you don't wanna cry to my music\n     G                    B7\nDon't make me hate you prolifically\nC                D\n Please, please, please (Please)\n                G\nPlease, please, please (Please)\nG/F#             Em               D\nPlease (Please), please (Please), please (Please)\nC              Cm G\n Please (Ah-ah-ah)\nX\n",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "ztevEAloLf7CMTN7amOC": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1WrcS-lTr-CCNdWN2QU6ATbT-wx70f6Gw/preview"
+        }
+      }
+    },
+    "M1Yr0nAOQ6mKYd21JK0U": {
+      "title": "Dream",
+      "artistNames": [
+        "Babymonster"
+      ],
+      "artistIds": [
+        "BvPfBfcVvFGWaqC77qz6"
+      ],
+      "albumCover": "https://np-pagev2.web.app//assets/img/album_cover/dream.webp",
+      "originalKey": "",
+      "bpm": 120,
+      "dateAdded": "2025-01-25T00:00:00+00:00",
+      "video": "https://www.youtube-nocookie.com/embed/losZnJWSWXg?controls=0",
+      "lyrics": "[Verse 1: Chiquita, Rora, Ahyeon]\n    F                         Bb\nSometimes, I don't know who I am\n                 Dm\nDoubting myself again\n                           Bb\nCan't find a light in the dark\n     F                         Bb\nAnd I'm finding myself in the rain\n                      Dm\nTryna get out of the pain\n                       Bb\nKnow that I've come so far\nC                       Dm            Bb\nI made a promise, I'll never run and hide\n \n \n[Pre-Chorus: Pharita]\n                 C   Dm\nI'm getting stronger\n                 Bb\nI'm getting stronger\n             C   Dm\nA little longer\n                  Bb\nI'm getting stronger\n \n \n[Chorus: Haram, Ahyeon]\n    F                  Bb\nNow I finally found my wings\n                 Dm\nI let go of everything\n                     Bb\nDecided to follow my heart\n    F                 Bb\nAnd I finally able to breathe\n                Dm\nFinally able to see\n                       Bb\nJust who I was born to be\n                      F\nI'm waking up in my dream\n \n \n[Verse 2: Ruka, Asa, Chiquita, Chiquita & Ahyeon]\n               F\nOh, yeah, that fires in my eyes\n \nNo sleep, you keep them lullabies\n                  Bb\nCross hearts I'vе been the one to ride\nVroom-vroom, I'll see you latеr, bye\n            Dm\nI keep it a hundred, we one in a million, no billion\n \nNo kiddin', no ceiling, that's limitless\nBb\nStars in the sky, we infinite\n \nEnvisioned it, just how I pictured it\n \n \n[Bridge]\nF\nHere we are, all of the lights\n \nSpotlight is blinding my eyes\nBb\nJust breathe and live and let it die\nDm\nLift up my head, I'ma rise\n                          Bb\nSpread out my wings, I'ma fly, fly high\n \n \n[Pre-Chorus: Haram]\n                 C   Dm\nI'm getting stronger\n                 Bb\nI'm getting stronger\n             C   Dm\nA little longer\n                  Bb\nI'm getting stronger\n \n \n[Chorus: Rora, Haram]\n    F\nNow I finally found my wings\n                 Dm\nI let go of everything\n                     Bb\nDecided to follow my heart\n \n \n[Post-Chorus: Ahyeon, Rora, Haram]\nDm\n  I don't care what they say (Say)\nBb\n  My life is not a game (Game)\nC\n  Never gon' run away\n \n \n[Outro: Chiquita, All, Ahyeon, Haram, Pharita]\n                 F\nSo don't wake me up\n                Bb\nFinally able to breathe (Yeah, yeah, yeah)\n              Dm                      Bb\nCan't wake me up (Nothing can wake me up)\n                      F\nI'm waking up on my dream\n",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "ms9hm0w6rb5J0HNXyuWF": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1cvuw_GjMfQzG2zIo1W5HoFRQk_CQzcIk/view?usp=drive_link"
+        }
+      }
+    },
+    "M6yzOqs4qH8X7gdZOStA": {
+      "title": "Janji Suci",
+      "artistNames": [
+        "Yovie & Nuno"
+      ],
+      "artistIds": [
+        "G0uTkttLVaFrmCYthLx6"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/janji.jpg",
+      "originalKey": "",
+      "bpm": 118,
+      "dateAdded": "2025-01-25T00:00:00+00:00",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "v0dzMn85GGD8o0voCv3F": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1GHqPdzAKy5hicoUWCMW8x1vdXqsO97BQ/preview"
+        }
+      }
+    },
+    "MGEMOaKVEwx2xFKQLIVS": {
+      "title": "Hilang",
+      "artistNames": [
+        "Marsha Milan"
+      ],
+      "artistIds": [
+        "baseUDMm71PEdJAWWJiV"
+      ],
+      "albumCover": "https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/fd/a6/2e/fda62eb7-3665-f291-f5c3-43c3ed296739/190295721947.jpg/1000x1000bb.jpg",
+      "originalKey": "F# Major",
+      "bpm": 150,
+      "dateAdded": "2026-01-11T10:49:59.000Z",
+      "video": "https://www.youtube-nocookie.com/embed/OUoRE4Zvtxw?controls=0",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "Sbm14xbi9pvwWzwxMCkO": {
+          "type": "piano",
+          "difficulty": "Medium",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1ycZv0B9_7xVcoY8bie34pZeUI4CBVEYF/view?usp=sharing"
+        }
+      }
+    },
+    "MTpRAuLREA7nw4hSJMG1": {
+      "title": "Forever",
+      "artistNames": [
+        "Babymonster"
+      ],
+      "artistIds": [
+        "BvPfBfcVvFGWaqC77qz6"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/forever.jpg",
+      "originalKey": "",
+      "bpm": 130,
+      "dateAdded": "2025-01-25T00:00:00+00:00",
+      "video": "https://www.youtube-nocookie.com/embed/i_DIDdNMb3g?controls=0",
+      "lyrics": "[Intro]\nF              E\nAlright, okay\nE\nOkay, okay, okay\n   F           E\nAlright, okay\nN.C.\nBABYMONSTER\n \n[Verse 1]\nF                      E\nI got no worries on my mind\n                F                     E\nNan meomchuji anha so you can say goodbye (Bye, bye, bye)\nF                    E                        F\nI'll fulfill my fantasy and you can watch and see\n                N.C.\nBagsuna chyeoboji\nF        E                        F\nNunbusheo, they say, \"She looking flawless\"\n      E                      F\nI know (Tagonatji like this)\n                             E\nShe's unlike, unlike anybody\n \nYeogijeogi da nanri nanri\nF\nGanadaramaba ssagaji\nE            N.C.\nGotta, gotta go, so c'est la vie\n \n[Pre-Chorus]\n    Em             Em7/G\nI'm dancing in the moonlight\nAm\n   Ooh-ooh-ooh-ooh-ooh-ooh\nD/F#\n   Ooh-ooh-ooh-ooh, ayy\n      Em                Em7/G\nCan't stop this feeling tonight\nAm               N.C.\nWhat you waiting for\n \n[Chorus]\nAm                   D\n  Baby, it was all a dream\n                  G\nYou thought I was yours\n          Bm                Am\nMeotdaero chaggakhajineun ma\n                        D\nIt's bitter, it's sweet\n                G\nJeo haneul nopi\n                 Bm\nI'm spreading my wings\n          N.C.\nLike I'ma live\n \n[Post-Chorus]\nAm D\nForever (Like I'ma live forever)\nG  Bm\nForever (Like I'ma, like I'ma)\nAm D\nForever\n     G                    Bm             N.C.\nLikе I'm gonna live, like I'm gonna live forеver\n \n[Interlude]\nN.C.\nOkay, you know what it is\n \n[Verse 2]\n         Em\nI'm that nice, mwol geot gata neowa nae chai\nB\nPull up on me, pay the price\nEm\n  Put a milli on a rock my type\nB\nNever seen it in your life (Cha-ching)\nEm                              B\nYeppeo geureonikka bappa ani nappeo on sesang ullineun bad girl\nEm      B\nB-A-B-Y-M-O-N (B-A-B-Y-M-O)\nN.C.\nGet money!\nEm\n  'Bout it, 'bout it balkkeutkkaji kkaji\nEm\nRideum taji taji gibun jjaritjjarit\n          N.C.\nEverybody get down\nEm\nRoll up on 'em with the motor running I'ma give you something\nB\nBet you put the money in the bag\n \n[Pre-Chorus]\n    Em             Em7/G\nI'm dancing in the moonlight\nAm\n   Ooh-ooh-ooh-ooh-ooh-ooh\nD/F#\n   Ooh-ooh-ooh-ooh, ayy (Oh)\n      Em                Em7/G\nCan't stop this feeling tonight\nAm               N.C.\nWhat you waiting for\n \n[Chorus]\nAm                   D\n  Baby, it was all a dream\n                  G\nYou thought I was yours\n          Bm                 Am\nMeotdaero chaggakhajineun ma\n                        D\nIt's bitter, it's sweet\n                G\nJeo haneul nopi\n                 Bm\nI'm spreading my wings\n          N.C.\nLike I'ma live\n \n[Post-Chorus]\nAm D\nForever (Like I'ma live forever)\nG  Bm\nForever (Like I'ma, like I'ma)\nAm D\nForever\n     G                    Bm\nLike I'm gonna live, like I'm gonna live forever\n \n[Bridge]\nG                             B\n I can see the bright horizon\n                              Em\nSesangiran byeogeul neomeoseo\n                        C  Cm\nNo, nothing can stop me now\nN.C.\nWe forever, forever\n \nForever, ever, ever (Ooh-ooh)\n \n[Chorus]\nA#m                   D#\n   Baby, it was all a dream\n                  G#\nYou thought I was yours\n          Cm                A#m\nMeotdaero chaggakhajineun ma (Chaggakhajineun ma)\n                        D#\nIt's bitter, it's sweet (Oh, woah)\n                G#\nJeo haneul nopi (Jeo haneul nopi)\n                 Cm\nI'm spreading my wings\n          N.C.\nLike I'ma live\n \n[Post-Chorus]\nN.C.\nForever (Forever, ever, ever)\n \nForever (We forever, forever, forever, ever, ever)\nA#m D#\nFor-ever\n     G#                   Cm                N.C.\nLike I'm gonna live, like I'm gonna live forever\nX\n",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "4SdLonoZ4ocpE6vAGDYz": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1Z_lbJNxqqrSN2TO7TQAo8tZHrPJpQe2B/preview"
+        }
+      }
+    },
+    "MvqFFEjSKbiuC2B3SEMA": {
+      "title": "Untungnya, Hidup Harus Tetap Berjalan",
+      "artistNames": [
+        "Bernadya"
+      ],
+      "artistIds": [
+        "oJOgdVLXXL4Gsc64NWTc"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/Untungnya, Hidup Harus Tetap Berjalan.jpg",
+      "originalKey": "",
+      "bpm": 150,
+      "dateAdded": "2025-01-25T00:00:00+00:00",
+      "video": "https://www.youtube-nocookie.com/embed/w6NCD6pgTyE?controls=0",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "axqE16dB9akvKVXunfBE": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1am6Me9G1ds08EzqwO7WjQV13Sz_UYDFj/preview"
+        }
+      }
+    },
+    "NI2MZ7bg4sV8sLnu52WZ": {
+      "title": "Mencintaimu",
+      "artistNames": [
+        "Mahalini"
+      ],
+      "artistIds": [
+        "aNFkcyJ9GdMXaCRvYS1r"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/mencintaimu.jpg",
+      "originalKey": "",
+      "bpm": 146,
+      "dateAdded": "2025-01-25T00:00:00+00:00",
+      "video": "https://www.youtube-nocookie.com/embed/udbUr0yVwpU?controls=0",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "4myVCpkqgn4eTZIlLs3Q": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1rFZtmmrlJgw3bz_7_DCRgaksMs5l7_mg/preview"
+        }
+      }
+    },
+    "No0HLLiATtfonIv08dL1": {
+      "title": "Rintihan Kuntilanak",
+      "artistNames": [
+        "The Panasdalam Bank"
+      ],
+      "artistIds": [
+        "gTKk6Uthe0m3LyCOOKOK"
+      ],
+      "albumCover": "https://i.ytimg.com/vi/QdmLRXyJD6Y/maxresdefault.jpg",
+      "originalKey": "A Major",
+      "bpm": 74,
+      "dateAdded": "2025-11-25T10:31:07.000Z",
+      "video": "https://www.youtube.com/embed/zPGhC8EF41w",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "lEXK34dI1Z0N1Vn8CChE": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1Hq1Z3AB2_zNtWqEW4VQPVQUim14MtsLU/view?usp=sharing"
+        }
+      }
+    },
+    "OCjLvQsWVz45FWR5YeoP": {
+      "title": "Canary",
+      "artistNames": [
+        "Chuu"
+      ],
+      "artistIds": [
+        "l9bJuSK2IREocCFcXWBJ"
+      ],
+      "albumCover": "https://www.chosun.com/resizer/v2/ME3GIMZWGJSDKMLGHA2DSNLGMI.jpg?auth=dd2c38e336b92eab9ae23cf9ced2b2a9fd41ec4f7daec2105be364474159ce3b&width=650&height=365&smart=true",
+      "originalKey": "Eb Major",
+      "bpm": 120,
+      "dateAdded": "2026-01-15T12:12:04.000Z",
+      "video": "https://www.youtube-nocookie.com/embed/RvdPD0D1-8Y?controls=0",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "MRZRDdkdCpXrM3ucn9ER": {
+          "type": "piano",
+          "difficulty": "Easy",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1Jee4SDLcC-5bGOeWUFkQgsVAflgvDItu/view?usp=sharing"
+        }
+      }
+    },
+    "OCsdsvKqILnaNnZfmGCn": {
+      "title": "Menjaga Jodoh Orang Lain",
+      "artistNames": [
+        "Ara Johari"
+      ],
+      "artistIds": [
+        "qap0CCpB2A3xX1atnrew"
+      ],
+      "albumCover": "https://i.scdn.co/image/ab67616d0000b27301c8234d472a85cc65702dd7",
+      "originalKey": "",
+      "bpm": 140,
+      "dateAdded": "2025-09-09T04:49:09.439000+00:00",
+      "video": "https://www.youtube.com/embed/Bd5_smztriE?si=832JbypyBoSNgKe9",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "f3kpaogQULOlRU3zAo3Y": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1ozcFtAQmItNK_rt73XfRvX3d8DIzRfkj/preview"
+        }
+      }
+    },
+    "OZBpUsH26eSQqemIcibF": {
+      "title": "Moonlit Floor",
+      "artistNames": [
+        "Lisa"
+      ],
+      "artistIds": [
+        "Kyzb7FJ90mtL7TixNGEs"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/moonlit.png",
+      "originalKey": "",
+      "bpm": 100,
+      "dateAdded": "2025-01-25T00:00:00+00:00",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "kfaXBwPTaBn18YkQegiz": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1DYJ6qXmdbROpCSZc3GmyrrnBKanUSBKW/preview"
+        }
+      }
+    },
+    "QB7MjItonqnh4iwsIPgM": {
+      "title": "Keras Kepala",
+      "artistNames": [
+        "Meiska"
+      ],
+      "artistIds": [
+        "jenWMGwjDCPU4NeBIz42"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/keras kepala.jpg",
+      "originalKey": "",
+      "bpm": 118,
+      "dateAdded": "2025-01-25T00:00:00+00:00",
+      "video": "https://www.youtube-nocookie.com/embed/GYf42tD9jU8?controls=0",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "JBWhn8QEciO7obrwuG5S": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1Pgt1Zxygokl46MnA__GKFZHB2AD2r4yD/preview"
+        }
+      }
+    },
+    "QCdU3HTNuqY9lBEVHsTP": {
+      "title": "Vampire",
+      "artistNames": [
+        "Olivia Rodrigo"
+      ],
+      "artistIds": [
+        "YpkUsqmTk3A8Ry6xD2bT"
+      ],
+      "albumCover": "https://i.scdn.co/image/ab67616d0000b2731e5e75dc1d878a0007cb6525",
+      "originalKey": "",
+      "bpm": 0,
+      "dateAdded": "2025-11-12T06:47:30.000Z",
+      "video": "",
+      "lyrics": "F\nHate to give the satisfaction\n                         A7\nAsking how you’re doing now\n\nHow’s the castle built off\n                             Bb\nPeople you pretend to care about?\n\nJust what you wanted\n         Bbm\nLook at you, cool guy, you got it\n\nF\nI see the parties and the diamonds\n                          A7\nSometimes when I close my eyes\n\nSix months of torture you sold\n                       Bb\nAs some forbidden paradise\n\nI loved you truly\n           Bbm\nYou gotta laugh at the stupidity\n\n[Chorus]\n\n                      Gm7\nCause I’ve made some real big mistakes\n                  C\nBut you make the worst one look fine\n              F\nI should’ve known it was strange\n          A7          A7(4)  A7\nYou only come out at night\n            Bb\nI used to think I was smart\n                 Bbm\nBut you made me look so naive\n             F\nThe way you sold me for parts\n                  A7\nAs you sunk your teeth into me, oh\n  Bb          Bbm\nBloodsucker, famefucker\n\nBleedin’ me dry like\n\nA goddamn vampire\n\n[Second Part]\n\nF\nAnd every girl I ever talked\n                              A7\nTo told me you were bad, bad news\n\nYou called them crazy, God\n                                    Bb\nI hate the way I called them crazy too\n\nYou’re so convincing\n            Bbm\nHow do you lie without flinching?\n\n(How do you lie? How do you lie?\n            F\nHow do you lie?)\n\nOh, what a mesmerizing, paralyzing\n                    A7\nFucked up little thrill\n\nCan’t figure out just how you do it\n                       Bb\nAnd God knows I never will\n\nWent for me and not her\n       Bbm\nCause girls your age know better\n\n[Chorus]\n\n                Gm7\nI’ve made some real big mistakes\n                  C\nBut you make the worst one look fine\n              F\nI should’ve known it was strange\n          A7          A7(4)  A7\nYou only come out at night\n            Bb\nI used to think I was smart\n                 Bbm\nBut you made me look so naive\n             F\nThe way you sold me for parts\n                  A7\nAs you sunk your teeth into me, oh\n  Bb          Bbm\nBloodsucker, famefucker\n\nBleedin’ me dry like\n\nA goddamn vampire\n\n[Bridge]\n\nF\n  (Ooh, ah)\nBb\n   You said it was true love\nBbm\n     But wouldn’t that be hard?\nF\n  You can’t love anyone\n       C\nCause that could mean you had a heart\n\nBb\n   I tried you help you out\nBbm\n    Now I know that I can’t\nF\n  Cause how you think’s\n              C\nThe kind of thing\n                  Bb   Bbm  F  C\nI’ll never understand\n\n[Chorus]\n\n                Gm7\nI’ve made some real big mistakes\n                  C\nBut you make the worst one look fine\n              F\nI should’ve known it was strange\n          A7          A7(4)  A7\nYou only come out at night\n            Bb\nI used to think I was smart\n                 Bbm\nBut you made me look so naive\n             F\nThe way you sold me for parts\n                  A7\nAs you sunk your teeth into me, oh\n  Bb          Bbm\nBloodsucker, famefucker\n\nBleedin’ me dry like\n                F\nA goddamn vampire",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "9WKN7IjqIddj92xNcgQU": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1VragUYEys17gJ-3m8X_p4dmqTv5eopzp/preview"
+        }
+      }
+    },
+    "QeKK3QxZt9TzqbatyRVe": {
+      "title": "Really Like You",
+      "artistNames": [
+        "Babymonster"
+      ],
+      "artistIds": [
+        "BvPfBfcVvFGWaqC77qz6"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/really like you.jpg",
+      "originalKey": "",
+      "bpm": 194,
+      "dateAdded": "2025-02-20T00:00:00+00:00",
+      "video": "https://www.youtube-nocookie.com/embed/75_1EffIb5c?controls=0",
+      "lyrics": "[Intro]\n        Abmaj7\nMalhago sipeo\n          G7\nTo say I love you\n            Cm7\nBut, boy, I like you\n               Eb\nReally, really like you\n \n[Verse 1]\n              Abmaj7\nHey, what you doin'? gidarijana call back, uh\nG7\nOndo check haetjana na kkonghaesseo\nCm7\nChuwo na gamgigo sipeo\nBbm7              Ebmaj7\nHurry up, ibul gajyeowa deopeojwo\n Abmaj7\nI wanna touch you but you're in the laptop\nG7\nNal boreo wa keopicheoreom take out\nCm7\nDingdigiding like a rigidingding\nBbm7                      Ebmaj7\nNeorang gachi bingbing nolgo sipeo every time\n \n[Verse 2]\nAbmaj7                G7\nNae mami ganjilganjilhae I'm sick\n       Cm7                Bbm7       Ebmaj7    Abmaj7\nAlways you and me like a symphony, we come together\n                         G7                            Cm7\nNeoui neomchineun maeryeok, you make a bad day better, yeah, you\n            Bbm7                      Ebmaj7\nYou make a good day better too, yeah\n \n[Pre-Chorus]\nAbmaj7\nUh, nuneul tteuneun achimbuteo\nGm7\nDari jineun saebyeokkkaji\nFm7\nNe saenggage haengbokae\nEb\nAma moreulgeol\n \n[Chorus]\nAbmaj7                 G7\nMalhago sipeo to say I love you\n            Cm7                      Bbm7     Ebmaj7\nBut, boy, I like you, really, really like you\n            Abmaj7                    G7\nAnd in this moonlight, we're reaching new highs\n            Cm7                      Bbm7             Ebmaj7\nBut, boy, I like you, really, really like you, yeah, yeah\n \n[Verse 3]\nAbmaj7\nL-O-V-E, L-O-V-E\nG7\nHeuteureojin peojeulgachi\nCm7\nIbane damgo inneun mal\nBbm7              Ebmaj7\nIjeneun malhago sipeo\nAbmaj7\nTonight\nG7\nIje geuman gominhago\n      Cm7\nYeah, boy, I'd like\nBbm7           Ebmaj7\nNal geobuhaji ma so\n \n[Pre-Chorus]\nAbmaj7\nNuneul tteuneun achimbuteo\nGm7\nDari jineun saebyeokkkaji\nFm7\nNe saenggage haengbokae\n                 Eb7\nAma moreulgeol\n \n[Chorus]\nAbmaj7                 G7\nMalhago sipeo to say I love you\n            Cm7                     Bbm7     Ebmaj7\nBut, boy, I like you, really, really like you\n          Abmaj7                      G7\nAnd in this moonlight, we're reaching new highs\n            Cm7                      Bbm7        Ebmaj7\nBut, boy, I like you, really, really like you, yeah, yeah\n \n[Bridge]\nAbmaj7                     Ebmaj7\nO neol cheoeum bon sunganbuteo\nFm7               Abmaj7\nJakku nae kkume nawa\n               Ebmaj7  Ebm7\nNun tteumyeon aswiwo\n Fm7       Ebm7\nNo need to rush\nAbmaj7\nJom deo dagagalge nan little\nEbmaj7         Fm7\nI'm waiting on you too\nAbmaj7\nEvery day gets better\nN.C.\nSo glad that I found you\n \n[Chorus]\nAbmaj7\nMalhago sipeo (Wanna tell you)\nG7\nTo say I love you (Love you)\n            Cm7\nBut, boy, I like you\n               Bbm7     Ebmaj7\nReally, really like you (Really, really like you)\n            Abmaj7\nAnd in this moonlight (We're reaching new)\n               G7\nWe're reaching new highs (Alright)\n            Cm7\nBut, boy, I like you\n               Bbm7        Ebmaj7\nReally, really like you, yeah, yeah\n \n[Outro]\nAbmaj7                               G7\nOkay, okay naega jyeosseunikka oneul neoui mameul heorakae (Hey)\nCm7                                 Bbm7                  Ebmaj7\nOkay, okay byeori tteosseunikka sonjapgo nuneul gameulge (Hey)\nAbmaj7                              G7\nOkay, okay mareul seokkeunikka malpungseoni gadeukae (Hey)\n             Cm7               Bbm7        Ebmaj7\nBut, boy, I like you, really, really like you, yeah, yeah",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "bYCBiPhNzbhqZ49jgSqV": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/10Xi_Owg2EWEll9CqrpaV8o6LzatZf57n/preview"
+        }
+      }
+    },
+    "RVtA7719UnIN4BkIuNbR": {
+      "title": "Pookie",
+      "artistNames": [
+        "Fifty Fifty"
+      ],
+      "artistIds": [
+        "xfwuaC5fFtjYm8psAobF"
+      ],
+      "albumCover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqIfa1Wmjpc5Ac9ak9zE9ZH0eunLDAcPtkeA&s",
+      "originalKey": "",
+      "bpm": 0,
+      "dateAdded": "2025-11-12T06:46:58.000Z",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "aN2hGDJfKU9xDVICdT2k": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1JLJNzDet-wVkex8OezqaBJSC91eeHAed/preview"
+        }
+      }
+    },
+    "SxUGIFjJPuKIGTbojtvw": {
+      "title": "Tak Adil",
+      "artistNames": [
+        "Aisha Retno"
+      ],
+      "artistIds": [
+        "/artists/UDuIwo8N5fcM1E7Eh9la"
+      ],
+      "albumCover": "https://dkg-scdn.b-cdn.net/image/ab67616d0000b2732015cf62f61bca5bef3c685a",
+      "originalKey": "G Major",
+      "bpm": 165,
+      "dateAdded": "2026-02-12T16:36:59.000Z",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "GhOQXrID1csrkksGW0g0": {
+          "type": "piano",
+          "difficulty": "Easy",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1PqF0HONehTaEf1dcWBr5iyn4C2jWQLJd/view?usp=sharing"
+        }
+      }
+    },
+    "TA6QExarLco0Qr4u0SyL": {
+      "title": "Meow",
+      "artistNames": [
+        "Meovv"
+      ],
+      "artistIds": [
+        "xbZnLYpmGVgPlmCL37tK"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/meow.jpg",
+      "originalKey": "",
+      "bpm": 130,
+      "dateAdded": "2025-01-25T00:00:00+00:00",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "ygLQ27Oz0WAnTjVReYOC": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1tqKRNuCfRyxuLwx2bftnuUqHSrykikoA/preview"
+        }
+      }
+    },
+    "TAXmY1VVsUUZbO3XU9Cz": {
+      "title": "XO, My Cyberlove",
+      "artistNames": [
+        "Chuu"
+      ],
+      "artistIds": [
+        "l9bJuSK2IREocCFcXWBJ"
+      ],
+      "albumCover": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/bd/1b/16/bd1b169c-0099-c216-0aab-e2c32c087fc0/888272173482.jpg/600x600bb.jpg",
+      "originalKey": "F# Major",
+      "bpm": 120,
+      "dateAdded": "2026-01-07T16:00:00.000Z",
+      "video": "https://www.youtube-nocookie.com/embed/tGBkuXLuVy8?controls=0",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "cpXE5Jij3UbDFtHg4H6j": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/11GWzO-4hvTSiBuOOW5udwuAmFl7cZdWo/view?usp=sharing"
+        }
+      }
+    },
+    "TFjKyFlpzUvxYhSsfm8c": {
+      "title": "Penjaga Hati",
+      "artistNames": [
+        "Nadhif Basalamah"
+      ],
+      "artistIds": [
+        "DyA4Xxt4SrMmDq78Cum2"
+      ],
+      "albumCover": "https://i.scdn.co/image/ab67616d0000b2735c60335b52110564cbe57176",
+      "originalKey": "",
+      "bpm": 168,
+      "dateAdded": "2025-03-25T00:00:00+00:00",
+      "video": "https://www.youtube-nocookie.com/embed/HQFi7Qh-I_g?controls=0",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "TRB9Y9YnUAAFO5DQk8Am": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1R2LfIa6nvwKhEZ7FZrb3t-ZJeZdcf3ov/preview"
+        }
+      }
+    },
+    "UBPv4r64gIlGGnG5yfc1": {
+      "title": "Taste",
+      "artistNames": [
+        "Sabrina Carpenter"
+      ],
+      "artistIds": [
+        "XpNEXZhYgkg0lV7dexOf"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/taste.jpg",
+      "originalKey": "",
+      "bpm": 110,
+      "dateAdded": "2025-01-25T00:00:00+00:00",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "V4WBeLVaQJoU63kpC1Gq": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1aRNKukHCt7WOiIWL2oEwxuUXhfvxGxO-/preview"
+        }
+      }
+    },
+    "UQh5OIx19Tfp3gtoAs8n": {
+      "title": "Satu - Satu",
+      "artistNames": [
+        "IDGITAF"
+      ],
+      "artistIds": [
+        "pqSQevX8xtaYeZlbNgJQ"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/satu - satu.jpg",
+      "originalKey": "",
+      "bpm": 96,
+      "dateAdded": "2025-01-25T00:00:00+00:00",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "e1DdM04vRCMQSgYTyiHk": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1Swn0MkijAazKl98J51dxo_IfZULYsHJd/preview"
+        }
+      }
+    },
+    "Ud2RcB9WLsgpvYCz1zG7": {
+      "title": "Kasih Aba-aba",
+      "artistNames": [
+        "Naykilla",
+        "Tenxi",
+        "Jemsii"
+      ],
+      "artistIds": [
+        "f9fucx4KcDxq1qZfYs1O",
+        "qr7BpmY91900NhyawzPg",
+        "2fU47czjlyRkhjt6WRDO"
+      ],
+      "albumCover": "https://images.genius.com/5818f309f3513a385b1fe2fcfa20a078.1000x1000x1.png",
+      "originalKey": "",
+      "bpm": 0,
+      "dateAdded": "2025-11-12T06:46:21.000Z",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "TfkBcbY4Fvygmc52Pj1J": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1tY-41aRJvifc78GyyyvF3k3fOdqfedZW/preview"
+        }
+      }
+    },
+    "Uyqn8SP6b89zRQcUwO9F": {
+      "title": "Kembali Terang AJL Version",
+      "artistNames": [
+        "Marsha Milan"
+      ],
+      "artistIds": [
+        "baseUDMm71PEdJAWWJiV"
+      ],
+      "albumCover": "https://i.scdn.co/image/ab67616d0000b273f9ad2fc2e7ddf49087bd5bad",
+      "originalKey": "B Major",
+      "bpm": 130,
+      "dateAdded": "2025-11-12T06:43:34.000Z",
+      "video": "https://www.youtube-nocookie.com/embed/VOjNG3Ao-SA",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": true,
+      "isComingSoon": false,
+      "_arrangements": {
+        "wYY02etRqOGVM5JXVSgQ": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0
+        }
+      }
+    },
+    "VDlTHUsVTowmvGyfOMxD": {
+      "title": "Clik - Clak",
+      "artistNames": [
+        "Babymonster"
+      ],
+      "artistIds": [
+        "BvPfBfcVvFGWaqC77qz6"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/click%20-%20clak.jpg",
+      "originalKey": "",
+      "bpm": 133,
+      "dateAdded": "2025-02-20T00:00:00+00:00",
+      "video": "https://www.youtube-nocookie.com/embed/2NMbntL07_o?controls=0",
+      "lyrics": "[INTRO]\nDm\nHuh\nHey, hey, hey, hey\n\n[CHORUS]\nDm\nClick clack, heels tap\nWalkin' with my hips back\nMoney, click clack\nClick clack, click clack, click clack\nSpending money, charge, charge, charge\nWho be livin' large, large, large\nWalking like a boss, boss, boss\nWe make 'em talk, talk, talk, talk\n\n[VERSE]\nDm\nYeah, I need a van to hold all my bags\nAlways the first and never the last\nHere with my girls, we step on the scene\nWe do it big, you know what I mean\nIf I say which one looks better\nYou say both (Both), both (Both)\nI'm bad from any angle\nHit that pose (Pose), pose (Pose)\n\n[VERSE]\nDm\nMatching tennis bracelеts\nBaby blue water vacations (Ah)\nI'll admit that I'm so vicious\nNo, I ain't the onе to play with\nEverybody wanna know, oh, oh\nBitty burning up the show, oh, oh\nEenie, meenie, miney, moe, catch 'em by the toe\nYou ain't even no, I'ma let it go\n\n[CHORUS]\nDm\nClick clack, heels tap\nWalkin' with my hips back\nMoney, click clack\nClick clack, click clack, click clack\nSpending money, charge, charge, charge\nWho be livin' large, large, large\nWalking like a boss, boss, boss\nWe make 'em talk, talk, talk, talk\n\n[VERSE]\nDm\nYeah, get back, whip that, they mad (Mad)\nClap, clap, bring that ASAP ( SAP)\nIf they all up in their feelings, that's too bad (That's too bad)\nI be laughing to the bank in my Maybach (Hahahahaha)\nLeft hand kiss that big rock\nTunnel vision, twenty twenty top notch\nSpent a milly on some fits, I'm so hot (So hot)\nPut some ice on my wrist, that's water (Yeah)\n\n[VERSE]\nDm\nI'm on it, on it, got it, flaunt it\nGot your world in my pocket\nZero hundred like Ferrari\nHit the gas (Who gon' stop me?)\nYou love when BABYMONSTER hits (Hits)\nCartier stacked up on my wrist (Wrist)\nFlip my hair and blow a kiss (Mwah)\nNot a dentist but I'm flossin', sis\n\n[BRIDGE]\nDm\nClick clack, heels tap, click clack, heels tap\nClick clack, heels tap, mmm (Click)\nClick, click clack, heels tap, click clack, heels tap\nClick clack, heels tap, mmm\n\n[POST-CHORUS]\nDm\nClick, click clack, heels tap\nWalkin' with my hips back\nMoney click clack, click clack, click clack\nClick, click clack, heels tap\nWalkin' with my hips back\nMoney click clack, click clack\n\n[OUTRO]\nDm\nAin't looking back, let's take the lead\nGo head, ladies, go head, ladies\nAin't looking back, let's take the lead\nGo head, ladies, go head, ladies, here we go",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "qKA7KHZxOSPuOVc1L4yW": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1nILX6wgK2Cz_RWa3huKtBAs001AuFqTG/preview"
+        }
+      }
+    },
+    "Vd05jky0PpoZOJ3fpQbH": {
+      "title": "Hening Rindu",
+      "artistNames": [
+        "Marsha Milan"
+      ],
+      "artistIds": [
+        "baseUDMm71PEdJAWWJiV"
+      ],
+      "albumCover": "https://i.scdn.co/image/ab67616d0000b2738b4fc8768fd9571a4d502e4d",
+      "originalKey": "",
+      "bpm": 133,
+      "dateAdded": "2025-10-06T09:03:13.556000+00:00",
+      "video": "https://www.youtube.com/embed/N7VQTkyFEa8?si=tsxDYNPEYTuBLw8S",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "DvzMjAD3pa7D5dcNGX2Q": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1USyvo5Wz07YNZHIDGNWEGndA6InFVGKA/preview"
+        }
+      }
+    },
+    "Wa8eZ1yjnYHYCgzFCXRi": {
+      "title": "Lagu Uncle",
+      "artistNames": [
+        "KC Champion"
+      ],
+      "artistIds": [
+        "BBB6JsI9OOpHPMocRGBC"
+      ],
+      "albumCover": "https://i.ytimg.com/vi/vMO3Bny94ds/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB4t2SU-7CvKrHKGulN21gv2s1YQQ",
+      "originalKey": "C Major",
+      "bpm": 130,
+      "dateAdded": "2025-11-25T16:00:00.000Z",
+      "video": "https://www.youtube-nocookie.com/embed/a9sZ-VLm4Zg",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "2qPZPvn1NFDuxkuJ2OnL": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1u9LPe9k1ra3A-m_qz5TooAPrKXKzrzsH/view?usp=sharing"
+        }
+      }
+    },
+    "WkCdKN9mry9BrfUdSS3D": {
+      "title": "Katana",
+      "artistNames": [
+        "Dinda Dania"
+      ],
+      "artistIds": [
+        "CoHiE72kJ4nxLGdQkFA9"
+      ],
+      "albumCover": "https://i.scdn.co/image/ab67616d00001e02a4fe7ef07ed2e8f0e17e134f",
+      "originalKey": "",
+      "bpm": 143,
+      "dateAdded": "2025-06-08T00:00:00+00:00",
+      "video": "https://www.youtube.com/embed/Wv8cxcYIZtE?si=J8TO_Gjt24bnGGs5",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "Yvzug8bhZNBddt2jqOrL": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1t7yveR3aLwP-jiBwiH2ACZS29yy3wh9E/preview"
+        }
+      }
+    },
+    "YWtTJYgZc7YcjMljyWm4": {
+      "title": "Like That",
+      "artistNames": [
+        "Babymonster"
+      ],
+      "artistIds": [
+        "BvPfBfcVvFGWaqC77qz6"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/like that.webp",
+      "originalKey": "",
+      "bpm": 0,
+      "dateAdded": "2025-11-12T06:46:34.000Z",
+      "video": "",
+      "lyrics": "[Intro]\nBm Em F#m Bm\n \n[Verse]\nBm                          Em\n  I see that look upon your face\n               F#m          Bm\nSomething my mind cannot erase\n           Bm           Em        F#m\nIf we keep staring then I might have to\nBm                               Em\n  Might have to start to walk your way\n       F#m                    Bm\nI wanna hear what you would say\n             Bm            Em   F#m\nYou got high standards and I do too\n \n[Verse]\n       Bm\n'Cause all those girls (They don't)\n     Em       F#m\nKnow what you need (They don't)\n       Bm\nBut I know, I know the way, the way\nN.C.\nTo make, to make sure you never leave\n \n[Chorus]\n Bm\nIf I come close, baby, would you like that?\n Em             F#m\nIf I give some, would you give it right back?\n Bm\nIf I show you that I know where it's at\n            Em\nBaby, would you like that?\n             F#m\nBaby, would you like that?\n \n Bm\nSay you want love, boy, I know what that means\n Em                      F#m\nMake you feel way better than in your dreams\n Bm\nIf I show you that I know where it's at\n               Em\nBaby, would you like that?\n              F#m\nBaby, would you like that?\n \n[Verse]\nBm\nYo, it's likе that like that\n                        Em\nHow you run it right back\n                          F#m\nKnow you on the right track\n                  Bm\nQueen ace blackjack\n                         Bm\nI bе thinking way too much\nN.C.\nI need to let it go\n Em\nYou be running through my mind\n   F#m\nAnd I'ma let it show\n \n[Verse]\n   Bm\n'Cause ain't nobody stepping up to me\n    Em\nAnd saying nothing when I calling you\n   F#m\nBe running eye to eye we never fronting, yeah\n   Bm\nWe zoning bet we stunting on and on and on and\nEm                        F#m\n To the top, baby boy, we be rolling\n \n[Verse]\n       Bm\n'Cause all those girls (They don't)\n     Em       F#m\nKnow what you need (They don't)\n       Bm\nBut I know, I know the way, the way\nN.C.\nTo make, to make sure you never leave\n \n[Chorus]\n Bm\nIf I come close, baby, would you like that?\n Em             F#m\nIf I give some, would you give it right back?\n Bm\nIf I show you that I know where it's at\n            Em\nBaby, would you like that?\n             F#m\nBaby, would you like that?\n \n Bm\nSay you want love, boy, I know what that means\n Em                      F#m\nMake you feel way better than in your dreams\n Bm\nIf I show you that I know where it's at\n               Em\nBaby, would you like that?\n              F#m\nBaby, would you like that?\n \n[Bridge]\n                Em\nI want you in my arms\n Bm              Bm\nIn my arms, my arms (That's where you need to be)\n                Em\nI want you in my arms\n Bm              Bm\nIn my arms, my arms (That's where you need to be)\n \n[Pre-Chorus]\nBm     Em F#m\nAh ah, ah ah\n       Bm\nBut I know, I know the way, the way\nN.C.\nTo make, to make sure you never leave\n \n[Chorus]\n Bm\nIf I come close, baby, would you like that?\n Em             F#m\nIf I give some, would you give it right back?\n Bm\nIf I show you that I know where it's at\n            Em\nBaby, would you like that?\n             F#m\nBaby, would you like that?\n \n Bm\nSay you want love, boy, I know what that means\n Em                      F#m\nMake you feel way better than in your dreams\n Bm\nIf I show you that I know where it's at\n               Em\nBaby, would you like that?\n              F#m\nBaby, would you like that?\n \n[Chorus]\n Bm\nIf I come close, baby, would you like that?\n Em             F#m\nIf I give some, would you give it right back?\n Bm\nIf I show you that I know where it's at\n            Em\nBaby, would you like that?\n             F#m\nBaby, would you like that?\n \n Bm\nSay you want love, boy, I know what that means\n Em                      F#m\nMake you feel way better than in your dreams\n Bm\nIf I show you that I know where it's at\n               Em\nBaby, would you like that?\n              F#m\nBaby, would you like that?\n \n[Outro]\nBm",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "JsQ3GRoYqBMQCVwezf8t": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1TXmU86mos68Amcctwowuu3VPAaRwlhOS/preview"
+        }
+      }
+    },
+    "b7lhYOmEcoTS6mgBh9d4": {
+      "title": "Apa Itu Konsep Bahagia",
+      "artistNames": [
+        "Ghea Indrawari"
+      ],
+      "artistIds": [
+        "cg16pSSMzpImjFc8OVy3"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/aaa.png",
+      "originalKey": "",
+      "bpm": 0,
+      "dateAdded": "2025-11-12T06:45:28.000Z",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "W3WOYkCtsZGMBYcXDTM3": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1st2eV-IrMkVzzPM5NAyntzAc13ogE0OM/preview"
+        }
+      }
+    },
+    "bH7E0TbxaunnhDuc2qPr": {
+      "title": "Apple Cider",
+      "artistNames": [
+        "Beabadoobee"
+      ],
+      "artistIds": [
+        "RkeIQevZEITw0thpGbQv"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/apple_cidar.jpg",
+      "originalKey": "",
+      "bpm": 133,
+      "dateAdded": "2025-02-10T00:00:00+00:00",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false
+    },
+    "bLmePj8TbDUZXVVeM7PV": {
+      "title": "TICK-TACK",
+      "artistNames": [
+        "Illit"
+      ],
+      "artistIds": [
+        "IrNqOXvgRKu2vJidL05w"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/Tick-Tack.png",
+      "originalKey": "",
+      "bpm": 0,
+      "dateAdded": "2025-11-12T06:47:26.000Z",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "EGuewWEB4oQQuE2oMXP2": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1iucwhNa0bxpP-qRkbpjrAEQjImdPdMod/preview"
+        }
+      }
+    },
+    "c4uk4dE9aWVPVzezDsAO": {
+      "title": "Konco Mesra",
+      "artistNames": [
+        "Maman Fvndy Rmx"
+      ],
+      "artistIds": [
+        "xmHZvjp73KJnUDGoVdcu"
+      ],
+      "albumCover": "https://i.ytimg.com/vi/UPFbdeQIgeg/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAMASfT4Ql5KF7jGhywFmvh69230Q",
+      "originalKey": "",
+      "bpm": 120,
+      "dateAdded": "2025-09-09T07:25:00.295000+00:00",
+      "video": "https://www.youtube.com/embed/rE5R9LBfqqo",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": true,
+      "isComingSoon": false
+    },
+    "cqNOQOPpLWFPIV4kXbIo": {
+      "title": "Stuck In The Middle",
+      "artistNames": [
+        "Babymonster"
+      ],
+      "artistIds": [
+        "BvPfBfcVvFGWaqC77qz6"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/stuck in the middle.webp",
+      "originalKey": "",
+      "bpm": 130,
+      "dateAdded": "2025-01-26T00:00:00+00:00",
+      "video": "https://www.youtube-nocookie.com/embed/2TEg4B2Gi7A?controls=0",
+      "lyrics": "[Intro]\nA         E/G#\n(ooh-woah-oh-oh)All This time We’ve Been Together\n                D\n(oh-oh-oh) and I Still don’t Know How You Feel\n                       Dm\nSometimes I Wish You’d Just (woah-oh-oh)\n \nTalk To Me\n \n[Verse 1]\n            A\nMaybe It’s Make Believe, Maybe It Can Be True\n         E/G#\nI Try To Tell Myself I’m Not In Love With You\n                       F#m\nI Thought That I Knew Everything (thing)\n                     D\nI guess I don't know anything, yeah\n          A\nI get emotional (Yeah) and hypothetical\n                           E/G#\nWondering if there are all kinds of things\n \nI'm not supposed to know\n                  F#m\nI try my best to let it go (Leggo)\n                        D\nBaby, then you bring me back, bring me back\n \n[Pre-Chorus]\n      Bm        A            E\nYou lift my feet off of the ground\n         A         E/G#       D\nKeep me spinnin' around and around\n   Bm         A          E\nI don't ever wanna come down\n           D  Do\nFrom your arms\n \n[Chorus]\n      A\nYou tell me that you need me then you walk away\n        C#m\nKeep promisin' forever with the words you say\n       D\nIt's true (True, true)\n                                Dm\nDon't know what I’m supposed to do\n \n[Post-Chorus]\n                              A\nI’m stuck in the middle with you, you, you\n      C#7                                     D\nWith you, you, oh, boy, you got me really confused\n                                 Dm\nDon't know what I’m supposed to do\n                              A\nI'm stuck in the middle with you\n \n[Verse 2]\nA\nYou were the spark, light in the dark\n                       C#m\nGave you my everything (Ha)\n \nPullin' me in, pushing me out\n                 F#m\nPullin' me back again (Ha)\n \nDon’t know if your mind is made up\n                                       D\nBut I know that nobody wanna be stuck (Ha)\n \nYou are the one that I want\n                                   A\nAll I can promise you now is my love\n \n[Verse 3]\n                                             C#7\nYou say you want me (Want me), you say you care (Care)\n \nWhen we're together (Together), are you even there?\n    F#m\nAnd you gave me the keys to your heart\n                       E\nYeah, you made me believe from the start\n     D                                                      E/G#\nNow all that I know is I got all this love, I won't take back\n     A       D/F#     G\nMy love, my love, my love, my love\n \n[Pre-Chorus]\n      Bm          A          E\nYou lift my feet off of the ground\n         A         C#m        D\nKeep me spinnin' around and around\n   Bm         A          E\nI don't ever wanna come down\n           D  Dm\nFrom your arms\n \n[Chorus]\n      A\nYou tell me that you need me then you walk away\n      C#m\nKeep promisin' forever with the words you say\n      D\nIt's true (True, true)\n                                Dm\nDon't know what I'm supposed to do\n \n[Post-Chorus]\n                             A\nI'm stuck in the middle with you, you, you\n      C#7                                     D\nWith you, you, oh, boy, you got me really confused\n                                Dm\nDon't know what I'm supposed to do\n                              Bm\nI'm stuck in the middle with you\n \n[Bridge]\n      E                          A\nI've tried and I've tried to be good to myself\n \nGood for my health\n        Bm              E                   A  G   F#\nIs it selfish if I'm constantly turning to you, to you?\n         D\nIf you knew what I'm feeling right now\n                  Dm   Eb/F\nYou'd comfort my heart\n \n[Chorus]\n      Bb\nYou tell me that you need me then you walk away (You tell me, yeah)\n       Dm\nKeep promisin' forever with the words you say\n       Eb\nIt's true (True, true)\n                                Ebm\nDon't know what I'm supposed to do (Oh-oh, oh-oh-oh-oh)\n \n[Post-Chorus]\n                              Bb\nI'm stuck in the middle with you, you, you (With you)\n      D7                                           Eb\nWith you, you (You), oh, boy, you got me really confused\n                                Ebm\nDon't know what I'm supposed to do\n     Ab                      Bb\nI'm stuck in the middle with you\n",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "LlCRH01YjAW4t64IjsVD": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1g3nJicZjo5EOy4ht8Y0-o4ID2ObRQ-dN/preview"
+        }
+      }
+    },
+    "d2SroaAJbDCzgYqlbOwg": {
+      "title": "Satu Bulan",
+      "artistNames": [
+        "Bernadya"
+      ],
+      "artistIds": [
+        "oJOgdVLXXL4Gsc64NWTc"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/satu bulan.png",
+      "originalKey": "",
+      "bpm": 160,
+      "dateAdded": "2025-01-25T00:00:00+00:00",
+      "video": "https://www.youtube-nocookie.com/embed/AxoE9baAZHQ?controls=0",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "lOZEB4uWQJ1iyyXOHtzp": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1ucab1J69RrdkvsMjPJcO8GauTN5GHQH-/preview"
+        }
+      }
+    },
+    "dcojW0rf4jVhnMNqP8JB": {
+      "title": "Mejikuhibiniu",
+      "artistNames": [
+        "Jemsii",
+        "Suisei",
+        "Tenxi"
+      ],
+      "artistIds": [
+        "2fU47czjlyRkhjt6WRDO",
+        "pQ9hfYaBRsnHcs6O9sC4",
+        "qr7BpmY91900NhyawzPg"
+      ],
+      "albumCover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhGDUFh7ThXRPBbqF2E5jW1-V2KItLbrWz6Q&s",
+      "originalKey": "Bb Major",
+      "bpm": 133,
+      "dateAdded": "2025-12-23T16:00:00.000Z",
+      "video": "https://www.youtube-nocookie.com/embed/HOHslfXy-KU",
+      "lyrics": "",
+      "isFeatured": true,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "5yJRGSOHtPKodPXNXm8V": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1OqetunTje6qqLjWF0V2alqPgUEdyL9Xn/view?usp=sharing"
+        }
+      }
+    },
+    "gVv7P4f9q8MAoJ0rt5ZF": {
+      "title": "BoBoiBoy, Superhero Kita!",
+      "artistNames": [
+        "-"
+      ],
+      "artistIds": [
+        "rxix3Vp3sHJKf4Pd85XI"
+      ],
+      "albumCover": "https://i1.sndcdn.com/artworks-000154009464-aakepb-t500x500.jpg",
+      "originalKey": "G Major",
+      "bpm": 155,
+      "dateAdded": "2025-11-21T16:00:00.000Z",
+      "video": "https://www.youtube.com/embed/toQD5otz0eU",
+      "lyrics": "Sesuatu masa keadaan dunia\nPenuh bahaya ancaman dari musuh-musuh Bumi\nSelamatkanlah kita\nHero yang ada hero manusia\n\nPenyelamat Bumi\nPenyelamat Bumi\n\nAlien datang menakluki Bumi\nDemi koko yang dicari-cari\nMereka 'kan tiba tak lama lagi\nApa mungkin terjadi?\n\nJadi kita perlukan penyelamat Bumi\n\nBoBoiBoy!\nBoBoiBoy!\nBoBoiBoy!\n\nYing!\nYaya!\nGopal!\nFang!\n\nBoBoiBoy!\nBoBoiBoy!\nBoBoiBoy!\nBoBoiBoy!\nBoBoiBoy!",
+      "isFeatured": false,
+      "isPremium": true,
+      "isComingSoon": false
+    },
+    "hB7UjyLW8XGouUvLDWqh": {
+      "title": "Sialan",
+      "artistNames": [
+        "Adrian Khalif"
+      ],
+      "artistIds": [
+        "mwh8sJPR3nYcJgjg00qh"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/sialan.webp",
+      "originalKey": "",
+      "bpm": 130,
+      "dateAdded": "2025-01-25T00:00:00+00:00",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "EtzJP6A23OnZAYpPe3VI": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1UDlqOoJ-sKjNwMRGzpqNCCH-LTkEbeQ7/preview"
+        }
+      }
+    },
+    "hOvMwJtSG9RTTDXceykI": {
+      "title": "Tak Ingin Usai ",
+      "artistNames": [
+        "Keisya Levronka"
+      ],
+      "artistIds": [
+        "ZZGe2F9yPxqkr2RqvyMz"
+      ],
+      "albumCover": "https://i.ytimg.com/vi/FB1YNEOspyA/maxresdefault.jpg",
+      "originalKey": "C major",
+      "bpm": 120,
+      "dateAdded": "2025-11-19T15:24:12.000Z",
+      "video": "https://www.youtube-nocookie.com/embed/-TaBIodkvJ4",
+      "lyrics": "Am F C G  \n\nAm        F           \n berdiri   ku memutar \n C      G\n waktu  \nAm         F          \n teringat   kamu yang \n C     G\n dulu  \n Am             F\nada disampingku setiap hari  \n  C                G\njadi   sandaran ternyaman  \n          Am            F\nsaat ku lemah saat ku lelah  \n   C   G\nhoowo  \n\nAm         F          \n tersadar   ku tinggal \n     C     G\n sendiri  \nAm       F\n merenu  ngi  \n               C        G\nsemua yang tak mungkin  \n  Am\nbisa   ku putarkan\nF                 C\nkembali seperti dulu  \n           G\nku bahagia tapi\n     Am\nsemuanya hilang   tanpa sebab  \nF                 C  \nkau hentikan semuanya  \n G \nhooo  \n\nF\n terluka dan menangis tapi ku terima\nAm\n semua keputusan yang telah kau buat\nF\nsatu yang harus kau tahu  \n   Dm                 G\nku menanti kau tuk kembali  \n\n Chorus  \n         C        \njujur ku tak ingin \n           G  \nengkau pergi  \n           Am             G\ntinggalkan semua usai disini  \n         F             Em\ntak tertahan air mata ini  \n          Dm        \nmengingat semua yang \n            G\nt'lah terjadi  \n\n            C  \nku tahu kau pun \n               G  \nsama seperti aku  \n          Am             G\ntak ingin cinta usai disini  \n         F               Em\ntapi mungkin inilah jalannya  \n         Dm         G\nharus berpisah   hoooo  \n\n        C G   Am G\n       huu   uu    \n\nF\n terluka dan menangis tapi ku terima\nAm\n semua keputusan yang telah kau buat\nF\nsatu yang harus kau tahu  \n   Dm                 G\nku menanti kau tuk kembali  \n\n Chorus    Overtone  \n G#       C#                  G#  \n jujur ku tak ingin engkau pergi    \n            A#m            G#  \n tinggalkan semua usai disini    \n    G#               F# Fm\ntinggalkan semua disini  \n           D#m       \n mengingat semua yang \n             G#\n t'lah terjadi    \n\n            C#                G#  \nku tahu kau pun sama seperti aku  \n          A#m            G#\ntak ingin cinta usai disini  \n         F#              Fm\ntapi mungkin inilah jalannya  \n         D#m       G#\nharus berpisah, hoooo  \n\n         F#            G#\nberharap suatu saat nanti  \n         C#        G#     A#m\nkau dan aku kan bertemu lagi  \n             F#\ns'perti yang kau ucapkan  \n    G#                  C#\nsebelum kau tinggalkan aku  ",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "1tLiNRC13IaQiJFfNIjV": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/19pE2CnTeTYNQ7vpT5Hdc1KOGeqzicv35/preview"
+        }
+      }
+    },
+    "iPBJGjoP840adwheA55f": {
+      "title": "Sial",
+      "artistNames": [
+        "Mahalini"
+      ],
+      "artistIds": [
+        "aNFkcyJ9GdMXaCRvYS1r"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/sial.jpg",
+      "originalKey": "",
+      "bpm": 125,
+      "dateAdded": "2025-01-25T00:00:00+00:00",
+      "video": "https://www.youtube-nocookie.com/embed/-lsmdUj3Xm4?controls=0",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "sip9Ack2HCUVApNCZirI": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1gQZ-kfgBCQC3_n3biuCq2-ZJBW3RfHH5/preview"
+        }
+      }
+    },
+    "idOVYe5RnhFt7d2z5vh3": {
+      "title": "Gala Bunga Matahari",
+      "artistNames": [
+        "Sal Priadi"
+      ],
+      "artistIds": [
+        "q4l736yA6G4TMF9mbVAe"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/gala bunga.jpg",
+      "originalKey": "",
+      "bpm": 187,
+      "dateAdded": "2025-01-25T00:00:00+00:00",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "IdiEF9u6o4Vd7LZuDXi2": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1xtNUZ6MEdsq1obxLLlDv7XznznMqbgn_/preview"
+        }
+      }
+    },
+    "lyfuBYhwUZqJ3OzHSHye": {
+      "title": "Badut Baru",
+      "artistNames": [
+        "Dbatlayar"
+      ],
+      "artistIds": [
+        "Wlir71ni6QaWoEC75fPr"
+      ],
+      "albumCover": "https://i.ytimg.com/vi/gS0F0DlUXz4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAwlobPI9ov6a8B59PEnAZQ8GPkuw",
+      "originalKey": "",
+      "bpm": 0,
+      "dateAdded": "2025-11-12T06:45:32.000Z",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "Dh6ZB5rDnOWP6tSK7jBx": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1tqSzFeLi8YaXIE3sbUBfb2CmWoiTmdkn/preview"
+        }
+      }
+    },
+    "mQcD3lbhcvwmrdvqr9PA": {
+      "title": "Sheesh",
+      "artistNames": [
+        "Babymonster"
+      ],
+      "artistIds": [
+        "BvPfBfcVvFGWaqC77qz6"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/sheesh.jpg",
+      "originalKey": "",
+      "bpm": 0,
+      "dateAdded": "2025-11-12T06:47:09.000Z",
+      "video": "",
+      "lyrics": "[Intro]\nDm\n  Da-la-lun-dun\nBb7\n  Da-la-lun-dun\nGm\n  Da-la-lun-dun\nA\nBaby, I'ma monster\n \n[Verse 1]\nDm\nMano, a mano\n  Bb7\nI see you in slow-mo\n    Gm\nYou know you're in trouble\n   A\nOoh-hoo-hoo-hoo\nDm\nBalbeodung chyeobwa\n  Bb7\nEochapi sonbadak\n  Gm\nWieseo mot naga\n    A\nYou know that\n \n[Pre-Chorus]\n                Gm\nNuneul tteun sungan\n    Dm\nPieona\n    A                        Dm\nAll eyes on me, bureul jilleora\n      Gm\nDo or die\n      Dm\nOn my life\n          A                  N.C.\nYeah, you ain't seen nothing yet\n \n[Chorus]\nN.C.\nGot them all going\nD   D#m D\nSheesh, sheesh\nD#m D#m D#m     D   D#m D\nSheesh, sheesh, sheesh, yeah\nGm     F D# D\nB-A-B-Y-M-O-N\nD  D#m  D\nSheesh, sheesh\nD#m D#m D#m     D  D#m  D\nSheesh, sheesh, sheesh, yeah\nN.C.\nGot them all going\n \n[Verse 2]\nN.C.\nYo, hold on shwit\nN.C.\nGyang deuribueora ne dalpaengigwane\nDm                      D#\n  Igeon ne gwie jul chukbok\nF      A             A    Dm\nEumage matchwo gyang chum chwo\n                            D#\nHibiri hop-hop, boom, boom, pow\n        D#     D#            Dm\nBunwigi taolla neonedeul nun dora\n          D#       F            A\nTtinghani jeokjani chunggyeogil geoya\nA          Dm\nCrown this queen\n                        D#\nHomneoneun chyeotgo nae daеumeun wi\n       D#        D#       Dm\nEojungitteojungi junggan anim\n                       D#\nNal bogo datyeotdеon ipdeul say\n                A\nSheesh, sheesh, sheesh\n \n[Verse 3]\nDm\nYou know what it is\n     F\nI be running this\n                  F\nPull up in a ghost\n        A           A\nPeek a, peek a boo, hoo\nDm\nVroom, vroom\n        F                      F\nNeone simjange bakdongi, pump, pump, pop\nA            A\nPedal to the metal\nDm\nClick, clack, click\n                  A\nPut 'em up to the sky\nN.C.\nHigh, high, high, high\n \n[Pre-Chorus]\n                Gm\nNuneul tteun sungan\n    Dm\nPieona\n    A                        Dm\nAll eyes on me, bureul jilleora\n      Gm\nDo or die\n      Dm\nOn my life\n          A                  N.C.\nYeah, you ain't seen nothing yet\n \n[Chorus]\nN.C.\nGot them all going\nD   D#m D\nSheesh, sheesh\nD#m D#m D#m     D   D#m D\nSheesh, sheesh, sheesh, yeah\nGm     F D# D\nB-A-B-Y-M-O-N\nD  D#m  D\nSheesh, sheesh\nD#m D#m D#m     D  D#m  D\nSheesh, sheesh, sheesh, yeah\nN.C.\nGot them all going\n \n[Bridge]\n  Bb           A\nMaeumkkeot useobwa\n     Dm          F\nIjen nae charyenikka\n         Bb           A            Dm\nCheoncheonhi bultaewo nega jamdeun sai\n \n[Post-Bridge]\n       Bb\nTime’s up\n              A\nOllaga ollaga deo\n                   Dm\nKkokdaegi kkokdaegiro\n                   F\nHaneul wi haneul wiro\n          Bb\nFly away\n                  C\nOn sesangeul dwijibeo\n               F\nCome on, let's ride\n \n[Interlude]\nN.C.\nBaby, I'ma monster\n \n[Refrain]\nDm        A\nB-A-B-Y-M-O-N\n       Dm                            A\nTell a friend, tell a friend, tell a friend\nDm        A\nB-A-B-Y-M-O-N\n       Dm                            A\nTell a friend, tell a friend, tell a friend (Let's go)\n \n[Outro]\nDm\nJump, jump and let it go\nA\nWatch out we on a roll\nDm                          A\nRum, pump, pump, pump it up then\nDm\nJump, jump and let it go\nA\nWatch out we on a roll\nDm                          A\nRum, pump, pump, pump it up then\n \nDm",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "Y4UqjUnQNbva3tGgBl3i": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1L48Vq94zGc21-hpYIsUANt103BVi_e4t/preview"
+        }
+      }
+    },
+    "noRc9JrVVeLI1o8kSCTx": {
+      "title": "Good Luck Babe",
+      "artistNames": [
+        "Chappell Roan"
+      ],
+      "artistIds": [
+        "5odUYqkIlXBUj9LH0AiX"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/Chappell_Roan_-_Good_Luck,_Babe!.png",
+      "originalKey": "",
+      "bpm": 113,
+      "dateAdded": "2025-02-28T00:00:00+00:00",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "A3O8B6PlYukAb2gco2Qz": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/11PYAeVmpPGwIMab4fyV5TAoMakMR3v5a/preview"
+        }
+      }
+    },
+    "ptXvXfOD7P4KuqICHmyr": {
+      "title": "MWA!",
+      "artistNames": [
+        "Dolla"
+      ],
+      "artistIds": [
+        "2raq9OlueZ2llESSFxVo"
+      ],
+      "albumCover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPluPUQE59tqGL3LVbpaBeWg1GWSM44hPWRVi5HTa4yg&s=10",
+      "originalKey": "",
+      "bpm": 130,
+      "dateAdded": "2025-09-27T01:33:43.525000+00:00",
+      "video": "https://www.youtube.com/embed/T2qKTaBUrp0?si=u1-R3ivVoiljWKtG",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": true,
+      "isComingSoon": false,
+      "_arrangements": {
+        "wMOkADTFixXy0372rvby": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0
+        }
+      }
+    },
+    "puES3hEEmDwqjUZpmqE8": {
+      "title": "Terpikat",
+      "artistNames": [
+        "Miss Alvy"
+      ],
+      "artistIds": [
+        "gf4rIUEgdQNcTnC8j0KC"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/terpikat.png",
+      "originalKey": "",
+      "bpm": 130,
+      "dateAdded": "2025-03-22T00:00:00+00:00",
+      "video": "https://www.youtube-nocookie.com/embed/9mXQLavrSXg?controls=0",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "liijWtgCbnblF3qofFDO": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1a5f4y9uKugO_ECQwx6yvc1QFe_e5hfp4/preview"
+        }
+      }
+    },
+    "sCJTKehVhUgcxeJUoasg": {
+      "title": "Lemon Tree",
+      "artistNames": [
+        "Fools Garden"
+      ],
+      "artistIds": [
+        "MAjc8UO1yDRjr9dCU4dG"
+      ],
+      "albumCover": "https://m.media-amazon.com/images/I/51Z9PRNB23L._UF894,1000_QL80_.jpg",
+      "originalKey": "",
+      "bpm": 143,
+      "dateAdded": "2025-03-09T00:00:00+00:00",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "9q5uuWgyZFw9D63tZIFo": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1EWI_-QNZw6hKDWsCKBeHxeNx_BiGXrIu/preview"
+        }
+      }
+    },
+    "suATwBikCdM8xt1nhCDV": {
+      "title": "Batter Up",
+      "artistNames": [
+        "Babymonster"
+      ],
+      "artistIds": [
+        "BvPfBfcVvFGWaqC77qz6"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/batter up.jpg",
+      "originalKey": "",
+      "bpm": 130,
+      "dateAdded": "2025-01-25T00:00:00+00:00",
+      "video": "https://www.youtube-nocookie.com/embed/bqTsrcp3fuo?controls=0",
+      "lyrics": "[Intro]\nN.C.\nAttention\nEm  Em  Em  Em\n \n \n[Verse 1]\nEm7\nI'm on a mission, don't need permission\n \nNo matter what, I'm gonna make my own decisions\nEm7\nI'm talkin' you, you want it too\n \nYeppeugo chakan naega eotteoke byeonhalji monster\n \n \n[Refrain]\nBm\nRemember me (Me), sting like a bee (Bee)\n \nGuljurin saja gateun personality\nAm\nNe mam ppaego dareun geoseun wonhaji ana\n \nI would never do you wrong\nAm\nYou'll regret it when I'm gone\n \n \n[Pre-Chorus]\nEm                        Am\n(Uh-uh-uh-uh-uh)  You jom deo ganghage\n     C                 Bsus4\nDeo ppareuge nallyeo beorilge\nEm                         Am\n(Uh-uh-uh-uh-uh) You got a lot to say\n       C\nWhat a big mistake\n \n \n[Chorus]\nEm\nBatter, battеr, batter up\n \nBatter up, batter up, battеr up\nEm\nBatter, batter, batter up\n \nBatter up, batter up, batter up\nEm\nBatter, batter, batter up\n \n \n[Verse 2]\nEm\nYeah\n \nHit it nan dallyeo, never can stop\nEm\nRappin' sijak ne gwie shot\n \nBimyeongeun hamseongi doel geoya loud\nEm\nSurprise, yo, monsterui deungjang\n \nNaega ganeun giri giri bichi nari way\nEm\nEokkae pyeogo nan goin', goin', gone (Gone)\n \nBatong batgo junbi wallyo\nEm\nHudadak run, run, run, run\nEm7\nNuga nal maga, nan deo sege balba\n \nNeonega jom araseo bikyeo\nEm\nSunjinhan cheok naneun geuttan geo an hae\n \nNal wonhae, but look in the mirror\nEm7\nJichiji ana gyesok volume up, light 'em up\n \nMudae wireul taewo ssak da chiwobeoryeo home run\nEm\nLike a boss baby, I'ma boss, baby\n \nModu da jjijeo like brrah\n \n \n[Refrain]\nBm\nRemember me (Me), sting like a bee (Bee)\n \nMudaereul gatgo noneun urin MVP\nAm\nNe mam ppaego dareun geoseun wonhaji ana\n \nI would never do you wrong\nAm\nYou'll regret it when I'm gone\n \n \n[Pre-Chorus]\nEm                        Am\n(Uh-uh-uh-uh-uh)  You jom deo ganghage\n     C                 Bsus4\nDeo ppareuge nallyeo beorilge\nEm                         Am\n(Uh-uh-uh-uh-uh) You got a lot to say\n       C\nWhat a big mistake\n \n \n[Chorus]\nEm\nBatter, battеr, batter up\n \nBatter up, batter up, battеr up\nEm\nBatter, batter, batter up\n \nBatter up, batter up, batter up\nEm\nBatter, batter, batter up\n \n \n[Outro]\nEm\nSo listen up, everybody\n \nSoril nopyeo move on (Move on)\nEm\nWe are the monsters of the world\n \nBatter up, jigeum dangjang\nEm\nTtwieoboja eodideun (Eodideun)\n \nLet me show you who we are\nEm\nBatter up, up, up, up\n \nEverybody\nEm\nSoril nopyeo move on (Move on)\n \nWe are the monsters of the world\nEm\nBatter up, jigeum dangjang\n \nTtwieoboja eodideun (Eodideun)\nEm\nLet me show you who we are\n \nBatter, batter, batter up",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "40G8jG5fP2c5OoyqyiVa": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1oV62J3KQcG3Dad3kt3Njn3U09oGcCoa9/preview"
+        }
+      }
+    },
+    "t40uOwatfJvIQFCg3gGL": {
+      "title": "Dil",
+      "artistNames": [
+        "Shreya Ghoshal"
+      ],
+      "artistIds": [
+        "VcioK6yDC5ZeNW4GOGMf"
+      ],
+      "albumCover": "https://i.scdn.co/image/ab67616d00001e026d38100a94298f5ef76e12c5",
+      "originalKey": "",
+      "bpm": 0,
+      "dateAdded": "2025-11-12T06:47:32.000Z",
+      "video": "",
+      "lyrics": "[Verse 1]\nA         B              C#m\nPhir agar mujhe tu kabhi na mile\nA        B            C#m\nHumsafar mera tu bane na bane\nA          B    G#    G#7       C#m\nFaaslon se mera pyaar hoga na...kam\n   A     B         G#7      G#\nTu na ho agar kabhi ab judaa……aaaa…..\n \n[Chorus]\n        A           B\nMaine tera naam dil rakhdiya\n       G#m          C#m\nMaine tera naam dil rakhdiya\n        A          B\nDhadkega tu mujhme sadaa\n       G#m          A\nMaine tera naam dil rakhdiya\n \nF#m         B\nTere vaaste kabhi mera\n   G#m\nYe pyaar hoga na kam\n \n        A           B\nMaine tera naam dil rakhdiya\n       G#m          C#m\nMaine tera naam dil rakhdiya\n       F#m         B\nDhadkega tu mujhme sadaa\n       G#m          C#m\nMaine tera naam dil rakhdiya\n \n[Verse 2]\nA             B         C#m\nNa bhula saka mein teri chahatein\nA         B            C#m\nIshq pe kahan bas kisi ka chalein\nA          B           G#    G#m     A\nHo bhi jae meri saanse chahe khatam\n   B        G#m   G#m7    G#\nKam na hogi kabhi ye wafa\n \n[Outro]\nD#m         B       C#\nMaine tera naam dil rakhdiya\n       A#m          D#m\nMaine tera naam dil rakhdiya\nBm                 C#\nDhadkega tu mujhme sadaa\n       A#m          D#m\nMaine tera naam dil rakhdiya",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "HXoqR345uLZvmLnw6yfr": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1CaOIj_UKzbPdC_R9dIH0F94mvdFH4Fjg/preview"
+        }
+      }
+    },
+    "tTXyq3yWLl949ZtOFZJq": {
+      "title": "Dansa",
+      "artistNames": [
+        "Ernie Zakri"
+      ],
+      "artistIds": [
+        "v9nCK3va7WerUahMOUE9"
+      ],
+      "albumCover": "https://i.scdn.co/image/ab67616d0000b273a8a2d1360f94a7368616c4ac",
+      "originalKey": "C# Minor",
+      "bpm": 110,
+      "dateAdded": "2025-11-19T15:58:47.000Z",
+      "video": "https://www.youtube.com/embed/sOth_xhwXjY?si=JjEP1ds7cJMxRVZC",
+      "lyrics": "F#m B C#m \nF#m B B \n\nA \nHey\n               C#m \nKamu di situ jangan muram saja\nA     B     F# \nLihat dunia yang penuh warna\n     A  B   C#m \nBila realiti mencabar\n      A     B    F#m   F# \nKu lepaskan beban di dada\n\nA             B          F#sus4 \nLihat bintang hilangnya resah\nF#sus4 E\nAh-ah\nA            B        F#sus4 \nLangit cerah akan menjelma\nF#sus4 \nBersinar\n\n         A    B        C#m \nRasakan irama bergema dalam jiwa\n       A         B      F# \nSegalanya akan lebih indah\n           A \nLupakan semua\nB         C#m \nDerita dan gelora\n         A           B \nOh, marilah kita bergembira\nF#sus4 \nMari berdansa\n\n B            C#m \nAku juga tahu hidup tak menentu\nA    B       F# \nUsahlah malu, nyanyikan lagu\n     A      B       C#m \nIkut rentak dalam hatimu\n     A   B      F# \nMula menari, jangan tunggu\n\nA             B          F#sus4 \nLihat bintang hilangnya resah\nF#sus4 \nAh-ah\nA            B        F#sus4 \nLangit cerah akan menjelma\nF#sus4 \nBersinar\n\n         A    B        C#m \nRasakan irama bergema dalam jiwa\n       A         B      F# \nSegalanya akan lebih indah\n           A \nLupakan semua\nB         C#m \nDerita dan gelora\n         A           B \nOh, marilah kita bergembira\nF#sus4 \nMari berdansa\n\nA                B \nJika datangnya luka\nF#              E \nAkan ku ubatinya\nA                  B \nDengan lagu dan dansa\nB               \nKita bangun semula\n\nF#sus4 \nKiri dan kanan ikut saja\nF#sus4\nLepaskan tekanan jangan gusar\nB \nTak perlu drama\nB\nHeal your trauma\n                       A G#m \nEsok lusa semua pasti lega\nF#sus4 \nKaki goyang, jangan berhenti\nF#sus4 \nBiar kita tak sedih lagi\nC#m \nThat's right\nC#m \nDance all night\nC#m \nBergembira\nF#sus4 \nMari berdansa\n\n         A    B        C#m \nRasakan irama bergema dalam jiwa\n       A         B      F# \nSegalanya akan lebih indah\n           A \nLupakan semua\nB         C#m \nDerita dan gelora\n         A           B \nOh, marilah kita bergembira\nC#m \nMari berdansa\n\n         A    C#m  \nRasakan irama bergema dalam jiwa\n       A         B      F# \nSegalanya akan lebih indah\n           A \nLupakan semua\nB         C#m \nDerita dan gelora\n         A           B \nOh, marilah kita bergembira\nC#m \nMari berdansa",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "4nrNOCKQexDtvg87QN8e": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1G1TAsB04o3XdpZ3bdAx9Bs-eR-i5B6SY/preview"
+        }
+      }
+    },
+    "tsPK9gzpI8R7Np960sZJ": {
+      "title": "Sumandak Sabah",
+      "artistNames": [
+        "Marsha Milan",
+        "Velvet Aduk"
+      ],
+      "artistIds": [
+        "baseUDMm71PEdJAWWJiV",
+        "resjYwTa54CidqviWGwL"
+      ],
+      "albumCover": "https://i.scdn.co/image/ab67616d0000b273ac7074c4e0bd27674afdc003",
+      "originalKey": "A Major",
+      "bpm": 92,
+      "dateAdded": "2025-11-26T16:00:00.000Z",
+      "video": "https://www.youtube-nocookie.com/embed/D6vad1WKkm0",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "yN3v8KlkBpIxuB8t9Lho": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1w-BeSFm6H9eCq_ek3GJnRXw4wDJyaDa6/view"
+        }
+      }
+    },
+    "u7PA1uvHg8yUoB48rHZb": {
+      "title": "Ngga Dulu",
+      "artistNames": [
+        "Akbar Chalay",
+        "Ciloqciliq",
+        "Zynakal"
+      ],
+      "artistIds": [
+        "jBU7yVhWmGccpcEmHew3",
+        "SIcHLwtPzSoeEfdEH8wz",
+        "h0yxJtrwdmjKdZlYeRtC"
+      ],
+      "albumCover": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/52/a9/75/52a9750a-95e3-8e1f-c681-24cafca1283c/7300346461798.jpg/600x600bb.jpg",
+      "originalKey": "D Major",
+      "bpm": 120,
+      "dateAdded": "2026-01-04T16:00:00.000Z",
+      "video": "https://www.youtube-nocookie.com/embed/d3RWWDPhQPg?controls=0",
+      "lyrics": "",
+      "isFeatured": true,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "amZxLC7rcMn1HVrwlbqE": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1ZvgnrseQr9CiNl_sHxSYNMYWdyr9KwI7/view?usp=sharing"
+        }
+      }
+    },
+    "ull2I4UH3fqsL54eoqe8": {
+      "title": "APT",
+      "artistNames": [
+        "Bruno Mars",
+        "Rosé"
+      ],
+      "artistIds": [
+        "uyGLIdPJXGDYIQyTAiFX",
+        "k2tf87udsW5HkwR16SKe"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/apt.jpg",
+      "originalKey": "",
+      "bpm": 150,
+      "dateAdded": "2025-01-25T16:00:00.000Z",
+      "video": "https://www.youtube-nocookie.com/embed/4fnRjJper2I?controls=0",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "A4cL6CvS7fzfYD2Y95yN": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/18yBfamJBd0i0moArnqmrrQP9HvGccOjw/preview"
+        }
+      }
+    },
+    "uopF27P3GlJ1mK5waDSj": {
+      "title": "Born Again",
+      "artistNames": [
+        "Lisa",
+        "Doja Cat",
+        "RAYE"
+      ],
+      "artistIds": [
+        "Kyzb7FJ90mtL7TixNGEs",
+        "iX76nywAubwSzwoyM6hj",
+        "HvzarL9jesAnGltk92nr"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/born_again.avif",
+      "originalKey": "F Minor",
+      "bpm": 115,
+      "dateAdded": "2025-03-07T00:00:00+00:00",
+      "video": "https://www.youtube-nocookie.com/embed/MgkkjbaElIU?controls=0",
+      "lyrics": "[Intro]\n \nOoh\nFm\nIf you tried just a little more times\n \nI would've made you a believer\n                              C#maj7\nWould’ve showed you what it's like (I would've showed you)\n             Cm            A#m\nEvery single night (Night, night)\n \n \n[Verse 1]\n       Fm\nIn the car, top-down, black shades on uh-huh (Lookin’ so good, can I add?)\n \nAnd I just broke up with my man like mm-hmm (A very, very silly, silly man)\n    C#maj7\nOne ex in the passenger seat 'cause I'm done (Done, yeah, never, ever going back)\n      Cm\nDown, down, rude boy, get your foot up on my dash\n \nGot all the receipts, I'm a businesswoman\n             Fm\nLittlе bit of  heartbreak\n                 D#\nA little bit of \"How could you do that?\"\n                C#maj7\nA littlе bit of talking out your ass\n                 Cm                                 C#maj7\nA little bit of \"Look at what you had but could not hold\"\n \nAnd that's on you, baby, too bad\n                                      Cm\nI'm about to make it heard as I vroom vroom\n \nIce cold how I leave you 'lone\n    A#m                                   Fm\nBut please tell your mother I'ma miss her so\n \n \n[Chorus]\n \nIf you tried just a little more times\n \nI would’ve made you a believer\n                              C#maj7\nWould’ve showed you what it's like (Like)\n             Cm\nEvery single night\n \nTo be born again, baby\n \nTo be born again\nFm\nIf you stayed just another few nights\n \nI could’ve made you pray to Jesus\n                           C#maj7\nWould've showed you to the light (To the light-ight)\n             Cm\nEvery single night (Every night-ight)\n      A#m\nTo be born again, baby\n                 Fm\nTo be born again\n \n \n[Verse 2]\n \nNon-believer\n                                            Fm\nYou've bitten from the fruit but can't give back\n                                               C#maj7\nNice to leave ya, but I would be a fool not to ask\n                                Cm\nDo your words seem gospel to ya now? (Your words seem gospel to ya now?)\n           Fm\nKeepin’ me strong\n \nChoosin' to carry on after one\n                                 C#maj7\nToo many lies would be wrong, so wrong\n \nSo sad, you pop tags on my shopping spree\n \nStayed mad when I showed him all the long receipts\n     Cm\nThey laugh at your crash out like a comedy\n \nI can't be a sugar mom, get a job for me, shit (Ah, so)\nC#maj7\nBoy, let go\n \nOr let me live happily forever after more\n           Cm\nI hope you learned somethin' from a lil' fiasco\n               A#m\nYou played the game smart lettin' lil' me pass go\n \n'Cause\n \n \n[Chorus]\nFm\nIf you tried just a little more times\n \nI would’ve made you a believer\n                              C#maj7\nWould’ve showed you what it's like (Like)\n             Cm\nEvery single night\n \nTo be born again, baby\n \nTo be born again\nFm\nIf you stayed just another few nights\n \nI could’ve made you pray to Jesus\n                           C#maj7\nWould've showed you to the light (To the light-ight)\n             Cm\nEvery single night (Every night-ight)\n      A#m\nTo be born again, baby\n \nTo be born again\n \n \n[Bridge]\n                  C#maj7\nSeasoned like the cinnamon\n \nThe way I'm getting rid of him\n                        D#\nI'm only gonna make you need religion at the minimum\n               Cm\nAnd I'ma do it diligent, I'm lookin' for a synonym\n          C#maj7\nI'm tryna find the words to tell him I ain't even feeling him (I pray)\n \nDon't ever let me be deficient in\n                    D#\nWish that you could wake up and then take me like a vitamin\n              Cm                                Fm A#m\nI learned the hard way to let go now to save my soul, ooh\n \n \n[Chorus]\nFm\nIf you tried just a little more times\n \nI would’ve made you a believer\n                              C#maj7\nWould’ve showed you what it's like (Like)\n             Cm\nEvery single night\n \nTo be born again, baby\n \nTo be born again\nFm\nIf you stayed just another few nights\n \nI could’ve made you pray to Jesus\n                           C#maj7\nWould've showed you to the light (To the light-ight)\n             Cm\nEvery single night (Every night-ight)\n      N.C.\nTo be born again, baby\n            C#maj7\nTo be born again\n \n \n[Outro]\n                           D#                Cm\nBaby, to be born, oh baby, baby, to be born again\n      C#maj7\nTo be born again, baby\n \nTo be born again\n                           D#                Cm\nBaby, to be born, oh baby, baby, to be born again (Again)\n      N.C.\nTo be born again, baby\n      N.C.\nTo be born again",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "zykpSJib5btvyoSh6RTF": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1UBVNO-U6dc8l-s3BJpMeak5XQeKAfqKb/preview"
+        }
+      }
+    },
+    "vnxl4odFuu20zm7iPr9R": {
+      "title": "Tiba-tiba",
+      "artistNames": [
+        "Quinn Salman"
+      ],
+      "artistIds": [
+        "kTJfXlSndFa6GULWEdJ6"
+      ],
+      "albumCover": "https://i.scdn.co/image/ab67616d0000b27368416db273ced1651d7af211",
+      "originalKey": "",
+      "bpm": 146,
+      "dateAdded": "2025-03-25T00:00:00+00:00",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "GusN7uq1TOaDRQOVh5mo": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/19KocLuRL2tw5gwzN_n2J7eutl5rM8ZGi/preview"
+        }
+      }
+    },
+    "vyLBmvtm4FEA8Wue8RWY": {
+      "title": "No Comment",
+      "artistNames": [
+        "Tuty Wibowo"
+      ],
+      "artistIds": [
+        "S9rac7brdwbpdfurcfXx"
+      ],
+      "albumCover": "https://i.scdn.co/image/ab67616d00001e0267a7c77c635abd0990cea94e",
+      "originalKey": "",
+      "bpm": 128,
+      "dateAdded": "2025-04-06T00:00:00+00:00",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "lk9BGPTS11QPOR0KKjWJ": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1tJXcXcR6XlC29559wwUBKZ1L0ftWDQhT/preview"
+        }
+      }
+    },
+    "wvrcHdxScgBdOsFj5bAI": {
+      "title": "Kisah Tanpa Dirimu",
+      "artistNames": [
+        "Anggis Devaki"
+      ],
+      "artistIds": [
+        "jkmPttdlM8JI2jTJLQG9"
+      ],
+      "albumCover": "https://np-pagev2.web.app/assets/img/album_cover/kisah tanpa dirimu.jpg",
+      "originalKey": "",
+      "bpm": 140,
+      "dateAdded": "2025-01-27T00:00:00+00:00",
+      "video": "https://www.youtube-nocookie.com/embed/vsqnUxNM0DY?controls=0",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "xiCZV3whvypaHqVQDrw7": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/17a0yNGzQ4YVPCcFCZyNXQqVf7hDil8tN/preview"
+        }
+      }
+    },
+    "zz0B00TTISyTFz4Qsj43": {
+      "title": "Cinta",
+      "artistNames": [
+        "Marsha Milan"
+      ],
+      "artistIds": [
+        "baseUDMm71PEdJAWWJiV"
+      ],
+      "albumCover": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/23/88/c6/2388c646-383b-6f45-3226-0b8749710f08/24UMGIM68764.rgb.jpg/600x600bb.jpg",
+      "originalKey": "C Major",
+      "bpm": 120,
+      "dateAdded": "2025-11-30T16:00:00.000Z",
+      "video": "",
+      "lyrics": "",
+      "isFeatured": false,
+      "isPremium": false,
+      "isComingSoon": false,
+      "_arrangements": {
+        "3O4L0wYd6HlanJ4HfMex": {
+          "type": "piano",
+          "difficulty": "Intermediate",
+          "arrangedBy": "N.C - Score",
+          "downloadCount": 0,
+          "downloadLink": "https://drive.google.com/file/d/1jLgu5DrYXkijEyvLP3ojlQ3mkaOVXsMs/view?usp=drive_link"
+        }
+      }
+    }
+  },
+  "artists": {
+    "2fU47czjlyRkhjt6WRDO": {
+      "name": "Jemsii",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfCn1740YSRX2_RpcKEklddVij6J781x2goA&s",
+      "bio": "Jemsii is an Indonesian music producer and artist who skyrocketed to national fame in 2025 as part of the viral trio alongside Tenxi and Naykilla. Hailing from Sukabumi, West Java, he is best known for the massive hit \"Garam & Madu (Sakit Dadaku),\" a genre-blending track that fuses hip-hop with dangdut (often dubbed \"Hipdut\") and electronic beats. His production style, characterized by infectious rhythms and atmospheric vibes, earned the group the prestigious \"Karya Produksi Terbaik-Terbaik\" (Best of the Best Production Work) at the 2025 AMI Awards. Often seen as the creative architect behind the sound that dominated TikTok FYPs throughout the year, Jemsii has become a key figure in Indonesia's digital music revolution."
+    },
+    "2raq9OlueZ2llESSFxVo": {
+      "name": "Dolla",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb0794860f228ffac401c64a13",
+      "bio": "Dolla is a premier Malaysian girl group that has successfully redefined the country's pop landscape with their bold image, energetic choreography, and contemporary sound often compared to K-pop. Formed in 2019, the group originally consisted of Sabronzo, Tabby, Angel, and Syasya, debuting with the attitude-heavy single \"Dolla Make You Wanna\" which instantly garnered millions of views. Despite the departure of member Syasya in 2024, the remaining trio has continued to thrive, scoring major hits like \"Impikan,\" \"Bad,\" and the Spanish-infused \"Damelo.\" Celebrated for breaking stereotypes in the local industry and performing at international festivals, Dolla stands at the forefront of the \"M-Pop\" wave, balancing commercial appeal with themes of female empowerment."
+    },
+    "30wSxfe89dRj8bhtDEQb": {
+      "name": "Doechii",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebca2fee52c41d3f58ceb6474b",
+      "bio": "Born Jaylah Ji'mya Hickmon in Tampa, Florida, Doechii is an American rapper and singer who began her music career independently on platforms like YouTube and SoundCloud in 2016. After her song \"Yucky Blucky Fruitcake\" went viral on TikTok in 2021, she signed a joint deal with Top Dawg Entertainment and Capitol Records, becoming the former label's first female rapper. Her commercial success was solidified with the 2023 single \"What It Is (Block Boy)\" (featuring Kodak Black), which entered the Billboard Hot 100 chart. Doechii's rise culminated in critical acclaim and a Grammy Award for Best Rap Album in 2025 for her mixtape, Alligator Bites Never Heal, establishing her as one of the most dynamic new voices in hip-hop."
+    },
+    "3gxxOf8LpWFxQTlKnsid": {
+      "name": "Soft Cell",
+      "image": "https://i.scdn.co/image/ab6772690000dd220564b6c825349fc15885bd76",
+      "bio": "Soft Cell is a pioneering British synth-pop duo consisting of vocalist Marc Almond and instrumentalist Dave Ball, who played a crucial role in defining the sound of the early 1980s. They are best known globally for their 1981 cover of Gloria Jones's \"Tainted Love,\" which became a transatlantic number-one smash and remains one of the most enduring electronic anthems of all time. Their debut album, Non-Stop Erotic Cabaret, showcased a sleazy, neon-lit aesthetic that blended northern soul melodies with cold synthesizers, influencing the development of techno and house music. Although they disbanded in 1984, they have reunited periodically for tours and new albums, maintaining a cult following for their dark, melodramatic pop."
+    },
+    "5odUYqkIlXBUj9LH0AiX": {
+      "name": "Chappell Roan",
+      "image": "https://i.scdn.co/image/ab67616d00001e020b96f8824100aab118792442",
+      "bio": "Kayleigh Rose Amstutz, known professionally as Chappell Roan, is an American singer-songwriter who exploded into mainstream superstardom with her theatrical, drag-inspired aesthetic and unapologetically queer synth-pop anthems. Born on February 19, 1998, in Willard, Missouri, she initially faced career setbacks before finding her creative footing with producer Dan Nigro, leading to the sleeper success of her 2023 debut album, The Rise and Fall of a Midwest Princess. By 2024, she had become a cultural phenomenon, drawing record-breaking festival crowds and scoring major hits with \"Good Luck, Babe!\" and \"Pink Pony Club.\" Her rapid ascent culminated in her winning Best New Artist at the 2025 Grammy Awards, marking her as one of the most significant pop breakthroughs of the decade."
+    },
+    "9ioDwEdUbIGTw5Aics8f": {
+      "name": "Clean Bandit",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb70d80b8ab8e193aef64223ec",
+      "bio": "Clean Bandit is a Grammy-winning British electronic music group formed in Cambridge in 2008, renowned for their unique fusion of classical strings with dance-pop beats. The group, currently consisting of Grace Chatto and brothers Jack and Luke Patterson, achieved global superstardom with their 2014 breakout smash \"Rather Be\" featuring Jess Glynne, which won a Grammy for Best Dance Recording. They continued their streak of chart-topping collaborations with hits like \"Rockabye\" (featuring Sean Paul and Anne-Marie) and \"Symphony\" (featuring Zara Larsson), establishing a reputation for crafting infectious, genre-blending anthems that pair high-energy electronic production with organic instrumentation."
+    },
+    "A34nxKCUWpbhIRBMy4DV": {
+      "name": "Nadeera",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb7c8bf41e19ee5dfaac480ff5",
+      "bio": "Nadeera Zaini is a Malaysian powerhouse vocalist whose journey is defined by sheer resilience and technical mastery. Despite being in the industry for years and competing in various shows like Vokal Bukan Sekadar Rupa and Lagu Cinta Kita, she remained somewhat underrated until her triumphant win on Big Stage Season 5 in 2023. Her victory finally garnered her the widespread recognition she deserved, praised by judges for her incredible range and pitch-perfect delivery. With singles like \"Emas\" and \"Udara,\" she is now recognized as one of the most capable vocalists in the country, often compared to industry legends for her ability to tackle difficult power ballads."
+    },
+    "BBB6JsI9OOpHPMocRGBC": {
+      "name": "KC Champion",
+      "image": "https://yt3.googleusercontent.com/ytc/AIdro_naJbUzGBBhlWSwWVsu-SGXMPEKtBxULAFmheN0N0JnTg=s900-c-k-c0x00ffffff-no-rj",
+      "bio": "KC Champion (real name Abdul Karim Sadali) is a Singaporean full-time content creator and horror storyteller, widely known for his popular Malay-language podcast and live show, Malam Seram (Malay for \"Scary Night\"). He began his career as a well-known deejay at Mediacorp's Malay radio station, Ria 89.7FM, where he hosted the long-running \"Misteri Jam 12\" segment, which focused on sharing ghost stories. In 2019, he left his radio job to become an independent content creator, hosting his show five nights a week on platforms like YouTube, TikTok, and Facebook, where he has cultivated a large following across Singapore and Malaysia. Known for his unique storytelling style, engaging tone of voice, and expressive facial expressions, KC Champion has successfully sold out live shows and established himself as a prominent figure in the regional horror entertainment scene."
+    },
+    "BPjsoTn0FPGe6Boh4aeG": {
+      "name": "Siti Nurhaliza",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScNA4zyTCJa__fGpd0mFbd7urzdhaHkKriLiNkGUI_Rm0t7p2Vk6NvAsids2PXVxEbxSaXfpErvkg4ubxfZ6fuWuNm0-IycEH0VZtppQ&s=10",
+      "bio": "Dato' Sri Siti Nurhaliza Tarudin is arguably the most successful and celebrated musical icon in Malaysian history, often referred to as the \"Voice of Asia.\" Rising to stardom after winning the Bintang HMI competition in 1995 at age 16, she has since garnered over 300 local and international awards, including multiple unparalleled wins at the Anugerah Juara Lagu (AJL) for hits like \"Jerat Percintaan,\" \"Cindai,\" and \"Nirmala.\" Renowned for her sweet yet powerful vocal consistency and modest public image, she became the first Malaysian artist to hold a solo concert at the Royal Albert Hall in London. Beyond music, she is a successful business mogul with her SimplySiti brand, remaining a beloved national treasure (\"TokTi\") who continues to release chart-topping albums well into her third decade in the industry."
+    },
+    "BvPfBfcVvFGWaqC77qz6": {
+      "name": "Babymonster",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIx_o-CgYEJSjVFNGDjHxMNBB7eZoLL4l3-A&s",
+      "bio": "Babymonster, often stylized as BABYMONSTER or BAEMON, is a multinational South Korean girl group formed by YG Entertainment, marking the label's first major female act since Blackpink. The septet—consisting of members Ruka, Pharita, Asa, Ahyeon, Rami, Rora, and Chiquita—rose to prominence through the 2023 reality survival show Last Evaluation before making their official debut with the record-breaking single \"Batter Up\" in November 2023 and cementing their seven-member lineup with the mini-album BABYMONS7ER in April 2024. Known for their \"all-rounder\" proficiency that blends powerful vocals, sharp choreography, and YG’s signature hip-hop edge, they have rapidly built a global fanbase with hits like \"Sheesh,\" \"Stuck in the Middle,\" and the 2024 full-length album Drip, continuing their momentum into 2025 with their \"Hello Monsters\" world tour and the EP We Go Up."
+    },
+    "CoHiE72kJ4nxLGdQkFA9": {
+      "name": "Dinda Dania",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb614860b7f93274453927db6e",
+      "bio": "Dinda Dania is a talented Malaysian singer and actress who started her music journey as a child busker alongside her father and rose to fame after winning the reality TV show Ceria Popstar Xtra in 2022. Known for her pop and EDM tracks like \"Lari-Lari\" and \"Katana,\" she has also ventured into acting, including voice roles in animated films. Despite her rising popularity, she remains humble and occasionally returns to her busking roots, managing to balance her artistic career with entrepreneurial efforts like her own beverage line."
+    },
+    "DyA4Xxt4SrMmDq78Cum2": {
+      "name": "Nadhif Basalamah",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb6c95c421d7bdc60a2d980002",
+      "bio": "Nadhif Basalamah is an Indonesian singer-songwriter who became an overnight sensation in 2023 with his acoustic ballad \"Penjaga Hati.\" While he began his career releasing English-language indie tracks like \"Letting Go\" in 2018, it was his transition to Indonesian lyrics that skyrocketed him to mainstream success. \"Penjaga Hati\" went viral across Southeast Asia, topping Spotify charts in Indonesia and Malaysia due to its raw, sincere lyrics and Nadhif’s warm, comforting vocal tone. His music represents the current wave of Indonesian folk-pop that focuses on simplicity and deep emotional connection, making him a favorite among listeners seeking solace in music."
+    },
+    "ET0ttgU7xH3ayPFfghcM": {
+      "name": "Luqman Podolski",
+      "image": "https://images.genius.com/024b76b0376880587fdf48c4b6348bcf.1000x1000x1.jpg",
+      "bio": "Luqmanul Haqim bin Kamaruddin, yang lebih dikenali secara profesional sebagai Luqman Podolski (lahir 2 Mei 1998), ialah seorang personaliti media sosial, pelawak, penyanyi, dan pelakon Malaysia yang mula mencipta nama melalui platform Instagram dan Vine sejak tahun 2014. Dilahirkan di Kuala Lumpur, beliau memilih nama pentas \"Podolski\" sebagai penghormatan kepada pemain bola sepak kegemarannya, Lukas Podolski. Beliau merupakan perintis kandungan komedi digital di Malaysia, memenangi anugerah Top Breakout Influencer di Anugerah Influencer Asia 2017. Bermula pada tahun 2019, Luqman mengembangkan sayapnya ke dalam industri muzik dengan menandatangani kontrak bersama Black Hat Cat Records dan Warner Music Malaysia, melahirkan EP sulungnya bertajuk \"Hitam Putih\" pada Oktober 2020 serta siri single popular seperti \"Sorang\" dan \"Ring Ring\". Selain muzik, beliau juga terlibat dalam bidang lakonan, termasuk membintangi filem \"Sekolahaha\" yang ditayangkan pada Disember 2024."
+    },
+    "F2G5gzCyTcG6aOoAm4eS": {
+      "name": "Najwa Latif",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb8e3f94eb8bdcee47e8323122",
+      "bio": "Imratul Najwa binti Abdul Latif, known professionally as Najwa Latif, is a Malaysian singer-songwriter and academic who pioneered the wave of \"YouTube musicians\" in the local industry. Rising to stardom in 2011 at just 16 years old with her acoustic-pop phenomenon \"Cinta Muka Buku,\" she captivated audiences with her simple guitar-led melodies and relatable lyrics. While she continued to release hits like \"Kosong\" and \"Sahabat,\" she later prioritized her education, earning a Master's degree in Teaching English as a Second Language (TESL). Today, she balances her music career with her role as a university lecturer, remaining a respected figure for successfully transitioning from a viral teen sensation to a dedicated educator and mature artist."
+    },
+    "G0uTkttLVaFrmCYthLx6": {
+      "name": "Yovie & Nuno",
+      "image": "https://i.scdn.co/image/ab67616100005174bdb006ea21e76b936c98abb4",
+      "bio": "Yovie & Nuno is a prominent Indonesian pop-rock band formed in 2001 by the legendary composer and pianist Yovie Widianto. Originally conceived as a project to explore a rockier sound distinct from Yovie’s other group, Kahitna, the band found massive commercial success with romantic anthems like \"Janji Suci,\" \"Menjaga Hati,\" and \"Dia Milikku.\" Over the years, the group has undergone significant lineup changes—most notably the departure of iconic vocalist Dikta and Yovie himself stepping back from live performances—but they successfully rebranded in 2022 with new vocalists Adhyra Yudhi and Chico Andreas. Despite the changes, they remain a staple of the Indonesian music scene, known for their timeless love songs and harmonious vocal arrangements."
+    },
+    "HXLnbT5e6gvDZv1wCuLy": {
+      "name": "Anne-Marie",
+      "image": "https://i.scdn.co/image/ab6775700000ee85b0db0d01c009a01a3871139e",
+      "bio": "Anne-Marie Rose Nicholson, professionally known as Anne-Marie, is a multi-platinum English singer-songwriter who rose from a background in West End theatre and competitive karate to become one of the UK’s most successful contemporary pop stars. Gaining initial recognition as a touring vocalist for Rudimental, she vaulted to global fame in 2016 as the lead voice on Clean Bandit’s chart-topping smash \"Rockabye,\" before dominating the airwaves with her 2018 debut album, Speak Your Mind, which spawned international anthems like \"2002\" and \"Friends.\" Known for her distinctively gritty vocals and confessional lyricism that blends pop, grime, and R&B, she has sustained her commercial success with the albums Therapy (2021) and Unhealthy (2023) while also establishing herself as a popular television personality as a coach on The Voice UK."
+    },
+    "HvzarL9jesAnGltk92nr": {
+      "name": "RAYE",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebde2e2ac1d53fdf9518354798",
+      "bio": "Rachel Agatha Keen, known as RAYE, is a record-breaking British singer-songwriter who transformed a career of industry struggles into one of the most triumphant independent success stories in modern pop. After years of writing hits for artists like Beyoncé and being creatively stifled by her former label, she went independent in 2021 and released her critically acclaimed debut album, My 21st Century Blues (2023). The album spawned the global smash \"Escapism,\" and her raw, jazz-inflected vocals and honest lyricism earned her a historic six BRIT Awards in a single night in 2024—the most wins by any artist in one year. She stands today as a powerful symbol of artistic integrity and resilience in the music business."
+    },
+    "IrNqOXvgRKu2vJidL05w": {
+      "name": "Illit",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb67a8574e6bf7fa212bb4921b",
+      "bio": "Illit (stylized as ILLIT) is a South Korean girl group formed by Belift Lab (a sub-label of HYBE) through the 2023 survival competition show R U Next?. Composed of members Yunah, Minju, Moka, Wonhee, and Iroha, the quintet made an explosive debut in March 2024 with the mini-album Super Real Me and its viral title track \"Magnetic.\" The song’s catchy, whimsical sound instantly took over social media platforms like TikTok, making them the first K-pop debut act to enter the Billboard Hot 100. Branded by their youthful \"teenage\" concept and synchronized choreography, Illit has quickly positioned themselves as \"super rookies\" and a leading force in the 5th generation of K-pop."
+    },
+    "JVvVUlHXco5sJwH8PxFZ": {
+      "name": "Zizan Razak",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebbd0d114f663e48c1eb35b808",
+      "bio": "Mohd Razizan bin Abdul Razak, widely known as Zizan Razak, is a premier Malaysian entertainer who has dominated the local industry as a comedian, actor, host, and rapper. Rising to fame as the runner-up of Raja Lawak Season 1 and forming the legendary comedy duo Jozan with Johan, he quickly transitioned into a blockbuster movie star. He is best known for his leading roles in high-grossing action-comedy franchises like Polis Evo and Abang Long Fadil, which have cemented his status as a box-office magnet. Beyond acting, he is a celebrated TV host for major shows like Melodi and Akademi Fantasia, and a recording artist with hits like \"Bawaku Pergi\" and \"Kita OK,\" making him one of the most versatile and awarded figures in Malaysian entertainment history."
+    },
+    "KmuVwvhPL8bHPXSchzzk": {
+      "name": "Keisya Levronka",
+      "image": "https://i.scdn.co/image/ab67616d0000b2731e692bb30a1fd3c577f4dda7",
+      "bio": "Keisya Levronka is an Indonesian singer and actress who has become one of the defining voices of the post-pandemic pop ballad resurgence. Starting her career as a finalist on Indonesian Idol Season 10 in 2019, she initially explored acting in series like Jingga dan Senja before her musical career exploded with the 2022 release of \"Tak Ingin Usai.\" The song’s massive commercial success—topping charts across Indonesia and Malaysia—propelled her to stardom, despite the highly publicized scrutiny she faced regarding live performances of the track's difficult high notes. She proved her resilience and artistry with the release of her debut album Levronka (2023), solidifying her place as a top-tier pop artist known for her distinctive vocal tone and emotional delivery."
+    },
+    "Kyzb7FJ90mtL7TixNGEs": {
+      "name": "Lisa",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb5cd3b3af8b72e32be78571ec",
+      "bio": "Lalisa Manobal, known mononymously as Lisa, is a Thai rapper, singer, and dancer who reached global superstardom as a member of the K-pop phenomenon BLACKPINK. Renowned for her charismatic stage presence and sharp dance skills, she broke multiple Guinness World Records with her solo debut single \"Lalisa\" in 2021. After establishing her own management label, LLOUD, she entered a new era of artistic freedom with the 2024 hit \"Rockstar,\" showcasing a grittier, more experimental sound. As a fashion icon and global ambassador for luxury brands like Bulgari and Louis Vuitton, Lisa stands as one of the most powerful and recognized Asian artists in the world today."
+    },
+    "MAjc8UO1yDRjr9dCU4dG": {
+      "name": "Fools Garden",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebc3f03a01c6b8fd8d957865d5",
+      "bio": "Fools Garden is a German pop-rock band formed in 1991 by vocalist Peter Freudenthaler and guitarist Volker Hinkel, best known globally for their evergreen 1995 hit \"Lemon Tree.\" Hailing from Pforzheim, the band's music draws heavy influence from British rock legends like The Beatles and The Kinks, characterized by melodic hooks and melancholic yet catchy lyrics. While \"Lemon Tree\" became a massive chart-topper across Europe and Asia—remaining a radio staple and karaoke favorite worldwide for decades—the band has continued to record and tour extensively, releasing albums like Dish of the Day, Go And Ask Peggy for the Principal, and Captain... Coast Is Clear, maintaining a loyal cult following particularly in Eastern Europe and Asia."
+    },
+    "NbqzAnj7WeUgArVa3WPN": {
+      "name": "Black Hanifah",
+      "image": "https://i.scdn.co/image/ab67616d00001e02bf6479a6de43b34acb77ae70",
+      "bio": "Hanifah bin Muhammad Hanafiah, better known as Black Hanifah (or simply Black), is a Malaysian singer and actor celebrated for his powerful, high-pitched vocal range and rock-ballad versatility. He rose to fame in 2009 as the champion of the reality competition Mentor Season 3, where he was the protégé of Mas Idayu. Following his win, he released the massive hit \"Aku Rindu Sayang Kamu,\" followed by a string of successful singles including \"Sofea Jane,\" \"Teman Pengganti,\" and \"Takkan Terpisah.\" Over the years, he has evolved from a rock vocalist into a versatile entertainer, frequently participating in comedy sketches and reality TV shows while maintaining his reputation as one of Malaysia's most technically gifted male vocalists."
+    },
+    "Ptp3tu3o7uRFd4GuVFPZ": {
+      "name": "Bunga",
+      "image": "https://i.scdn.co/image/ab67616d0000b273bd74a98bde20f8c28f1751a9",
+      "bio": "Noor Ayu Fatini binti Mohd Bakhari, yang lebih dikenali sebagai Bunga Isme (lahir 24 Januari 2000), ialah seorang penyanyi rap, penulis lirik, dan pelakon Malaysia yang mencipta nama melalui imej uniknya yang mengenakan baju kurung dan berhijab semasa membuat persembahan. Kerjaya seninya bermula secara tidak sengaja pada usia 18 tahun selepas beliau menyertai pertandingan freestyle rap battle dan video persembahannya menjadi tular, sehingga menarik perhatian media antarabangsa seperti The New York Times dan Bloomberg. Sepanjang kerjayanya, beliau telah mencapai pelbagai pencapaian besar termasuk menjadi duta kempen EQUAL Spotify, berkolaborasi dengan artis antarabangsa Pink Sweat$, dan tampil sebagai artis pembuka tirai untuk konsert Coldplay di Malaysia pada tahun 2023. Selain bergelar selebriti, Bunga juga berjaya menamatkan pengajian Ijazah Sarjana Muda Sains Pentadbiran dari UiTM pada akhir 2024 dan melancarkan album penuh pertamanya, \"Seharum Nama\", pada Ogos 2025 yang memaparkan transisi muziknya ke arah yang lebih matang. "
+    },
+    "Q8MBMZ8z2JZ8Y7eiZv3t": {
+      "name": "Mimie Haris",
+      "image": "https://i.scdn.co/image/ab67616d0000b2736ce13da431450a4790dc31e0",
+      "bio": "Mimie Haris is a Malaysian singer who emerged in the early 2010s as a pop-rock talent under NAR Records. While she released solo tracks like \"Doktor Cinta\" which showcased her energetic vocal style, she is perhaps most famously recognized as part of the iconic collaborative quartet alongside Najwa Latif, Deanna Hussin, and IamNEETA for the evergreen song \"Hari Raya.\" This festive track has become a modern classic in Malaysia, returning to the airwaves every Eid season, ensuring her voice remains a familiar part of the national celebration even as her solo activity has quieted in recent years."
+    },
+    "RkeIQevZEITw0thpGbQv": {
+      "name": "Beabadoobee",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84cbe4503a69762cff1e3236e2",
+      "bio": "Beatrice Kristi Ilejay Laus, professionally known as Beabadoobee, is a Filipino-British singer-songwriter who became a defining voice of Gen Z indie rock with her blend of confessional bedroom pop and 90s-inspired grunge. Born in Iloilo City, Philippines on June 3, 2000, and raised in West London, she taught herself guitar at age 17 and quickly found viral fame with her debut track \"Coffee,\" which later exploded globally when sampled in Powfu’s multi-platinum hit \"Death Bed (Coffee for Your Head).\" Signed to the independent label Dirty Hit, she solidified her critical acclaim with the albums Fake It Flowers (2020) and the eclectic Beatopia (2022), before achieving her first UK Number 1 album with the Rick Rubin-produced This Is How Tomorrow Moves (2024). Renowned for her nostalgic aesthetic and vulnerable lyricism, she has earned prestigious accolades including the NME Radar Award and a support slot on Taylor Swift’s record-breaking Eras Tour."
+    },
+    "S9rac7brdwbpdfurcfXx": {
+      "name": "Tuty Wibowo",
+      "image": "https://i.scdn.co/image/ab67616d0000b2735d976799067bcdc46f7065e5",
+      "bio": "Tuty Wibowo is an Indonesian Dangdut singer who experienced a massive, unexpected career resurgence decades after her debut. While she was originally known for hits like \"Hamil Duluan,\" she became a viral sensation in 2022 and 2023 when her older track \"No Comment\" was popularized by the internet personality Bunda Corla. The song's upbeat, electronic-infused Dangdut beat became a ubiquitous soundtrack for TikTok challenges and dance trends in both Indonesia and Malaysia. Capitalizing on this second wind, Tuty has continued to perform and release music that leans into the high-energy \"Dangdut House\" style favored by modern club and social media audiences."
+    },
+    "SIcHLwtPzSoeEfdEH8wz": {
+      "name": "Ciloqciliq",
+      "image": "https://i.scdn.co/image/ab67616100005174b12b56d735f675a6109a3375",
+      "bio": "Priskila Oktaviani, professionally known as Ciloqciliq, is a rising Indonesian singer and social media influencer based in Malang, East Java, who has become a key figure in the popular Hipdut (Hip-hop and Dangdut) and Koplo music scenes. She achieved massive mainstream success in late 2025 and early 2026 following the release of the collaborative single \"NGGA DULU\" with producer Akbar Chalay and Malaysian rapper Zynakal, a track that quickly surpassed 26 million streams and became a viral sensation on TikTok. Recognized for her \"playful\" and \"coquettish\" vocal style, Ciloqciliq transitioned from a social media personality known for soulful song covers and lifestyle content to a prominent musical artist featured in major regional events, such as her anticipated performance at Localfest Solo 2026. Under the management of Akbar Chalay's production team, she continues to dominate digital platforms with catchy releases like \"Ngga Dulu\" and \"CLBK,\" solidifying her status as a leading voice in Indonesia's modern urban-dangdut fusion"
+    },
+    "TJkPk5q7m0RqH9lIhDYa": {
+      "name": "Nazu",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebecc5af0771387cfa330b3ad6",
+      "bio": "Nazu, whose real name is Nor Azureen Saharin, is a Malaysian singer who emerged as a fresh talent under Sony Music Malaysia in 2025. A former TikTok content creator, she was discovered after her cover of the song \"Masa\" went viral, showcasing her soothing and distinctive vocal tone. She made her professional debut with the single \"Kopi,\" a breezy, coffee-house pop track composed by the renowned Ezra Kong and featuring Fahimi. With a persona centered around \"chill\" vibes and relatable storytelling for the Gen Z audience, Nazu is positioning herself as a promising new voice in the Malaysian easy-listening pop landscape."
+    },
+    "TgavYFuEYEgo7r9fqwc3": {
+      "name": "Hujan",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/6/69/Hujan_Logo_2017.jpg",
+      "bio": "Hujan is a highly influential Malaysian indie rock band that formed in Kuala Lumpur in 2005, known for popularizing Bahasa Malaysia rock music in the mainstream and fostering a significant local fan base called \"Raingers.\" Founded by vocalist Noh Salleh and lead guitarist AG Coco after connecting on Myspace, the band rapidly achieved success with their 2007 EPs, which produced hits like \"Pagi Yang Gelap.\" Their self-titled 2008 debut album broke sales records and won multiple Anugerah Industri Muzik awards. Despite pursuing various solo projects, the band has remained active, performing internationally and releasing six studio albums to date."
+    },
+    "UDuIwo8N5fcM1E7Eh9la": {
+      "name": "Aisha Retno",
+      "image": "https://images.genius.com/2b6397619f491463b9e1a9b86ddf4318.1000x1000x1.jpg",
+      "bio": ""
+    },
+    "VcioK6yDC5ZeNW4GOGMf": {
+      "name": "Shreya Ghoshal",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb59303d54ce789210e745e1a9",
+      "bio": "Shreya Ghoshal is a legendary Indian playback singer widely regarded as one of the greatest vocalists in contemporary Indian music. She skyrocketed to fame at age 16 with her debut in the Bollywood classic Devdas (2002), which won her a National Film Award and established her crystal-clear soprano voice as the gold standard for romantic ballads. Over a career spanning two decades, she has recorded thousands of songs in over 20 languages—including Hindi, Bengali, Tamil, Malayalam, and Kannada—winning four National Film Awards and countless other accolades. Her versatility allows her to master complex classical compositions and modern pop numbers alike, making her an enduring icon in the global Indian diaspora."
+    },
+    "Wlir71ni6QaWoEC75fPr": {
+      "name": "Dbatlayar",
+      "image": "https://i.scdn.co/image/ab67616100005174a9b5106761f6ded1e2769daa",
+      "bio": "dbatlayar is an emerging Indonesian pop duo consisting of siblings Dave Batlayar and Joy Batlayar, who have captured the hearts of Gen Z listeners with their acoustic-driven sound and relatable storytelling. Formed in 2020, they gained significant traction on social media platforms like TikTok with their viral single \"Badut Baru\" (2024), which resonated widely for its honest depiction of unrequited love and \"clown\" behavior in relationships. Blending Dave’s lyrical skills with Joy’s musical composition, the duo has released a string of well-received singles including \"Tertunda\" and \"Terimalah,\" positioning themselves as one of the most promising new acts in the Indonesian indie-pop scene."
+    },
+    "XpNEXZhYgkg0lV7dexOf": {
+      "name": "Sabrina Carpenter",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb78e45cfa4697ce3c437cb455",
+      "bio": "Sabrina Carpenter is an American singer and actress who has successfully transitioned from a Disney Channel star into a dominant force in global pop music. After gaining initial fame on Girl Meets World, she steadily built a music career with albums like Emails I Can't Send before reaching superstar status in 2024 with her sixth studio album, Short n' Sweet. Powered by the inescapable summer anthems \"Espresso\" and \"Please Please Please,\" she became known for her witty, conversational lyrics and disco-pop sound. Her rise to the top of the Billboard charts and her support slot on Taylor Swift's The Eras Tour have cemented her place as a defining main pop girl of the mid-2020s."
+    },
+    "YpkUsqmTk3A8Ry6xD2bT": {
+      "name": "Olivia Rodrigo",
+      "image": "https://hips.hearstapps.com/hmg-prod/images/olivia-rodrigo-attends-the-2023-vanity-fair-oscar-party-news-photo-1699910349.jpg?crop=0.998xw:0.733xh;0.00170xw,0.0212xh&resize=640:*",
+      "bio": "Olivia Rodrigo is a famous American singer and actress who first became known for her roles on the Disney Channel. Her music career exploded in 2021 when her song \"Drivers License\" became a massive global hit. She is known for her honest, emotional pop and pop-rock songs about the teenage experience. Her successful debut album, Sour, and her second album, Guts, have earned her multiple Grammy Awards, establishing her as a major pop star."
+    },
+    "ZZGe2F9yPxqkr2RqvyMz": {
+      "name": "Keisya Levronka",
+      "image": "https://i.scdn.co/image/ab67616d0000b2738fa475b368164ab5eebe1a8d",
+      "bio": "Keisya Levronka is an Indonesian singer and actress who rose to prominence after competing in the tenth season of Indonesian Idol in 2019. While she initially built a career in acting, she achieved massive musical success with her 2022 power ballad \"Tak Ingin Usai,\" which topped charts across Indonesia and Malaysia and became one of the most streamed songs of the year. Despite facing highly publicized challenges with live performances of the song's demanding high notes, she showed resilience and growth, releasing her debut album Levronka (2023) and proving her staying power in the industry. Her distinctive vocal tone and emotional delivery continue to make her a staple on pop playlists in the region."
+    },
+    "aNFkcyJ9GdMXaCRvYS1r": {
+      "name": "Mahalini",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebd3564043a332daaa882853d6",
+      "bio": "Mahalini Raharja is a Balinese singer-songwriter widely considered one of the current \"Queens of Indonesian Pop\" due to her streak of chart-topping ballads. A top-five finalist on Indonesian Idol Season 10, she quickly surpassed her reality show fame with mega-hits like \"Melawan Restu,\" \"Sisa Rasa,\" and the record-breaking \"Sial\" from her debut album Fábula (2023). Known for her powerful, resonant vocals and emotional storytelling, she frequently dominates Spotify charts in both Indonesia and Malaysia. Her marriage to fellow singer Rizky Febian has further cemented her status as a high-profile celebrity, while her consistent musical output keeps her at the pinnacle of the industry."
+    },
+    "baseUDMm71PEdJAWWJiV": {
+      "name": "Marsha Milan",
+      "image": "https://i.scdn.co/image/ab67616d00001e027d987baaf5eff42e7577b196",
+      "bio": "Marsha Milan Londoh is a celebrated Malaysian singer, actress, and host who has evolved from a reality show contestant into one of the country's most respected vocalists. Rising to fame as a finalist on Akademi Fantasia Season 3 in 2005, the Sabahan artist initially built a strong career in acting and hosting before experiencing a massive musical renaissance with her powerhouse performance of \"Cinta\" at the 36th Anugerah Juara Lagu (AJL), which won the Runner-Up title and Best Performance. Known for her versatility in singing both Malay and Kadazan-Dusun songs, she solidified her status as a vocal giant with the 2022 hit \"Kembali Terang,\" proving her longevity and artistic growth nearly two decades into her career."
+    },
+    "c7AAEQ2UXxv5tAFB6950": {
+      "name": "David Guetta",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebf150017ca69c8793503c2d4f",
+      "bio": "Pierre David Guetta is a French DJ, record producer, and songwriter widely regarded as the \"Grandfather of EDM\" for his pivotal role in bringing electronic dance music into the global mainstream. Born on November 7, 1967, in Paris, he rose from the local club scene to international fame with his 2009 album One Love, which spawned hits like \"When Love Takes Over\" (featuring Kelly Rowland) and \"Sexy Bitch\" (featuring Akon). With over 100 million records sold and multiple Grammy Awards, Guetta has remained a dominant force in the industry for decades, constantly reinventing his sound through collaborations with pop icons like Sia (\"Titanium\"), Nicki Minaj, and Justin Bieber."
+    },
+    "cVGJeJd6AEQLO9E3n1q9": {
+      "name": "Tiara Andini",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/b2/3e/83/b23e83c3-2abf-28ec-3d04-f51d96ae5284/21UM1IM53102.rgb.jpg/600x600bb.jpg",
+      "bio": "Tiara Anugrah Eka Setyo Andini (lahir 23 September 2001), yang lebih dikenali sebagai Tiara Andini, ialah seorang penyanyi, pelakon, dan pengacara terkemuka Indonesia yang mula melonjak naik sebagai naib juara musim kesepuluh Indonesian Idol (2019–2020). Berasal dari Jember, beliau merupakan satu-satunya penerima \"tiket titanium\" dalam sejarah rancangan tersebut yang berjaya melangkah ke pusingan akhir sebelum melancarkan single sulungnya, \"Gemintang Hatiku\". Sepanjang kerjayanya sehingga 2026, Tiara telah meraih pelbagai pengiktirafan berprestij termasuk Artis Baru Terbaik di Anugerah Musik Indonesia (AMI) 2020, Artis Asia Baru Terbaik di Mnet Asian Music Awards 2020, serta memenangi kategori Penyanyi Wanita Paling Popular di SCTV Music Awards selama dua tahun berturut-turut. Beliau juga telah melebarkan sayap ke peringkat antarabangsa melalui kolaborasi dengan penerbit Korea Selatan, Hyuk Shin, untuk lagu seperti \"Flip It Up\" (2023) dan \"Ngeluwihi\" (2024), serta melancarkan album terbaharunya berjudul Edelweiss pada tahun 2025. Selain dunia muzik, Tiara membuat debut lakonan layar perak sebagai watak utama dalam filem My Sassy Girl (2022) dan terus aktif sebagai ikon fesyen yang pernah menghiasi papan iklan digital di Times Square, New York"
+    },
+    "cg16pSSMzpImjFc8OVy3": {
+      "name": "Ghea Indrawari",
+      "image": "https://bookingagentinfo.com/wp-content/uploads/2024/02/ab6761610000e5eb1a467934080c3976a34d0420.jpg",
+      "bio": "Ghea Indrawari is an Indonesian singer-songwriter whose distinctively soft, unique vocal tone has made her a standout figure in the pop scene since her participation in Indonesian Idol Season 9 (2018), where she finished in the top five. Born in Singkawang on March 10, 1998, she initially gained fans with her sweet renditions of pop covers before transitioning into a serious recording artist. After a series of moderate hits like \"Rinduku,\" she achieved massive viral success in 2023 with her self-written ballad \"Jiwa Yang Bersedih,\" which resonated deeply across Indonesia and Malaysia for its healing lyrics about mental exhaustion. This breakthrough solidified her transition from a reality show contestant to a respected songwriter capable of crafting emotionally resonant anthems for the younger generation."
+    },
+    "e28k79Eyfp3QKsqymMww": {
+      "name": "Deanna Hussin",
+      "image": "https://i.scdn.co/image/ab67616d0000b273ca107c6d8daa2441b1320507",
+      "bio": "Deanna Hussin is a Malaysian singer-songwriter who emerged in the local music scene in 2013 as a teenage talent known for her husky vocals and songwriting ability. Hailing from Penang, she made a distinctive debut at age 16 with her self-composed English single, \"Back In Time,\" which was praised for its mature sound and pop-rock influence, marking a bold step for a new artist in the local market. She is perhaps best recognized for her collaboration under NAR Records on the enduring festive hit \"Hari Raya,\" where she performed alongside popular labelmates Najwa Latif, IamNEETA, and Mimie Haris. While she has kept a lower public profile in recent years compared to her initial breakthrough, her contributions to that era of Malaysian pop—particularly the annual resurgence of her Raya collaboration—keep her voice familiar to many listeners."
+    },
+    "f9fucx4KcDxq1qZfYs1O": {
+      "name": "Naykilla",
+      "image": "https://i.scdn.co/image/ab6761610000e5eba224652429e1fc6dcaea1c2d",
+      "bio": "Naykilla is an Indonesian singer and rapper who became a breakout star in the \"Nusantara hip-hop\" scene, particularly through his viral collaboration with Tenxi and Jemsii. He skyrocketed to fame in late 2024 and early 2025 with the massive hit \"Garam & Madu (Sakit Dadaku),\" a track that seamlessly blends modern hip-hop beats with dangdut-influenced rhythms (often called \"Hipdut\"). Known for his catchy hooks and energetic flow, he and his collaborators dominated social media platforms like TikTok and won the AMI Award for Best Rap/Hip-Hop Collaboration in 2025. His music represents a new wave of regional pop that successfully merges traditional Indonesian sounds with contemporary urban styles."
+    },
+    "gTKk6Uthe0m3LyCOOKOK": {
+      "name": "The Panasdalam Bank",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb85071a85080047b0b5e90748",
+      "bio": "The Panasdalam Bank is an Indonesian pop/folk musical group founded by the influential author and artist Pidi Baiq, gaining prominence for their unique sound and extensive work on the original motion picture soundtracks for the commercially successful \"Dilan\" film series, including \"Dilan 1990\", \"Dilan 1991\", and \"Milea: Suara dari Dilan\". The band is known for its frequent collaborations with other notable Indonesian musicians like Danilla Riyadi, Fiersa Besari, and Jason Ranti, and received an AMI Award for Best Original Soundtrack Production Work for their song \"Berpisah\" in 2019. Their discography extends beyond the films, featuring a distinct, often whimsical, style that blends narrative storytelling with acoustic and pop elements, which has built a dedicated fanbase."
+    },
+    "gf4rIUEgdQNcTnC8j0KC": {
+      "name": "Miss Alvy",
+      "image": "https://apicms.thestar.com.my/uploads/images/2024/12/04/3051954.webp",
+      "bio": "Alvy Joanna, often referred to as Miss Alvy, is a Malaysian social media influencer, actress, and content creator who successfully crossed over into the entertainment industry. Originally gaining a massive following on TikTok and Instagram for her lifestyle content and comedic sketches, she expanded her portfolio into acting and music. She has released catchy, pop-centric tracks such as \"Jauh,\" leveraging her digital fame to build a music career. Her brand is defined by her bubbly personality and strong engagement with the \"Budak Baru Nak Up\" (BBNU) generation, making her a prominent figure in the modern Malaysian influencer-celebrity pipeline."
+    },
+    "h0yxJtrwdmjKdZlYeRtC": {
+      "name": "Zynakal",
+      "image": "https://www.kosmo.com.my/wp-content/uploads/2022/09/ZYNAKAL-scaled-e1662376413602.jpg",
+      "bio": "Muhammad Raziq Rosli, professionally known as Zynakal, is a prominent Malaysian rapper, singer, and songwriter who transitioned from a successful behind-the-scenes composer for hits like Ismail Izzani's \"Sabar\" to a leading voice in Southeast Asian hip-hop. Born in December 1998 and the nephew of legendary singer Zamani Slam, he first achieved international acclaim with the 2019 viral single \"Sakit\" alongside Yonnyboii, which topped Malaysian streaming charts for months and established him as a mental health advocate following his own public bipolar diagnosis. As of early 2026, Zynakal is experiencing a significant career peak fueled by the massive cross-border success of the late-2025 single \"NGGA DULU,\" a collaboration with Indonesian producer Akbar Chalay and artist Ciloqciliq that has garnered over 29 million streams. Celebrated for his \"melodic emo rap\" and honest storytelling, he remains a dominant force in the region’s music industry with over 6 million monthly Spotify listeners and a growing catalog of hits that include \"Tak Sangka,\" \"Dalam Diam,\" and the 2025 single \"Lari.\"\n"
+    },
+    "iX76nywAubwSzwoyM6hj": {
+      "name": "Doja Cat",
+      "image": "https://i.scdn.co/image/ab67616d00001e02da95885ff9adff70c000cd2c",
+      "bio": "Amala Ratna Zandile Dlamini, known professionally as Doja Cat, is a Grammy-winning American rapper, singer, and songwriter who has redefined modern pop stardom with her genre-bending versatility and eccentric online persona. Born on October 21, 1995, in Los Angeles, she initially gained viral fame with the novelty track \"Mooo!\" before proving her artistic prowess with her sophomore album Hot Pink and its chart-topping single \"Say So.\" She solidified her global dominance with 2021’s Planet Her, which spawned massive hits like \"Kiss Me More\" and \"Woman,\" blending R&B, pop, and hip-hop with effortless flow. Known for her visually stunning music videos and unpredictable public image, she shifted towards a harder, rap-centric sound with her 2023 album Scarlet, continuing to push creative boundaries while remaining a constant fixture on the Billboard charts."
+    },
+    "ipZaLMStiiXDQxEfN9Fr": {
+      "name": "iamNEETA",
+      "image": "https://i.scdn.co/image/ab67616d00001e02ad105f13c65d912d1fa66f8e",
+      "bio": "iamNEETA is a Malaysian pop-rock band that pioneered the \"YouTube-to-mainstream\" success route in the local music scene. Formed in 2011, the group consists of vocalist Neeta Manishaa, guitarist Patrick Anohada, and bassist Anas Zakwan. They initially garnered a massive following by uploading acoustic covers before signing with NAR Records and releasing original hits like \"Tuhan Tolong Aku\" and \"Sakit.\" The band is also deeply associated with modern festive classics, most notably their enduring collaboration on the song \"Hari Raya\" with Najwa Latif, Deanna Hussin, and Mimie Haris, which remains a staple on Malaysian airwaves every Eid season. Although lead singer Neeta has pursued a successful solo career and hosting duties, the band remains a significant name in the \"Budak Baru Nak Up\" (BBNU) era of Malaysian music."
+    },
+    "irhhtMc03lqOI71V2Ciw": {
+      "name": "Wani Kayrie",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb8436f1edd3d6b8a8a938189c",
+      "bio": "Syazwani binti Abdullah, known professionally as Wani Kayrie, is a versatile Malaysian singer, actress, and radio announcer who has been in the spotlight since childhood. She first gained attention as the winner of the reality show Kamilah Bintang in 2010 and later solidified her reputation as a teen pop star with the hit single \"Jangan Jangan.\" celebrated for her ability to sing in multiple languages—including Mandarin, Hindi, and Tagalog—she has proven her range as a performer on Big Stage Season 1 and The Masked Singer Malaysia. Currently, she balances her singing career with acting roles and hosting duties as a radio announcer for Suria FM."
+    },
+    "jBU7yVhWmGccpcEmHew3": {
+      "name": "Akbar Chalay",
+      "image": "https://i.scdn.co/image/ab67616100005174ed1feb0afd27194efc4c2d9e",
+      "bio": "Muhammad Akbar, professionally known as Akbar Chalay, is a prominent Indonesian musical artist and music producer who has carved a niche in the urban music scene through his innovative fusion of Hipdut (Hip-hop and Dangdut), Funkot, and Koplo. Rising to significant popularity in 2025 and early 2026, he is widely recognized for his high-energy remixes and collaborative spirit, most notably on the viral late-2025 single \"NGGA DULU\" with Malaysian rapper Zynakal and artist Ciloqciliq, which achieved over 26 million streams by the beginning of 2026. Based in Indonesia, Chalay maintains a massive digital presence with over 6.3 million monthly Spotify listeners and is celebrated for creating relatable, \"coquettish\" tracks—such as \"Dalinda,\" \"Mama Muda,\" and \"CLBK\"—that frequently trend across social media platforms like TikTok. "
+    },
+    "jenWMGwjDCPU4NeBIz42": {
+      "name": "Meiska",
+      "image": "https://i.scdn.co/image/ab67616d00001e02bab3f55797f579d23c88f6c6",
+      "bio": "Meiska Adinda, known mononymously as Meiska, is an Indonesian pop singer who captured the hearts of listeners with her emotive vocals and relatable heartbreak anthems. A former grand finalist of The Voice Kids Indonesia Season 3, she successfully transitioned to a mature solo career under Sony Music Indonesia. She achieved a major commercial breakthrough in 2023 with the viral hit \"Hilang Tanpa Bilang,\" which dominated streaming charts in both Indonesia and Malaysia for its poignant depiction of \"ghosting.\" With subsequent tracks like \"Keras Kepala\" and \"Telat Rindu,\" she has established herself as a leading voice among the new generation of \"Galau\" (heartbreak) ballad singers."
+    },
+    "jkmPttdlM8JI2jTJLQG9": {
+      "name": "Anggis Devaki",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/85/38/a1/8538a189-7258-71cb-119f-4f80f51eb68c/cover.jpg/600x600bb.jpg",
+      "bio": "Pande Putu Damae Anggis Devaki, known professionally as Anggis Devaki, is a Balinese pop singer who gained national prominence through her powerful performances on multiple reality singing competitions. Born on November 28, 2002, in Denpasar, she first showcased her talent as the runner-up of The Voice Kids Indonesia Season 2 in 2017 before reaching the Top 8 on Indonesian Idol Season 12 in 2023. While she began her recording career with a Balinese-language album in 2016, she successfully transitioned to the national spotlight with emotional ballads like \"Kisah Tanpa Dirimu,\" \"Bodoh,\" and \"Jatuh Rapuh.\" Her music is characterized by her deep, resonant vocal tone and storytelling ability, making her one of the most promising young balladeers in the Indonesian music industry."
+    },
+    "k2tf87udsW5HkwR16SKe": {
+      "name": "Rosé",
+      "image": "https://i.scdn.co/image/ab67616d00001e02fdec91537c467efa0cd75e2f",
+      "bio": "Roseanne Park, mononymously known as Rosé, is a Korean-New Zealand singer and member of the global K-pop phenomenon BLACKPINK, celebrated for her unique vocal timbre and indie-pop influences. After shattering records with her 2021 solo debut single \"On the Ground,\" she entered a new chapter in 2024 by signing with The Black Label and Atlantic Records for her solo endeavors. She quickly dominated global charts with the massive hit \"APT.\" (a collaboration with Bruno Mars), a precursor to her introspective first full-length album Rosie. Known for her ability to seamlessly shift between high-energy pop and acoustic ballads, she stands as one of the most influential fashion and music icons of her generation."
+    },
+    "kTJfXlSndFa6GULWEdJ6": {
+      "name": "Quinn Salman",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebab51f790f9a2c564fcc17742",
+      "bio": "Quinn Salman is a multi-talented Indonesian singer, songwriter, and actress who has been hailed as a prodigy in the children's music genre. Born in 2010, she made history as the youngest winner of the Anugerah Musik Indonesia (AMI) Award for Best Children's Songwriter, earning widespread acclaim for her self-penned viral hit \"Tiba-Tiba\" (2022). Beyond her musical success, she starred as Sherina in the stage musical Petualangan Sherina, showcasing her prowess in acting and performing. Known for her cheerful disposition and ukulele-driven pop songs, she has single-handedly revitalized the Indonesian children's music market, which had been dormant for years."
+    },
+    "l9bJuSK2IREocCFcXWBJ": {
+      "name": "Chuu",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/24/6c/92/246c9266-33d1-8ef9-4c3a-9f681c97c9f8/8809550037526.jpg/600x600bb.jpg",
+      "bio": "Kim Ji-woo, professionally known as Chuu, is a South Korean singer and television personality who rose to international fame as a member of the girl group Loona after debuting with the hit single \"Heart Attack\" in 2017. Known for her bright \"Chuu Can Do It\" persona and her creation of the viral \"Chuu Heart,\" she transitioned into a successful solo artist under the agency ATRP following a landmark legal victory for artist rights in 2024. As of early 2026, she has solidified her status as a versatile soloist with the release of her first full-length studio album, XO, My Cyberlove, while maintaining a prolific career as a variety show host and actress in series like My Girlfriend Is the Man!\n\n"
+    },
+    "mwh8sJPR3nYcJgjg00qh": {
+      "name": "Adrian Khalif",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebf522815b12cceaf0bce75c02",
+      "bio": "Adrian Khalif Akbar Thamrin is an Indonesian singer and rapper celebrated for blending smooth R&B vocals with hip-hop beats, a style heavily influenced by his upbringing in New York City. Born on June 24, 1992, into a diplomat family, he spent his formative years in the US, London, and Canberra before returning to Indonesia to launch his music career. He broke into the mainstream in 2017 with the anthemic debut single \"Made in Jakarta\" (featuring Dipha Barus), which won him an AMI Award for Best Rap/Hip-Hop Production. Known for his introspective lyrics and urban sound, he has continued to find commercial success with hits like \"Sialan\" (a collaboration with Juicy Luicy) and his albums Embrace, Embrace (2019) and Harap-Harap Emas (2024), solidifying his place as a leading figure in Indonesia's modern R&B scene."
+    },
+    "ndWFS9hQcYihZ1JoBQ1N": {
+      "name": "Lady Gaga",
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84a3cebf575cca18711b6a313e",
+      "bio": "Stefani Joanne Angelina Germanotta, known globally as Lady Gaga, is an American singer, songwriter, and actress who revolutionized pop culture with her avant-garde artistry and immense vocal talent. From her electro-pop dominance with The Fame and Born This Way to her jazz collaborations with Tony Bennett, she is celebrated for her unmatched versatility. She has seamlessly conquered Hollywood as well, winning an Academy Award for \"Shallow\" from A Star Is Born and starring in major films like House of Gucci and Joker: Folie à Deux. With 13 Grammy Awards and a legacy of advocacy for the LGBTQ+ community, Gaga remains one of the most influential and transformative figures in entertainment history."
+    },
+    "oJOgdVLXXL4Gsc64NWTc": {
+      "name": "Bernadya",
+      "image": "https://i.scdn.co/image/ab67616d00001e026de51cd90bfb48588c092a23",
+      "bio": "Bernadya Ribka Jayakusuma, performing mononymously as Bernadya, is an Indonesian singer-songwriter who has rapidly become a defining voice for Gen Z with her melancholic pop anthems and intimate storytelling. Born on March 16, 2004, in Surabaya, she first appeared on The Voice Kids Indonesia in 2016 before gaining wider traction with her debut solo single \"Apa Mungkin\" in 2022. Her career reached new heights with the release of her critically acclaimed debut studio album, Sialnya, Hidup Harus Tetap Berjalan (2024), which cemented her status as a top-tier hitmaker with tracks like \"Satu Bulan\" and \"Kata Mereka Ini Berlebihan\" dominating streaming charts. Known for her simple yet piercing lyrics that explore heartbreak and acceptance, she has successfully transitioned from a viral sensation to a mainstay in the Indonesian music industry."
+    },
+    "pQ9hfYaBRsnHcs6O9sC4": {
+      "name": "Suisei",
+      "image": "https://www.lyrics.my/images/artist/8773/original.png",
+      "bio": "Jakarta-based singer-songwriter Suisei is a rising figure in the Indonesian alternative pop scene, distinct from the Japanese virtual idol of the same name. Known for a genre-blending sound that incorporates elements of alternative pop with glitchy beats and introspective, \"angsty\" lyrics, he has built a significant digital presence, amassing millions of streams on platforms like Spotify. Since his debut in 2018, he has released multiple albums and EPs—notably 21st Century Heartbreak, Pt. 1—and is recognized for soulful, emotionally resonant tracks such as \"Eileen,\" \"Bittersweet,\" and the 2024 collaboration \"attached\" with Tenxi and Anangga. Managed under the Amity Asia family as of early 2026, the artist continues to expand his influence through heartfelt performances at regional events like LaLaLa Festival, establishing himself as a standout voice among new-generation Indonesian pop artists."
+    },
+    "pqSQevX8xtaYeZlbNgJQ": {
+      "name": "IDGITAF",
+      "image": "https://i.scdn.co/image/ab67616100005174c9938371e3f63554f5f66b44",
+      "bio": "Brigitta Sriulina Beru Meliala, professionally known as IDGITAF (an acronym for \"I Don't Give A Fuck\"), is an Indonesian singer-songwriter who captured the attention of Gen Z with her unique vocal texture and introspective lyrics. Rising from TikTok fame with the viral \"Taruh\" duet challenge, she successfully transitioned into a serious recording artist with her breakout hit \"Takut\" (2021), an anthem about the anxieties of growing up. Known for her conversational singing style and indie-pop sound, she has continued to build a loyal following with her debut album Mengudara (2023) and hits like \"Satu-Satu,\" establishing herself as one of the most relatable storytellers in the modern Indonesian music scene."
+    },
+    "q4l736yA6G4TMF9mbVAe": {
+      "name": "Sal Priadi",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebee44c322de1daaa43c1fba40",
+      "bio": "Salmantyo Ashrizky Priadi, known professionally as Sal Priadi, is an Indonesian singer-songwriter and actor celebrated for his theatrical vocal delivery and poetic, often eccentric, songwriting. He burst onto the scene with the critically acclaimed album Berhati (2020), earning praise for his ability to blend pop, art-rock, and theatrical elements in songs like \"Amin Paling Serius.\" In 2024, he achieved a massive career milestone with the viral success of \"Gala Bunga Matahari\" from his album Markers and Such Pens Flashdisks, a deeply emotional track about loss that resonated across Southeast Asia. Beyond music, he is also a respected actor, having starred in award-winning films like Vengeance Is Mine, All Others Pay Cash."
+    },
+    "qap0CCpB2A3xX1atnrew": {
+      "name": "Ara Johari",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb1065e606e1b797b47901d469",
+      "bio": "Nurfarrah Izzatie binti Johari, better known by her stage name Ara Johari, is a powerhouse Malaysian singer and actress who first garnered national attention as a finalist on the reality competition Akademi Fantasia in 2016, where she finished in fourth place. Born on June 27, 1997, in Kuala Pilah, Negeri Sembilan, she quickly established herself as a formidable vocalist in the Malay pop and rock scenes, celebrated for her gritty, high-pitched vocals and emotional delivery. Her debut single, \"Warkah Untukku,\" became an instant hit, qualifying for the prestigious Anugerah Juara Lagu (AJL), a success she replicated and surpassed with her sophomore track \"Bunga,\" which secured the Runner-up title at the 33rd Anugerah Juara Lagu. With a string of successful ballads including \"Paku,\" \"Racun Hati,\" and \"Menjaga Jodoh Orang Lain,\" Ara has solidified her reputation as one of the most consistent and commanding young voices in the contemporary Malaysian music industry."
+    },
+    "qr7BpmY91900NhyawzPg": {
+      "name": "Tenxi",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebc2430b63f455505ebb8d34e1",
+      "bio": "Tenxi is an Indonesian singer and rapper who surged to popularity in late 2024 and 2025 as a key member of the viral musical trio alongside Jemsii and Naykilla. He is a central figure in the \"Garam & Madu (Sakit Dadaku)\" phenomenon, a track that dominated TikTok across Southeast Asia by blending hip-hop flows with traditional Dangdut rhythms (a genre fusion often called \"Hipdut\"). Known for his distinct vocal delivery and lyrical interplay with his collaborators, Tenxi represents the new wave of grassroots Indonesian artists who bypass traditional media to achieve massive success through social media trends and digital streaming platforms."
+    },
+    "resjYwTa54CidqviWGwL": {
+      "name": "Velvet Aduk",
+      "image": "https://www.freemalaysiatoday.com/cdn-cgi/image/width=3840,quality=80,format=auto,fit=scale-down,metadata=none,dpr=1,onerror=redirect/https://media.freemalaysiatoday.com/wp-content/uploads/2025/05/3a996ee8-aduk-velvet-aduk-pic-26525.webp",
+      "bio": "Velvet Aduk, whose full name is Velvet Lawrence Aduk, is a celebrated Malaysian singer-songwriter from Penampang, Sabah. She rose to national fame as a finalist on season four of the reality singing competition Akademi Fantasia in 2006, where she finished in fifth place. Known for her powerful and emotive voice, Aduk has built a career spanning over 18 years, primarily focusing on pop, ballad, and folk music that often celebrates her Sabahan Dusun heritage. Her popular viral hit songs include \"Sumandak Sabah\" and \"Oi Gaman,\" which have garnered millions of views online and become anthems of Sabahan pride. After a temporary hiatus to focus on motherhood and her family, she has continued to release music as an independent artist, including her recent, deeply personal English album Darkest Knight and her first fully Dusun-language album, Ogingol, which aims to preserve her native language and culture for younger generations."
+    },
+    "rxix3Vp3sHJKf4Pd85XI": {
+      "name": "-",
+      "image": "",
+      "bio": ""
+    },
+    "s8dqX8pLCtiRuGn0vVW3": {
+      "name": "Ade Govinda",
+      "image": "https://cassette.sphdigital.com.sg/image/beritaharian/09659ad108226808b953f2d8d378f1e0260f8cda22ef398dac5b34bb95b2c026?w=825",
+      "bio": "Ade Govinda (Ade Nurulianto, born May 8, 1984) is an Indonesian musician, songwriter, and the lead guitarist of the pop band Govinda. He gained recognition after participating in the talent show The Dream Band in 2004 and has since become a prolific hitmaker known for writing emotional, enduring pop songs for both Indonesian and Malaysian artists, including major names like Siti Nurhaliza and Ernie Zakri. Besides his work with the band, whose music is available on platforms such as Spotify, Ade also occasionally pursues acting roles and has won awards for his compositions, such as the \"Most Top Sinetron Soundtrack\" at the SCTV Awards for \"Masing Masing\"."
+    },
+    "umPtmNVkF6PaynZpEPLg": {
+      "name": "Mimifly",
+      "image": "https://i.scdn.co/image/ab67616d00001e02301b80e595d3966c2b0132f5",
+      "bio": "Shamimi Amalina, better known as Mimifly, is a Malaysian rapper, singer, and songwriter renowned for her edgy style and energetic stage presence. She first tasted stardom as the lead female vocalist of the hip-hop group One Nation Emcees, but it was her solo career that allowed her to explore a more experimental fusion of pop, trap, and ethnic beats. With hit songs like \"Superfly\" and \"Hujan\" (featuring Altimet), she carved a niche as a fierce advocate for self-empowerment and individuality. Her artistic fearlessness was further highlighted by her participation in Big Stage, where she consistently pushed performance boundaries, cementing her reputation as one of Malaysia's most dynamic female performers."
+    },
+    "uyGLIdPJXGDYIQyTAiFX": {
+      "name": "Bruno Mars",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebc36dd9eb55fb0db4911f25dd",
+      "bio": "Peter Gene Hernandez, known globally as Bruno Mars, is an American singer, songwriter, and producer whose retro-inspired showmanship has made him one of the best-selling artists of all time. Born on October 8, 1985, in Honolulu, Hawaii, into a family of musicians, he broke into the industry as a songwriter before launching a solo career that has produced a relentless stream of hits, from \"Just the Way You Are\" and \"Locked Out of Heaven\" to \"Uptown Funk.\" Renowned for his ability to seamlessly blend funk, soul, R&B, and rock, he has won countless Grammy Awards, both as a solo artist and as half of the superduo Silk Sonic with Anderson .Paak. His electrifying live performances and chart-topping albums like 24K Magic have solidified his legacy as a modern pop icon comparable to the greats of the past."
+    },
+    "v9nCK3va7WerUahMOUE9": {
+      "name": "Ernie Zakri",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebd4e158ec0916e15687ca82e0",
+      "bio": "Nur Ernie Shahirah binti Zakri, better known as Ernie Zakri, is a Malaysian vocal powerhouse widely regarded as one of the finest singers of her generation. Rising to prominence after winning Bintang RTM in 2009, she comes from a lineage of musical legends (as the niece of Ziana and Anuar Zain) but has carved her own path with her impeccable vocal control and emotional delivery. She is a consistent heavyweight at the Anugerah Juara Lagu (AJL), winning Best Vocals multiple times with dramatic ballads like \"Ku Bersuara\" and \"Gundah.\" Frequently collaborating with her husband, singer Syamel, on hit duets like \"Aku Cinta,\" Ernie continues to dominate the charts with recent successes such as \"Boneka\" and \"Masing Masing,\" solidifying her status as a modern queen of Malay ballads."
+    },
+    "xbZnLYpmGVgPlmCL37tK": {
+      "name": "Meovv",
+      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8464712f942017cd18e1adb616",
+      "bio": "Meovv (pronounced \"Meow\") is a South Korean girl group launched in September 2024 by THE BLACK LABEL, the agency founded by legendary producer Teddy Park (the mastermind behind BLACKPINK and 2NE1). Comprising five members—Gawon, Sooin, Anna, Narin, and Ella (who gained early fame as a child model)—the group debuted with the hypnotically catchy single \"Meow.\" Positioning themselves as the future of \"girl crush\" K-pop, they are characterized by their sleek, high-fashion aesthetic and a sound that blends minimal hip-hop beats with fierce charisma, carrying the heavy expectation of being the next global supergroup from the YG Entertainment ecosystem."
+    },
+    "xfwuaC5fFtjYm8psAobF": {
+      "name": "Fifty Fifty",
+      "image": "https://i.scdn.co/image/ab67616100005174c4adb615d337d90fe5bd8f64",
+      "bio": "Fifty Fifty is a South Korean girl group that achieved unprecedented global speed-to-success with their viral 2023 hit \"Cupid,\" which made them the fastest K-pop group to enter the US Billboard Hot 100. Originally debuting as a quartet, the group became the center of a high-profile legal dispute with their agency, ATTRAKT, which resulted in a major reorganization of the lineup. Following the controversy, original member Keena remained with the label and was joined by new members Chanelle Moon, Yewon, Hana, and Athena to relaunch the group. In late 2024, the revamped quintet released their mini-album Love Tune (featuring the track \"SOS\"), successfully re-establishing themselves in the industry with a refreshed \"charismatic-pop\" identity while carrying forward the legacy of their breakout fame."
+    },
+    "xmHZvjp73KJnUDGoVdcu": {
+      "name": "Maman Fvndy Rmx",
+      "image": "https://i.scdn.co/image/ab67616d00001e0297932544598aa215d6eb566d",
+      "bio": "Maman Fvndy is an Indonesian music producer and DJ who has become a central figure in the digital \"Breakbeat\" and \"Funkot\" (Funky Kota) scenes, particularly within the TikTok \"Jedag Jedug\" community. He is best known for creating high-energy, bass-heavy remixes of popular Indonesian pop songs and viral sounds, transforming melancholic ballads into upbeat dance anthems preferred by car audio enthusiasts and social media content creators. His production style is characterized by rapid percussion, distinct \"jungle Dutch\" influences, and hard-hitting drops, making his tracks staples in the nightlife and digital remix culture across Indonesia and Malaysia."
+    },
+    "zQ13lBAty0w5KZ7RGUWO": {
+      "name": "Rio Clappy",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb9d7d8fc164c5c346cd43ab6c",
+      "bio": "Rizky Ceisario, known professionally as Rio Clappy, is an Indonesian singer-songwriter and musician who has captured the attention of the indie-pop scene with his retro-inspired sound and distinctively deep, soothing vocals. A former member of the bands Mr. Kite and DBlueBusters, he launched his solo career with singles like \"Sofia\" before achieving widespread viral success in 2024 with the romantic ballad \"Bunga Abadi.\" The song, which features poetic lyrics about eternal love and a nostalgic arrangement reminiscent of 60s and 70s pop, exploded on platforms like TikTok and Spotify, establishing him as a rising star capable of blending old-school musical aesthetics with modern sensibilities."
+    }
+  },
+  "users": {
+    "7QMf726U7FYpg1jkdNz7TNUQVxk2": {
+      "displayName": "Nini",
+      "email": "ainijemmani@gmail.com",
+      "favorites": [],
+      "recentlyViewed": [],
+      "createdAt": "2025-11-18T17:10:08.000Z"
+    },
+    "86ghRWefX6hF0Twf4sQILDvf9r92": {
+      "displayName": "Admin",
+      "email": "farishakim38@gmail.com",
+      "favorites": [
+        ""
+      ],
+      "recentlyViewed": [],
+      "isAdmin": true,
+      "role": "admin",
+      "createdAt": "2025-11-19T17:39:01.000Z",
+      "lastLogin": "2026-01-08T12:01:54.000Z"
+    },
+    "CaEBlyXodlWDObmegajOmp6T4Cj1": {
+      "displayName": "chloe bennett",
+      "email": "chloeb0623@outlook.com",
+      "favorites": [],
+      "recentlyViewed": [],
+      "createdAt": "2025-11-17T15:08:15.000Z"
+    },
+    "JBc3GVZW8rSM8vCfX7JgdPbtmvl2": {
+      "displayName": "Hani Kitty",
+      "email": "ummuzani@gmail.com",
+      "favorites": [],
+      "recentlyViewed": [],
+      "role": "fan",
+      "createdAt": "2025-11-19T12:43:49.000Z"
+    },
+    "KCpdUHupfpUXZSX5a1a2HTQGPdC3": {
+      "displayName": "AnynomousB ",
+      "email": "aliajunior2704@gmail.com",
+      "favorites": [],
+      "recentlyViewed": [],
+      "createdAt": "2025-11-12T07:52:51.000Z"
+    },
+    "ThZqLQ9l9tW26hqQc678Q4FPTnk2": {
+      "displayName": "KassMy",
+      "email": "afinakassim@gmail.com",
+      "favorites": [],
+      "recentlyViewed": [],
+      "role": "user",
+      "createdAt": "2025-11-25T00:18:37.000Z",
+      "lastLogin": "2025-11-25T00:18:58.000Z"
+    },
+    "URJMY5Ro7dMIWB9XxnRKvDmFOUx1": {
+      "displayName": "Chloe",
+      "email": "snowangelica23@gmail.com",
+      "favorites": [],
+      "recentlyViewed": [],
+      "createdAt": "2025-11-17T15:12:20.000Z"
+    },
+    "a6LHA3iWD8WeyDpOzm2NXAwkz2w2": {
+      "displayName": "Hani Kitty",
+      "email": "g-82350292@moe.dl.edu.my",
+      "favorites": [],
+      "recentlyViewed": [],
+      "createdAt": "2025-11-19T12:41:58.000Z"
+    },
+    "bpsqhEWNLaPFTuGmLck78jjkqzG3": {
+      "displayName": "Linda123",
+      "email": "lindaazmera@gmail.com",
+      "favorites": [],
+      "recentlyViewed": [],
+      "createdAt": "2025-11-16T09:50:25.000Z"
+    },
+    "f2a2qJQcC7MmpwGIYPUeUdTrGY03": {
+      "displayName": "User 1",
+      "email": "bombtimecs@gmail.com",
+      "favorites": [
+        "wvrcHdxScgBdOsFj5bAI",
+        "3JHRN1r4hC9MyMhiZEzt",
+        "Uyqn8SP6b89zRQcUwO9F"
+      ],
+      "recentlyViewed": [],
+      "role": "contributor",
+      "createdAt": "2025-11-10T13:41:53.000Z",
+      "lastLogin": "2025-11-27T17:15:34.000Z"
+    },
+    "lu2qtscLMzOcwuWZGYgsHA6hnyI2": {
+      "displayName": "Zara Rahila ",
+      "email": "onjezararahila42@gmail.com",
+      "favorites": [],
+      "recentlyViewed": [],
+      "createdAt": "2025-11-15T04:43:33.000Z"
+    },
+    "pk8FqgUIHyMJjcLHQxAi1wavGL32": {
+      "displayName": "nasiayamco ",
+      "email": "nasiayam.co@gmail.com",
+      "favorites": [],
+      "recentlyViewed": [],
+      "isAdmin": true,
+      "role": "admin",
+      "createdAt": "2025-11-21T11:12:56.000Z"
+    }
+  },
+  "admins": {
+    "86ghRWefX6hF0Twf4sQILDvf9r92": {
+      "isAdmin": true
+    },
+    "pk8FqgUIHyMJjcLHQxAi1wavGL32": {
+      "isAdmin": true
+    }
+  }
+}

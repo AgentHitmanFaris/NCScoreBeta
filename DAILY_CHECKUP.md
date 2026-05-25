@@ -2,6 +2,21 @@
 
 This file is used to track daily progress and contributions.
 
+## Date: 2026-05-22
+
+### To-Do
+- [x] Implement Multiple Arrangements support (Selection Dialog)
+- [x] Update Premium Access policy to "Login Only"
+- [x] Fix compilation error in `FilenameSanitizationTest`
+- [x] Add musical key transposition metadata to `Arrangement` model
+- [x] Bump app version to 1.6.2
+
+### Notes
+- Enhanced `SongHandler` to fetch all arrangements and display a selection dialog if multiple keys or versions are available.
+- Relaxed premium access logic: songs marked `isPremium` are now accessible to any logged-in user, removing the secondary `isPremiumUser` flag check.
+- Fixed a bug in unit tests where `$Song` in a string was being treated as a Kotlin string template.
+- Updated `versionName` to `1.6.2` and `versionCode` to `19`.
+
 ## Date: 2026-05-20
 
 ### To-Do

@@ -77,7 +77,7 @@ class SongDetailFragment : Fragment() {
                 // Fetch Song and its Arrangements simultaneously
                 val songDeferred = async { db.collection("songs").document(id).get().await() }
                 val arrangementDeferred = async {
-                    db.collection("songs").document(id).collection("arrangements").limit(1).get().await()
+                    db.collection("songs").document(id).collection("arrangements").get().await()
                 }
 
                 val songDoc = songDeferred.await()
@@ -121,16 +121,16 @@ class SongDetailFragment : Fragment() {
         val tvLyrics = view.findViewById<TextView>(R.id.tvLyrics)
         val youtubePlayerView = view.findViewById<YouTubePlayerView>(R.id.youtube_player_view)
         
-        // SAFE OBSERVER: Check if view exists before adding observer
+        // SAFE OBSERVER: Bind YouTube player to View lifecycle to prevent leaks and crashes
         youtubePlayerView?.let { 
-            lifecycle.addObserver(it) 
+            viewLifecycleOwner.lifecycle.addObserver(it)
         }
 
         tvDetailTitle?.text = song.title
         tvDetailArtist?.text = song.getFormattedArtist()
         
         // Metadata binding
-        tvBpm?.text = if (song.bpm > 0) song.bpm.toString() else "--"
+        tvBpm?.text = if ((song.bpm ?: 0) > 0) song.bpm.toString() else "--"
         tvKey?.text = if (song.originalKey.isNotBlank()) song.originalKey else "--"
         
         ivDetailImage?.let {

@@ -28,6 +28,8 @@ class BrowseFragment : Fragment() {
     private var currentQueryStr = ""
 
     private val displayedSongs: ArrayList<Song> = ArrayList()
+    private var searchHandler = android.os.Handler(android.os.Looper.getMainLooper())
+    private var searchRunnable: Runnable? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +44,9 @@ class BrowseFragment : Fragment() {
         setupRecyclerView(view)
         setupSearch(view)
         
+        // Hide keyboard when touching the background or RecyclerView
+        view.setOnClickListener { hideKeyboard() }
+        
         loadSongs(true)
     }
 
@@ -53,14 +58,17 @@ class BrowseFragment : Fragment() {
         rvArtists.layoutManager = LinearLayoutManager(context)
         
         songAdapter = SongAdapter(useGrid = true, onSongClicked = { song ->
+            hideKeyboard()
             context?.let { SongHandler.onSongClicked(it, song) }
         }, onArtistClicked = { artistName ->
+            hideKeyboard()
             navigateToArtist(artistName)
         })
         rvSongs.adapter = songAdapter
 
         // Correctly initialize ArtistAdapter without a list in the constructor
         artistAdapter = ArtistAdapter { artist ->
+            hideKeyboard()
             navigateToArtist(artist.name)
         }
         rvArtists.adapter = artistAdapter
@@ -70,6 +78,7 @@ class BrowseFragment : Fragment() {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (newState == android.widget.AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
                     isScrolling = true
+                    hideKeyboard() // Hide keyboard on scroll
                 }
             }
 
@@ -108,7 +117,11 @@ class BrowseFragment : Fragment() {
                 val query = s.toString().trim()
                 if (query != currentQueryStr) {
                     currentQueryStr = query
-                    performSearch(query)
+                    
+                    // DEBOUNCE: Wait 300ms after last keystroke before searching
+                    searchRunnable?.let { searchHandler.removeCallbacks(it) }
+                    searchRunnable = Runnable { performSearch(query) }
+                    searchHandler.postDelayed(searchRunnable!!, 300)
                 }
             }
             override fun afterTextChanged(s: Editable?) {}
@@ -129,6 +142,9 @@ class BrowseFragment : Fragment() {
 
         query.get()
             .addOnSuccessListener { result ->
+                // RACE CONDITION FIX: If user has started searching, don't overwrite with default list
+                if (currentQueryStr.isNotEmpty()) return@addOnSuccessListener
+
                 if (isInitial) {
                     displayedSongs.clear()
                 }
@@ -189,46 +205,80 @@ class BrowseFragment : Fragment() {
                 }
             }
 
-        // Song Query
-        val titleQuery = db.collection("songs")
-            .orderBy("title")
-            .startAt(query)
-            .endAt(query + "\uf8ff")
-            .limit(50)
+        // Song Queries - We run multiple variations to overcome case-sensitivity
+        val queryLower = query.lowercase()
+        val queryCap = query.replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
 
-        val artistSongQuery = db.collection("songs")
-            .whereArrayContains("artistNames", query)
-            .limit(50)
+        val tasks = mutableListOf<com.google.android.gms.tasks.Task<com.google.firebase.firestore.QuerySnapshot>>()
+        
+        // 1. Original Case
+        tasks.add(db.collection("songs").orderBy("title").startAt(query).endAt(query + "\uf8ff").limit(20).get())
+        // 2. Lowercase
+        if (queryLower != query) {
+            tasks.add(db.collection("songs").orderBy("title").startAt(queryLower).endAt(queryLower + "\uf8ff").limit(20).get())
+        }
+        // 3. Capitalized
+        if (queryCap != query && queryCap != queryLower) {
+            tasks.add(db.collection("songs").orderBy("title").startAt(queryCap).endAt(queryCap + "\uf8ff").limit(20).get())
+        }
 
-        val titleTask = titleQuery.get()
-        val artistSongTask = artistSongQuery.get()
-
-        com.google.android.gms.tasks.Tasks.whenAllSuccess<com.google.firebase.firestore.QuerySnapshot>(titleTask, artistSongTask)
-            .addOnSuccessListener { results ->
+        com.google.android.gms.tasks.Tasks.whenAllComplete(tasks)
+            .addOnSuccessListener { completedTasks ->
                 val mergedList = ArrayList<Song>()
                 val seenIds = HashSet<String>()
 
-                for (doc in results[0].documents) {
-                    val song = doc.toObject(Song::class.java)
-                    if (song != null && seenIds.add(song.id)) {
-                        mergedList.add(song)
-                    }
-                }
-
-                for (doc in results[1].documents) {
-                    val song = doc.toObject(Song::class.java)
-                    if (song != null && seenIds.add(song.id)) {
-                        mergedList.add(song)
+                for (task in completedTasks) {
+                    if (task.isSuccessful) {
+                        val result = task.result as com.google.firebase.firestore.QuerySnapshot
+                        for (doc in result.documents) {
+                            val song = doc.toObject(Song::class.java)
+                            if (song != null && seenIds.add(song.id)) {
+                                mergedList.add(song)
+                            }
+                        }
                     }
                 }
                 
-                songAdapter.submitList(mergedList)
+                // If we found nothing by title, try a fallback on artistNames array
+                // We do this separately because whereArrayContains is very strict
+                if (mergedList.isEmpty()) {
+                    db.collection("songs")
+                        .whereArrayContains("artistNames", query)
+                        .limit(20)
+                        .get()
+                        .addOnSuccessListener { artistResult ->
+                            for (doc in artistResult.documents) {
+                                val song = doc.toObject(Song::class.java)
+                                if (song != null && seenIds.add(song.id)) {
+                                    mergedList.add(song)
+                                }
+                            }
+                            songAdapter.submitList(mergedList)
+                            progressBar?.visibility = View.GONE
+                        }
+                        .addOnFailureListener {
+                            songAdapter.submitList(mergedList)
+                            progressBar?.visibility = View.GONE
+                        }
+                } else {
+                    songAdapter.submitList(mergedList)
+                    progressBar?.visibility = View.GONE
+                }
+                
                 isLastItemReached = true 
-                progressBar?.visibility = View.GONE
             }
-            .addOnFailureListener {
+            .addOnFailureListener { e ->
+                android.util.Log.e("BrowseFragment", "Search Error", e)
                 Toast.makeText(context, "Search failed", Toast.LENGTH_SHORT).show()
                 progressBar?.visibility = View.GONE
             }
+    }
+
+    /**
+     * Helper to hide the soft keyboard.
+     */
+    private fun hideKeyboard() {
+        val imm = context?.getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as? android.view.inputmethod.InputMethodManager
+        imm?.hideSoftInputFromWindow(view?.windowToken, 0)
     }
 }

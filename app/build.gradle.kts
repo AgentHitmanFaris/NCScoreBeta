@@ -12,8 +12,8 @@ android {
         applicationId = "com.noobcompany.nc_scorebeta"
         minSdk = 24
         targetSdk = 34
-        versionCode = 17
-        versionName = "1.6.0"
+        versionCode = 19
+        versionName = "1.6.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -46,7 +46,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     // Firebase
-    implementation(platform("com.google.firebase:firebase-bom:32.7.1"))
+    implementation(platform("com.google.firebase:firebase-bom:34.13.0"))
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-auth")
 

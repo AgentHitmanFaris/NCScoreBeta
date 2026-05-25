@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.async
@@ -148,11 +149,16 @@ class SongDetailFragment : Fragment() {
             val videoId = extractVideoId(song.youtubeLink)
             if (videoId.isNotEmpty()) {
                 youtubePlayerView.visibility = View.VISIBLE
-                youtubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+                
+                val listener = object : AbstractYouTubePlayerListener() {
                     override fun onReady(youTubePlayer: YouTubePlayer) {
                         youTubePlayer.cueVideo(videoId, 0f)
                     }
-                })
+                }
+
+                // Fix for Error 152-4: The library now handles origin automatically in v13.0.0
+                // Just use the standard addYouTubePlayerListener which is safer with the View lifecycle
+                youtubePlayerView.addYouTubePlayerListener(listener)
             } else {
                 youtubePlayerView.visibility = View.GONE
             }

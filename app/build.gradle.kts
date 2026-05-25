@@ -61,7 +61,7 @@ dependencies {
     implementation("com.github.mhiew:android-pdf-viewer:3.2.0-beta.3")
 
     // --- Youtube Player ---
-    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
+    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:13.0.0")
 
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     

@@ -1,10 +1,10 @@
-🚀 NC Score Beta v1.6.2 - Release Notes
+NC Score Beta v1.6.2 - Release Notes
 
 What's New:
-✨ Support for Multiple Arrangements: Now you can choose between different keys and versions (e.g., Original Key, Easy Piano) when opening a song!
-🔓 Simplified Premium Access: Premium songs are now accessible to all logged-in users (Requirement: Login Only).
-🎹 Key Transposition Info: See the musical key of each arrangement before opening it.
-🐛 Bug Fixes: Fixed a compilation issue in unit tests and improved general stability.
+Support for Multiple Arrangements: Now you can choose between different keys and versions (e.g., Original Key, Easy Piano) when opening a song!
+Simplified Premium Access: Premium songs are now accessible to all logged-in users (Requirement: Login Only).
+Key Transposition Info: See the musical key of each arrangement before opening it.
+Bug Fixes: Fixed a compilation issue in unit tests and improved general stability.
 
 Under the hood:
 - Updated Arrangement model with unique IDs and Key metadata.

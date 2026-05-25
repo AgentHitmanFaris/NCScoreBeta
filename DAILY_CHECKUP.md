@@ -9,13 +9,15 @@ This file is used to track daily progress and contributions.
 - [x] Update Premium Access policy to "Login Only"
 - [x] Fix compilation error in `FilenameSanitizationTest`
 - [x] Add musical key transposition metadata to `Arrangement` model
-- [x] Bump app version to 1.6.2
+- [x] Fix YouTube Error 152-4 (Library upgrade)
+- [x] Bump app version to 1.6.3
 
 ### Notes
 - Enhanced `SongHandler` to fetch all arrangements and display a selection dialog if multiple keys or versions are available.
 - Relaxed premium access logic: songs marked `isPremium` are now accessible to any logged-in user, removing the secondary `isPremiumUser` flag check.
 - Fixed a bug in unit tests where `$Song` in a string was being treated as a Kotlin string template.
-- Updated `versionName` to `1.6.2` and `versionCode` to `19`.
+- **Fixed YouTube Player**: Upgraded to `com.pierfrancescosoffritti.androidyoutubeplayer:core:13.0.0` to resolve security origin restrictions (Error 152-4).
+- Updated `versionName` to `1.6.3` and `versionCode` to `20`.
 
 ## Date: 2026-05-20
 

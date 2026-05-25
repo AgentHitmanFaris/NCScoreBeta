@@ -1,0 +1,10 @@
+🚀 NC Score Beta v1.6.3 - Release Notes
+
+What's New:
+📺 Fixed YouTube Video Playback: Resolved "Error 152-4" which caused videos to show as "Unavailable".
+🛠️ Library Upgrade: Upgraded internal media components to the latest version for better compatibility.
+
+Previously in v1.6.2:
+✨ Support for Multiple Arrangements: Choose between different keys and versions!
+🔓 Simplified Premium Access: Logged-in users can now access premium scores.
+🎹 Key Transposition Info: View musical keys before opening arrangements.

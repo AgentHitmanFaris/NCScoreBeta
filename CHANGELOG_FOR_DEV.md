@@ -1,5 +1,13 @@
 # Changelog for Developers
 
+## [1.6.3] - 2026-05-22
+
+### Fixed
+- **YouTube Error 152-4**: Upgraded `androidyoutubeplayer` library to `13.0.0`. This version correctly handles the "Origin" parameter required by YouTube's updated security policy, restoring video playback in song details.
+
+### Changed
+- **App Version**: Incremented `versionCode` to 20 and `versionName` to "1.6.3" in `app/build.gradle.kts`.
+
 ## [1.6.2] - 2026-05-22
 
 ### Added

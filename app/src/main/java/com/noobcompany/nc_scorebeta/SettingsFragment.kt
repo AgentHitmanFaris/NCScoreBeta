@@ -168,7 +168,11 @@ class SettingsFragment : Fragment() {
      */
     private fun showAboutDialog() {
         val changelog = """
-            v1.6.2 (Current)
+            v1.6.3 (Current)
+            - Fixed YouTube Video Error (152-4)
+            - Upgraded Media Player library
+            
+            v1.6.2
             - Support for Multiple Arrangements (Key Selection)
             - Login-only Premium Access policy
             - Added Key Transposition metadata
@@ -177,11 +181,6 @@ class SettingsFragment : Fragment() {
             - Automated Update Checks
             - UI Overhaul with Premium Detail Design
             - Case-Insensitive Global Search
-            
-            v1.6.0
-            - Database Schema Sync (BPM, Key, Difficulty)
-            - Parallel Data Fetching (Faster loading)
-            - Haptic Feedback & List Animations
         """.trimIndent()
 
         AlertDialog.Builder(context)

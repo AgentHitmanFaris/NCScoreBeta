@@ -81,7 +81,7 @@ class SongAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongViewHolder {
         val layoutId = when {
             useGrid -> R.layout.item_song_grid
-            useCarousel -> R.layout.item_song_carousel
+            useCarousel -> R.layout.item_featured_arrangement
             else -> R.layout.item_song_card
         }
         val view = LayoutInflater.from(parent.context).inflate(layoutId, parent, false)
@@ -103,6 +103,23 @@ class SongAdapter(
 
         holder.tvTitle.text = song.title
         holder.tvArtist.text = song.getFormattedArtist()
+
+        // v2 Polish: Handle the Key Label if present in the layout (Premium Card/Recently Viewed)
+        val tvKeyLabel = holder.itemView.findViewById<TextView>(R.id.tvKeyLabel)
+        tvKeyLabel?.text = if (song.originalKey.isNotBlank()) song.originalKey else "--"
+
+        // v2 Polish: Handle the Details line if present
+        val tvDetails = holder.itemView.findViewById<TextView>(R.id.tvDetails)
+        if (tvDetails != null) {
+            tvDetails.text = "Piano • Grade 8 • Key: ${if (song.originalKey.isNotBlank()) song.originalKey else "--"}"
+        }
+
+        // v2 Polish: Handle Premium Badge
+        val tvPremiumBadge = holder.itemView.findViewById<View>(R.id.tvPremiumBadge)
+        if (tvPremiumBadge != null) {
+            tvPremiumBadge.visibility = if (song.isPremium == true) View.VISIBLE else View.GONE
+        }
+
         holder.ivPremiumStar.visibility = if (song.isPremium == true) View.VISIBLE else View.GONE
 
         // Handle Artist Click

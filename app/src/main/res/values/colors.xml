@@ -11,4 +11,9 @@
     <color name="spotify_green">#1DB954</color>
     <color name="text_primary">#FFFFFF</color>
     <color name="text_secondary">#B3B3B3</color>
+
+    <!-- v2 Premium Design Colors -->
+    <color name="premium_gold">#EAB308</color> <!-- amber-500 -->
+    <color name="dark_background">#020617</color> <!-- slate-950 -->
+    <color name="dark_surface">#0F172A</color> <!-- slate-900 -->
 </resources>

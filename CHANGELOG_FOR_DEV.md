@@ -1,5 +1,26 @@
 # Changelog for Developers
 
+## [1.7.0] - 2026-05-23
+
+### Added
+- **v2 Premium Design Integration**: 
+    - Migrated UI theme to the "v2 Polish" design system (Slate-950 background, Slate-900 surfaces).
+    - New `item_featured_arrangement.xml` with atmospheric gradients and serif-italic typography.
+    - Integrated "Premium Gold" (#EAB308) accent color across the app.
+- **Multiple Transpositions Support**: 
+    - Added logic to `SongHandler` to detect and display a "Select Transposition" dialog when multiple keys are stored in the `secure/content` map.
+    - User can now choose between "Original Key" and specific transpositions (e.g., Key of F).
+
+### Changed
+- **Home Screen Redesign**: 
+    - Replaced the legacy header with the v2 "NC SCORES Digital Library" branding.
+    - Updated Trending section to use the new Featured Arrangement large-card carousel.
+    - Integrated musical key badges into the "Recently Viewed" list.
+- **Song Detail Refinement**: 
+    - Switched artist text to Premium Gold.
+    - Updated "Open Score" button to the v2 Gold/Slate styling.
+    - Applied serif-italic styling to song titles.
+
 ## [1.6.3] - 2026-05-22
 
 ### Fixed

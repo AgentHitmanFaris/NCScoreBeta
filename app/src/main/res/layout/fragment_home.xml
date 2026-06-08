@@ -9,117 +9,69 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/app_background"
+        android:background="@color/dark_background"
         android:paddingBottom="80dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <!-- Header -->
-            <TextView
-                android:id="@+id/tvAppName"
+            <!-- Header Conforming to v2 Polish UI -->
+            <LinearLayout
+                android:id="@+id/headerGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="24dp"
-                android:fontFamily="sans-serif-black"
-                android:text="NC Score"
-                android:textColor="@color/app_primary"
-                android:textSize="28sp"
+                android:orientation="vertical"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NC SCORES"
+                    android:textColor="@color/premium_gold"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Digital Library"
+                    android:textColor="@color/text_primary"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="-0.02" />
+            </LinearLayout>
 
             <ImageButton
                 android:id="@+id/btnSearch"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginEnd="16dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/bg_search_bar"
+                android:backgroundTint="@color/dark_surface"
                 android:src="@android:drawable/ic_menu_search"
-                app:layout_constraintBottom_toBottomOf="@+id/tvAppName"
+                app:layout_constraintBottom_toBottomOf="@+id/headerGroup"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvAppName"
-                app:tint="@color/white" />
+                app:layout_constraintTop_toTopOf="@+id/headerGroup"
+                app:tint="@color/premium_gold" />
 
-            <!-- Hero Section -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/heroCard"
-                android:layout_width="match_parent"
-                android:layout_height="350dp"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="24dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="8dp"
-                app:cardBackgroundColor="@color/app_surface"
-                app:layout_constraintTop_toBottomOf="@+id/tvAppName">
-
-                <ImageView
-                    android:id="@+id/ivHeroImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@android:color/darker_gray" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/bg_gradient_black_transparent" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:orientation="vertical"
-                    android:padding="24dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="LATEST SCORE"
-                        android:textColor="@color/spotify_green"
-                        android:textSize="12sp"
-                        android:letterSpacing="0.1"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvHeroTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Loading..."
-                        android:textColor="@android:color/white"
-                        android:textSize="32sp"
-                        android:fontFamily="sans-serif-black"
-                        android:shadowColor="#80000000"
-                        android:shadowDx="0"
-                        android:shadowDy="2"
-                        android:shadowRadius="4" />
-
-                    <TextView
-                        android:id="@+id/tvHeroArtist"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Please wait"
-                        android:textColor="#DDDDDD"
-                        android:textSize="18sp"
-                        android:layout_marginTop="4dp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Trending Section -->
+            <!-- Featured Arrangements (Formerly Trending) -->
             <TextView
-                android:id="@+id/tvTrending"
+                android:id="@+id/tvFeaturedLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
-                android:text="Trending Now"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
+                android:text="Featured Arrangement"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/heroCard" />
+                app:layout_constraintTop_toBottomOf="@+id/headerGroup" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvTrending"
@@ -127,19 +79,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:clipToPadding="false"
-                android:paddingHorizontal="12dp"
-                app:layout_constraintTop_toBottomOf="@+id/tvTrending" />
+                android:paddingHorizontal="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvFeaturedLabel" />
 
-            <!-- New Releases Section -->
+            <!-- Recently Viewed Section -->
             <TextView
-                android:id="@+id/tvNewReleases"
+                android:id="@+id/tvRecentLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:text="New Releases"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="32dp"
+                android:text="Recently Viewed"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rvTrending" />
@@ -150,8 +102,38 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:clipToPadding="false"
-                android:paddingHorizontal="12dp"
-                app:layout_constraintTop_toBottomOf="@+id/tvNewReleases" />
+                android:paddingBottom="24dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvRecentLabel" />
+
+            <!-- Legacy Hero Card (Hidden or Repurposed) -->
+            <View
+                android:id="@+id/heroCard"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+            <View
+                android:id="@+id/tvAppName"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+            <View
+                android:id="@+id/tvTrending"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+            <View
+                android:id="@+id/tvNewReleases"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

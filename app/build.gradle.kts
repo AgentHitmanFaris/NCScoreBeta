@@ -12,8 +12,8 @@ android {
         applicationId = "com.noobcompany.nc_scorebeta"
         minSdk = 24
         targetSdk = 34
-        versionCode = 20
-        versionName = "1.6.3"
+        versionCode = 21
+        versionName = "1.7.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

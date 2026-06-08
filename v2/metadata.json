@@ -1,0 +1,6 @@
+{
+  "name": "NC Scores",
+  "description": "NC Scores is an elegant dark-ethereal mobile portal for music sheet cataloging, visual indexing, and full native in-app high-performance PDF score rendering.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

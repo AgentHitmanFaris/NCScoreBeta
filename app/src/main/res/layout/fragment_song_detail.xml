@@ -10,13 +10,14 @@
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:background="@color/dark_background"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsingToolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:contentScrim="@color/app_surface"
+            app:contentScrim="@color/dark_surface"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:titleEnabled="false">
 
@@ -58,10 +59,11 @@
                 android:id="@+id/tvDetailTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
+                android:fontFamily="serif"
                 android:text="Song Title"
                 android:textColor="@color/white"
-                android:textSize="28sp" />
+                android:textSize="28sp"
+                android:textStyle="bold|italic" />
 
             <TextView
                 android:id="@+id/tvDetailArtist"
@@ -69,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Artist Name"
-                android:textColor="@color/spotify_green"
+                android:textColor="@color/premium_gold"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -174,8 +176,8 @@
                 app:cornerRadius="30dp"
                 app:icon="@android:drawable/ic_media_play"
                 app:iconGravity="textStart"
-                android:backgroundTint="@color/app_primary"
-                android:textColor="@color/white" />
+                android:backgroundTint="@color/premium_gold"
+                android:textColor="#0F172A" />
 
             <!-- YouTube Section -->
             <TextView

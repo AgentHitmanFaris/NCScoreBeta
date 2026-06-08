@@ -125,6 +125,7 @@ object SongHandler {
 
     /**
      * Retrieves the actual PDF URL from the nested 'secure' document in Firestore.
+     * Supports multiple transpositions stored within a map.
      */
     private fun fetchNestedSecureLink(context: Context, songId: String, arrangementId: String) {
         FirebaseFirestore.getInstance()
@@ -134,13 +135,13 @@ object SongHandler {
             .get()
             .addOnSuccessListener { document ->
                 if (document.exists()) {
-                    var pdfUrl = document.getString("downloadLink")
-                    // Fallback checks
-                    if (pdfUrl.isNullOrEmpty()) pdfUrl = document.getString("link")
-                    if (pdfUrl.isNullOrEmpty()) pdfUrl = document.getString("url")
+                    val mainUrl = document.getString("downloadLink") ?: document.getString("link") ?: document.getString("url")
+                    val transMap = document.get("transpositions") as? Map<String, String>
 
-                    if (!pdfUrl.isNullOrEmpty()) {
-                        openPdfViewer(context, pdfUrl!!)
+                    if (transMap != null && transMap.isNotEmpty()) {
+                        showTranspositionDialog(context, mainUrl, transMap)
+                    } else if (!mainUrl.isNullOrEmpty()) {
+                        openPdfViewer(context, mainUrl)
                     } else {
                         Toast.makeText(context, "Error: Premium link empty in database.", Toast.LENGTH_LONG).show()
                     }
@@ -152,6 +153,32 @@ object SongHandler {
                 android.util.Log.e("SongHandler", "Access Denied", e)
                 Toast.makeText(context, "Access Denied. Ensure you are logged in.", Toast.LENGTH_LONG).show()
             }
+    }
+
+    /**
+     * Shows a selection dialog for specific transpositions (e.g., Key of F).
+     */
+    private fun showTranspositionDialog(context: Context, mainUrl: String?, transMap: Map<String, String>) {
+        val keys = mutableListOf<String>()
+        val urls = mutableListOf<String>()
+
+        if (!mainUrl.isNullOrEmpty()) {
+            keys.add("Original Key")
+            urls.add(mainUrl)
+        }
+
+        transMap.forEach { (key, url) ->
+            keys.add("Key of $key")
+            urls.add(url)
+        }
+
+        androidx.appcompat.app.AlertDialog.Builder(context)
+            .setTitle("Select Transposition")
+            .setItems(keys.toTypedArray()) { _, which ->
+                openPdfViewer(context, urls[which])
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
     }
 
     /**
